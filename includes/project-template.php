@@ -22,7 +22,7 @@ function orbis_project_in_time() {
 	$in_time = true;
 
 	if ( isset( $post->project_logged_time, $post->project_number_seconds ) ) {
-		$in_time = $post->project_logged_time < $post->project_number_seconds;
+		$in_time = $post->project_logged_time <= $post->project_number_seconds;
 	}
 
 	return $in_time;
