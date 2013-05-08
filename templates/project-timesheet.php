@@ -66,7 +66,7 @@ if ( $registrations ) : ?>
 							<?php echo $registration->description; ?>
 						</td>
 						<td>
-							<?php echo orbis_format_seconds( $registration->number_seconds ); ?>
+							<?php echo orbis_time( $registration->number_seconds ); ?>
 						</td>
 					</tr>
 				
