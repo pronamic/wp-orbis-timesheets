@@ -32,48 +32,48 @@ $registrations = $wpdb->get_results( $query );
 
 if ( $registrations ) : ?>
 
-	<div class="panel">
-		<header>
-			<h3><?php _e( 'Timesheet', 'orbis_timesheets' ); ?></h3>
-		</header>
+	<table class="table table-striped table-bordered">
+		<thead>
+			<tr>
+				<th scope="col"><?php _e( 'Date', 'orbis_timesheets' ); ?></th>
+				<th scope="col"><?php _e( 'User', 'orbis_timesheets' ); ?></th>
+				<th scope="col"><?php _e( 'Activity', 'orbis_timesheets' ); ?></th>
+				<th scope="col"><?php _e( 'Description', 'orbis_timesheets' ); ?></th>
+				<th scope="col"><?php _e( 'Time', 'orbis_timesheets' ); ?></th>
+			</tr>
+		</thead>
 
-		<table class="table table-striped table-bordered">
-			<thead>
+		<tbody>
+			
+			<?php foreach ( $registrations as $registration ) : ?>
+
 				<tr>
-					<th scope="col"><?php _e( 'Date', 'orbis_timesheets' ); ?></th>
-					<th scope="col"><?php _e( 'User', 'orbis_timesheets' ); ?></th>
-					<th scope="col"><?php _e( 'Activity', 'orbis_timesheets' ); ?></th>
-					<th scope="col"><?php _e( 'Description', 'orbis_timesheets' ); ?></th>
-					<th scope="col"><?php _e( 'Time', 'orbis_timesheets' ); ?></th>
+					<td>
+						<?php echo date_i18n( 'D j M Y', strtotime( $registration->date ) ); ?>
+					</td>
+					<td>
+						<?php echo $registration->person_name; ?>
+					</td>
+					<td>
+						<?php echo $registration->activity_name; ?>
+					</td>
+					<td>
+						<?php echo $registration->description; ?>
+					</td>
+					<td>
+						<?php echo orbis_time( $registration->number_seconds ); ?>
+					</td>
 				</tr>
-			</thead>
+			
+			<?php endforeach; ?>
 
-			<tbody>
-				
-				<?php foreach ( $registrations as $registration ) : ?>
+		</tbody>
+	</table>
 
-					<tr>
-						<td>
-							<?php echo date_i18n( 'D j M Y', strtotime( $registration->date ) ); ?>
-						</td>
-						<td>
-							<?php echo $registration->person_name; ?>
-						</td>
-						<td>
-							<?php echo $registration->activity_name; ?>
-						</td>
-						<td>
-							<?php echo $registration->description; ?>
-						</td>
-						<td>
-							<?php echo orbis_time( $registration->number_seconds ); ?>
-						</td>
-					</tr>
-				
-				<?php endforeach; ?>
+<?php else : ?>
 
-			</tbody>
-		</table>
-	</div>
+	<p>
+		<?php _e( 'There are no time registration for this project.', 'orbis_timesheets' ); ?>
+	</p>
 
 <?php endif; ?>
