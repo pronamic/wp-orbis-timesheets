@@ -6,20 +6,24 @@ function orbis_timesheets_posts_clauses( $pieces, $query ) {
 	$post_type = $query->get( 'post_type' );
 
 	if ( $post_type == 'orbis_project' ) {
+		// Fields
 		$fields = ",
 			SUM( logged_time.number_seconds ) AS project_logged_time
 		";
 
+		// Join
 		$join = "
 			LEFT JOIN
 				orbis_hours_registration AS logged_time
 					ON logged_time.project_id = project.id
 		";
 
-		$groupby = "
-			project.id		
-		";
+		// Group by
+		$groupby  = '';
+		$groupby .= empty( $pieces['groupby'] ) ? '' : ', ';
+		$groupby .= 'project.id';
 
+		// Pieces
 		$pieces['join']    .= $join;
 		$pieces['fields']  .= $fields;
 		$pieces['groupby'] .= $groupby;
