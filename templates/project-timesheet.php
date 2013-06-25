@@ -74,7 +74,7 @@ if ( $registrations ) : ?>
 
 	<div class="content">
 		<p>
-			<?php _e( 'There are no time registration for this project.', 'orbis_timesheets' ); ?>
+			<?php _e( 'There are no time registrations for this project.', 'orbis_timesheets' ); ?>
 		</p>
 	</div>
 

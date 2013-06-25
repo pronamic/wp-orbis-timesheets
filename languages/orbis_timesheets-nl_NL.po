@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Orbis Timesheets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-08 09:24+0100\n"
-"PO-Revision-Date: 2013-05-08 09:24+0100\n"
+"POT-Creation-Date: 2013-06-25 09:22+0100\n"
+"PO-Revision-Date: 2013-06-25 09:22+0100\n"
 "Last-Translator: Remco Tolsma <info@remcotolsma.nl>\n"
 "Language-Team: Pronamic <info@pronamic.nl>\n"
 "Language: nl_NL\n"
@@ -17,29 +17,33 @@ msgstr ""
 "X-Generator: Poedit 1.5.5\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: templates/project-timesheet.php:37
+#: includes/template.php:17
 msgid "Timesheet"
 msgstr "Timesheet"
 
-#: templates/project-timesheet.php:43
+#: templates/project-timesheet.php:38
 msgid "Date"
 msgstr "Datum"
 
-#: templates/project-timesheet.php:44
+#: templates/project-timesheet.php:39
 msgid "User"
 msgstr "Gebruiker"
 
-#: templates/project-timesheet.php:45
+#: templates/project-timesheet.php:40
 msgid "Activity"
 msgstr "Activiteit"
 
-#: templates/project-timesheet.php:46
+#: templates/project-timesheet.php:41
 msgid "Description"
 msgstr "Beschrijving"
 
-#: templates/project-timesheet.php:47
+#: templates/project-timesheet.php:42
 msgid "Time"
 msgstr "Tijd"
+
+#: templates/project-timesheet.php:77
+msgid "There are no time registrations for this project."
+msgstr "Er zijn geen tijd registraties voor dit project."
 
 #~ msgid "Company ID"
 #~ msgstr "Bedrijf ID"
