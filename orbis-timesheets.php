@@ -22,9 +22,6 @@ function orbis_timesheets_bootstrap() {
 	// Classes
 	require_once 'classes/orbis-timesheets-plugin.php';
 
-	// Functions
-	require_once 'includes/functions.php';
-
 	// Initialize
 	global $orbis_timesheets_plugin;
 
