@@ -1,19 +1,19 @@
 <?php
 /*
 Plugin Name: Orbis Timesheets
-Plugin URI: http://orbiswp.com/
-Description: 
+Plugin URI: http://www.orbiswp.com/
+Description: Time Management, Timesheet, Time Tracking solution for WordPress. Orbis Timesheets enables you to track your work time.
 
-Version: 0.1
+Version: 1.0.0
 Requires at least: 3.5
 
 Author: Pronamic
-Author URI: http://pronamic.eu/
+Author URI: http://www.pronamic.eu/
 
 Text Domain: orbis_timesheets
 Domain Path: /languages/
 
-License: GPL
+License: Copyright (c) Pronamic
 
 GitHub URI: https://github.com/pronamic/wp-orbis-subscriptions
 */
@@ -21,13 +21,13 @@ GitHub URI: https://github.com/pronamic/wp-orbis-subscriptions
 function orbis_timesheets_bootstrap() {
 	// Classes
 	require_once 'classes/orbis-timesheets-plugin.php';
-	
+
 	// Functions
 	require_once 'includes/functions.php';
 
 	// Initialize
 	global $orbis_timesheets_plugin;
-	
+
 	$orbis_timesheets_plugin = new Orbis_Timesheets_Plugin( __FILE__ );
 }
 

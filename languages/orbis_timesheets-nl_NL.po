@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Orbis Timesheets\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-25 09:22+0100\n"
-"PO-Revision-Date: 2013-06-25 09:22+0100\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/orbis-timesheets\n"
+"POT-Creation-Date: 2013-12-11 08:41:37+00:00\n"
+"PO-Revision-Date: 2013-12-11 09:42+0100\n"
 "Last-Translator: Remco Tolsma <info@remcotolsma.nl>\n"
 "Language-Team: Pronamic <info@pronamic.nl>\n"
 "Language: nl_NL\n"
@@ -11,11 +11,9 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-KeywordsList: __;_e;_x:2c,1\n"
-"X-Poedit-Basepath: ../\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 1.5.5\n"
-"X-Poedit-SearchPath-0: .\n"
+"X-Generator: Poedit 1.6.2\n"
 
 #: includes/template.php:17
 msgid "Timesheet"
@@ -44,6 +42,30 @@ msgstr "Tijd"
 #: templates/project-timesheet.php:77
 msgid "There are no time registrations for this project."
 msgstr "Er zijn geen tijd registraties voor dit project."
+
+#. Plugin Name of the plugin/theme
+msgid "Orbis Timesheets"
+msgstr "Orbis werkregistraties"
+
+#. Plugin URI of the plugin/theme
+msgid "http://www.orbiswp.com/"
+msgstr "http://www.orbiswp.com/"
+
+#. Description of the plugin/theme
+msgid ""
+"Time Management, Timesheet, Time Tracking solution for WordPress. Orbis "
+"Timesheets enables you to track your work time."
+msgstr ""
+"Werkregistratie oplossing voor Wordpress. Orbis werkregistraties maakt het "
+"mogelijk om je werktijd bij te houden."
+
+#. Author of the plugin/theme
+msgid "Pronamic"
+msgstr "Pronamic"
+
+#. Author URI of the plugin/theme
+msgid "http://www.pronamic.eu/"
+msgstr "http://www.pronamic.nl/"
 
 #~ msgid "Company ID"
 #~ msgstr "Bedrijf ID"
@@ -735,9 +757,6 @@ msgstr "Er zijn geen tijd registraties voor dit project."
 
 #~ msgid "Height"
 #~ msgstr "Hoogte"
-
-#~ msgid "Dynamic"
-#~ msgstr "Dynamisch"
 
 #~ msgid "Show Google Maps"
 #~ msgstr "Google Maps weergeven"

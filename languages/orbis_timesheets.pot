@@ -1,0 +1,63 @@
+# Copyright (C) 2013 Orbis Timesheets
+# This file is distributed under the same license as the Orbis Timesheets package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Orbis Timesheets 1.0.0\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/orbis-timesheets\n"
+"POT-Creation-Date: 2013-12-11 08:41:37+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2013-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: includes/template.php:17
+msgid "Timesheet"
+msgstr ""
+
+#: templates/project-timesheet.php:38
+msgid "Date"
+msgstr ""
+
+#: templates/project-timesheet.php:39
+msgid "User"
+msgstr ""
+
+#: templates/project-timesheet.php:40
+msgid "Activity"
+msgstr ""
+
+#: templates/project-timesheet.php:41
+msgid "Description"
+msgstr ""
+
+#: templates/project-timesheet.php:42
+msgid "Time"
+msgstr ""
+
+#: templates/project-timesheet.php:77
+msgid "There are no time registrations for this project."
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "Orbis Timesheets"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://www.orbiswp.com/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Time Management, Timesheet, Time Tracking solution for WordPress. Orbis "
+"Timesheets enables you to track your work time."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Pronamic"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://www.pronamic.eu/"
+msgstr ""
