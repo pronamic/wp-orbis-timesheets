@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Orbis Timesheets\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/orbis-timesheets\n"
-"POT-Creation-Date: 2013-12-11 08:41:37+00:00\n"
-"PO-Revision-Date: 2013-12-11 09:42+0100\n"
+"POT-Creation-Date: 2013-12-13 15:31:06+00:00\n"
+"PO-Revision-Date: 2013-12-13 16:31+0100\n"
 "Last-Translator: Remco Tolsma <info@remcotolsma.nl>\n"
 "Language-Team: Pronamic <info@pronamic.nl>\n"
 "Language: nl_NL\n"
@@ -15,11 +15,47 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Generator: Poedit 1.6.2\n"
 
+#: includes/functions.php:157
+msgid "You have to specify an company or project."
+msgstr "Je moet een bedrijf of project specificeren."
+
+#: includes/functions.php:162
+msgid "You have to specify an description (%d words)."
+msgstr "Je moet een beschrijving specificeren (%d woorden)."
+
+#: includes/functions.php:171
+msgid ""
+"Who are you? <a href=\"%s\">Edit your user profile</a> and enter you Orbis "
+"legacy person ID."
+msgstr ""
+"Wie ben je? <a href=”%s”>Bewerk je gebruikersprofiel</a> en voer je Orbis "
+"legacy persoon ID in."
+
+#: includes/functions.php:177
+msgid "You have to specify an activity."
+msgstr "Je moet een activiteit specificeren."
+
+#: includes/functions.php:181
+msgid "You can not register on this date."
+msgstr "Je kunt niet registreren op deze datum."
+
+#: includes/functions.php:196
+msgid "Could not add timesheet entry."
+msgstr "Kon werk registratie niet toevoegen."
+
 #: includes/template.php:17
 msgid "Timesheet"
 msgstr "Timesheet"
 
-#: templates/project-timesheet.php:38
+#: templates/new-registration-form.php:18
+msgid "Add registration"
+msgstr "Registratie toevoegen"
+
+#: templates/new-registration-form.php:23
+msgid "Register"
+msgstr "Registreer"
+
+#: templates/project-timesheet.php:38 templates/timesheets_overview.php:104
 msgid "Date"
 msgstr "Datum"
 
@@ -27,21 +63,68 @@ msgstr "Datum"
 msgid "User"
 msgstr "Gebruiker"
 
-#: templates/project-timesheet.php:40
+#: templates/project-timesheet.php:40 templates/timesheets_overview.php:102
+#: templates/work_registration_fields.php:40
 msgid "Activity"
 msgstr "Activiteit"
 
-#: templates/project-timesheet.php:41
+#: templates/project-timesheet.php:41 templates/timesheets_overview.php:103
+#: templates/work_registration_fields.php:60
 msgid "Description"
 msgstr "Beschrijving"
 
-#: templates/project-timesheet.php:42
+#: templates/project-timesheet.php:42 templates/timesheets_overview.php:105
+#: templates/work_registration_fields.php:65
 msgid "Time"
 msgstr "Tijd"
 
 #: templates/project-timesheet.php:77
 msgid "There are no time registrations for this project."
 msgstr "Er zijn geen tijd registraties voor dit project."
+
+#: templates/timesheets_edit.php:19
+msgid "Edit registration"
+msgstr "Registratie bewerken"
+
+#: templates/timesheets_edit.php:24 templates/timesheets_overview.php:145
+msgid "Edit"
+msgstr "Bewerken"
+
+#: templates/timesheets_edit.php:34
+msgid "Cancel"
+msgstr "Annuleer"
+
+#: templates/timesheets_overview.php:62
+msgid "Today"
+msgstr "Vandaag"
+
+#: templates/timesheets_overview.php:82
+msgid "Your work registration \"%s\" was succesfull added."
+msgstr "Je werk registratie „%s” is succesvol toegevoegd."
+
+#: templates/timesheets_overview.php:101
+msgid "Company/Project"
+msgstr "Bedrijf/project"
+
+#: templates/timesheets_overview.php:106
+msgid "Actions"
+msgstr "Acties"
+
+#: templates/work_registration_fields.php:20
+msgid "Company"
+msgstr "Bedrijf"
+
+#: templates/work_registration_fields.php:25
+msgid "Project"
+msgstr "Project"
+
+#: templates/work_registration_fields.php:32
+msgid "Subscription"
+msgstr "Abonnement"
+
+#: templates/work_registration_fields.php:61
+msgid "Work registration description"
+msgstr "Werk registratie beschrijving"
 
 #. Plugin Name of the plugin/theme
 msgid "Orbis Timesheets"
@@ -67,8 +150,8 @@ msgstr "Pronamic"
 msgid "http://www.pronamic.eu/"
 msgstr "http://www.pronamic.nl/"
 
-#~ msgid "Company ID"
-#~ msgstr "Bedrijf ID"
+#~ msgid "Task description"
+#~ msgstr "Taak beschrijvin"
 
 #~ msgid "Type"
 #~ msgstr "Type"
@@ -128,19 +211,12 @@ msgstr "http://www.pronamic.nl/"
 #~ msgid "Subscriptions"
 #~ msgstr "Abonnementen"
 
-#~ msgctxt "post type singular name"
-#~ msgid "Subscription"
-#~ msgstr "Abonnement"
-
 #~ msgctxt "orbis_subscription"
 #~ msgid "Add New"
 #~ msgstr "Nieuwe abonnement"
 
 #~ msgid "Add New Subscription"
 #~ msgstr "Nieuwe abonnement toevoegen"
-
-#~ msgid "Edit Subscription"
-#~ msgstr "Bewerk abonnement"
 
 #~ msgid "New Subscription"
 #~ msgstr "Nieuwe abonnement"
@@ -191,9 +267,6 @@ msgstr "http://www.pronamic.nl/"
 #~ msgid "ID"
 #~ msgstr "ID"
 
-#~ msgid "Company"
-#~ msgstr "Bedrijf"
-
 #~ msgid "Update Date"
 #~ msgstr "Update datum"
 
@@ -202,12 +275,6 @@ msgstr "http://www.pronamic.nl/"
 
 #~ msgid "E-Mail"
 #~ msgstr "E-mailadres"
-
-#~ msgid "Actions"
-#~ msgstr "Acties"
-
-#~ msgid "Edit"
-#~ msgstr "Bewerken"
 
 #~ msgid "Extend License"
 #~ msgstr "Licentie verlegen"
@@ -223,9 +290,6 @@ msgstr "http://www.pronamic.nl/"
 
 #~ msgid "Orbis ID"
 #~ msgstr "Orbis ID"
-
-#~ msgid "Cancel Date"
-#~ msgstr "Opzeggingsdatum"
 
 #~ msgid "Invoices"
 #~ msgstr "Facturen"
@@ -450,9 +514,6 @@ msgstr "http://www.pronamic.nl/"
 
 #~ msgid "Projects"
 #~ msgstr "Projecten"
-
-#~ msgid "Project"
-#~ msgstr "Project"
 
 #~ msgctxt "orbis_project"
 #~ msgid "Add New"
@@ -742,9 +803,6 @@ msgstr "http://www.pronamic.nl/"
 
 #~ msgid "Passwords"
 #~ msgstr "Wachtwoorden"
-
-#~ msgid "Organisation"
-#~ msgstr "Organisatie"
 
 #~ msgid "Latitude"
 #~ msgstr "Breedtegraad"

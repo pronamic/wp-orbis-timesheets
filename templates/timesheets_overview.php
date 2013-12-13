@@ -12,8 +12,10 @@ $query = "
 		activity.name AS activity_name,
 		activity.description AS activity_description,
 		company.id AS company_id,
+		company.post_id AS company_post_id,
 		company.name AS company_name,
 		project.id AS project_id,
+		project.post_id AS project_post_id,
 		project.number_seconds AS project_time_available,
 		project.name AS project_name, 
 		principal.name AS principal_name
@@ -67,6 +69,25 @@ $next      = strtotime( '+1 day', $timestamp );
 
 <h2><?php echo date( 'd-m-Y', $timestamp ); ?></h2>
 
+<?php if ( filter_has_var( INPUT_GET, 'added' ) ) : ?>
+
+	<div class="alert alert-success">
+		<?php 
+		
+		$id = filter_input( INPUT_GET, 'added' );
+		
+		$entry_added = orbis_timesheets_get_entry( $id );
+		
+		printf(
+			__( 'Your work registration "%s" was succesfull added.', 'orbis_timesheets' ),
+			strip_tags( $entry_added->description )
+		);
+		
+		?>
+	</div>
+
+<?php endif; ?>
+
 <?php if ( empty( $registrations ) ) : ?>
 
 	
@@ -92,8 +113,21 @@ $next      = strtotime( '+1 day', $timestamp );
 
 					<tr>
 						<td>
-							<?php echo $registration->company_name; ?>
-							<?php echo $registration->project_name; ?>
+							<?php 
+
+							$links = array();
+
+							if ( ! empty( $registration->company_post_id ) ) {
+								$links[] = sprintf( '<a href="%s">%s</a>', esc_attr( orbis_post_link( $registration->company_post_id ) ), esc_html( $registration->company_name ) );
+							}
+
+							if ( ! empty( $registration->project_post_id ) ) {
+								$links[] = sprintf( '<a href="%s">%s</a>', esc_attr( orbis_post_link( $registration->project_post_id ) ), esc_html( $registration->project_name ) );
+							}
+
+							echo implode( ' - ', $links );
+
+							?>
 						</td>
 						<td>
 							<?php echo $registration->activity_name; ?>
