@@ -67,7 +67,7 @@ $next      = strtotime( '+1 day', $timestamp );
 
 <hr />
 
-<h2><?php echo date( 'd-m-Y', $timestamp ); ?></h2>
+<h2><?php echo date_i18n( 'D j M Y', $timestamp ); ?></h2>
 
 <?php if ( filter_has_var( INPUT_GET, 'added' ) ) : ?>
 
