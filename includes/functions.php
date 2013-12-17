@@ -34,9 +34,18 @@ function get_edit_orbis_work_registration_link( $id ) {
 function orbis_timesheets_get_entry( $id ) {
 	global $wpdb;
 	
+	$entry = false;
+	
+	// Query
 	$query = $wpdb->prepare( "
 		SELECT
-			*
+			id,
+			company_id,
+			project_id,
+			activity_id,
+			description,
+			date,
+			number_seconds
 		FROM
 			$wpdb->orbis_timesheets
 		WHERE
@@ -44,7 +53,20 @@ function orbis_timesheets_get_entry( $id ) {
 		;
 	", $id );
 	
-	$entry = $wpdb->get_row( $query );
+	// Row
+	$row = $wpdb->get_row( $query );
+	
+	if ( $row) {
+		$entry = new Orbis_Timesheets_TimesheetEntry();
+	
+		$entry->id          = $row->id;
+		$entry->company_id  = $row->company_id;
+		$entry->project_id  = $row->project_id;
+		$entry->activity_id = $row->activity_id;
+		$entry->description = $row->description;
+		$entry->set_date( new DateTime( $row->date ) );
+		$entry->time        = $row->number_seconds;
+	}
 	
 	return $entry;
 }
@@ -91,7 +113,7 @@ function orbis_insert_timesheet_entry( $entry ) {
 	$data['description']   = $entry->description;
 	$format['description'] = '%s';
 		
-	$data['date']   = date( 'Y-m-d', $entry->date );
+	$data['date']   = $entry->get_date()->format( 'Y-m-d' );
 	$format['date'] = '%s';
 		
 	$data['number_seconds']   = $entry->time;
@@ -130,8 +152,12 @@ function orbis_timesheets_get_entry_from_input( $type = INPUT_POST ) {
 	$entry->subscription_id = filter_input( $type, 'orbis_registration_subscription_id', FILTER_SANITIZE_STRING );
 	$entry->activity_id     = filter_input( $type, 'orbis_registration_activity_id', FILTER_SANITIZE_STRING );
 	$entry->description     = filter_input( $type, 'orbis_registration_description', FILTER_SANITIZE_STRING );
-	$entry->date_string     = filter_input( $type, 'orbis_registration_date', FILTER_SANITIZE_STRING );
-	$entry->date            = strtotime( $entry->date_string );
+	
+	$date_string     = filter_input( $type, 'orbis_registration_date', FILTER_SANITIZE_STRING );
+	if ( ! empty( $date_string ) ) {
+		$entry->set_date( new DateTime( $date_string) );
+	}
+
 	$entry->time            = orbis_filter_time_input( $type, 'orbis_registration_time' );
 	$entry->user_id         = get_current_user_id();
 	$entry->person_id       = get_user_meta( $entry->user_id, 'orbis_legacy_person_id', true );
@@ -177,16 +203,21 @@ function orbis_timesheets_maybe_add_entry() {
 				orbis_timesheets_register_error( 'orbis_registration_activity_id', __( 'You have to specify an activity.', 'orbis_timesheets' ) );
 			}
 	
-			if ( ! orbis_timesheets_can_register( $entry->date ) ) {
+			if ( ! orbis_timesheets_can_register( $entry->get_date()->format( 'U' ) ) ) {
 				orbis_timesheets_register_error( 'orbis_registration_date', __( 'You can not register on this date.', 'orbis_timesheets' ) );
 			}
+			
+			$message = empty( $entry->id ) ? 'added' : 'updated';
 	
 			if ( empty( $orbis_errors ) ) {
 				$result = orbis_insert_timesheet_entry( $entry );
 
 				if ( $result ) {
 					$url = add_query_arg( array(
-						'added' => $entry->id,
+						'entry_id' => false,
+						'action'   => false,
+						'message'  => $message,
+						'date'     => $entry->get_date()->format( 'Y-m-d' ),
 					) );
 
 					wp_redirect( $url );

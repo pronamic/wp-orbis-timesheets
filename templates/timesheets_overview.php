@@ -52,14 +52,16 @@ $registrations = $wpdb->get_results( $query );
 $prev      = strtotime( '-1 day', $timestamp );
 $next      = strtotime( '+1 day', $timestamp );
 
+$url = add_query_arg( 'message', false );
+
 ?>
 <form class="form-inline" action="" method="get">
 	<div class="row">
 		<div class="span2">
 			<div class="btn-group">
-				<a href="<?php echo add_query_arg( 'date', date( 'Y-m-d', $prev ) ); ?>" class="btn">&lt;</a>
-				<a href="<?php echo add_query_arg( 'date', date( 'Y-m-d', $next ) ); ?>" class="btn">&gt;</a>
-				<a href="<?php echo add_query_arg( 'date', false ); ?>" class="btn"><?php _e( 'Today', 'orbis_timesheets' ); ?></a>
+				<a href="<?php echo add_query_arg( 'date', date( 'Y-m-d', $prev ), $url ); ?>" class="btn">&lt;</a>
+				<a href="<?php echo add_query_arg( 'date', date( 'Y-m-d', $next ), $url ); ?>" class="btn">&gt;</a>
+				<a href="<?php echo add_query_arg( 'date', false, $url ); ?>" class="btn"><?php _e( 'Today', 'orbis_timesheets' ); ?></a>
 			</div>
 		</div>
 	</div>
@@ -69,19 +71,23 @@ $next      = strtotime( '+1 day', $timestamp );
 
 <h2><?php echo date_i18n( 'D j M Y', $timestamp ); ?></h2>
 
-<?php if ( filter_has_var( INPUT_GET, 'added' ) ) : ?>
+<?php if ( filter_has_var( INPUT_GET, 'message' ) ) : ?>
 
 	<div class="alert alert-success">
 		<?php 
 		
-		$id = filter_input( INPUT_GET, 'added' );
+		$message = filter_input( INPUT_GET, 'message' );
 		
-		$entry_added = orbis_timesheets_get_entry( $id );
-		
-		printf(
-			__( 'Your work registration "%s" was succesfull added.', 'orbis_timesheets' ),
-			strip_tags( $entry_added->description )
-		);
+		switch ( $message ) { 
+			case 'added':
+				_e( 'Your work registration was succesfull added.', 'orbis_timesheets' );
+			
+				break;
+			case 'updated':		
+				_e( 'Your work registration was succesfull updated.', 'orbis_timesheets' );
+				
+				break;
+		}
 		
 		?>
 	</div>

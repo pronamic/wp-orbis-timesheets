@@ -13,7 +13,7 @@
 <?php endif; ?>
 
 <input name="orbis_registration_id" value="<?php echo esc_attr( $entry->id ); ?>" type="hidden" />
-<input name="orbis_registration_date" value="<?php echo date( 'Y-m-d', $timestamp ); ?>" type="hidden" />
+<input name="orbis_registration_date" value="<?php echo $entry->get_date()->format( 'Y-m-d' ); ?>" type="hidden" />
 
 <div class="row">
 	<div <?php orbis_field_class( array( 'control-group', 'span3' ), 'orbis_registration_company_id' ); ?>>
