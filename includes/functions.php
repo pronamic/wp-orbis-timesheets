@@ -124,7 +124,7 @@ function orbis_insert_timesheet_entry( $entry ) {
 function orbis_timesheets_get_entry_from_input( $type = INPUT_POST ) {
 	$entry = new Orbis_Timesheets_TimesheetEntry();
 	
-	$entry->id      = filter_input( $type, 'orbis_registration_id', FILTER_SANITIZE_STRING );
+	$entry->id              = filter_input( $type, 'orbis_registration_id', FILTER_SANITIZE_STRING );
 	$entry->company_id      = filter_input( $type, 'orbis_registration_company_id', FILTER_SANITIZE_STRING );
 	$entry->project_id      = filter_input( $type, 'orbis_registration_project_id', FILTER_SANITIZE_STRING );
 	$entry->subscription_id = filter_input( $type, 'orbis_registration_subscription_id', FILTER_SANITIZE_STRING );
