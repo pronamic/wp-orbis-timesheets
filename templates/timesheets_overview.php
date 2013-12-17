@@ -100,6 +100,15 @@ $url = add_query_arg( 'message', false );
 
 <?php else : ?>
 
+	<?php 
+
+	$total = 0;
+	foreach ( $registrations as $registration ) {
+		$total += $registration->work_duration;
+	}
+	
+	?>
+
 	<div class="panel">
 		<table class="table table-striped table-bordered table-condense">
 			<thead>
@@ -113,6 +122,20 @@ $url = add_query_arg( 'message', false );
 				</tr>
 			</thead>
 			
+			<tfoot>
+				<tr>
+					<td colspan="4">
+						
+					</td>
+					<td>
+						<strong><?php echo orbis_time( $total ); ?></strong>
+					</td>
+					<td>
+						
+					</td>
+				</tr>
+			</tfoot>
+
 			<tbody>
 
 				<?php foreach( $registrations as $registration ) : ?>
