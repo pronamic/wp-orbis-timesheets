@@ -158,7 +158,22 @@ function orbis_timesheets_get_entry_from_input( $type = INPUT_POST ) {
 		$entry->set_date( new DateTime( $date_string) );
 	}
 
-	$entry->time            = orbis_filter_time_input( $type, 'orbis_registration_time' );
+	if ( filter_has_var( $type, 'orbis_registration_time' ) ) {
+		$entry->time = orbis_filter_time_input( $type, 'orbis_registration_time' );
+	}
+	
+	if ( filter_has_var( $type, 'orbis_registration_hours' ) ) {
+		$time = 0;
+		
+		$hours   = filter_input( $type, 'orbis_registration_hours', FILTER_VALIDATE_INT );
+		$minutes = filter_input( $type, 'orbis_registration_minutes', FILTER_VALIDATE_INT );
+		
+		$time += $hours * 3600;
+		$time += $minutes * 60;
+		
+		$entry->time = $time;
+	}
+	
 	$entry->user_id         = get_current_user_id();
 	$entry->person_id       = get_user_meta( $entry->user_id, 'orbis_legacy_person_id', true );
 	
