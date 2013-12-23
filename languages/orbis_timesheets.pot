@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Orbis Timesheets 1.0.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/orbis-timesheets\n"
-"POT-Creation-Date: 2013-12-13 15:31:06+00:00\n"
+"POT-Creation-Date: 2013-12-23 16:00:21+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -12,29 +12,29 @@ msgstr ""
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
-#: includes/functions.php:157
+#: includes/functions.php:198
 msgid "You have to specify an company or project."
 msgstr ""
 
-#: includes/functions.php:162
+#: includes/functions.php:203
 msgid "You have to specify an description (%d words)."
 msgstr ""
 
-#: includes/functions.php:171
+#: includes/functions.php:212
 msgid ""
 "Who are you? <a href=\"%s\">Edit your user profile</a> and enter you Orbis "
 "legacy person ID."
 msgstr ""
 
-#: includes/functions.php:177
+#: includes/functions.php:218
 msgid "You have to specify an activity."
 msgstr ""
 
-#: includes/functions.php:181
+#: includes/functions.php:222
 msgid "You can not register on this date."
 msgstr ""
 
-#: includes/functions.php:196
+#: includes/functions.php:242
 msgid "Could not add timesheet entry."
 msgstr ""
 
@@ -50,7 +50,7 @@ msgstr ""
 msgid "Register"
 msgstr ""
 
-#: templates/project-timesheet.php:38 templates/timesheets_overview.php:104
+#: templates/project-timesheet.php:38 templates/timesheets_overview.php:119
 msgid "Date"
 msgstr ""
 
@@ -58,18 +58,18 @@ msgstr ""
 msgid "User"
 msgstr ""
 
-#: templates/project-timesheet.php:40 templates/timesheets_overview.php:102
-#: templates/work_registration_fields.php:40
+#: templates/project-timesheet.php:40 templates/timesheets_overview.php:117
+#: templates/work_registration_fields.php:41
 msgid "Activity"
 msgstr ""
 
-#: templates/project-timesheet.php:41 templates/timesheets_overview.php:103
-#: templates/work_registration_fields.php:60
+#: templates/project-timesheet.php:41 templates/timesheets_overview.php:118
+#: templates/work_registration_fields.php:62
 msgid "Description"
 msgstr ""
 
-#: templates/project-timesheet.php:42 templates/timesheets_overview.php:105
-#: templates/work_registration_fields.php:65
+#: templates/project-timesheet.php:42 templates/timesheets_overview.php:120
+#: templates/work_registration_fields.php:67
 msgid "Time"
 msgstr ""
 
@@ -81,7 +81,7 @@ msgstr ""
 msgid "Edit registration"
 msgstr ""
 
-#: templates/timesheets_edit.php:24 templates/timesheets_overview.php:145
+#: templates/timesheets_edit.php:24 templates/timesheets_overview.php:174
 msgid "Edit"
 msgstr ""
 
@@ -89,19 +89,23 @@ msgstr ""
 msgid "Cancel"
 msgstr ""
 
-#: templates/timesheets_overview.php:62
+#: templates/timesheets_overview.php:64
 msgid "Today"
 msgstr ""
 
-#: templates/timesheets_overview.php:82
-msgid "Your work registration \"%s\" was succesfull added."
+#: templates/timesheets_overview.php:83
+msgid "Your work registration was succesfull added."
 msgstr ""
 
-#: templates/timesheets_overview.php:101
+#: templates/timesheets_overview.php:87
+msgid "Your work registration was succesfull updated."
+msgstr ""
+
+#: templates/timesheets_overview.php:116
 msgid "Company/Project"
 msgstr ""
 
-#: templates/timesheets_overview.php:106
+#: templates/timesheets_overview.php:121
 msgid "Actions"
 msgstr ""
 
@@ -117,7 +121,7 @@ msgstr ""
 msgid "Subscription"
 msgstr ""
 
-#: templates/work_registration_fields.php:61
+#: templates/work_registration_fields.php:63
 msgid "Work registration description"
 msgstr ""
 

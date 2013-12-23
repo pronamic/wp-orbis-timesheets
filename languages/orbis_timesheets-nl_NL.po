@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Orbis Timesheets\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/orbis-timesheets\n"
-"POT-Creation-Date: 2013-12-13 15:31:06+00:00\n"
-"PO-Revision-Date: 2013-12-13 16:31+0100\n"
+"POT-Creation-Date: 2013-12-23 16:00:21+00:00\n"
+"PO-Revision-Date: 2013-12-23 17:01+0100\n"
 "Last-Translator: Remco Tolsma <info@remcotolsma.nl>\n"
 "Language-Team: Pronamic <info@pronamic.nl>\n"
 "Language: nl_NL\n"
@@ -13,17 +13,17 @@ msgstr ""
 "X-Poedit-KeywordsList: __;_e;_x:2c,1\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 1.6.2\n"
+"X-Generator: Poedit 1.6.3\n"
 
-#: includes/functions.php:157
+#: includes/functions.php:198
 msgid "You have to specify an company or project."
 msgstr "Je moet een bedrijf of project specificeren."
 
-#: includes/functions.php:162
+#: includes/functions.php:203
 msgid "You have to specify an description (%d words)."
 msgstr "Je moet een beschrijving specificeren (%d woorden)."
 
-#: includes/functions.php:171
+#: includes/functions.php:212
 msgid ""
 "Who are you? <a href=\"%s\">Edit your user profile</a> and enter you Orbis "
 "legacy person ID."
@@ -31,15 +31,15 @@ msgstr ""
 "Wie ben je? <a href=”%s”>Bewerk je gebruikersprofiel</a> en voer je Orbis "
 "legacy persoon ID in."
 
-#: includes/functions.php:177
+#: includes/functions.php:218
 msgid "You have to specify an activity."
 msgstr "Je moet een activiteit specificeren."
 
-#: includes/functions.php:181
+#: includes/functions.php:222
 msgid "You can not register on this date."
 msgstr "Je kunt niet registreren op deze datum."
 
-#: includes/functions.php:196
+#: includes/functions.php:242
 msgid "Could not add timesheet entry."
 msgstr "Kon werk registratie niet toevoegen."
 
@@ -55,7 +55,7 @@ msgstr "Registratie toevoegen"
 msgid "Register"
 msgstr "Registreer"
 
-#: templates/project-timesheet.php:38 templates/timesheets_overview.php:104
+#: templates/project-timesheet.php:38 templates/timesheets_overview.php:119
 msgid "Date"
 msgstr "Datum"
 
@@ -63,18 +63,18 @@ msgstr "Datum"
 msgid "User"
 msgstr "Gebruiker"
 
-#: templates/project-timesheet.php:40 templates/timesheets_overview.php:102
-#: templates/work_registration_fields.php:40
+#: templates/project-timesheet.php:40 templates/timesheets_overview.php:117
+#: templates/work_registration_fields.php:41
 msgid "Activity"
 msgstr "Activiteit"
 
-#: templates/project-timesheet.php:41 templates/timesheets_overview.php:103
-#: templates/work_registration_fields.php:60
+#: templates/project-timesheet.php:41 templates/timesheets_overview.php:118
+#: templates/work_registration_fields.php:62
 msgid "Description"
 msgstr "Beschrijving"
 
-#: templates/project-timesheet.php:42 templates/timesheets_overview.php:105
-#: templates/work_registration_fields.php:65
+#: templates/project-timesheet.php:42 templates/timesheets_overview.php:120
+#: templates/work_registration_fields.php:67
 msgid "Time"
 msgstr "Tijd"
 
@@ -86,7 +86,7 @@ msgstr "Er zijn geen tijd registraties voor dit project."
 msgid "Edit registration"
 msgstr "Registratie bewerken"
 
-#: templates/timesheets_edit.php:24 templates/timesheets_overview.php:145
+#: templates/timesheets_edit.php:24 templates/timesheets_overview.php:174
 msgid "Edit"
 msgstr "Bewerken"
 
@@ -94,19 +94,23 @@ msgstr "Bewerken"
 msgid "Cancel"
 msgstr "Annuleer"
 
-#: templates/timesheets_overview.php:62
+#: templates/timesheets_overview.php:64
 msgid "Today"
 msgstr "Vandaag"
 
-#: templates/timesheets_overview.php:82
-msgid "Your work registration \"%s\" was succesfull added."
-msgstr "Je werk registratie „%s” is succesvol toegevoegd."
+#: templates/timesheets_overview.php:83
+msgid "Your work registration was succesfull added."
+msgstr "Je werk registratie is succesvol toegevoegd."
 
-#: templates/timesheets_overview.php:101
+#: templates/timesheets_overview.php:87
+msgid "Your work registration was succesfull updated."
+msgstr "Je werk registratie is succesvol bijgewerkt."
+
+#: templates/timesheets_overview.php:116
 msgid "Company/Project"
 msgstr "Bedrijf/project"
 
-#: templates/timesheets_overview.php:106
+#: templates/timesheets_overview.php:121
 msgid "Actions"
 msgstr "Acties"
 
@@ -122,7 +126,7 @@ msgstr "Project"
 msgid "Subscription"
 msgstr "Abonnement"
 
-#: templates/work_registration_fields.php:61
+#: templates/work_registration_fields.php:63
 msgid "Work registration description"
 msgstr "Werk registratie beschrijving"
 
