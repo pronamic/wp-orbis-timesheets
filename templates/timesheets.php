@@ -3,10 +3,8 @@
 $user_id   = get_current_user_id();
 $person_id = get_user_meta( $user_id, 'orbis_legacy_person_id', true );
 
-$date = filter_input( INPUT_GET, 'date', FILTER_SANITIZE_STRING );
-
-$action = filter_input( INPUT_GET, 'edit', FILTER_SANITIZE_STRING );
-
+$date     = filter_input( INPUT_GET, 'date', FILTER_SANITIZE_STRING );
+$action   = filter_input( INPUT_GET, 'edit', FILTER_SANITIZE_STRING );
 $entry_id = filter_input( INPUT_GET, 'entry_id', FILTER_SANITIZE_STRING );
 
 $timestamp = strtotime( $date );
