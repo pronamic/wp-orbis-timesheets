@@ -14,7 +14,7 @@
 
 <?php 
 
-$tabindex = 1; 
+$tabindex = 2; 
 
 ?>
 
@@ -24,7 +24,7 @@ $tabindex = 1;
 <div class="clearfix">
 	<div <?php orbis_field_class( array( 'control-group' ), 'orbis_registration_company_id' ); ?> style="float: left; margin-right: 20px;">
 		<label><?php _e( 'Company', 'orbis_timesheets' ); ?></label>
-		<input placeholder="<?php esc_attr_e( 'Select company…', 'orbis_timesheets' ); ?>" type="text" name="orbis_registration_company_id" value="<?php echo esc_attr( $entry->company_id ); ?>" class="orbis-id-control orbis-company-id-control"  style="width: 500px;" data-text="<?php echo esc_attr( $entry->company_name ); ?>" tabindex="<?php echo esc_attr( $tabindex++ ); ?>" />
+		<input placeholder="<?php esc_attr_e( 'Select company…', 'orbis_timesheets' ); ?>" type="text" name="orbis_registration_company_id" value="<?php echo esc_attr( $entry->company_id ); ?>" class="orbis-id-control orbis-company-id-control"  style="width: 500px;" data-text="<?php echo esc_attr( $entry->company_name ); ?>" tabindex="<?php echo esc_attr( $tabindex++ ); ?>" autofocus="autofocus" />
 	</div>
 	
 	<div <?php orbis_field_class( array( 'control-group' ), 'orbis_registration_project_id' ); ?> style="float: left;">
