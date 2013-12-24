@@ -42,12 +42,14 @@ function orbis_timesheets_get_entry( $id ) {
 			timesheet.id,
 			timesheet.company_id,
 			timesheet.project_id,
+			timesheet.subscription_id,
 			timesheet.activity_id,
 			timesheet.description,
 			timesheet.date,
 			timesheet.number_seconds,
 			company.name AS company_name,
-			project.name AS project_name
+			project.name AS project_name,
+			CONCAT( subscription_product.name, ' - ', subscription.name ) AS subscription_name
 		FROM
 			$wpdb->orbis_timesheets AS timesheet
 				LEFT JOIN
@@ -56,6 +58,12 @@ function orbis_timesheets_get_entry( $id ) {
 				LEFT JOIN
 			$wpdb->orbis_projects AS project
 					ON timesheet.project_id = project.id
+				LEFT JOIN
+			$wpdb->orbis_subscriptions AS subscription
+					ON timesheet.subscription_id = subscription.id
+				LEFT JOIN
+			$wpdb->orbis_subscription_products AS subscription_product
+					ON subscription.type_id = subscription_product.id
 		WHERE
 			timesheet.id = %d
 		;
@@ -68,13 +76,22 @@ function orbis_timesheets_get_entry( $id ) {
 		$entry = new Orbis_Timesheets_TimesheetEntry();
 	
 		$entry->id           = $row->id;
+
 		$entry->company_id   = $row->company_id;
 		$entry->company_name = $row->company_name;
+
 		$entry->project_id   = $row->project_id;
 		$entry->project_name = $row->project_name;
+
+		$entry->subscription_id   = $row->subscription_id;
+		$entry->subscription_name = $row->subscription_name;
+
 		$entry->activity_id  = $row->activity_id;
+
 		$entry->description  = $row->description;
+
 		$entry->set_date( new DateTime( $row->date ) );
+
 		$entry->time         = $row->number_seconds;
 	}
 	
@@ -115,6 +132,11 @@ function orbis_insert_timesheet_entry( $entry ) {
 	if ( ! empty( $entry->project_id ) ) {
 		$data['project_id']   = $entry->project_id;
 		$format['project_id'] = '%d';
+	}
+		
+	if ( ! empty( $entry->subscription_id ) ) {
+		$data['subscription_id']   = $entry->subscription_id;
+		$format['subscription_id'] = '%d';
 	}
 		
 	$data['activity_id']   = $entry->activity_id;
@@ -206,6 +228,12 @@ function orbis_timesheets_maybe_add_entry() {
 				orbis_timesheets_register_error( 'orbis_registration_subscription_id', '' ); // __( 'You have to specify an subscription.', 'orbis_timesheets' ) );
 
 				orbis_timesheets_register_error( 'orbis_registration_on', __( 'You have to specify an company or project.', 'orbis_timesheets' ) );
+			}
+			
+			if ( empty( $entry->project_id ) ) {
+				orbis_timesheets_register_error( 'orbis_registration_project_id', '' ); // __( 'You have to specify an project.', 'orbis_timesheets' ) );
+				
+				orbis_timesheets_register_error( 'orbis_registration_on', __( 'You have to specify an project.', 'orbis_timesheets' ) );
 			}
 
 			$required_word_count = 2;

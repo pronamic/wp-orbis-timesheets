@@ -22,21 +22,30 @@ $tabindex = 2;
 <input name="orbis_registration_date" value="<?php echo $entry->get_date()->format( 'Y-m-d' ); ?>" type="hidden" />
 
 <div class="clearfix">
-	<div <?php orbis_field_class( array( 'control-group' ), 'orbis_registration_company_id' ); ?> style="float: left; margin-right: 20px;">
-		<label><?php _e( 'Company', 'orbis_timesheets' ); ?></label>
-		<input placeholder="<?php esc_attr_e( 'Select company…', 'orbis_timesheets' ); ?>" type="text" name="orbis_registration_company_id" value="<?php echo esc_attr( $entry->company_id ); ?>" class="orbis-id-control orbis-company-id-control"  style="width: 500px;" data-text="<?php echo esc_attr( $entry->company_name ); ?>" tabindex="<?php echo esc_attr( $tabindex++ ); ?>" autofocus="autofocus" />
-	</div>
-	
-	<div <?php orbis_field_class( array( 'control-group' ), 'orbis_registration_project_id' ); ?> style="float: left;">
-		<label><?php _e( 'Project', 'orbis_timesheets' ); ?></label>
-		<input placeholder="<?php esc_attr_e( 'Select project…', 'orbis_timesheets' ); ?>" type="text" name="orbis_registration_project_id" value="<?php echo esc_attr( $entry->project_id ); ?>" class="orbis-id-control orbis-project-id-control"  style="width: 500px;" data-text="<?php echo esc_attr( $entry->project_name ); ?>" tabindex="<?php echo esc_attr( $tabindex++ ); ?>" />
-	</div>
 	
 	<?php if ( false ) : ?>
+
+		<div <?php orbis_field_class( array( 'control-group' ), 'orbis_registration_company_id' ); ?> style="float: left; margin-right: 20px;">
+			<label><?php _e( 'Company', 'orbis_timesheets' ); ?></label>
+			<input placeholder="<?php esc_attr_e( 'Select company…', 'orbis_timesheets' ); ?>" type="text" name="orbis_registration_company_id" value="<?php echo esc_attr( $entry->company_id ); ?>" class="orbis-id-control orbis-company-id-control"  style="width: 500px;" data-text="<?php echo esc_attr( $entry->company_name ); ?>" tabindex="<?php echo esc_attr( $tabindex++ ); ?>" autofocus="autofocus" />
+		</div>
+
+	<?php endif; ?>
 	
-		<div <?php orbis_field_class( array( 'control-group', 'span3' ), 'orbis_registration_subscription_id' ); ?>>
+	<?php if ( true ) : ?>
+	
+		<div <?php orbis_field_class( array( 'control-group' ), 'orbis_registration_project_id' ); ?> style="float: left; margin-right: 20px;">
+			<label><?php _e( 'Project', 'orbis_timesheets' ); ?></label>
+			<input placeholder="<?php esc_attr_e( 'Select project…', 'orbis_timesheets' ); ?>" type="text" name="orbis_registration_project_id" value="<?php echo esc_attr( $entry->project_id ); ?>" class="orbis-id-control orbis-project-id-control"  style="width: 500px;" data-text="<?php echo esc_attr( $entry->project_name ); ?>" tabindex="<?php echo esc_attr( $tabindex++ ); ?>" />
+		</div>
+
+	<?php endif; ?>
+
+	<?php if ( true ) : ?>
+	
+		<div <?php orbis_field_class( array( 'control-group' ), 'orbis_registration_subscription_id' ); ?> style="float: left; margin-right: 20px;">
 			<label><?php _e( 'Subscription', 'orbis_timesheets' ); ?></label>
-			<input placeholder="Select subscription" type="text" name="orbis_registration_subscription_id" value="<?php echo esc_attr( $entry->subscription_id ); ?>" tabindex="<?php echo esc_attr( $tabindex++ ); ?>" />
+			<input placeholder="<?php esc_attr_e( 'Select subscription…', 'orbis_timesheets' ); ?>" type="text" name="orbis_registration_subscription_id" value="<?php echo esc_attr( $entry->subscription_id ); ?>" class="orbis-id-control orbis-subscription-id-control"  style="width: 500px;" data-text="<?php echo esc_attr( $entry->subscription_name ); ?>" tabindex="<?php echo esc_attr( $tabindex++ ); ?>" />
 		</div>
 	
 	<?php endif; ?>

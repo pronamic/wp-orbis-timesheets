@@ -5,7 +5,7 @@ class Orbis_Timesheets_Plugin extends Orbis_Plugin {
 		parent::__construct( $file );
 
 		$this->set_name( 'orbis_timesheets' );
-		$this->set_db_version( '1.0.0' );
+		$this->set_db_version( '1.0.1' );
 
 		$this->plugin_include( 'includes/functions.php' );
 		$this->plugin_include( 'includes/post.php' );
@@ -36,6 +36,7 @@ class Orbis_Timesheets_Plugin extends Orbis_Plugin {
 			user_id BIGINT(16) UNSIGNED DEFAULT NULL,
 			company_id BIGINT(16) UNSIGNED DEFAULT NULL,
 			project_id BIGINT(16) UNSIGNED DEFAULT NULL,
+			subscription_id BIGINT(16) UNSIGNED DEFAULT NULL,
 			activity_id BIGINT(16) UNSIGNED DEFAULT NULL,
 			description TEXT NOT NULL,
 			`date` DATE NOT NULL DEFAULT '0000-00-00',

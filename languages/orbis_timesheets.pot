@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Orbis Timesheets 1.0.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/orbis-timesheets\n"
-"POT-Creation-Date: 2013-12-24 09:19:18+00:00\n"
+"POT-Creation-Date: 2013-12-24 12:00:44+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -12,29 +12,33 @@ msgstr ""
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
-#: includes/functions.php:208
+#: includes/functions.php:230
 msgid "You have to specify an company or project."
 msgstr ""
 
-#: includes/functions.php:213
+#: includes/functions.php:236
+msgid "You have to specify an project."
+msgstr ""
+
+#: includes/functions.php:241
 msgid "You have to specify an description (%d words)."
 msgstr ""
 
-#: includes/functions.php:222
+#: includes/functions.php:250
 msgid ""
 "Who are you? <a href=\"%s\">Edit your user profile</a> and enter you Orbis "
 "legacy person ID."
 msgstr ""
 
-#: includes/functions.php:228
+#: includes/functions.php:256
 msgid "You have to specify an activity."
 msgstr ""
 
-#: includes/functions.php:232
+#: includes/functions.php:260
 msgid "You can not register on this date."
 msgstr ""
 
-#: includes/functions.php:252
+#: includes/functions.php:280
 msgid "Could not add timesheet entry."
 msgstr ""
 
@@ -59,17 +63,17 @@ msgid "User"
 msgstr ""
 
 #: templates/project-timesheet.php:40 templates/timesheets_overview.php:117
-#: templates/work_registration_fields.php:47
+#: templates/work_registration_fields.php:56
 msgid "Activity"
 msgstr ""
 
 #: templates/project-timesheet.php:41 templates/timesheets_overview.php:118
-#: templates/work_registration_fields.php:68
+#: templates/work_registration_fields.php:77
 msgid "Description"
 msgstr ""
 
 #: templates/project-timesheet.php:42 templates/timesheets_overview.php:120
-#: templates/work_registration_fields.php:73
+#: templates/work_registration_fields.php:82
 msgid "Time"
 msgstr ""
 
@@ -109,27 +113,31 @@ msgstr ""
 msgid "Actions"
 msgstr ""
 
-#: templates/work_registration_fields.php:26
+#: templates/work_registration_fields.php:29
 msgid "Company"
 msgstr ""
 
-#: templates/work_registration_fields.php:27
+#: templates/work_registration_fields.php:30
 msgid "Select company…"
 msgstr ""
 
-#: templates/work_registration_fields.php:31
+#: templates/work_registration_fields.php:38
 msgid "Project"
 msgstr ""
 
-#: templates/work_registration_fields.php:32
+#: templates/work_registration_fields.php:39
 msgid "Select project…"
 msgstr ""
 
-#: templates/work_registration_fields.php:38
+#: templates/work_registration_fields.php:47
 msgid "Subscription"
 msgstr ""
 
-#: templates/work_registration_fields.php:69
+#: templates/work_registration_fields.php:48
+msgid "Select subscription…"
+msgstr ""
+
+#: templates/work_registration_fields.php:78
 msgid "Work registration description"
 msgstr ""
 

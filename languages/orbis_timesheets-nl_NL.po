@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Orbis Timesheets\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/orbis-timesheets\n"
-"POT-Creation-Date: 2013-12-24 09:19:18+00:00\n"
-"PO-Revision-Date: 2013-12-24 10:19+0100\n"
+"POT-Creation-Date: 2013-12-24 12:00:44+00:00\n"
+"PO-Revision-Date: 2013-12-24 13:01+0100\n"
 "Last-Translator: Remco Tolsma <info@remcotolsma.nl>\n"
 "Language-Team: Pronamic <info@pronamic.nl>\n"
 "Language: nl_NL\n"
@@ -15,15 +15,19 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Generator: Poedit 1.6.3\n"
 
-#: includes/functions.php:208
+#: includes/functions.php:230
 msgid "You have to specify an company or project."
 msgstr "Je moet een bedrijf of project specificeren."
 
-#: includes/functions.php:213
+#: includes/functions.php:236
+msgid "You have to specify an project."
+msgstr "Je moet een project specificeren."
+
+#: includes/functions.php:241
 msgid "You have to specify an description (%d words)."
 msgstr "Je moet een beschrijving specificeren (%d woorden)."
 
-#: includes/functions.php:222
+#: includes/functions.php:250
 msgid ""
 "Who are you? <a href=\"%s\">Edit your user profile</a> and enter you Orbis "
 "legacy person ID."
@@ -31,15 +35,15 @@ msgstr ""
 "Wie ben je? <a href=”%s”>Bewerk je gebruikersprofiel</a> en voer je Orbis "
 "legacy persoon ID in."
 
-#: includes/functions.php:228
+#: includes/functions.php:256
 msgid "You have to specify an activity."
 msgstr "Je moet een activiteit specificeren."
 
-#: includes/functions.php:232
+#: includes/functions.php:260
 msgid "You can not register on this date."
 msgstr "Je kunt niet registreren op deze datum."
 
-#: includes/functions.php:252
+#: includes/functions.php:280
 msgid "Could not add timesheet entry."
 msgstr "Kon werk registratie niet toevoegen."
 
@@ -64,17 +68,17 @@ msgid "User"
 msgstr "Gebruiker"
 
 #: templates/project-timesheet.php:40 templates/timesheets_overview.php:117
-#: templates/work_registration_fields.php:47
+#: templates/work_registration_fields.php:56
 msgid "Activity"
 msgstr "Activiteit"
 
 #: templates/project-timesheet.php:41 templates/timesheets_overview.php:118
-#: templates/work_registration_fields.php:68
+#: templates/work_registration_fields.php:77
 msgid "Description"
 msgstr "Beschrijving"
 
 #: templates/project-timesheet.php:42 templates/timesheets_overview.php:120
-#: templates/work_registration_fields.php:73
+#: templates/work_registration_fields.php:82
 msgid "Time"
 msgstr "Tijd"
 
@@ -114,27 +118,31 @@ msgstr "Bedrijf/project"
 msgid "Actions"
 msgstr "Acties"
 
-#: templates/work_registration_fields.php:26
+#: templates/work_registration_fields.php:29
 msgid "Company"
 msgstr "Bedrijf"
 
-#: templates/work_registration_fields.php:27
+#: templates/work_registration_fields.php:30
 msgid "Select company…"
 msgstr "Selecteer bedrijf…"
 
-#: templates/work_registration_fields.php:31
+#: templates/work_registration_fields.php:38
 msgid "Project"
 msgstr "Project"
 
-#: templates/work_registration_fields.php:32
+#: templates/work_registration_fields.php:39
 msgid "Select project…"
 msgstr "Selecteer project…"
 
-#: templates/work_registration_fields.php:38
+#: templates/work_registration_fields.php:47
 msgid "Subscription"
 msgstr "Abonnement"
 
-#: templates/work_registration_fields.php:69
+#: templates/work_registration_fields.php:48
+msgid "Select subscription…"
+msgstr "Selecteer abonnement…"
+
+#: templates/work_registration_fields.php:78
 msgid "Work registration description"
 msgstr "Werk registratie beschrijving"
 
@@ -235,9 +243,6 @@ msgstr "http://www.pronamic.nl/"
 
 #~ msgid "View Subscription"
 #~ msgstr "Bekijk abonnement"
-
-#~ msgid "Search Subscriptions"
-#~ msgstr "Abonnementen zoeken"
 
 #~ msgid "No subscriptions found"
 #~ msgstr "Geen abonnementen gevonden"
