@@ -39,33 +39,43 @@ function orbis_timesheets_get_entry( $id ) {
 	// Query
 	$query = $wpdb->prepare( "
 		SELECT
-			id,
-			company_id,
-			project_id,
-			activity_id,
-			description,
-			date,
-			number_seconds
+			timesheet.id,
+			timesheet.company_id,
+			timesheet.project_id,
+			timesheet.activity_id,
+			timesheet.description,
+			timesheet.date,
+			timesheet.number_seconds,
+			company.name AS company_name,
+			project.name AS project_name
 		FROM
-			$wpdb->orbis_timesheets
+			$wpdb->orbis_timesheets AS timesheet
+				LEFT JOIN
+			$wpdb->orbis_companies AS company
+					ON timesheet.company_id = company.id
+				LEFT JOIN
+			$wpdb->orbis_projects AS project
+					ON timesheet.project_id = project.id
 		WHERE
-			id = %d
+			timesheet.id = %d
 		;
 	", $id );
-	
+
 	// Row
 	$row = $wpdb->get_row( $query );
 	
 	if ( $row) {
 		$entry = new Orbis_Timesheets_TimesheetEntry();
 	
-		$entry->id          = $row->id;
-		$entry->company_id  = $row->company_id;
-		$entry->project_id  = $row->project_id;
-		$entry->activity_id = $row->activity_id;
-		$entry->description = $row->description;
+		$entry->id           = $row->id;
+		$entry->company_id   = $row->company_id;
+		$entry->company_name = $row->company_name;
+		$entry->project_id   = $row->project_id;
+		$entry->project_name = $row->project_name;
+		$entry->activity_id  = $row->activity_id;
+		$entry->description  = $row->description;
 		$entry->set_date( new DateTime( $row->date ) );
-		$entry->time        = $row->number_seconds;
+		$entry->time         = $row->number_seconds;
 	}
 	
 	return $entry;
@@ -77,13 +87,13 @@ function orbis_insert_timesheet_entry( $entry ) {
 	$result = false;
 
 	// Auto complete company ID
-	if ( empty( $entry->company_id ) && ! empty( $entry->project_id ) ) {
+	if ( ! empty( $entry->project_id ) ) {
 		$query = $wpdb->prepare( "SELECT principal_id FROM $wpdb->orbis_projects WHERE id = %d;", $entry->project_id );
 
 		$entry->company_id = $wpdb->get_var( $query );
 	}
 		
-	if ( empty( $entry->company_id ) && ! empty( $entry->subscription_id ) ) {
+	if ( ! empty( $entry->subscription_id ) ) {
 		$query = $wpdb->prepare( "SELECT company_id FROM $wpdb->orbis_subscriptions WHERE id = %d;", $entry->subscription_id );
 		
 		$entry->company_id = $wpdb->get_var( $query );
@@ -194,30 +204,30 @@ function orbis_timesheets_maybe_add_entry() {
 				orbis_timesheets_register_error( 'orbis_registration_company_id', '' ); // __( 'You have to specify an company.', 'orbis_timesheets' ) );
 				orbis_timesheets_register_error( 'orbis_registration_project_id', '' ); // __( 'You have to specify an project.', 'orbis_timesheets' ) );
 				orbis_timesheets_register_error( 'orbis_registration_subscription_id', '' ); // __( 'You have to specify an subscription.', 'orbis_timesheets' ) );
-				
+
 				orbis_timesheets_register_error( 'orbis_registration_on', __( 'You have to specify an company or project.', 'orbis_timesheets' ) );
 			}
-	
+
 			$required_word_count = 2;
 			if ( str_word_count( $entry->description ) < $required_word_count ) {
 				orbis_timesheets_register_error( 'orbis_registration_description', sprintf( __( 'You have to specify an description (%d words).', 'orbis_timesheets' ), $required_word_count ) );
 			}
-	
+
 			if ( empty( $entry->time ) ) {
 				// $orbis_errors['orbis_registration_time'] = __( 'You have to specify an time.', 'orbis_timesheets' );
 			}
-	
+
 			if ( empty( $entry->person_id ) ) {
 				orbis_timesheets_register_error( 'orbis_registration_person_id', sprintf(
-						__( 'Who are you? <a href="%s">Edit your user profile</a> and enter you Orbis legacy person ID.', 'orbis_timesheets' ),
-						esc_attr( get_edit_user_link( $user_id ) )
+					__( 'Who are you? <a href="%s">Edit your user profile</a> and enter you Orbis legacy person ID.', 'orbis_timesheets' ),
+					esc_attr( get_edit_user_link( $user_id ) )
 				) );
 			}
-	
+
 			if ( empty( $entry->activity_id ) ) {
 				orbis_timesheets_register_error( 'orbis_registration_activity_id', __( 'You have to specify an activity.', 'orbis_timesheets' ) );
 			}
-	
+
 			if ( ! orbis_timesheets_can_register( $entry->get_date()->format( 'U' ) ) ) {
 				orbis_timesheets_register_error( 'orbis_registration_date', __( 'You can not register on this date.', 'orbis_timesheets' ) );
 			}
