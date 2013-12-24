@@ -9,6 +9,14 @@ global $orbis_errors;
 // Inputs
 $entry = orbis_timesheets_get_entry_from_input();
 
+if ( filter_has_var( INPUT_GET, 'date' ) ) {
+	$date_string = filter_input( INPUT_GET, 'date', FILTER_SANITIZE_STRING );
+
+	$date = new DateTime( $date_string );
+
+	$entry->set_date( $date );
+}
+
 ?>
 <div class="panel">
 	<div class="content">
