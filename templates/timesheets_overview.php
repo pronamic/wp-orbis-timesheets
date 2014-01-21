@@ -59,9 +59,9 @@ $url = add_query_arg( 'message', false );
 	<div class="row">
 		<div class="span2">
 			<div class="btn-group">
-				<a href="<?php echo add_query_arg( 'date', date( 'Y-m-d', $prev ), $url ); ?>" class="btn">&lt;</a>
-				<a href="<?php echo add_query_arg( 'date', date( 'Y-m-d', $next ), $url ); ?>" class="btn">&gt;</a>
-				<a href="<?php echo add_query_arg( 'date', false, $url ); ?>" class="btn"><?php _e( 'Today', 'orbis_timesheets' ); ?></a>
+				<a href="<?php echo add_query_arg( 'date', date( 'Y-m-d', $prev ), $url ); ?>" class="btn btn-default">&lt;</a>
+				<a href="<?php echo add_query_arg( 'date', date( 'Y-m-d', $next ), $url ); ?>" class="btn btn-default">&gt;</a>
+				<a href="<?php echo add_query_arg( 'date', false, $url ); ?>" class="btn btn-default"><?php _e( 'Today', 'orbis_timesheets' ); ?></a>
 			</div>
 		</div>
 	</div>
