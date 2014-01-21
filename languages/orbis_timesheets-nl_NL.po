@@ -1,0 +1,903 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Orbis Timesheets\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/orbis-timesheets\n"
+"POT-Creation-Date: 2014-01-21 10:42:45+00:00\n"
+"PO-Revision-Date: 2014-01-21 11:43+0100\n"
+"Last-Translator: Remco Tolsma <info@remcotolsma.nl>\n"
+"Language-Team: Pronamic <info@pronamic.nl>\n"
+"Language: nl_NL\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e;_x:2c,1\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Generator: Poedit 1.6.3\n"
+
+#: includes/functions.php:319
+msgid "You have to specify an company or project."
+msgstr "Je moet een bedrijf of project specificeren."
+
+#: includes/functions.php:325
+msgid "You have to specify an project."
+msgstr "Je moet een project specificeren."
+
+#: includes/functions.php:330
+msgid "You have to specify an description (%d words)."
+msgstr "Je moet een beschrijving specificeren (%d woorden)."
+
+#: includes/functions.php:339
+msgid ""
+"Who are you? <a href=\"%s\">Edit your user profile</a> and enter you Orbis "
+"legacy person ID."
+msgstr ""
+"Wie ben je? <a href=”%s”>Bewerk je gebruikersprofiel</a> en voer je Orbis "
+"legacy persoon ID in."
+
+#: includes/functions.php:345
+msgid "You have to specify an activity."
+msgstr "Je moet een activiteit specificeren."
+
+#: includes/functions.php:349
+msgid "You can not register on this date."
+msgstr "Je kunt niet registreren op deze datum."
+
+#: includes/functions.php:369
+msgid "Could not add timesheet entry."
+msgstr "Kon werk registratie niet toevoegen."
+
+#: includes/template.php:17
+msgid "Timesheet"
+msgstr "Timesheet"
+
+#: templates/new-registration-form.php:26
+msgid "Add registration"
+msgstr "Registratie toevoegen"
+
+#: templates/new-registration-form.php:31
+msgid "Register"
+msgstr "Registreer"
+
+#: templates/project-timesheet.php:38 templates/timesheets_overview.php:119
+msgid "Date"
+msgstr "Datum"
+
+#: templates/project-timesheet.php:39
+msgid "User"
+msgstr "Gebruiker"
+
+#: templates/project-timesheet.php:40 templates/timesheets_overview.php:117
+#: templates/work_registration_fields.php:56
+msgid "Activity"
+msgstr "Activiteit"
+
+#: templates/project-timesheet.php:41 templates/timesheets_overview.php:118
+#: templates/work_registration_fields.php:79
+msgid "Description"
+msgstr "Beschrijving"
+
+#: templates/project-timesheet.php:42 templates/timesheets_overview.php:120
+#: templates/work_registration_fields.php:86
+msgid "Time"
+msgstr "Tijd"
+
+#: templates/project-timesheet.php:77
+msgid "There are no time registrations for this project."
+msgstr "Er zijn geen tijd registraties voor dit project."
+
+#: templates/timesheets_edit.php:20
+msgid "Edit registration"
+msgstr "Registratie bewerken"
+
+#: templates/timesheets_edit.php:25 templates/timesheets_overview.php:174
+msgid "Edit"
+msgstr "Bewerken"
+
+#: templates/timesheets_edit.php:35
+msgid "Cancel"
+msgstr "Annuleer"
+
+#: templates/timesheets_overview.php:64
+msgid "Today"
+msgstr "Vandaag"
+
+#: templates/timesheets_overview.php:83
+msgid "Your work registration was succesfull added."
+msgstr "Je werk registratie is succesvol toegevoegd."
+
+#: templates/timesheets_overview.php:87
+msgid "Your work registration was succesfull updated."
+msgstr "Je werk registratie is succesvol bijgewerkt."
+
+#: templates/timesheets_overview.php:116
+msgid "Company/Project"
+msgstr "Bedrijf/project"
+
+#: templates/timesheets_overview.php:121
+msgid "Actions"
+msgstr "Acties"
+
+#: templates/work_registration_fields.php:25
+msgid "Company"
+msgstr "Bedrijf"
+
+#: templates/work_registration_fields.php:26
+msgid "Select company…"
+msgstr "Selecteer bedrijf…"
+
+#: templates/work_registration_fields.php:36
+msgid "Project"
+msgstr "Project"
+
+#: templates/work_registration_fields.php:37
+msgid "Select project…"
+msgstr "Selecteer project…"
+
+#: templates/work_registration_fields.php:47
+msgid "Subscription"
+msgstr "Abonnement"
+
+#: templates/work_registration_fields.php:48
+msgid "Select subscription…"
+msgstr "Selecteer abonnement…"
+
+#: templates/work_registration_fields.php:80
+msgid "Work registration description"
+msgstr "Werk registratie beschrijving"
+
+#: templates/work_registration_fields.php:90
+msgid "hours"
+msgstr "uren"
+
+#: templates/work_registration_fields.php:95
+msgid "minutes"
+msgstr "minuten"
+
+#. Plugin Name of the plugin/theme
+msgid "Orbis Timesheets"
+msgstr "Orbis werkregistraties"
+
+#. Plugin URI of the plugin/theme
+msgid "http://www.orbiswp.com/"
+msgstr "http://www.orbiswp.com/"
+
+#. Description of the plugin/theme
+msgid ""
+"Time Management, Timesheet, Time Tracking solution for WordPress. Orbis "
+"Timesheets enables you to track your work time."
+msgstr ""
+"Werkregistratie oplossing voor Wordpress. Orbis werkregistraties maakt het "
+"mogelijk om je werktijd bij te houden."
+
+#. Author of the plugin/theme
+msgid "Pronamic"
+msgstr "Pronamic"
+
+#. Author URI of the plugin/theme
+msgid "http://www.pronamic.eu/"
+msgstr "http://www.pronamic.nl/"
+
+#~ msgid "Task description"
+#~ msgstr "Taak beschrijvin"
+
+#~ msgid "Type"
+#~ msgstr "Type"
+
+#~ msgid "Name"
+#~ msgstr "Naam"
+
+#~ msgid "License Key"
+#~ msgstr "Licentiesleutel"
+
+#~ msgid "Expiration Date"
+#~ msgstr "Vervaldatum"
+
+#~ msgid "Person"
+#~ msgstr "Persoon"
+
+#~ msgid "Email"
+#~ msgstr "E-mailadres"
+
+#~ msgid "A license expiration reminder has been sent to %s (%s)."
+#~ msgstr "Een licentie verval herinnering werd verstuurd naar %s (%s)."
+
+#~ msgid "Orbis Expiring Subscriptions"
+#~ msgstr "Orbis aflopende abonnementen"
+
+#~ msgid "Expiring Subscriptions"
+#~ msgstr "Aflopende abonnementen"
+
+#~ msgid "Orbis Sent Reminders"
+#~ msgstr "Orbis verzonden herinneringen"
+
+#~ msgid "Sent Reminders"
+#~ msgstr "Verzonden herinneringen"
+
+#~ msgid "Reminder"
+#~ msgstr "Herinnering"
+
+#~ msgid "URL"
+#~ msgstr "URL"
+
+#~ msgid "Subject"
+#~ msgstr "Onderwerp"
+
+#~ msgid "Template"
+#~ msgstr "Sjabloon"
+
+#~ msgid "Orbis Subscriptions Settings"
+#~ msgstr "Orbis abonnementen instellingen"
+
+#~ msgid "Settings"
+#~ msgstr "Instellingen"
+
+#~ msgid "Subscriptions"
+#~ msgstr "Abonnementen"
+
+#~ msgctxt "post type general name"
+#~ msgid "Subscriptions"
+#~ msgstr "Abonnementen"
+
+#~ msgctxt "orbis_subscription"
+#~ msgid "Add New"
+#~ msgstr "Nieuwe abonnement"
+
+#~ msgid "Add New Subscription"
+#~ msgstr "Nieuwe abonnement toevoegen"
+
+#~ msgid "New Subscription"
+#~ msgstr "Nieuwe abonnement"
+
+#~ msgid "View Subscription"
+#~ msgstr "Bekijk abonnement"
+
+#~ msgid "No subscriptions found"
+#~ msgstr "Geen abonnementen gevonden"
+
+#~ msgid "No subscriptions found in Trash"
+#~ msgstr "Geen abonnementen gevonden in prullenbak"
+
+#~ msgid "Parent Subscription:"
+#~ msgstr "Bovenliggend abonnement"
+
+#~ msgctxt "slug"
+#~ msgid "subscriptions"
+#~ msgstr "abonnementen"
+
+#~ msgid "Details"
+#~ msgstr "Details"
+
+#~ msgid "Persons"
+#~ msgstr "Personen"
+
+#~ msgid "Title"
+#~ msgstr "Titel"
+
+#~ msgid "Author"
+#~ msgstr "Auteur"
+
+#~ msgid "Comments"
+#~ msgstr "Reacties"
+
+#~ msgid "Login required"
+#~ msgstr "Inloggen vereist"
+
+#~ msgid "Price"
+#~ msgstr "Prijs"
+
+#~ msgid "Send Reminder"
+#~ msgstr "Verstuur herinnering"
+
+#~ msgid "ID"
+#~ msgstr "ID"
+
+#~ msgid "Update Date"
+#~ msgstr "Update datum"
+
+#~ msgid "Sent"
+#~ msgstr "Verzonden"
+
+#~ msgid "E-Mail"
+#~ msgstr "E-mailadres"
+
+#~ msgid "Extend License"
+#~ msgstr "Licentie verlegen"
+
+#~ msgid "No subscriptions will expire within the next week"
+#~ msgstr "Er zullen volgende week geen abonnementen verlopen"
+
+#~ msgid "No reminders sent in the last week"
+#~ msgstr "Geen herinneringen verzonden afgelopen week"
+
+#~ msgid "Subscription Details"
+#~ msgstr "Abonnement details"
+
+#~ msgid "Orbis ID"
+#~ msgstr "Orbis ID"
+
+#~ msgid "Invoices"
+#~ msgstr "Facturen"
+
+#~ msgid "Create Date"
+#~ msgstr "Aanmaakdatum"
+
+#~ msgid "Start Date"
+#~ msgstr "Startdatum"
+
+#~ msgid "End Date"
+#~ msgstr "Einddatum"
+
+#~ msgid "Invoice Number"
+#~ msgstr "Factuurnummer"
+
+#~ msgid "Inserted"
+#~ msgstr "Toegevoegd"
+
+#~ msgid "Failed"
+#~ msgstr "Mislukt"
+
+#~ msgid "Update"
+#~ msgstr "Update"
+
+#~ msgid "Notice"
+#~ msgstr "Opmerking"
+
+#~ msgid "Expiring licenses"
+#~ msgstr "Aflopende licenties"
+
+#~ msgid "Expiration settings"
+#~ msgstr "Verval instellingen"
+
+#~ msgid "The URL linking to the webpage the user can renew its subscription"
+#~ msgstr ""
+#~ "De URL naar de webpagina waar de gebruiker zijn abonnement kan verlengen"
+
+#~ msgid "The following variable tags can be used in the template:"
+#~ msgstr "De volgende variabelen kunnen gebruikt worden in het sjabloon:"
+
+#~ msgid "FTP"
+#~ msgstr "FTP"
+
+#~ msgid "Google Apps"
+#~ msgstr "Google Apps"
+
+#~ msgid "WordPress"
+#~ msgstr "WordPress"
+
+#~ msgid ""
+#~ "Use an full URL: for HTTP <code>http://</code>, for FTP <code>ftp://</"
+#~ "code>, for SFTP <code>sftp://</code>"
+#~ msgstr ""
+#~ "Gebruik een volledige URL: voor HTTP <code>http://</code>, voor FTP "
+#~ "<code>ftp://</code>, voor SFTP <code>sftp://</code>"
+
+#~ msgid "Password"
+#~ msgstr "Wachtwoord"
+
+#~ msgid "E-mail Address"
+#~ msgstr "E-mailadres"
+
+#~ msgid "Keychains"
+#~ msgstr "Sleutelhangers"
+
+#~ msgid "Keychain"
+#~ msgstr "Sleutelhanger"
+
+#~ msgid "Add New Keychain"
+#~ msgstr "Nieuw sleutelhanger toevoegen"
+
+#~ msgid "Edit Keychain"
+#~ msgstr "Sleutelhanger bewerken"
+
+#~ msgid "New Keychain"
+#~ msgstr "Nieuwe sleutelhanger"
+
+#~ msgid "View Keychain"
+#~ msgstr "Bekijk sleutelhanger"
+
+#~ msgid "Search Keychains"
+#~ msgstr "Sleutelhangers zoeken"
+
+#~ msgid "No keychains found"
+#~ msgstr "Geen sleutelhangers gevonden"
+
+#~ msgctxt "slug"
+#~ msgid "keychains"
+#~ msgstr "sleutelhangers"
+
+#~ msgid "Administrator"
+#~ msgstr "Beheerder"
+
+#~ msgid "Keychain Details"
+#~ msgstr "Sleutelhanger details"
+
+#~ msgid "I changed the password of this keychain."
+#~ msgstr "Ik heb het wachtwoord van deze sleutelhanger gewijzigd."
+
+#~ msgid ""
+#~ "Request password, describe with at least <strong>%d words</strong> why "
+#~ "you need this password."
+#~ msgstr ""
+#~ "Wachtwoord verzoek, beschrijf met minimaal <strong>%d woorden</strong> "
+#~ "waarom je dit wachtwoord nodig hebt."
+
+#~ msgid ""
+#~ "This comment was an password request, the user can view the password till "
+#~ "<strong>%s</strong>."
+#~ msgstr ""
+#~ "Deze reactie was een wachtwoord verzoek, de gebruiker kan het wachtwoord "
+#~ "bekijken tot <strong>%s</strong>."
+
+#~ msgid ""
+#~ "This comment was met <strong>%d words</strong> not long enough to display "
+#~ "the password, use at least <strong>%d words</strong>."
+#~ msgstr ""
+#~ "Deze reactie was met <strong>%d woorden</strong> niet lang genoeg om het "
+#~ "wachtwoord weer te geven, gebruik minimaal <strong>%d woorden</strong>."
+
+#~ msgid "Categories"
+#~ msgstr "Categorieën"
+
+#~ msgid "Tags"
+#~ msgstr "Tags"
+
+#~ msgctxt "orbis_keychain_category"
+#~ msgid "Categories"
+#~ msgstr "Categorieën"
+
+#~ msgctxt "orbis_keychain_category"
+#~ msgid "Category"
+#~ msgstr "Categorie"
+
+#~ msgid "Search Categories"
+#~ msgstr "Zoek categorieën"
+
+#~ msgid "All Categories"
+#~ msgstr "Alle categorieën"
+
+#~ msgid "Parent Category"
+#~ msgstr "Bovenliggende categorie"
+
+#~ msgid "Parent Category:"
+#~ msgstr "Bovenliggende categorie:"
+
+#~ msgid "Edit Category"
+#~ msgstr "Bewerk categorie"
+
+#~ msgid "Add New Category"
+#~ msgstr "Nieuwe categorie"
+
+#~ msgid "New Category Name"
+#~ msgstr "Nieuwe categorie naam"
+
+#~ msgctxt "slug"
+#~ msgid "keychain-categorie"
+#~ msgstr "sleutelhanger-categorie"
+
+#~ msgctxt "orbis_keychain_category"
+#~ msgid "Tags"
+#~ msgstr "Tags"
+
+#~ msgctxt "orbis_keychain_category"
+#~ msgid "Tag"
+#~ msgstr "Tag"
+
+#~ msgid "Search Tags"
+#~ msgstr "Zoek tags"
+
+#~ msgid "All Tags"
+#~ msgstr "Alle tags"
+
+#~ msgid "Parent Tag"
+#~ msgstr "Bovenliggende tag"
+
+#~ msgid "Parent Tag:"
+#~ msgstr "Bovenliggende tag:"
+
+#~ msgid "Edit Tag"
+#~ msgstr "Bewerk tag"
+
+#~ msgid "Update Tag"
+#~ msgstr "Update tag"
+
+#~ msgid "Add New Tag"
+#~ msgstr "Nieuwe tag"
+
+#~ msgid "New Tag Name"
+#~ msgstr "Nieuwe tag naam"
+
+#~ msgctxt "slug"
+#~ msgid "keychain-tag"
+#~ msgstr "sleutelhanger-tag"
+
+#~ msgid "Hosting Group"
+#~ msgstr "Hosting groep"
+
+#~ msgid "Hosting Groups"
+#~ msgstr "Hosting groepen"
+
+#~ msgctxt "hosting_group"
+#~ msgid "Add New"
+#~ msgstr "Nieuwe toevoegen"
+
+#~ msgid "Add New Hosting Group"
+#~ msgstr "Nieuwe hosting groep toevoegen"
+
+#~ msgid "Domain Names"
+#~ msgstr "Domeinnamen"
+
+#~ msgid "Domain Name"
+#~ msgstr "Domeinnaam"
+
+#~ msgctxt "domain_name"
+#~ msgid "Add New"
+#~ msgstr "Nieuwe toevoegen"
+
+#~ msgid "Add New Domain Name"
+#~ msgstr "Nieuwe domeinnaam"
+
+#~ msgid "Projects"
+#~ msgstr "Projecten"
+
+#~ msgctxt "orbis_project"
+#~ msgid "Add New"
+#~ msgstr "Nieuw project"
+
+#~ msgid "Add New Project"
+#~ msgstr "Nieuw project"
+
+#~ msgid "Edit Project"
+#~ msgstr "Project bewerken"
+
+#~ msgid "New Project"
+#~ msgstr "Nieuw project"
+
+#~ msgid "All Projects"
+#~ msgstr "Alle projecten"
+
+#~ msgid "View Project"
+#~ msgstr "Bekijk project"
+
+#~ msgid "No projects found."
+#~ msgstr "Geen projecten gevonden."
+
+#~ msgid "No projects found in Trash."
+#~ msgstr "Geen projecten gevonden in prullenbak."
+
+#~ msgid "Parent Project:"
+#~ msgstr "Bovenliggend project:"
+
+#~ msgctxt "taxonomy general name"
+#~ msgid "Categories"
+#~ msgstr "Categorieën"
+
+#~ msgctxt "taxonomy singular name"
+#~ msgid "Category"
+#~ msgstr "Categorie"
+
+#~ msgid "Companies"
+#~ msgstr "Bedrijven"
+
+#~ msgctxt "orbis_company"
+#~ msgid "Add New"
+#~ msgstr "Nieuw bedrijf"
+
+#~ msgid "Add New Company"
+#~ msgstr "Nieuwe bedrijf toevoegen"
+
+#~ msgid "Edit Company"
+#~ msgstr "Bedrijf bewerken"
+
+#~ msgid "All Companies"
+#~ msgstr "Alle bedrijven"
+
+#~ msgid "View Company"
+#~ msgstr "Bekijk bedrijf"
+
+#~ msgid "Search Companies"
+#~ msgstr "Zoek bedrijven"
+
+#~ msgid "No companies found."
+#~ msgstr "Geen bedrijven gevonden."
+
+#~ msgid "No companies found in Trash."
+#~ msgstr "Geen bedrijven gevonden in prullenbak."
+
+#~ msgid "Parent Company:"
+#~ msgstr "Bovenliggend bedrijf:"
+
+#~ msgctxt "slug"
+#~ msgid "companies"
+#~ msgstr "bedrijven"
+
+#~ msgctxt "slug"
+#~ msgid "persons"
+#~ msgstr "personen"
+
+#~ msgctxt "taxonomy general name"
+#~ msgid "Genders"
+#~ msgstr "Geslachten"
+
+#~ msgctxt "taxonomy singular name"
+#~ msgid "Gender"
+#~ msgstr "Geslacht"
+
+#~ msgid "Search Genders"
+#~ msgstr "Zoek geslachten"
+
+#~ msgid "All Genders"
+#~ msgstr "Alle geslachten"
+
+#~ msgid "Parent Gender:"
+#~ msgstr "Bovenliggend geslacht:"
+
+#~ msgid "Edit Gender"
+#~ msgstr "Bewerk geslacht"
+
+#~ msgid "Update Gender"
+#~ msgstr "Update geslacht"
+
+#~ msgid "Add New Gender"
+#~ msgstr "Nieuw geslacht toevoegen"
+
+#~ msgid "New Gender Name"
+#~ msgstr "Nieuw geslacht naam"
+
+#~ msgid "Genders"
+#~ msgstr "Geslachten"
+
+#~ msgid "Domains"
+#~ msgstr "Domeinen"
+
+#~ msgid "Domains to invoice"
+#~ msgstr "Domeinen te facturen"
+
+#~ msgid "To Invoice"
+#~ msgstr "Te factureren"
+
+#~ msgid "Project Information"
+#~ msgstr "Project informatie"
+
+#~ msgid "No matches found"
+#~ msgstr "Geen overeenkomsten gevonden"
+
+#~ msgid "Please enter %s more characters"
+#~ msgstr "Voer nog %s tekens in."
+
+#~ msgid "You can only select %s item"
+#~ msgstr "Je kunt slechts %s item selecteren"
+
+#~ msgid "You can only select %s items"
+#~ msgstr "Je kunt slechts %s items selecteren"
+
+#~ msgid "Loading more results..."
+#~ msgstr "Meer resultaten laden..."
+
+#~ msgid "Searching..."
+#~ msgstr "Zoeken...."
+
+#~ msgid "Principal"
+#~ msgstr "Opdrachtgever"
+
+#~ msgid "KvK Number"
+#~ msgstr "KvK nummer"
+
+#~ msgid "Orbis Log"
+#~ msgstr "Orbis Logboek"
+
+#~ msgid "Title:"
+#~ msgstr "Titel:"
+
+#~ msgid "%s updated the \"%s\" post."
+#~ msgstr "%s heeft het \"%s\" bericht bijgewerkt."
+
+#~ msgid "Contact information"
+#~ msgstr "Contact informatie"
+
+#~ msgid "Email Address:"
+#~ msgstr "E-mailadres:"
+
+#~ msgid "Phone Number:"
+#~ msgstr "Telefoonnummer:"
+
+#~ msgid "Mobile Number:"
+#~ msgstr "Mobielnummer:"
+
+#~ msgid "Twitter Username:"
+#~ msgstr "Twitter gebruikersnaam:"
+
+#~ msgid "Facebook:"
+#~ msgstr "Facebook:"
+
+#~ msgid "LinkedIn:"
+#~ msgstr "LinkedIn:"
+
+#~ msgid "KvK Number:"
+#~ msgstr "KvK nummer:"
+
+#~ msgid "Principal ID"
+#~ msgstr "Opdrachtgever ID"
+
+#~ msgid ""
+#~ "You can enter time as 1.5 or 1:30 (they both mean 1 hour and 30 minutes)."
+#~ msgstr ""
+#~ "Je kunt de tijd invoeren als 1.5 of 1:30 (beide zijn 1 uur en 30 minuten)."
+
+#~ msgid "Invoicable"
+#~ msgstr "Factureerbaar"
+
+#~ msgid "Project is invoicable"
+#~ msgstr "Project is factureerbaar"
+
+#~ msgid "Project is invoiced"
+#~ msgstr "Project is gefactureerd"
+
+#~ msgid "Finished"
+#~ msgstr "Afgerond"
+
+#~ msgid "Project is finished"
+#~ msgstr "Project is afgerond"
+
+#~ msgid "No projects founds."
+#~ msgstr "Geen projecten gevonden."
+
+#~ msgid "Post ID"
+#~ msgstr "Bericht ID"
+
+#~ msgid "Edit Project Post"
+#~ msgstr "Bewerk project bericht"
+
+#~ msgid "Stats"
+#~ msgstr "Statistieken"
+
+#~ msgid "Number domains"
+#~ msgstr "Aantal domeinen"
+
+#~ msgid "Number subscriptions"
+#~ msgstr "Aantal abonnementen"
+
+#~ msgid "Annual Revenue"
+#~ msgstr "Jaaromzet"
+
+#~ msgid "Notes"
+#~ msgstr "Notitie"
+
+#~ msgid "Orbis"
+#~ msgstr "Orbis"
+
+#~ msgid "No domain names founds."
+#~ msgstr "Geen domeinnamen gevonden."
+
+#~ msgid "Edit Domain Name Post"
+#~ msgstr "Bewerk domeinnaam bericht"
+
+#~ msgid "Invoice Paid"
+#~ msgstr "Factuur betaald"
+
+#~ msgid "Project invoice is paid"
+#~ msgstr "Project factuur is betaald"
+
+#~ msgctxt "project"
+#~ msgid "Add New"
+#~ msgstr "Nieuw project"
+
+#~ msgid "No companies founds."
+#~ msgstr "Geen bedrijven gevonden."
+
+#~ msgid "Edit Company Post"
+#~ msgstr "Bewerk bedrijf bericht"
+
+#~ msgid "Add Company"
+#~ msgstr "Bedrijf toevoegen"
+
+#~ msgid "Request password."
+#~ msgstr "Verzoek wachtwoord."
+
+#~ msgid "Password Details"
+#~ msgstr "Wachtwoord details"
+
+#~ msgctxt "orbis_password"
+#~ msgid "Add New"
+#~ msgstr "Nieuwe toevoegen"
+
+#~ msgid "Add New Password"
+#~ msgstr "Nieuw wachtwoord toevoegen"
+
+#~ msgid "Edit Password"
+#~ msgstr "Wachtwoord bewerken"
+
+#~ msgid "View Password"
+#~ msgstr "Bekijk wachtwoord"
+
+#~ msgid "Search Passwords"
+#~ msgstr "Wachtwoorden zoeken"
+
+#~ msgid "No passwords found"
+#~ msgstr "Geen wachtwoorden gevonden"
+
+#~ msgctxt "slug"
+#~ msgid "passwords"
+#~ msgstr "wachtwoorden"
+
+#~ msgid "Passwords"
+#~ msgstr "Wachtwoorden"
+
+#~ msgid "Latitude"
+#~ msgstr "Breedtegraad"
+
+#~ msgid "Longitude"
+#~ msgstr "Lengtegraad"
+
+#~ msgid "Width"
+#~ msgstr "Breedte"
+
+#~ msgid "Height"
+#~ msgstr "Hoogte"
+
+#~ msgid "Show Google Maps"
+#~ msgstr "Google Maps weergeven"
+
+#~ msgid "Configuration - Pronamic Google Maps"
+#~ msgstr "Configuratie - Pronamic Google Maps"
+
+#~ msgid "Activate Google Maps"
+#~ msgstr "Activeer Google Maps"
+
+#~ msgid "Use this widget to add an Google Maps as a widget."
+#~ msgstr "Gebruik deze widget om Google Maps toe te voegen."
+
+#~ msgid "pixels"
+#~ msgstr "pixels"
+
+#~ msgid "percent"
+#~ msgstr "procent"
+
+#~ msgid "Pronamic Google Maps"
+#~ msgstr "Pronamic Google Maps"
+
+#~ msgid "Click to toggle"
+#~ msgstr "Klik om te wisselen"
+
+#~ msgid "Donate $10, $20 or $50!"
+#~ msgstr "Doneer $10, $20 of $50!"
+
+#~ msgid ""
+#~ "This plugin has cost us countless hours of work, if you use it, please "
+#~ "donate a token of your appreciation!"
+#~ msgstr ""
+#~ "Het ons veel uren werken gekost om deze plugin te ontwikkelen, als je het "
+#~ "gebruikt, doneer a.u.b. voor je waardering!"
+
+#~ msgid "Latest news from Pronamic"
+#~ msgstr "Laatste nieuws van Pronamic"
+
+#~ msgid "no news items, feed might be broken..."
+#~ msgstr "geen nieuws items, feed is waarschijnlijk niet bereikbaar..."
+
+#~ msgid "Subscribe with RSS"
+#~ msgstr "Aanmelden voor RSS"
+
+#~ msgid "Subscribe by e-mail"
+#~ msgstr "Aanmelden via e-mail"
+
+#~ msgid "Like this plugin?"
+#~ msgstr "Vind je deze plugin leuk?"
+
+#~ msgid "Why not do any or all of the following:"
+#~ msgstr "Waarom doe je niet één van de volgende dingen:"
+
+#~ msgid "Link to it so other folks can find out about it."
+#~ msgstr "Link naar ons zodat anderen deze plugin ook ontdekken."
+
+#~ msgid "Give it a good rating on WordPress.org."
+#~ msgstr "Geef het een goede score op WordPress.org."
+
+#~ msgid "Let other people know that it works with your WordPress setup."
+#~ msgstr "Laat anderen weten dat het werk op je WordPress installatie."
+
+#~ msgid "Save Changes"
+#~ msgstr "Wijzigingen opslaan"
+
+#~ msgid "Found a bug?"
+#~ msgstr "Bug gevonden?"

@@ -1,0 +1,172 @@
+# Copyright (C) 2014 Orbis Timesheets
+# This file is distributed under the same license as the Orbis Timesheets package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Orbis Timesheets 1.0.1\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/orbis-timesheets\n"
+"POT-Creation-Date: 2014-01-21 10:42:45+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2014-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: includes/functions.php:319
+msgid "You have to specify an company or project."
+msgstr ""
+
+#: includes/functions.php:325
+msgid "You have to specify an project."
+msgstr ""
+
+#: includes/functions.php:330
+msgid "You have to specify an description (%d words)."
+msgstr ""
+
+#: includes/functions.php:339
+msgid ""
+"Who are you? <a href=\"%s\">Edit your user profile</a> and enter you Orbis "
+"legacy person ID."
+msgstr ""
+
+#: includes/functions.php:345
+msgid "You have to specify an activity."
+msgstr ""
+
+#: includes/functions.php:349
+msgid "You can not register on this date."
+msgstr ""
+
+#: includes/functions.php:369
+msgid "Could not add timesheet entry."
+msgstr ""
+
+#: includes/template.php:17
+msgid "Timesheet"
+msgstr ""
+
+#: templates/new-registration-form.php:26
+msgid "Add registration"
+msgstr ""
+
+#: templates/new-registration-form.php:31
+msgid "Register"
+msgstr ""
+
+#: templates/project-timesheet.php:38 templates/timesheets_overview.php:119
+msgid "Date"
+msgstr ""
+
+#: templates/project-timesheet.php:39
+msgid "User"
+msgstr ""
+
+#: templates/project-timesheet.php:40 templates/timesheets_overview.php:117
+#: templates/work_registration_fields.php:56
+msgid "Activity"
+msgstr ""
+
+#: templates/project-timesheet.php:41 templates/timesheets_overview.php:118
+#: templates/work_registration_fields.php:79
+msgid "Description"
+msgstr ""
+
+#: templates/project-timesheet.php:42 templates/timesheets_overview.php:120
+#: templates/work_registration_fields.php:86
+msgid "Time"
+msgstr ""
+
+#: templates/project-timesheet.php:77
+msgid "There are no time registrations for this project."
+msgstr ""
+
+#: templates/timesheets_edit.php:20
+msgid "Edit registration"
+msgstr ""
+
+#: templates/timesheets_edit.php:25 templates/timesheets_overview.php:174
+msgid "Edit"
+msgstr ""
+
+#: templates/timesheets_edit.php:35
+msgid "Cancel"
+msgstr ""
+
+#: templates/timesheets_overview.php:64
+msgid "Today"
+msgstr ""
+
+#: templates/timesheets_overview.php:83
+msgid "Your work registration was succesfull added."
+msgstr ""
+
+#: templates/timesheets_overview.php:87
+msgid "Your work registration was succesfull updated."
+msgstr ""
+
+#: templates/timesheets_overview.php:116
+msgid "Company/Project"
+msgstr ""
+
+#: templates/timesheets_overview.php:121
+msgid "Actions"
+msgstr ""
+
+#: templates/work_registration_fields.php:25
+msgid "Company"
+msgstr ""
+
+#: templates/work_registration_fields.php:26
+msgid "Select company…"
+msgstr ""
+
+#: templates/work_registration_fields.php:36
+msgid "Project"
+msgstr ""
+
+#: templates/work_registration_fields.php:37
+msgid "Select project…"
+msgstr ""
+
+#: templates/work_registration_fields.php:47
+msgid "Subscription"
+msgstr ""
+
+#: templates/work_registration_fields.php:48
+msgid "Select subscription…"
+msgstr ""
+
+#: templates/work_registration_fields.php:80
+msgid "Work registration description"
+msgstr ""
+
+#: templates/work_registration_fields.php:90
+msgid "hours"
+msgstr ""
+
+#: templates/work_registration_fields.php:95
+msgid "minutes"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "Orbis Timesheets"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://www.orbiswp.com/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Time Management, Timesheet, Time Tracking solution for WordPress. Orbis "
+"Timesheets enables you to track your work time."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Pronamic"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://www.pronamic.eu/"
+msgstr ""
