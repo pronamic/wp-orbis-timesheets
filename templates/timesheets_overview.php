@@ -171,7 +171,7 @@ $url = add_query_arg( 'message', false );
 							<?php echo orbis_time( $registration->work_duration ); ?>
 						</td>
 						<td>
-							<a href="<?php echo get_edit_orbis_work_registration_link( $registration->work_id ); ?>"><i class="icon-pencil"></i> <span style="display: none"><?php _e( 'Edit', 'orbis_timesheets' ); ?></span></a>
+							<a href="<?php echo get_edit_orbis_work_registration_link( $registration->work_id ); ?>"><span class="glyphicon glyphicon-pencil"></span> <span style="display: none"><?php _e( 'Edit', 'orbis_timesheets' ); ?></span></a>
 						</td>
 					</tr>
 	
