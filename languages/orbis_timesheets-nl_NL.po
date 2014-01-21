@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Orbis Timesheets\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/orbis-timesheets\n"
-"POT-Creation-Date: 2013-12-24 12:00:44+00:00\n"
-"PO-Revision-Date: 2013-12-24 13:01+0100\n"
+"POT-Creation-Date: 2014-01-21 10:42:45+00:00\n"
+"PO-Revision-Date: 2014-01-21 11:43+0100\n"
 "Last-Translator: Remco Tolsma <info@remcotolsma.nl>\n"
 "Language-Team: Pronamic <info@pronamic.nl>\n"
 "Language: nl_NL\n"
@@ -15,19 +15,19 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Generator: Poedit 1.6.3\n"
 
-#: includes/functions.php:230
+#: includes/functions.php:319
 msgid "You have to specify an company or project."
 msgstr "Je moet een bedrijf of project specificeren."
 
-#: includes/functions.php:236
+#: includes/functions.php:325
 msgid "You have to specify an project."
 msgstr "Je moet een project specificeren."
 
-#: includes/functions.php:241
+#: includes/functions.php:330
 msgid "You have to specify an description (%d words)."
 msgstr "Je moet een beschrijving specificeren (%d woorden)."
 
-#: includes/functions.php:250
+#: includes/functions.php:339
 msgid ""
 "Who are you? <a href=\"%s\">Edit your user profile</a> and enter you Orbis "
 "legacy person ID."
@@ -35,15 +35,15 @@ msgstr ""
 "Wie ben je? <a href=”%s”>Bewerk je gebruikersprofiel</a> en voer je Orbis "
 "legacy persoon ID in."
 
-#: includes/functions.php:256
+#: includes/functions.php:345
 msgid "You have to specify an activity."
 msgstr "Je moet een activiteit specificeren."
 
-#: includes/functions.php:260
+#: includes/functions.php:349
 msgid "You can not register on this date."
 msgstr "Je kunt niet registreren op deze datum."
 
-#: includes/functions.php:280
+#: includes/functions.php:369
 msgid "Could not add timesheet entry."
 msgstr "Kon werk registratie niet toevoegen."
 
@@ -73,12 +73,12 @@ msgid "Activity"
 msgstr "Activiteit"
 
 #: templates/project-timesheet.php:41 templates/timesheets_overview.php:118
-#: templates/work_registration_fields.php:77
+#: templates/work_registration_fields.php:79
 msgid "Description"
 msgstr "Beschrijving"
 
 #: templates/project-timesheet.php:42 templates/timesheets_overview.php:120
-#: templates/work_registration_fields.php:82
+#: templates/work_registration_fields.php:86
 msgid "Time"
 msgstr "Tijd"
 
@@ -118,19 +118,19 @@ msgstr "Bedrijf/project"
 msgid "Actions"
 msgstr "Acties"
 
-#: templates/work_registration_fields.php:29
+#: templates/work_registration_fields.php:25
 msgid "Company"
 msgstr "Bedrijf"
 
-#: templates/work_registration_fields.php:30
+#: templates/work_registration_fields.php:26
 msgid "Select company…"
 msgstr "Selecteer bedrijf…"
 
-#: templates/work_registration_fields.php:38
+#: templates/work_registration_fields.php:36
 msgid "Project"
 msgstr "Project"
 
-#: templates/work_registration_fields.php:39
+#: templates/work_registration_fields.php:37
 msgid "Select project…"
 msgstr "Selecteer project…"
 
@@ -142,9 +142,17 @@ msgstr "Abonnement"
 msgid "Select subscription…"
 msgstr "Selecteer abonnement…"
 
-#: templates/work_registration_fields.php:78
+#: templates/work_registration_fields.php:80
 msgid "Work registration description"
 msgstr "Werk registratie beschrijving"
+
+#: templates/work_registration_fields.php:90
+msgid "hours"
+msgstr "uren"
+
+#: templates/work_registration_fields.php:95
+msgid "minutes"
+msgstr "minuten"
 
 #. Plugin Name of the plugin/theme
 msgid "Orbis Timesheets"
