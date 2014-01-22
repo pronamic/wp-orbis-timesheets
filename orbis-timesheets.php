@@ -21,6 +21,7 @@ GitHub URI: https://github.com/pronamic/wp-orbis-subscriptions
 function orbis_timesheets_bootstrap() {
 	// Classes
 	require_once 'classes/orbis-timesheets-plugin.php';
+	require_once 'classes/orbis-timesheets-admin.php';
 	require_once 'classes/orbis-timesheet-entry.php';
 
 	// Initialize
