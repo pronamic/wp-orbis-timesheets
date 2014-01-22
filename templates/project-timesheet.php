@@ -2,7 +2,7 @@
 
 global $wpdb;
 
-$id = $wpdb->get_var( $wpdb->prepare( 'SELECT id FROM orbis_projects WHERE post_id = %d;', get_the_ID() ) );
+$id = $wpdb->get_var( $wpdb->prepare( "SELECT id FROM $wpdb->orbis_projects WHERE post_id = %d;", get_the_ID() ) );
 
 $query = $wpdb->prepare( "
 	SELECT
@@ -13,12 +13,12 @@ $query = $wpdb->prepare( "
 		hr.date,
 		hr.number_seconds
 	FROM
-		orbis_hours_registration AS hr
+		$wpdb->orbis_timesheets AS hr
 			LEFT JOIN
-		orbis_persons AS p
+		$wpdb->orbis_persons AS p
 				ON hr.user_id = p.id
 			LEFT JOIN
-		orbis_activities AS a
+		$wpdb->orbis_activities AS a
 				ON hr.activity_id = a.id 
 	WHERE
 		project_id = %d
