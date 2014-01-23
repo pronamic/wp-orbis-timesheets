@@ -32,7 +32,7 @@ if ( $entry ) : ?>
 					) );
 	
 					?>
-					<a class="btn" href="<?php echo esc_attr( $cancel_url ); ?>"><?php esc_html_e( 'Cancel', 'orbis_timesheets' ); ?></a>
+					<a class="btn btn-default" href="<?php echo esc_attr( $cancel_url ); ?>"><?php esc_html_e( 'Cancel', 'orbis_timesheets' ); ?></a>
 				</div>
 			</form>
 		</div>

@@ -14,7 +14,7 @@ function orbis_timesheets_posts_clauses( $pieces, $query ) {
 		// Join
 		$join = "
 			LEFT JOIN
-				orbis_hours_registration AS logged_time
+				$wpdb->orbis_timesheets AS logged_time
 					ON logged_time.project_id = project.id
 		";
 

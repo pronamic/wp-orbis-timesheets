@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Orbis Timesheets\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/orbis-timesheets\n"
-"POT-Creation-Date: 2014-01-21 10:42:45+00:00\n"
-"PO-Revision-Date: 2014-01-21 11:43+0100\n"
+"POT-Creation-Date: 2014-01-23 15:51:16+00:00\n"
+"PO-Revision-Date: 2014-01-23 16:51+0100\n"
 "Last-Translator: Remco Tolsma <info@remcotolsma.nl>\n"
 "Language-Team: Pronamic <info@pronamic.nl>\n"
 "Language: nl_NL\n"
@@ -14,6 +14,15 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Generator: Poedit 1.6.3\n"
+
+#. Plugin Name of the plugin/theme
+#: classes/orbis-timesheets-admin.php:12
+msgid "Orbis Timesheets"
+msgstr "Orbis werkregistraties"
+
+#: classes/orbis-timesheets-admin.php:13
+msgid "Timesheets"
+msgstr "Werkregistraties"
 
 #: includes/functions.php:319
 msgid "You have to specify an company or project."
@@ -59,7 +68,7 @@ msgstr "Registratie toevoegen"
 msgid "Register"
 msgstr "Registreer"
 
-#: templates/project-timesheet.php:38 templates/timesheets_overview.php:119
+#: templates/project-timesheet.php:38 templates/timesheets_overview.php:115
 msgid "Date"
 msgstr "Datum"
 
@@ -67,17 +76,17 @@ msgstr "Datum"
 msgid "User"
 msgstr "Gebruiker"
 
-#: templates/project-timesheet.php:40 templates/timesheets_overview.php:117
+#: templates/project-timesheet.php:40 templates/timesheets_overview.php:113
 #: templates/work_registration_fields.php:56
 msgid "Activity"
 msgstr "Activiteit"
 
-#: templates/project-timesheet.php:41 templates/timesheets_overview.php:118
+#: templates/project-timesheet.php:41 templates/timesheets_overview.php:114
 #: templates/work_registration_fields.php:79
 msgid "Description"
 msgstr "Beschrijving"
 
-#: templates/project-timesheet.php:42 templates/timesheets_overview.php:120
+#: templates/project-timesheet.php:42 templates/timesheets_overview.php:116
 #: templates/work_registration_fields.php:86
 msgid "Time"
 msgstr "Tijd"
@@ -90,7 +99,7 @@ msgstr "Er zijn geen tijd registraties voor dit project."
 msgid "Edit registration"
 msgstr "Registratie bewerken"
 
-#: templates/timesheets_edit.php:25 templates/timesheets_overview.php:174
+#: templates/timesheets_edit.php:25 templates/timesheets_overview.php:170
 msgid "Edit"
 msgstr "Bewerken"
 
@@ -98,23 +107,23 @@ msgstr "Bewerken"
 msgid "Cancel"
 msgstr "Annuleer"
 
-#: templates/timesheets_overview.php:64
+#: templates/timesheets_overview.php:62
 msgid "Today"
 msgstr "Vandaag"
 
-#: templates/timesheets_overview.php:83
+#: templates/timesheets_overview.php:79
 msgid "Your work registration was succesfull added."
 msgstr "Je werk registratie is succesvol toegevoegd."
 
-#: templates/timesheets_overview.php:87
+#: templates/timesheets_overview.php:83
 msgid "Your work registration was succesfull updated."
 msgstr "Je werk registratie is succesvol bijgewerkt."
 
-#: templates/timesheets_overview.php:116
+#: templates/timesheets_overview.php:112
 msgid "Company/Project"
 msgstr "Bedrijf/project"
 
-#: templates/timesheets_overview.php:121
+#: templates/timesheets_overview.php:117
 msgid "Actions"
 msgstr "Acties"
 
@@ -153,10 +162,6 @@ msgstr "uren"
 #: templates/work_registration_fields.php:95
 msgid "minutes"
 msgstr "minuten"
-
-#. Plugin Name of the plugin/theme
-msgid "Orbis Timesheets"
-msgstr "Orbis werkregistraties"
 
 #. Plugin URI of the plugin/theme
 msgid "http://www.orbiswp.com/"
