@@ -15,7 +15,7 @@ function orbis_timesheets_project_section( $sections ) {
 	array_unshift( $sections, array(
 		'id'       => 'timesheet',
 		'name'     => __( 'Timesheet', 'orbis' ),
-		'callback' => 'orbis_timesheets_render_project_timesheet'
+		'callback' => 'orbis_timesheets_render_project_timesheet',
 	) );
 	
 	return $sections;
