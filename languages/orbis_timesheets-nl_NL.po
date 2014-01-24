@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Orbis Timesheets\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/orbis-timesheets\n"
 "POT-Creation-Date: 2014-01-24 13:11:33+00:00\n"
-"PO-Revision-Date: 2014-01-24 14:11+0100\n"
+"PO-Revision-Date: 2014-01-24 14:13+0100\n"
 "Last-Translator: Remco Tolsma <info@remcotolsma.nl>\n"
 "Language-Team: Pronamic <info@pronamic.nl>\n"
 "Language: nl_NL\n"
@@ -18,7 +18,7 @@ msgstr ""
 #: admin/page-settings.php:10
 msgid "The Orbis Timesheets plugin requires an page with the shortcode %s."
 msgstr ""
-"De Orbis werkregistraties plugin vereiste een pagina met de shortcode %s."
+"De Orbis werkregistraties plugin vereist een pagina met de shortcode %s."
 
 #: admin/page-timesheets.php:65
 msgid "Registered On"
