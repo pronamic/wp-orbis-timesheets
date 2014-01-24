@@ -6,24 +6,25 @@ $id = $wpdb->get_var( $wpdb->prepare( "SELECT id FROM $wpdb->orbis_projects WHER
 
 $query = $wpdb->prepare( "
 	SELECT
-		hr.id,
-		p.first_name AS person_name,
-		a.name AS activity_name,
-		hr.description,
-		hr.date,
-		hr.number_seconds
+		registration.id,
+		registration.user_id,
+		user.display_name AS user_display_name,
+		activity.name AS activity_name,
+		registration.description,
+		registration.date,
+		registration.number_seconds
 	FROM
-		$wpdb->orbis_timesheets AS hr
+		$wpdb->orbis_timesheets AS registration
 			LEFT JOIN
-		$wpdb->orbis_persons AS p
-				ON hr.user_id = p.id
+		$wpdb->users AS user
+				ON registration.user_id = user.ID
 			LEFT JOIN
-		$wpdb->orbis_activities AS a
-				ON hr.activity_id = a.id 
+		$wpdb->orbis_activities AS activity
+				ON registration.activity_id = activity.id
 	WHERE
 		project_id = %d
 	ORDER BY
-		hr.date ASC, hr.id
+		registration.date ASC, registration.id
 	;",
 	$id
 );
@@ -52,7 +53,7 @@ if ( $registrations ) : ?>
 						<?php echo date_i18n( 'D j M Y', strtotime( $registration->date ) ); ?>
 					</td>
 					<td>
-						<?php echo $registration->person_name; ?>
+						<?php echo $registration->user_display_name; ?>
 					</td>
 					<td>
 						<?php echo $registration->activity_name; ?>

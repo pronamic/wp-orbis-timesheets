@@ -30,9 +30,6 @@ $query = "
 			LEFT JOIN
 		$wpdb->orbis_projects AS project
 				ON work.project_id = project.id
-			LEFT JOIN 
-		orbis_persons AS manager 
-				ON project.contact_id_1 = manager.id 
 			LEFT JOIN
 		$wpdb->orbis_companies AS principal 
 				ON project.principal_id = principal.id
@@ -45,7 +42,7 @@ $query = "
 	;
 ";
 
-$query = $wpdb->prepare( $query, $person_id, date( 'Y-m-d', $timestamp ) );
+$query = $wpdb->prepare( $query, $user_id, date( 'Y-m-d', $timestamp ) );
 
 $registrations = $wpdb->get_results( $query );
 
