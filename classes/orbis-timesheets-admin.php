@@ -20,8 +20,8 @@ class Orbis_Timesheets_Admin {
 
 		add_submenu_page(
 			'orbis_timesheets', // parent_slug
-			__( 'Orbis Timesheets Settings', 'orbis' ), // page_title
-			__( 'Settings', 'orbis' ), // menu_title
+			__( 'Orbis Timesheets Settings', 'orbis_timesheets' ), // page_title
+			__( 'Settings', 'orbis_timesheets' ), // menu_title
 			'manage_options', // capability
 			'orbis_timesheets_settings', // menu_slug
 			array( $this, 'page_settings' ) // function

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Orbis Timesheets\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/orbis-timesheets\n"
-"POT-Creation-Date: 2014-01-23 15:51:16+00:00\n"
-"PO-Revision-Date: 2014-01-23 16:51+0100\n"
+"POT-Creation-Date: 2014-01-24 13:11:33+00:00\n"
+"PO-Revision-Date: 2014-01-24 14:11+0100\n"
 "Last-Translator: Remco Tolsma <info@remcotolsma.nl>\n"
 "Language-Team: Pronamic <info@pronamic.nl>\n"
 "Language: nl_NL\n"
@@ -15,6 +15,46 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Generator: Poedit 1.6.3\n"
 
+#: admin/page-settings.php:10
+msgid "The Orbis Timesheets plugin requires an page with the shortcode %s."
+msgstr ""
+"De Orbis werkregistraties plugin vereiste een pagina met de shortcode %s."
+
+#: admin/page-timesheets.php:65
+msgid "Registered On"
+msgstr "Geregistreerd op"
+
+#: admin/page-timesheets.php:68 templates/project-timesheet.php:40
+msgid "User"
+msgstr "Gebruiker"
+
+#: admin/page-timesheets.php:71 templates/timesheets_overview.php:109
+msgid "Company/Project"
+msgstr "Bedrijf/project"
+
+#: admin/page-timesheets.php:74 templates/project-timesheet.php:41
+#: templates/timesheets_overview.php:110
+#: templates/work_registration_fields.php:56
+msgid "Activity"
+msgstr "Activiteit"
+
+#: admin/page-timesheets.php:77 templates/project-timesheet.php:42
+#: templates/timesheets_overview.php:111
+#: templates/work_registration_fields.php:79
+msgid "Description"
+msgstr "Beschrijving"
+
+#: admin/page-timesheets.php:80 templates/project-timesheet.php:39
+#: templates/timesheets_overview.php:112
+msgid "Date"
+msgstr "Datum"
+
+#: admin/page-timesheets.php:83 templates/project-timesheet.php:43
+#: templates/timesheets_overview.php:113
+#: templates/work_registration_fields.php:86
+msgid "Time"
+msgstr "Tijd"
+
 #. Plugin Name of the plugin/theme
 #: classes/orbis-timesheets-admin.php:12
 msgid "Orbis Timesheets"
@@ -24,35 +64,35 @@ msgstr "Orbis werkregistraties"
 msgid "Timesheets"
 msgstr "Werkregistraties"
 
-#: includes/functions.php:319
+#: classes/orbis-timesheets-admin.php:23
+msgid "Orbis Timesheets Settings"
+msgstr "Orbis werkregistraties instellingen"
+
+#: classes/orbis-timesheets-admin.php:24
+msgid "Settings"
+msgstr "Instellingen"
+
+#: includes/functions.php:318
 msgid "You have to specify an company or project."
 msgstr "Je moet een bedrijf of project specificeren."
 
-#: includes/functions.php:325
+#: includes/functions.php:324
 msgid "You have to specify an project."
 msgstr "Je moet een project specificeren."
 
-#: includes/functions.php:330
+#: includes/functions.php:329
 msgid "You have to specify an description (%d words)."
 msgstr "Je moet een beschrijving specificeren (%d woorden)."
 
-#: includes/functions.php:339
-msgid ""
-"Who are you? <a href=\"%s\">Edit your user profile</a> and enter you Orbis "
-"legacy person ID."
-msgstr ""
-"Wie ben je? <a href=”%s”>Bewerk je gebruikersprofiel</a> en voer je Orbis "
-"legacy persoon ID in."
-
-#: includes/functions.php:345
+#: includes/functions.php:337
 msgid "You have to specify an activity."
 msgstr "Je moet een activiteit specificeren."
 
-#: includes/functions.php:349
+#: includes/functions.php:341
 msgid "You can not register on this date."
 msgstr "Je kunt niet registreren op deze datum."
 
-#: includes/functions.php:369
+#: includes/functions.php:361
 msgid "Could not add timesheet entry."
 msgstr "Kon werk registratie niet toevoegen."
 
@@ -68,30 +108,7 @@ msgstr "Registratie toevoegen"
 msgid "Register"
 msgstr "Registreer"
 
-#: templates/project-timesheet.php:38 templates/timesheets_overview.php:115
-msgid "Date"
-msgstr "Datum"
-
-#: templates/project-timesheet.php:39
-msgid "User"
-msgstr "Gebruiker"
-
-#: templates/project-timesheet.php:40 templates/timesheets_overview.php:113
-#: templates/work_registration_fields.php:56
-msgid "Activity"
-msgstr "Activiteit"
-
-#: templates/project-timesheet.php:41 templates/timesheets_overview.php:114
-#: templates/work_registration_fields.php:79
-msgid "Description"
-msgstr "Beschrijving"
-
-#: templates/project-timesheet.php:42 templates/timesheets_overview.php:116
-#: templates/work_registration_fields.php:86
-msgid "Time"
-msgstr "Tijd"
-
-#: templates/project-timesheet.php:77
+#: templates/project-timesheet.php:78
 msgid "There are no time registrations for this project."
 msgstr "Er zijn geen tijd registraties voor dit project."
 
@@ -99,7 +116,7 @@ msgstr "Er zijn geen tijd registraties voor dit project."
 msgid "Edit registration"
 msgstr "Registratie bewerken"
 
-#: templates/timesheets_edit.php:25 templates/timesheets_overview.php:170
+#: templates/timesheets_edit.php:25 templates/timesheets_overview.php:167
 msgid "Edit"
 msgstr "Bewerken"
 
@@ -107,23 +124,19 @@ msgstr "Bewerken"
 msgid "Cancel"
 msgstr "Annuleer"
 
-#: templates/timesheets_overview.php:62
+#: templates/timesheets_overview.php:59
 msgid "Today"
 msgstr "Vandaag"
 
-#: templates/timesheets_overview.php:79
+#: templates/timesheets_overview.php:76
 msgid "Your work registration was succesfull added."
 msgstr "Je werk registratie is succesvol toegevoegd."
 
-#: templates/timesheets_overview.php:83
+#: templates/timesheets_overview.php:80
 msgid "Your work registration was succesfull updated."
 msgstr "Je werk registratie is succesvol bijgewerkt."
 
-#: templates/timesheets_overview.php:112
-msgid "Company/Project"
-msgstr "Bedrijf/project"
-
-#: templates/timesheets_overview.php:117
+#: templates/timesheets_overview.php:114
 msgid "Actions"
 msgstr "Acties"
 
@@ -183,6 +196,13 @@ msgstr "Pronamic"
 msgid "http://www.pronamic.eu/"
 msgstr "http://www.pronamic.nl/"
 
+#~ msgid ""
+#~ "Who are you? <a href=\"%s\">Edit your user profile</a> and enter you "
+#~ "Orbis legacy person ID."
+#~ msgstr ""
+#~ "Wie ben je? <a href=”%s”>Bewerk je gebruikersprofiel</a> en voer je Orbis "
+#~ "legacy persoon ID in."
+
 #~ msgid "Task description"
 #~ msgstr "Taak beschrijvin"
 
@@ -233,9 +253,6 @@ msgstr "http://www.pronamic.nl/"
 
 #~ msgid "Orbis Subscriptions Settings"
 #~ msgstr "Orbis abonnementen instellingen"
-
-#~ msgid "Settings"
-#~ msgstr "Instellingen"
 
 #~ msgid "Subscriptions"
 #~ msgstr "Abonnementen"
