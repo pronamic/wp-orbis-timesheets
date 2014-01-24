@@ -123,7 +123,7 @@ function orbis_insert_timesheet_entry( $entry ) {
 	$data['created']   = date( 'Y-m-d H:i:s' );
 	$format['created'] = '%s';
 		
-	$data['user_id']   = $entry->person_id;
+	$data['user_id']   = $entry->user_id;
 	$format['user_id'] = '%d';
 		
 	$data['company_id']   = $entry->company_id;
@@ -295,8 +295,7 @@ function orbis_timesheets_get_entry_from_input( $type = INPUT_POST ) {
 		$entry->time = $time;
 	}
 	
-	$entry->user_id         = get_current_user_id();
-	$entry->person_id       = get_user_meta( $entry->user_id, 'orbis_legacy_person_id', true );
+	$entry->user_id = get_current_user_id();
 	
 	return $entry;
 }
@@ -332,13 +331,6 @@ function orbis_timesheets_maybe_add_entry() {
 
 			if ( empty( $entry->time ) ) {
 				// $orbis_errors['orbis_registration_time'] = __( 'You have to specify an time.', 'orbis_timesheets' );
-			}
-
-			if ( empty( $entry->person_id ) ) {
-				orbis_timesheets_register_error( 'orbis_registration_person_id', sprintf(
-					__( 'Who are you? <a href="%s">Edit your user profile</a> and enter you Orbis legacy person ID.', 'orbis_timesheets' ),
-					esc_attr( get_edit_user_link( $user_id ) )
-				) );
 			}
 
 			if ( empty( $entry->activity_id ) ) {

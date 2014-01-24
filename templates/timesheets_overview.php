@@ -42,7 +42,7 @@ $query = "
 	;
 ";
 
-$query = $wpdb->prepare( $query, $person_id, date( 'Y-m-d', $timestamp ) );
+$query = $wpdb->prepare( $query, $user_id, date( 'Y-m-d', $timestamp ) );
 
 $registrations = $wpdb->get_results( $query );
 
