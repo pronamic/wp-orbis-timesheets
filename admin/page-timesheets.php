@@ -14,6 +14,8 @@
 			work.description AS work_description,
 			work.date AS work_date, 
 			work.number_seconds AS work_duration,
+			user.ID AS user_id,
+			user.display_name AS user_display_name,
 			activity.id AS activity_id,
 			activity.name AS activity_name,
 			activity.description AS activity_description,
@@ -27,6 +29,9 @@
 			principal.name AS principal_name
 		FROM 
 			$wpdb->orbis_timesheets AS work
+				LEFT JOIN
+			$wpdb->users AS user
+					ON work.user_id = user.ID
 				LEFT JOIN
 			$wpdb->orbis_activities AS activity
 					ON work.activity_id = activity.id
@@ -60,6 +65,9 @@
 					<?php _e( 'Registered On', 'orbis_timesheets' ); ?>
 				</th>
 				<th scope="col">
+					<?php _e( 'User', 'orbis_timesheets' ); ?>
+				</th>
+				<th scope="col">
 					<?php _e( 'Company/Project', 'orbis_timesheets' ); ?>
 				</th>
 				<th scope="col">
@@ -84,6 +92,9 @@
 				<tr>
 					<td>
 						<?php echo $registration->work_created; ?>
+					</td>
+					<td>
+						<?php echo $registration->user_display_name; ?>
 					</td>
 					<td>
 						<?php 
