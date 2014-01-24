@@ -17,9 +17,22 @@ class Orbis_Timesheets_Admin {
 			'dashicons-performance',
 			40
 		);
+
+		add_submenu_page(
+			'orbis_timesheets', // parent_slug
+			__( 'Orbis Timesheets Settings', 'orbis' ), // page_title
+			__( 'Settings', 'orbis' ), // menu_title
+			'manage_options', // capability
+			'orbis_timesheets_settings', // menu_slug
+			array( $this, 'page_settings' ) // function
+		);
 	}
 
 	public function page_admin() {
 		$this->plugin->plugin_include( 'admin/page-timesheets.php' );
+	}
+
+	public function page_settings() {
+		$this->plugin->plugin_include( 'admin/page-settings.php' );
 	}
 }
