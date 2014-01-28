@@ -1,10 +1,201 @@
 <?php
 
 class Orbis_Timesheets_Admin {
+
 	public function __construct( $plugin ) {
 		$this->plugin = $plugin;
 
+		add_action( 'admin_init', array( $this, 'admin_init' ) );
+
 		add_action( 'admin_menu', array( $this, 'admin_menu' ) );
+
+
+	}
+
+	public function admin_init() {
+		add_settings_section(
+			'orbis_timesheets_settings_email', // id
+			__( 'Timesheet Email Settings', 'orbis_timesheets' ), // title
+			'__return_false', // callback
+			'orbis_timesheets_settings' // page
+		);
+
+		add_settings_field(
+			'orbis_timesheets_email_send_automatically', // id
+			__( 'Automatically send timesheet emails', 'orbis_timesheets' ), // title
+			array( $this, 'input_checkbox' ), // callback
+			'orbis_timesheets_settings', // page
+			'orbis_timesheets_settings_email', // section
+			array( 'label_for' => 'orbis_timesheets_email_send_automatically' ) // args
+		);
+
+		add_settings_field(
+			'orbis_timesheets_email_frequency', // id
+			__( 'Email frequency', 'orbis_timesheets' ), // title
+			array( $this, 'input_select' ), // callback
+			'orbis_timesheets_settings', // page
+			'orbis_timesheets_settings_email', // section
+			array(
+				'label_for' => 'orbis_timesheets_email_frequency',
+				'options'   => array(
+					'1 day'  => __( 'Daily' , 'orbis_timesheets' ),
+					'1 week' => __( 'Weekly', 'orbis_timesheets' ),
+				),
+			) // args
+		);
+
+		if ( get_option( 'orbis_timesheets_email_frequency', '1 week' ) === '1 week' ) {
+
+			add_settings_field(
+				'orbis_timesheets_email_frequency_day', // id
+				__( 'Email day', 'orbis_timesheets' ), // title
+				array( $this, 'input_select' ), // callback
+				'orbis_timesheets_settings', // page
+				'orbis_timesheets_settings_email', // section
+				array(
+					'label_for' => 'orbis_timesheets_email_frequency_day',
+					'options'   => array(
+						'sunday'    => __( 'Sunday'   , 'orbis_timesheets' ),
+						'monday'    => __( 'Monday'   , 'orbis_timesheets' ),
+						'tuesday'   => __( 'Tuesday'  , 'orbis_timesheets' ),
+						'wednesday' => __( 'Wednesday', 'orbis_timesheets' ),
+						'thursday'  => __( 'Thursday' , 'orbis_timesheets' ),
+						'friday'    => __( 'Friday'   , 'orbis_timesheets' ),
+						'saturday'  => __( 'Saturday' , 'orbis_timesheets' ),
+					),
+				) // args
+			);
+		}
+
+		add_settings_field(
+			'orbis_timesheets_email_subject', // id
+			__( 'Email subject', 'orbis_timesheets' ), // title
+			array( $this, 'input_text' ), // callback
+			'orbis_timesheets_settings', // page
+			'orbis_timesheets_settings_email', // section
+			array(
+				'label_for' => 'orbis_timesheets_email_subject',
+			) // args
+		);
+
+		$users        = get_users();
+		$user_options = array();
+
+		foreach ( $users as $user ) {
+
+			$user_options[ $user->ID ] = $user->display_name;
+		}
+
+		add_settings_field(
+			'orbis_timesheets_email_users', // id
+			__( 'Email users', 'orbis_timesheets' ), // title
+			array( $this, 'input_select' ), // callback
+			'orbis_timesheets_settings', // page
+			'orbis_timesheets_settings_email', // section
+			array(
+				'label_for' => 'orbis_timesheets_email_users',
+				'options'   => $user_options,
+				'multiple'  => true
+			) // args
+		);
+
+		register_setting( 'orbis_timesheets', 'orbis_timesheets_email_send_automatically' );
+		register_setting( 'orbis_timesheets', 'orbis_timesheets_email_frequency' );
+		register_setting( 'orbis_timesheets', 'orbis_timesheets_email_frequency_day' );
+		register_setting( 'orbis_timesheets', 'orbis_timesheets_email_users' );
+	}
+
+	/**
+	 * Input text
+	 *
+	 * @param array $args
+	 */
+	public function input_text( $args ) {
+		$name = $args['label_for'];
+
+		$classes = array();
+		if ( isset( $args['classes'] ) ) {
+			$classes = $args['classes'];
+		}
+
+		printf(
+			'<input name="%s" id="%s" type="text" class="%s" value="%s" />',
+			esc_attr( $name ),
+			esc_attr( $name ),
+			esc_attr( implode( ' ', $classes ) ),
+			esc_attr( get_option( $name, '' ) )
+		);
+	}
+
+	/**
+	 * Input checkbox
+	 *
+	 * @param array $args
+	 */
+	public function input_checkbox( $args ) {
+		$name = $args['label_for'];
+
+		$classes = array();
+		if ( isset( $args['classes'] ) ) {
+			$classes = $args['classes'];
+		}
+
+		printf(
+			'<input name="%s" id="%s" type="checkbox" class="%s" %s />',
+			esc_attr( $name ),
+			esc_attr( $name ),
+			esc_attr( implode( ' ', $classes ) ),
+			checked( 'on', get_option( $name ), false )
+		);
+	}
+
+	/**
+	 * Input select
+	 *
+	 * @param array $args
+	 */
+	public function input_select( $args ) {
+		$name = $args['label_for'];
+
+		$classes = array();
+		if ( isset( $args['classes'] ) ) {
+			$classes = $args['classes'];
+		}
+
+		$options = array();
+		if ( isset( $args['options'] ) ) {
+			$options = $args['options'];
+		}
+
+		$multiple = false;
+		if ( isset( $args['multiple'] ) && $args['multiple'] ) {
+			$multiple = true;
+		}
+
+		printf(
+			'<select name="%s" id="%s" class="%s" %s>',
+			esc_attr( $name ) . ( $multiple ? '[]' : '' ),
+			esc_attr( $name ),
+			esc_attr( implode( ' ', $classes ) ),
+			$multiple ? 'multiple="multiple"' : ''
+		);
+
+		$current_value = get_option( $name, '' );
+
+		foreach ( $options as $option_key => $option ) {
+
+			$selected = ( is_string( $current_value ) && $option_key == $current_value ) ||
+						( is_array( $current_value ) && in_array( $option_key, $current_value ) );
+
+			printf(
+				'<option value="%s" %s>%s</option>',
+				esc_attr( $option_key ),
+				selected( $selected, true, false ),
+				esc_attr( $option )
+			);
+		}
+
+		echo '</select>';
 	}
 
 	public function admin_menu() {

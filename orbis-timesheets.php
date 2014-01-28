@@ -23,6 +23,7 @@ function orbis_timesheets_bootstrap() {
 	require_once 'classes/orbis-timesheets-plugin.php';
 	require_once 'classes/orbis-timesheets-admin.php';
 	require_once 'classes/orbis-timesheet-entry.php';
+	require_once 'classes/orbis-timesheets-email.php';
 
 	// Initialize
 	global $orbis_timesheets_plugin;

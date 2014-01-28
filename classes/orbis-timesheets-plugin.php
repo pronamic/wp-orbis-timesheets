@@ -18,6 +18,7 @@ class Orbis_Timesheets_Plugin extends Orbis_Plugin {
 		
 		if ( is_admin() ) {
 			$this->admin = new Orbis_Timesheets_Admin( $this );
+			$this->email = new Orbis_Timesheets_Email( $this );
 		}
 	}
 
