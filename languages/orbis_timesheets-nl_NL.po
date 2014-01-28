@@ -2,9 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Orbis Timesheets\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/orbis-timesheets\n"
-"POT-Creation-Date: 2014-01-24 13:11:33+00:00\n"
-"PO-Revision-Date: 2014-01-24 14:13+0100\n"
-"Last-Translator: Remco Tolsma <info@remcotolsma.nl>\n"
+"POT-Creation-Date: 2014-01-28 10:20+0100\n"
+"PO-Revision-Date: 2014-01-28 10:28+0100\n"
+"Last-Translator: \n"
 "Language-Team: Pronamic <info@pronamic.nl>\n"
 "Language: nl_NL\n"
 "MIME-Version: 1.0\n"
@@ -13,9 +13,12 @@ msgstr ""
 "X-Poedit-KeywordsList: __;_e;_x:2c,1\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 1.6.3\n"
+"X-Generator: Poedit 1.5.5\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-SearchPath-0: .\n"
 
 #: admin/page-settings.php:10
+#, php-format
 msgid "The Orbis Timesheets plugin requires an page with the shortcode %s."
 msgstr ""
 "De Orbis werkregistraties plugin vereist een pagina met de shortcode %s."
@@ -25,6 +28,7 @@ msgid "Registered On"
 msgstr "Geregistreerd op"
 
 #: admin/page-timesheets.php:68 templates/project-timesheet.php:40
+#: templates/user-timesheet.php:18
 msgid "User"
 msgstr "Gebruiker"
 
@@ -55,20 +59,80 @@ msgstr "Datum"
 msgid "Time"
 msgstr "Tijd"
 
-#. Plugin Name of the plugin/theme
-#: classes/orbis-timesheets-admin.php:12
+#: classes/orbis-timesheets-admin.php:18
+msgid "Timesheet Email Settings"
+msgstr "Werkregistratie E-mail Instellingen"
+
+#: classes/orbis-timesheets-admin.php:25
+msgid "Automatically send timesheet emails"
+msgstr "Verstuur werkregistraties automatisch"
+
+#: classes/orbis-timesheets-admin.php:34
+msgid "Email frequency"
+msgstr "E-mail frequentie"
+
+#: classes/orbis-timesheets-admin.php:41
+msgid "Daily"
+msgstr "Dagelijks"
+
+#: classes/orbis-timesheets-admin.php:42
+msgid "Weekly"
+msgstr "Wekelijks"
+
+#: classes/orbis-timesheets-admin.php:51
+msgid "Email day"
+msgstr "E-mail dag"
+
+#: classes/orbis-timesheets-admin.php:58
+msgid "Sunday"
+msgstr "Zondag"
+
+#: classes/orbis-timesheets-admin.php:59
+msgid "Monday"
+msgstr "Maandag"
+
+#: classes/orbis-timesheets-admin.php:60
+msgid "Tuesday"
+msgstr "Dinsdag"
+
+#: classes/orbis-timesheets-admin.php:61
+msgid "Wednesday"
+msgstr "Woensdag"
+
+#: classes/orbis-timesheets-admin.php:62
+msgid "Thursday"
+msgstr "Donderdag"
+
+#: classes/orbis-timesheets-admin.php:63
+msgid "Friday"
+msgstr "Vrijdag"
+
+#: classes/orbis-timesheets-admin.php:64
+msgid "Saturday"
+msgstr "Zaterdag"
+
+#: classes/orbis-timesheets-admin.php:72
+msgid "Email subject"
+msgstr "E-mail onderwerp"
+
+#: classes/orbis-timesheets-admin.php:91
+msgid "Email users"
+msgstr "E-mail gebruikers"
+
+#: classes/orbis-timesheets-admin.php:203
 msgid "Orbis Timesheets"
 msgstr "Orbis werkregistraties"
 
-#: classes/orbis-timesheets-admin.php:13
+#: classes/orbis-timesheets-admin.php:204
+#: classes/orbis-timesheets-email.php:110
 msgid "Timesheets"
 msgstr "Werkregistraties"
 
-#: classes/orbis-timesheets-admin.php:23
+#: classes/orbis-timesheets-admin.php:214
 msgid "Orbis Timesheets Settings"
 msgstr "Orbis werkregistraties instellingen"
 
-#: classes/orbis-timesheets-admin.php:24
+#: classes/orbis-timesheets-admin.php:215
 msgid "Settings"
 msgstr "Instellingen"
 
@@ -81,6 +145,7 @@ msgid "You have to specify an project."
 msgstr "Je moet een project specificeren."
 
 #: includes/functions.php:329
+#, php-format
 msgid "You have to specify an description (%d words)."
 msgstr "Je moet een beschrijving specificeren (%d woorden)."
 
@@ -104,10 +169,6 @@ msgstr "Timesheet"
 msgid "Add registration"
 msgstr "Registratie toevoegen"
 
-#: templates/new-registration-form.php:31
-msgid "Register"
-msgstr "Registreer"
-
 #: templates/project-timesheet.php:78
 msgid "There are no time registrations for this project."
 msgstr "Er zijn geen tijd registraties voor dit project."
@@ -115,14 +176,6 @@ msgstr "Er zijn geen tijd registraties voor dit project."
 #: templates/timesheets_edit.php:20
 msgid "Edit registration"
 msgstr "Registratie bewerken"
-
-#: templates/timesheets_edit.php:25 templates/timesheets_overview.php:167
-msgid "Edit"
-msgstr "Bewerken"
-
-#: templates/timesheets_edit.php:35
-msgid "Cancel"
-msgstr "Annuleer"
 
 #: templates/timesheets_overview.php:59
 msgid "Today"
@@ -140,33 +193,21 @@ msgstr "Je werk registratie is succesvol bijgewerkt."
 msgid "Actions"
 msgstr "Acties"
 
+#: templates/timesheets_overview.php:167
+msgid "Edit"
+msgstr "Bewerken"
+
 #: templates/work_registration_fields.php:25
 msgid "Company"
 msgstr "Bedrijf"
-
-#: templates/work_registration_fields.php:26
-msgid "Select company…"
-msgstr "Selecteer bedrijf…"
 
 #: templates/work_registration_fields.php:36
 msgid "Project"
 msgstr "Project"
 
-#: templates/work_registration_fields.php:37
-msgid "Select project…"
-msgstr "Selecteer project…"
-
 #: templates/work_registration_fields.php:47
 msgid "Subscription"
 msgstr "Abonnement"
-
-#: templates/work_registration_fields.php:48
-msgid "Select subscription…"
-msgstr "Selecteer abonnement…"
-
-#: templates/work_registration_fields.php:80
-msgid "Work registration description"
-msgstr "Werk registratie beschrijving"
 
 #: templates/work_registration_fields.php:90
 msgid "hours"
@@ -176,25 +217,39 @@ msgstr "uren"
 msgid "minutes"
 msgstr "minuten"
 
-#. Plugin URI of the plugin/theme
-msgid "http://www.orbiswp.com/"
-msgstr "http://www.orbiswp.com/"
+#~ msgid "Register"
+#~ msgstr "Registreer"
 
-#. Description of the plugin/theme
-msgid ""
-"Time Management, Timesheet, Time Tracking solution for WordPress. Orbis "
-"Timesheets enables you to track your work time."
-msgstr ""
-"Werkregistratie oplossing voor Wordpress. Orbis werkregistraties maakt het "
-"mogelijk om je werktijd bij te houden."
+#~ msgid "Cancel"
+#~ msgstr "Annuleer"
 
-#. Author of the plugin/theme
-msgid "Pronamic"
-msgstr "Pronamic"
+#~ msgid "Select company…"
+#~ msgstr "Selecteer bedrijf…"
 
-#. Author URI of the plugin/theme
-msgid "http://www.pronamic.eu/"
-msgstr "http://www.pronamic.nl/"
+#~ msgid "Select project…"
+#~ msgstr "Selecteer project…"
+
+#~ msgid "Select subscription…"
+#~ msgstr "Selecteer abonnement…"
+
+#~ msgid "Work registration description"
+#~ msgstr "Werk registratie beschrijving"
+
+#~ msgid "http://www.orbiswp.com/"
+#~ msgstr "http://www.orbiswp.com/"
+
+#~ msgid ""
+#~ "Time Management, Timesheet, Time Tracking solution for WordPress. Orbis "
+#~ "Timesheets enables you to track your work time."
+#~ msgstr ""
+#~ "Werkregistratie oplossing voor Wordpress. Orbis werkregistraties maakt "
+#~ "het mogelijk om je werktijd bij te houden."
+
+#~ msgid "Pronamic"
+#~ msgstr "Pronamic"
+
+#~ msgid "http://www.pronamic.eu/"
+#~ msgstr "http://www.pronamic.nl/"
 
 #~ msgid ""
 #~ "Who are you? <a href=\"%s\">Edit your user profile</a> and enter you "
@@ -221,9 +276,6 @@ msgstr "http://www.pronamic.nl/"
 #~ msgid "Person"
 #~ msgstr "Persoon"
 
-#~ msgid "Email"
-#~ msgstr "E-mailadres"
-
 #~ msgid "A license expiration reminder has been sent to %s (%s)."
 #~ msgstr "Een licentie verval herinnering werd verstuurd naar %s (%s)."
 
@@ -244,9 +296,6 @@ msgstr "http://www.pronamic.nl/"
 
 #~ msgid "URL"
 #~ msgstr "URL"
-
-#~ msgid "Subject"
-#~ msgstr "Onderwerp"
 
 #~ msgid "Template"
 #~ msgstr "Sjabloon"
@@ -716,9 +765,6 @@ msgstr "http://www.pronamic.nl/"
 
 #~ msgid "Contact information"
 #~ msgstr "Contact informatie"
-
-#~ msgid "Email Address:"
-#~ msgstr "E-mailadres:"
 
 #~ msgid "Phone Number:"
 #~ msgstr "Telefoonnummer:"
