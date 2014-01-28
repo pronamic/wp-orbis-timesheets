@@ -27,8 +27,6 @@ class Orbis_Timesheets_Email {
 		add_action( 'init', array( $this, 'schedule_send_timesheets_by_email' ) );
 
 		add_action( $this->cron_hook, array( $this, 'send_timesheets_by_email' ) );
-
-//		add_action( 'admin_init', array( $this, 'send_timesheets_by_email' ) );
 	}
 
 	/**
@@ -84,29 +82,6 @@ class Orbis_Timesheets_Email {
 
 		// Reschedule
 		$this->schedule_send_timesheets_by_email( strtotime( 'next day midnight', $scheduled_execution_timestamp ) );
-
-//		$last_email_timestamp = get_option( 'orbis_timesheets_last_email_timestamp', time() );
-//
-//		switch ( $frequency ) {
-//
-//			case '1 day':
-//
-//				$next_email_timestamp = strtotime( '23:59:59', $last_email_timestamp );
-//
-//				break;
-//
-//			default: // '1 week'
-//
-//				$day = get_option( 'orbis_timesheets_email_frequency_day', 'sunday' );
-//
-//				$next_email_timestamp = strtotime( 'next ' . $day . ' midnight', $last_email_timestamp );
-//
-//				break;
-//		}
-//
-//		if ( $next_email_timestamp > time() ) {
-//			return;
-//		}
 
 		$first_day_of_week_timestamp = strtotime( 'last monday midnight', $scheduled_execution_timestamp );
 
