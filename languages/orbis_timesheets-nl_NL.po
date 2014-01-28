@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Orbis Timesheets\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/orbis-timesheets\n"
-"POT-Creation-Date: 2014-01-28 10:20+0100\n"
-"PO-Revision-Date: 2014-01-28 10:28+0100\n"
+"POT-Creation-Date: 2014-01-28 16:16+0100\n"
+"PO-Revision-Date: 2014-01-28 16:16+0100\n"
 "Last-Translator: \n"
 "Language-Team: Pronamic <info@pronamic.nl>\n"
 "Language: nl_NL\n"
@@ -28,7 +28,7 @@ msgid "Registered On"
 msgstr "Geregistreerd op"
 
 #: admin/page-timesheets.php:68 templates/project-timesheet.php:40
-#: templates/user-timesheet.php:18
+#: templates/emails/user-timesheet.php:16
 msgid "User"
 msgstr "Gebruiker"
 
@@ -79,60 +79,28 @@ msgstr "Dagelijks"
 msgid "Weekly"
 msgstr "Wekelijks"
 
-#: classes/orbis-timesheets-admin.php:51
-msgid "Email day"
-msgstr "E-mail dag"
-
-#: classes/orbis-timesheets-admin.php:58
-msgid "Sunday"
-msgstr "Zondag"
-
-#: classes/orbis-timesheets-admin.php:59
-msgid "Monday"
-msgstr "Maandag"
-
-#: classes/orbis-timesheets-admin.php:60
-msgid "Tuesday"
-msgstr "Dinsdag"
-
-#: classes/orbis-timesheets-admin.php:61
-msgid "Wednesday"
-msgstr "Woensdag"
-
-#: classes/orbis-timesheets-admin.php:62
-msgid "Thursday"
-msgstr "Donderdag"
-
-#: classes/orbis-timesheets-admin.php:63
-msgid "Friday"
-msgstr "Vrijdag"
-
-#: classes/orbis-timesheets-admin.php:64
-msgid "Saturday"
-msgstr "Zaterdag"
-
 #: classes/orbis-timesheets-admin.php:72
 msgid "Email subject"
 msgstr "E-mail onderwerp"
 
 #: classes/orbis-timesheets-admin.php:91
-msgid "Email users"
-msgstr "E-mail gebruikers"
+msgid "Email receivers"
+msgstr "E-mail ontvangers"
 
-#: classes/orbis-timesheets-admin.php:203
+#: classes/orbis-timesheets-admin.php:204
 msgid "Orbis Timesheets"
 msgstr "Orbis werkregistraties"
 
-#: classes/orbis-timesheets-admin.php:204
-#: classes/orbis-timesheets-email.php:110
+#: classes/orbis-timesheets-admin.php:205
+#: classes/orbis-timesheets-email.php:141
 msgid "Timesheets"
 msgstr "Werkregistraties"
 
-#: classes/orbis-timesheets-admin.php:214
+#: classes/orbis-timesheets-admin.php:215
 msgid "Orbis Timesheets Settings"
 msgstr "Orbis werkregistraties instellingen"
 
-#: classes/orbis-timesheets-admin.php:215
+#: classes/orbis-timesheets-admin.php:216
 msgid "Settings"
 msgstr "Instellingen"
 
@@ -216,6 +184,30 @@ msgstr "uren"
 #: templates/work_registration_fields.php:95
 msgid "minutes"
 msgstr "minuten"
+
+#~ msgid "Email day"
+#~ msgstr "E-mail dag"
+
+#~ msgid "Sunday"
+#~ msgstr "Zondag"
+
+#~ msgid "Monday"
+#~ msgstr "Maandag"
+
+#~ msgid "Tuesday"
+#~ msgstr "Dinsdag"
+
+#~ msgid "Wednesday"
+#~ msgstr "Woensdag"
+
+#~ msgid "Thursday"
+#~ msgstr "Donderdag"
+
+#~ msgid "Friday"
+#~ msgstr "Vrijdag"
+
+#~ msgid "Saturday"
+#~ msgstr "Zaterdag"
 
 #~ msgid "Register"
 #~ msgstr "Registreer"
