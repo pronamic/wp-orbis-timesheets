@@ -1,7 +1,5 @@
 <?php if ( isset( $users_registered_hours ) && is_array( $users_registered_hours ) &&
-		   isset( $dates ) && is_array( $dates ) &&
-		   isset( $last_email_timestamp ) &&
-		   isset( $next_email_timestamp ) ) : ?>
+		   isset( $dates ) && is_array( $dates ) ) : ?>
 
 <?php
 
@@ -44,8 +42,8 @@ $dates_keys = array_keys( $dates );
 		<?php
 
 		$url = add_query_arg( array(
-			'start_date' => date( 'Y-m-d', $dates[ $i ] ),
-			'end_date'   => date( 'Y-m-d', $dates[ $i ] ),
+			'start_date' => date( 'Y-m-d', strtotime( $dates_keys[ $i ] ) ),
+			'end_date'   => date( 'Y-m-d', strtotime( $dates_keys[ $i ] ) ),
 			'user'       => $user_id,
 		) );
 

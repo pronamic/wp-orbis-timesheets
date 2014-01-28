@@ -15,10 +15,11 @@ class Orbis_Timesheets_Plugin extends Orbis_Plugin {
 
 		orbis_register_table( 'orbis_timesheets', 'orbis_hours_registration' );
 		orbis_register_table( 'orbis_activities' );
+
+		$this->email = new Orbis_Timesheets_Email( $this );
 		
 		if ( is_admin() ) {
 			$this->admin = new Orbis_Timesheets_Admin( $this );
-			$this->email = new Orbis_Timesheets_Email( $this );
 		}
 	}
 

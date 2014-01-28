@@ -38,34 +38,34 @@ class Orbis_Timesheets_Admin {
 			array(
 				'label_for' => 'orbis_timesheets_email_frequency',
 				'options'   => array(
-					'1 day'  => __( 'Daily' , 'orbis_timesheets' ),
-					'1 week' => __( 'Weekly', 'orbis_timesheets' ),
+					'daily'  => __( 'Daily' , 'orbis_timesheets' ),
+					'weekly' => __( 'Weekly', 'orbis_timesheets' ),
 				),
 			) // args
 		);
 
-		if ( get_option( 'orbis_timesheets_email_frequency', '1 week' ) === '1 week' ) {
-
-			add_settings_field(
-				'orbis_timesheets_email_frequency_day', // id
-				__( 'Email day', 'orbis_timesheets' ), // title
-				array( $this, 'input_select' ), // callback
-				'orbis_timesheets_settings', // page
-				'orbis_timesheets_settings_email', // section
-				array(
-					'label_for' => 'orbis_timesheets_email_frequency_day',
-					'options'   => array(
-						'sunday'    => __( 'Sunday'   , 'orbis_timesheets' ),
-						'monday'    => __( 'Monday'   , 'orbis_timesheets' ),
-						'tuesday'   => __( 'Tuesday'  , 'orbis_timesheets' ),
-						'wednesday' => __( 'Wednesday', 'orbis_timesheets' ),
-						'thursday'  => __( 'Thursday' , 'orbis_timesheets' ),
-						'friday'    => __( 'Friday'   , 'orbis_timesheets' ),
-						'saturday'  => __( 'Saturday' , 'orbis_timesheets' ),
-					),
-				) // args
-			);
-		}
+//		if ( get_option( 'orbis_timesheets_email_frequency', '1 week' ) === '1 week' ) {
+//
+//			add_settings_field(
+//				'orbis_timesheets_email_frequency_day', // id
+//				__( 'Email day', 'orbis_timesheets' ), // title
+//				array( $this, 'input_select' ), // callback
+//				'orbis_timesheets_settings', // page
+//				'orbis_timesheets_settings_email', // section
+//				array(
+//					'label_for' => 'orbis_timesheets_email_frequency_day',
+//					'options'   => array(
+//						'sunday'    => __( 'Sunday'   , 'orbis_timesheets' ),
+//						'monday'    => __( 'Monday'   , 'orbis_timesheets' ),
+//						'tuesday'   => __( 'Tuesday'  , 'orbis_timesheets' ),
+//						'wednesday' => __( 'Wednesday', 'orbis_timesheets' ),
+//						'thursday'  => __( 'Thursday' , 'orbis_timesheets' ),
+//						'friday'    => __( 'Friday'   , 'orbis_timesheets' ),
+//						'saturday'  => __( 'Saturday' , 'orbis_timesheets' ),
+//					),
+//				) // args
+//			);
+//		}
 
 		add_settings_field(
 			'orbis_timesheets_email_subject', // id
@@ -88,7 +88,7 @@ class Orbis_Timesheets_Admin {
 
 		add_settings_field(
 			'orbis_timesheets_email_users', // id
-			__( 'Email users', 'orbis_timesheets' ), // title
+			__( 'Email receivers', 'orbis_timesheets' ), // title
 			array( $this, 'input_select' ), // callback
 			'orbis_timesheets_settings', // page
 			'orbis_timesheets_settings_email', // section
@@ -102,6 +102,7 @@ class Orbis_Timesheets_Admin {
 		register_setting( 'orbis_timesheets', 'orbis_timesheets_email_send_automatically' );
 		register_setting( 'orbis_timesheets', 'orbis_timesheets_email_frequency' );
 		register_setting( 'orbis_timesheets', 'orbis_timesheets_email_frequency_day' );
+		register_setting( 'orbis_timesheets', 'orbis_timesheets_email_subject' );
 		register_setting( 'orbis_timesheets', 'orbis_timesheets_email_users' );
 	}
 
