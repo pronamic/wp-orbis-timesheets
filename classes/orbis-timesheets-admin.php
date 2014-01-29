@@ -44,29 +44,6 @@ class Orbis_Timesheets_Admin {
 			) // args
 		);
 
-//		if ( get_option( 'orbis_timesheets_email_frequency', '1 week' ) === '1 week' ) {
-//
-//			add_settings_field(
-//				'orbis_timesheets_email_frequency_day', // id
-//				__( 'Email day', 'orbis_timesheets' ), // title
-//				array( $this, 'input_select' ), // callback
-//				'orbis_timesheets_settings', // page
-//				'orbis_timesheets_settings_email', // section
-//				array(
-//					'label_for' => 'orbis_timesheets_email_frequency_day',
-//					'options'   => array(
-//						'sunday'    => __( 'Sunday'   , 'orbis_timesheets' ),
-//						'monday'    => __( 'Monday'   , 'orbis_timesheets' ),
-//						'tuesday'   => __( 'Tuesday'  , 'orbis_timesheets' ),
-//						'wednesday' => __( 'Wednesday', 'orbis_timesheets' ),
-//						'thursday'  => __( 'Thursday' , 'orbis_timesheets' ),
-//						'friday'    => __( 'Friday'   , 'orbis_timesheets' ),
-//						'saturday'  => __( 'Saturday' , 'orbis_timesheets' ),
-//					),
-//				) // args
-//			);
-//		}
-
 		add_settings_field(
 			'orbis_timesheets_email_subject', // id
 			__( 'Email subject', 'orbis_timesheets' ), // title
