@@ -28,6 +28,9 @@ License URI: http://www.pronamic.eu/copyright/
 
 == Changelog ==
 
+= 1.2.0 =
+*	Added an basic e-mail notification system for periodic e-mail notifications about timesheets.
+
 = 1.1.0 =
 *	Removed usage of custom table for Orbis persons, now use WordPress users table.
 
