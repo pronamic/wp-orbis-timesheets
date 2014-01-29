@@ -1,15 +1,11 @@
 <?php
 
 class Orbis_Timesheets_Admin {
-
 	public function __construct( $plugin ) {
 		$this->plugin = $plugin;
 
 		add_action( 'admin_init', array( $this, 'admin_init' ) );
-
 		add_action( 'admin_menu', array( $this, 'admin_menu' ) );
-
-
 	}
 
 	public function admin_init() {
