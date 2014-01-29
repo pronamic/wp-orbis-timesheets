@@ -211,7 +211,7 @@ class Orbis_Timesheets_Admin {
 		$timestamp = wp_next_scheduled( 'orbis_timesheets_emails' );
 		
 		if ( $timestamp ) {
-			$date = get_date_from_gmt( date( 'Y-m-d H:i:s', $timestamp ) );
+			$timestamp = strtotime( get_date_from_gmt( '@' . $timestamp ) );
 
 			echo date_i18n( 'D j M Y H:i:s', $timestamp );
 		} else {
@@ -252,11 +252,7 @@ class Orbis_Timesheets_Admin {
 		wp_clear_scheduled_hook( 'orbis_timesheets_emails' );
 
 		if ( ! empty( $value ) ) {
-			$time = strtotime( get_option( 'orbis_timesheets_email_time' ) );
-		
-			if ( ! $time ) {
-				$time = time();
-			}
+			$time = get_gmt_from_date( get_option( 'orbis_timesheets_email_time' ), 'U' );
 
 			wp_schedule_event( $time, $value, 'orbis_timesheets_emails' );
 		}
