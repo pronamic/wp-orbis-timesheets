@@ -13,4 +13,12 @@
 
 		?>
 	</p>
+
+	<form action="options.php" method="post">
+		<?php settings_fields( 'orbis_timesheets' ); ?>
+
+		<?php do_settings_sections( 'orbis_timesheets_settings' ); ?>
+
+		<?php submit_button(); ?>
+	</form>
 </div>

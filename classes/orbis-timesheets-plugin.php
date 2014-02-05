@@ -5,7 +5,7 @@ class Orbis_Timesheets_Plugin extends Orbis_Plugin {
 		parent::__construct( $file );
 
 		$this->set_name( 'orbis_timesheets' );
-		$this->set_db_version( '1.1.0' );
+		$this->set_db_version( '1.2.0' );
 
 		$this->plugin_include( 'includes/functions.php' );
 		$this->plugin_include( 'includes/post.php' );
@@ -15,7 +15,9 @@ class Orbis_Timesheets_Plugin extends Orbis_Plugin {
 
 		orbis_register_table( 'orbis_timesheets', 'orbis_hours_registration' );
 		orbis_register_table( 'orbis_activities' );
-		
+
+		$this->email = new Orbis_Timesheets_Email( $this );
+
 		if ( is_admin() ) {
 			$this->admin = new Orbis_Timesheets_Admin( $this );
 		}

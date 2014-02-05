@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Orbis Timesheets\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/orbis-timesheets\n"
-"POT-Creation-Date: 2014-01-24 13:11:33+00:00\n"
-"PO-Revision-Date: 2014-01-24 14:13+0100\n"
+"POT-Creation-Date: 2014-02-05 14:25:29+00:00\n"
+"PO-Revision-Date: 2014-02-05 15:25+0100\n"
 "Last-Translator: Remco Tolsma <info@remcotolsma.nl>\n"
 "Language-Team: Pronamic <info@pronamic.nl>\n"
 "Language: nl_NL\n"
@@ -14,6 +14,8 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Generator: Poedit 1.6.3\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-SearchPath-0: .\n"
 
 #: admin/page-settings.php:10
 msgid "The Orbis Timesheets plugin requires an page with the shortcode %s."
@@ -24,7 +26,8 @@ msgstr ""
 msgid "Registered On"
 msgstr "Geregistreerd op"
 
-#: admin/page-timesheets.php:68 templates/project-timesheet.php:40
+#: admin/page-timesheets.php:68 templates/emails/user-timesheet.php:8
+#: templates/project-timesheet.php:40
 msgid "User"
 msgstr "Gebruiker"
 
@@ -49,26 +52,59 @@ msgstr "Beschrijving"
 msgid "Date"
 msgstr "Datum"
 
-#: admin/page-timesheets.php:83 templates/project-timesheet.php:43
-#: templates/timesheets_overview.php:113
+#: admin/page-timesheets.php:83 classes/orbis-timesheets-admin.php:41
+#: templates/project-timesheet.php:43 templates/timesheets_overview.php:113
 #: templates/work_registration_fields.php:86
 msgid "Time"
 msgstr "Tijd"
 
+#: classes/orbis-timesheets-admin.php:17
+msgid "E-mail Settings"
+msgstr "E-mail instellingen"
+
+#: classes/orbis-timesheets-admin.php:29
+msgid "Frequency"
+msgstr "Frequentie"
+
+#: classes/orbis-timesheets-admin.php:53
+msgid "Next Schedule"
+msgstr "Volgende planning"
+
+#: classes/orbis-timesheets-admin.php:61
+msgid "Subject"
+msgstr "Onderwerp"
+
+#: classes/orbis-timesheets-admin.php:80
+msgid "Receivers"
+msgstr "Ontvangers"
+
+#: classes/orbis-timesheets-admin.php:93
+msgid "E-mail Manually"
+msgstr "E-mail handmatig"
+
+#: classes/orbis-timesheets-admin.php:203
+msgid "Send E-mail"
+msgstr "Verstuur e-mail"
+
+#: classes/orbis-timesheets-admin.php:218
+msgid "Not scheduled"
+msgstr "Niet ingepland"
+
 #. Plugin Name of the plugin/theme
-#: classes/orbis-timesheets-admin.php:12
+#: classes/orbis-timesheets-admin.php:224
 msgid "Orbis Timesheets"
 msgstr "Orbis werkregistraties"
 
-#: classes/orbis-timesheets-admin.php:13
+#: classes/orbis-timesheets-admin.php:225
+#: classes/orbis-timesheets-email.php:79 classes/orbis-timesheets-email.php:82
 msgid "Timesheets"
 msgstr "Werkregistraties"
 
-#: classes/orbis-timesheets-admin.php:23
+#: classes/orbis-timesheets-admin.php:235
 msgid "Orbis Timesheets Settings"
 msgstr "Orbis werkregistraties instellingen"
 
-#: classes/orbis-timesheets-admin.php:24
+#: classes/orbis-timesheets-admin.php:236
 msgid "Settings"
 msgstr "Instellingen"
 
@@ -196,6 +232,36 @@ msgstr "Pronamic"
 msgid "http://www.pronamic.eu/"
 msgstr "http://www.pronamic.nl/"
 
+#~ msgid "Automatically send timesheet emails"
+#~ msgstr "Verstuur werkregistraties automatisch"
+
+#~ msgid "Daily"
+#~ msgstr "Dagelijks"
+
+#~ msgid "Weekly"
+#~ msgstr "Wekelijks"
+
+#~ msgid "Sunday"
+#~ msgstr "Zondag"
+
+#~ msgid "Monday"
+#~ msgstr "Maandag"
+
+#~ msgid "Tuesday"
+#~ msgstr "Dinsdag"
+
+#~ msgid "Wednesday"
+#~ msgstr "Woensdag"
+
+#~ msgid "Thursday"
+#~ msgstr "Donderdag"
+
+#~ msgid "Friday"
+#~ msgstr "Vrijdag"
+
+#~ msgid "Saturday"
+#~ msgstr "Zaterdag"
+
 #~ msgid ""
 #~ "Who are you? <a href=\"%s\">Edit your user profile</a> and enter you "
 #~ "Orbis legacy person ID."
@@ -221,9 +287,6 @@ msgstr "http://www.pronamic.nl/"
 #~ msgid "Person"
 #~ msgstr "Persoon"
 
-#~ msgid "Email"
-#~ msgstr "E-mailadres"
-
 #~ msgid "A license expiration reminder has been sent to %s (%s)."
 #~ msgstr "Een licentie verval herinnering werd verstuurd naar %s (%s)."
 
@@ -244,9 +307,6 @@ msgstr "http://www.pronamic.nl/"
 
 #~ msgid "URL"
 #~ msgstr "URL"
-
-#~ msgid "Subject"
-#~ msgstr "Onderwerp"
 
 #~ msgid "Template"
 #~ msgstr "Sjabloon"
@@ -716,9 +776,6 @@ msgstr "http://www.pronamic.nl/"
 
 #~ msgid "Contact information"
 #~ msgstr "Contact informatie"
-
-#~ msgid "Email Address:"
-#~ msgstr "E-mailadres:"
 
 #~ msgid "Phone Number:"
 #~ msgstr "Telefoonnummer:"
