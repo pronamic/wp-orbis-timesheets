@@ -226,7 +226,7 @@ class Orbis_Timesheets_Admin {
 			'manage_options',
 			'orbis_timesheets',
 			array( $this, 'page_admin' ),
-			'dashicons-performance',
+			'dashicons-clock',
 			40
 		);
 
