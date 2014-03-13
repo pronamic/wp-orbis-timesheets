@@ -28,6 +28,9 @@ License URI: http://www.pronamic.eu/copyright/
 
 == Changelog ==
 
+= 1.2.1 =
+*	Tweak - Switched to the 'clock' dashicon for the admin menu item.
+
 = 1.2.0 =
 *	Added an basic e-mail notification system for periodic e-mail notifications about timesheets.
 
