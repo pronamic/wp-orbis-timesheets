@@ -4,7 +4,7 @@ Plugin Name: Orbis Timesheets
 Plugin URI: http://www.orbiswp.com/
 Description: Time Management, Timesheet, Time Tracking solution for WordPress. Orbis Timesheets enables you to track your work time.
 
-Version: 1.2.0
+Version: 1.2.1
 Requires at least: 3.5
 
 Author: Pronamic
