@@ -2,11 +2,11 @@
 # This file is distributed under the same license as the Orbis Timesheets package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Orbis Timesheets 1.2.0\n"
-"Report-Msgid-Bugs-To: http://wordpress.org/tag/orbis-timesheets\n"
-"POT-Creation-Date: 2014-02-05 14:25:29+00:00\n"
+"Project-Id-Version: Orbis Timesheets 1.2.1\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/orbis-timesheets\n"
+"POT-Creation-Date: 2014-03-14 15:29:49+00:00\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "PO-Revision-Date: 2014-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
@@ -84,14 +84,12 @@ msgstr ""
 msgid "Not scheduled"
 msgstr ""
 
-#. #-#-#-#-#  orbis_timesheets.pot (Orbis Timesheets 1.2.0)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
-#: classes/orbis-timesheets-admin.php:224
 msgid "Orbis Timesheets"
 msgstr ""
 
-#: classes/orbis-timesheets-admin.php:225
-#: classes/orbis-timesheets-email.php:79 classes/orbis-timesheets-email.php:82
+#: classes/orbis-timesheets-admin.php:225 classes/orbis-timesheets-email.php:79
+#: classes/orbis-timesheets-email.php:82
 msgid "Timesheets"
 msgstr ""
 

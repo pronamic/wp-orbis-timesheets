@@ -5,7 +5,7 @@ class Orbis_Timesheets_Plugin extends Orbis_Plugin {
 		parent::__construct( $file );
 
 		$this->set_name( 'orbis_timesheets' );
-		$this->set_db_version( '1.2.0' );
+		$this->set_db_version( '1.2.1' );
 
 		$this->plugin_include( 'includes/functions.php' );
 		$this->plugin_include( 'includes/post.php' );

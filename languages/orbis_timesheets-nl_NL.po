@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Orbis Timesheets\n"
-"Report-Msgid-Bugs-To: http://wordpress.org/tag/orbis-timesheets\n"
-"POT-Creation-Date: 2014-02-05 14:25:29+00:00\n"
-"PO-Revision-Date: 2014-02-05 15:25+0100\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/orbis-timesheets\n"
+"POT-Creation-Date: 2014-03-14 15:29:49+00:00\n"
+"PO-Revision-Date: 2014-03-14 16:30+0100\n"
 "Last-Translator: Remco Tolsma <info@remcotolsma.nl>\n"
 "Language-Team: Pronamic <info@pronamic.nl>\n"
 "Language: nl_NL\n"
@@ -13,7 +13,7 @@ msgstr ""
 "X-Poedit-KeywordsList: __;_e;_x:2c,1\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 1.6.3\n"
+"X-Generator: Poedit 1.6.4\n"
 "X-Poedit-Basepath: ../\n"
 "X-Poedit-SearchPath-0: .\n"
 
@@ -91,7 +91,6 @@ msgid "Not scheduled"
 msgstr "Niet ingepland"
 
 #. Plugin Name of the plugin/theme
-#: classes/orbis-timesheets-admin.php:224
 msgid "Orbis Timesheets"
 msgstr "Orbis werkregistraties"
 
