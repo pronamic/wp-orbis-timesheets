@@ -7,6 +7,50 @@ class Orbis_Timesheets_Admin {
 		add_action( 'admin_init', array( $this, 'admin_init' ) );
 		add_action( 'admin_init', array( $this, 'maybe_email_manually' ) );
 		add_action( 'admin_menu', array( $this, 'admin_menu' ) );
+
+		// Taxonomy actions
+		// @see https://github.com/WordPress/WordPress/blob/3.9.1/wp-includes/taxonomy.php#L2529
+		add_action( 'created_orbis_timesheets_activity', array( $this, 'sync_activity' ), 10, 2 );
+		// @see https://github.com/WordPress/WordPress/blob/3.9.1/wp-includes/taxonomy.php#L3024
+		add_action( 'edited_orbis_timesheets_activity', array( $this, 'sync_activity' ), 10, 2 );
+	}
+
+	/**
+	 * Sync activity
+	 *
+	 * @param int $term_id Term ID.
+	 * @param int $tt_id Term taxonomy ID.
+	 */
+	public function sync_activity( $term_id, $tt_id ) {
+		global $wpdb;
+
+		$term = get_term( $term_id, 'orbis_timesheets_activity' );
+
+		if ( is_wp_error( $term ) || is_null( $term ) ) {
+
+		} else {
+			$activity_id = $wpdb->get_var( $wpdb->prepare( "SELECT id FROM $wpdb->orbis_activities WHERE term_id = %d;", $term_id ) );
+
+			// Format and data
+			$format = array(
+				'name'        => '%s',
+				'description' => '%s',
+				'term_id'     => '%d',
+			);
+
+			$data = array(
+				'name'        => $term->name,
+				'description' => $term->description,
+				'term_id'     => $term_id,
+			);
+
+			// Activity
+			if ( $activity_id ) {
+				$result = $wpdb->update( $wpdb->orbis_activities, $data, array( 'id' => $activity_id ), $format );
+			} else {
+				$result = $wpdb->insert( $wpdb->orbis_activities, $data, $format );
+			}
+		}
 	}
 
 	public function admin_init() {
@@ -22,7 +66,7 @@ class Orbis_Timesheets_Admin {
 		$options = array( '' );
 		foreach ( wp_get_schedules() as $name => $schedule ) {
 			$options[ $name ] = $schedule['display'];
-		} 
+		}
 
 		add_settings_field(
 			'orbis_timesheets_email_frequency', // id
@@ -35,7 +79,7 @@ class Orbis_Timesheets_Admin {
 				'options'   => $options,
 			) // args
 		);
-		
+
 		add_settings_field(
 			'orbis_timesheets_email_time', // id
 			__( 'Time', 'orbis_timesheets' ), // title
@@ -47,14 +91,14 @@ class Orbis_Timesheets_Admin {
 				'classes'   => array(),
 			) // args
 		);
-		
+
 		add_settings_field(
 			'orbis_timesheets_emails_next_schedule', // id
 			__( 'Next Schedule', 'orbis_timesheets' ), // title
 			array( $this, 'next_schedule' ), // callback
 			'orbis_timesheets_settings', // page
 			'orbis_timesheets_settings_email' // section
-		);			
+		);
 
 		add_settings_field(
 			'orbis_timesheets_email_subject', // id
@@ -206,10 +250,10 @@ class Orbis_Timesheets_Admin {
 			false
 		);
 	}
-	
+
 	public function next_schedule() {
 		$timestamp = wp_next_scheduled( 'orbis_timesheets_emails' );
-		
+
 		if ( $timestamp ) {
 			$timestamp = strtotime( get_date_from_gmt( '@' . $timestamp ) );
 
@@ -238,6 +282,22 @@ class Orbis_Timesheets_Admin {
 			'orbis_timesheets_settings', // menu_slug
 			array( $this, 'page_settings' ) // function
 		);
+
+		global $submenu;
+
+		/*
+		 * Add taxonomy 'orbis_timesheets_activity' to sub menu
+		 * @see https://github.com/WordPress/WordPress/blob/3.9.1/wp-admin/menu.php#L59
+		 */
+		if ( isset( $submenu['orbis_timesheets'] ) ) {
+			$tax = get_taxonomy( 'orbis_timesheets_activity' );
+
+			$submenu['orbis_timesheets'][] = array(
+				esc_attr( $tax->labels->menu_name ),
+				$tax->cap->manage_terms,
+				add_query_arg( 'taxonomy', $tax->name, 'edit-tags.php' )
+			);
+		}
 	}
 
 	public function page_admin() {
@@ -256,10 +316,10 @@ class Orbis_Timesheets_Admin {
 
 			wp_schedule_event( $time, $value, 'orbis_timesheets_emails' );
 		}
-		
+
 		return $value;
 	}
-	
+
 	public function maybe_email_manually() {
 		if ( filter_has_var( INPUT_POST, 'orbis_timesheets_email_manually' ) ) {
 			$this->plugin->email->send_timesheets_by_email();
