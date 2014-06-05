@@ -13,6 +13,8 @@ class Orbis_Timesheets_Admin {
 		add_action( 'created_orbis_timesheets_activity', array( $this, 'sync_activity' ), 10, 2 );
 		// @see https://github.com/WordPress/WordPress/blob/3.9.1/wp-includes/taxonomy.php#L3024
 		add_action( 'edited_orbis_timesheets_activity', array( $this, 'sync_activity' ), 10, 2 );
+
+		add_filter( 'parent_file', array( $this, 'parent_file' ) );
 	}
 
 	/**
@@ -261,6 +263,24 @@ class Orbis_Timesheets_Admin {
 		} else {
 			_e( 'Not scheduled', 'orbis_timesheets' );
 		}
+	}
+
+	/**
+	 * Parent file
+	 *
+	 * @see https://github.com/WordPress/WordPress/blob/3.9.1/wp-admin/menu-header.php#L23
+	 * @param string $parent_file
+	 * @return string
+	 */
+	public function parent_file( $parent_file ) {
+		$screen = get_current_screen();
+
+		if ( 'orbis_timesheets_activity' == $screen->taxonomy ) {
+			// Make sure the Orbis Timesheets menu is active
+			$parent_file = 'orbis_timesheets';
+		}
+
+		return $parent_file;
 	}
 
 	public function admin_menu() {
