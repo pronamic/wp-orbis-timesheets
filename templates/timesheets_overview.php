@@ -89,7 +89,7 @@ $url = add_query_arg( 'message', false );
 
 <?php if ( empty( $registrations ) ) : ?>
 
-	
+
 
 <?php else : ?>
 

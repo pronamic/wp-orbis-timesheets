@@ -1,6 +1,6 @@
 <?php if ( ! empty( $orbis_errors ) ) : ?>
 
-	<div class="alert alert-error">
+	<div class="alert alert-danger">
 		<p>
 			<?php 
 			
