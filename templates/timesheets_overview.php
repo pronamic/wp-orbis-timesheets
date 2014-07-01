@@ -3,10 +3,10 @@
 global $wpdb;
 
 $query = "
-	SELECT 
+	SELECT
 		work.id AS work_id,
 		work.description AS work_description,
-		work.date AS work_date, 
+		work.date AS work_date,
 		work.number_seconds AS work_duration,
 		activity.id AS activity_id,
 		activity.name AS activity_name,
@@ -17,9 +17,9 @@ $query = "
 		project.id AS project_id,
 		project.post_id AS project_post_id,
 		project.number_seconds AS project_time_available,
-		project.name AS project_name, 
+		project.name AS project_name,
 		principal.name AS principal_name
-	FROM 
+	FROM
 		$wpdb->orbis_timesheets AS work
 			LEFT JOIN
 		$wpdb->orbis_activities AS activity
@@ -31,13 +31,13 @@ $query = "
 		$wpdb->orbis_projects AS project
 				ON work.project_id = project.id
 			LEFT JOIN
-		$wpdb->orbis_companies AS principal 
+		$wpdb->orbis_companies AS principal
 				ON project.principal_id = principal.id
-	WHERE 
+	WHERE
 		work.user_id = %d
-			AND 
+			AND
 		work.`date` = %s
-	ORDER BY 
+	ORDER BY
 		work.`date` DESC
 	;
 ";
@@ -67,21 +67,21 @@ $url = add_query_arg( 'message', false );
 <?php if ( filter_has_var( INPUT_GET, 'message' ) ) : ?>
 
 	<div class="alert alert-success">
-		<?php 
-		
+		<?php
+
 		$message = filter_input( INPUT_GET, 'message' );
-		
-		switch ( $message ) { 
+
+		switch ( $message ) {
 			case 'added':
 				_e( 'Your work registration was succesfull added.', 'orbis_timesheets' );
-			
+
 				break;
-			case 'updated':		
+			case 'updated':
 				_e( 'Your work registration was succesfull updated.', 'orbis_timesheets' );
-				
+
 				break;
 		}
-		
+
 		?>
 	</div>
 
@@ -93,13 +93,13 @@ $url = add_query_arg( 'message', false );
 
 <?php else : ?>
 
-	<?php 
+	<?php
 
 	$total = 0;
 	foreach ( $registrations as $registration ) {
 		$total += $registration->work_duration;
 	}
-	
+
 	?>
 
 	<div class="panel">
@@ -114,17 +114,17 @@ $url = add_query_arg( 'message', false );
 					<th scope="col"><?php _e( 'Actions', 'orbis_timesheets' ); ?></th>
 				</tr>
 			</thead>
-			
+
 			<tfoot>
 				<tr>
 					<td colspan="4">
-						
+
 					</td>
 					<td>
 						<strong><?php echo orbis_time( $total ); ?></strong>
 					</td>
 					<td>
-						
+
 					</td>
 				</tr>
 			</tfoot>
@@ -135,7 +135,7 @@ $url = add_query_arg( 'message', false );
 
 					<tr>
 						<td>
-							<?php 
+							<?php
 
 							$links = array();
 
@@ -167,9 +167,9 @@ $url = add_query_arg( 'message', false );
 							<a href="<?php echo get_edit_orbis_work_registration_link( $registration->work_id ); ?>"><span class="glyphicon glyphicon-pencil"></span> <span style="display: none"><?php _e( 'Edit', 'orbis_timesheets' ); ?></span></a>
 						</td>
 					</tr>
-	
+
 				<?php endforeach; ?>
-	
+
 			</tbody>
 		</table>
 	</div>
