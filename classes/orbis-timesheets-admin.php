@@ -130,7 +130,7 @@ class Orbis_Timesheets_Admin {
 			array(
 				'label_for' => 'orbis_timesheets_email_users',
 				'options'   => $user_options,
-				'multiple'  => true
+				'multiple'  => true,
 			) // args
 		);
 
