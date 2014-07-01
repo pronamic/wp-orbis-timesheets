@@ -72,7 +72,7 @@ function orbis_timesheets_get_entry( $entry_id ) {
 	// Row
 	$row = $wpdb->get_row( $query );
 
-	if ( $row) {
+	if ( $row ) {
 		$entry = new Orbis_Timesheets_TimesheetEntry();
 
 		$entry->id           = $row->id;
