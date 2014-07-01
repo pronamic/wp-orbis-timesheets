@@ -1,6 +1,6 @@
 <?php
 
-function orbis_timesheets_shortcode( $atts ) {
+function orbis_timesheets_shortcode() {
 	global $orbis_timesheets_plugin;
 
 	$return  = '';
