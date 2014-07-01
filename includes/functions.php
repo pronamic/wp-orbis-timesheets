@@ -167,7 +167,7 @@ function orbis_insert_timesheet_entry( $entry ) {
 			$wpdb->orbis_timesheets,
 			$data,
 			array( 'id' => $entry->id ),
-			$foramt,
+			$format,
 			array( 'id' => '%d' )
 		);
 	}
