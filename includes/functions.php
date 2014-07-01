@@ -25,7 +25,7 @@ function orbis_timesheets_can_register( $timestamp ) {
 function get_edit_orbis_work_registration_link( $entry_id ) {
 	$link = add_query_arg( array(
 		'entry_id' => $entry_id,
-		'action'   => 'edit'
+		'action'   => 'edit',
 	), get_permalink() );
 
 	return $link;
