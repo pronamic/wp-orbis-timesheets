@@ -4,6 +4,18 @@ module.exports = function( grunt ) {
 		// Package
 		pkg: grunt.file.readJSON( 'package.json' ),
 
+		// PHP Code Sniffer
+		phpcs: {
+			application: {
+				dir: [ './' ],
+			},
+			options: {
+				standard: 'phpcs.ruleset.xml',
+				extensions: 'php',
+				ignore: 'node_modules'
+			}
+		},
+
 		// PHPLint
 		phplint: {
 			options: {
@@ -56,6 +68,7 @@ module.exports = function( grunt ) {
 		}
 	} );
 
+	grunt.loadNpmTasks( 'grunt-phpcs' );
 	grunt.loadNpmTasks( 'grunt-phplint' );
 	grunt.loadNpmTasks( 'grunt-phpmd' );
 	grunt.loadNpmTasks( 'grunt-checkwpversion' );
