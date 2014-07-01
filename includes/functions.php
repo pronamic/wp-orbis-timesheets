@@ -1,7 +1,7 @@
 <?php
 
-function orbis_post_link( $id ) {
-	return add_query_arg( 'p', $id, home_url( '/' ) );
+function orbis_post_link( $post_id ) {
+	return add_query_arg( 'p', $post_id, home_url( '/' ) );
 }
 
 function orbis_field_class( $class = array(), $field_id ) {
