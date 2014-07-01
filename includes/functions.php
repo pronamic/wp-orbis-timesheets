@@ -276,7 +276,7 @@ function orbis_timesheets_get_entry_from_input( $type = INPUT_POST ) {
 
 	$date_string     = filter_input( $type, 'orbis_registration_date', FILTER_SANITIZE_STRING );
 	if ( ! empty( $date_string ) ) {
-		$entry->set_date( new DateTime( $date_string) );
+		$entry->set_date( new DateTime( $date_string ) );
 	}
 
 	if ( filter_has_var( $type, 'orbis_registration_time' ) ) {
