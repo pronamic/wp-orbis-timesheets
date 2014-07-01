@@ -315,7 +315,7 @@ class Orbis_Timesheets_Admin {
 			$submenu['orbis_timesheets'][] = array(
 				esc_attr( $tax->labels->menu_name ),
 				$tax->cap->manage_terms,
-				add_query_arg( 'taxonomy', $tax->name, 'edit-tags.php' )
+				add_query_arg( 'taxonomy', $tax->name, 'edit-tags.php' ),
 			);
 		}
 	}
