@@ -3,16 +3,16 @@
 
 	<h2><?php echo get_admin_page_title(); ?></h2>
 
-	<?php 
-	
+	<?php
+
 	global $wpdb;
-	
+
 	$query = "
-		SELECT 
+		SELECT
 			work.id AS work_id,
 			work.created AS work_created,
 			work.description AS work_description,
-			work.date AS work_date, 
+			work.date AS work_date,
 			work.number_seconds AS work_duration,
 			user.ID AS user_id,
 			user.display_name AS user_display_name,
@@ -25,9 +25,9 @@
 			project.id AS project_id,
 			project.post_id AS project_post_id,
 			project.number_seconds AS project_time_available,
-			project.name AS project_name, 
+			project.name AS project_name,
 			principal.name AS principal_name
-		FROM 
+		FROM
 			$wpdb->orbis_timesheets AS work
 				LEFT JOIN
 			$wpdb->users AS user
@@ -42,9 +42,9 @@
 			$wpdb->orbis_projects AS project
 					ON work.project_id = project.id
 				LEFT JOIN
-			$wpdb->orbis_companies AS principal 
+			$wpdb->orbis_companies AS principal
 					ON project.principal_id = principal.id
-		ORDER BY 
+		ORDER BY
 			work.`date` DESC
 		LIMIT
 			0, %d
@@ -84,11 +84,11 @@
 				</th>
 			</tr>
 		</thead>
-		
+
 		<tbody>
-	
+
 			<?php foreach ( $registrations as $registration ) : ?>
-	
+
 				<tr>
 					<td>
 						<?php echo $registration->work_created; ?>
@@ -97,7 +97,7 @@
 						<?php echo $registration->user_display_name; ?>
 					</td>
 					<td>
-						<?php 
+						<?php
 
 						$links = array();
 
@@ -126,9 +126,9 @@
 						<?php echo orbis_time( $registration->work_duration ); ?>
 					</td>
 				</tr>
-			
+
 			<?php endforeach; ?>
-	
+
 		</tbody>
 	</table>
 </div>
