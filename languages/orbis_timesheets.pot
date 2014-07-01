@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the Orbis Timesheets package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Orbis Timesheets 1.2.1\n"
+"Project-Id-Version: Orbis Timesheets 1.3.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/orbis-timesheets\n"
-"POT-Creation-Date: 2014-03-14 15:29:49+00:00\n"
+"POT-Creation-Date: 2014-07-01 14:05:04+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -46,41 +46,41 @@ msgstr ""
 msgid "Date"
 msgstr ""
 
-#: admin/page-timesheets.php:83 classes/orbis-timesheets-admin.php:41
+#: admin/page-timesheets.php:83 classes/orbis-timesheets-admin.php:87
 #: templates/project-timesheet.php:43 templates/timesheets_overview.php:113
 #: templates/work_registration_fields.php:86
 msgid "Time"
 msgstr ""
 
-#: classes/orbis-timesheets-admin.php:17
+#: classes/orbis-timesheets-admin.php:63
 msgid "E-mail Settings"
 msgstr ""
 
-#: classes/orbis-timesheets-admin.php:29
+#: classes/orbis-timesheets-admin.php:75
 msgid "Frequency"
 msgstr ""
 
-#: classes/orbis-timesheets-admin.php:53
+#: classes/orbis-timesheets-admin.php:99
 msgid "Next Schedule"
 msgstr ""
 
-#: classes/orbis-timesheets-admin.php:61
+#: classes/orbis-timesheets-admin.php:107
 msgid "Subject"
 msgstr ""
 
-#: classes/orbis-timesheets-admin.php:80
+#: classes/orbis-timesheets-admin.php:126
 msgid "Receivers"
 msgstr ""
 
-#: classes/orbis-timesheets-admin.php:93
+#: classes/orbis-timesheets-admin.php:139
 msgid "E-mail Manually"
 msgstr ""
 
-#: classes/orbis-timesheets-admin.php:203
+#: classes/orbis-timesheets-admin.php:249
 msgid "Send E-mail"
 msgstr ""
 
-#: classes/orbis-timesheets-admin.php:218
+#: classes/orbis-timesheets-admin.php:264
 msgid "Not scheduled"
 msgstr ""
 
@@ -88,17 +88,53 @@ msgstr ""
 msgid "Orbis Timesheets"
 msgstr ""
 
-#: classes/orbis-timesheets-admin.php:225 classes/orbis-timesheets-email.php:79
+#: classes/orbis-timesheets-admin.php:289 classes/orbis-timesheets-email.php:79
 #: classes/orbis-timesheets-email.php:82
 msgid "Timesheets"
 msgstr ""
 
-#: classes/orbis-timesheets-admin.php:235
+#: classes/orbis-timesheets-admin.php:299
 msgid "Orbis Timesheets Settings"
 msgstr ""
 
-#: classes/orbis-timesheets-admin.php:236
+#: classes/orbis-timesheets-admin.php:300
 msgid "Settings"
+msgstr ""
+
+#: classes/orbis-timesheets-plugin.php:71
+msgid "Search Timesheets Activities"
+msgstr ""
+
+#: classes/orbis-timesheets-plugin.php:72
+msgid "All Timesheets Activities"
+msgstr ""
+
+#: classes/orbis-timesheets-plugin.php:73
+msgid "Parent Timesheets Activity"
+msgstr ""
+
+#: classes/orbis-timesheets-plugin.php:74
+msgid "Parent Activity:"
+msgstr ""
+
+#: classes/orbis-timesheets-plugin.php:75
+msgid "Edit Activity"
+msgstr ""
+
+#: classes/orbis-timesheets-plugin.php:76
+msgid "Update Activity"
+msgstr ""
+
+#: classes/orbis-timesheets-plugin.php:77
+msgid "Add New Activity"
+msgstr ""
+
+#: classes/orbis-timesheets-plugin.php:78
+msgid "New Activity Name"
+msgstr ""
+
+#: classes/orbis-timesheets-plugin.php:79
+msgid "Activities"
 msgstr ""
 
 #: includes/functions.php:318
@@ -221,4 +257,14 @@ msgstr ""
 
 #. Author URI of the plugin/theme
 msgid "http://www.pronamic.eu/"
+msgstr ""
+
+#: classes/orbis-timesheets-plugin.php:69
+msgctxt "taxonomy general name"
+msgid "Timesheets Activities"
+msgstr ""
+
+#: classes/orbis-timesheets-plugin.php:70
+msgctxt "taxonomy singular name"
+msgid "Timesheets Activity"
 msgstr ""

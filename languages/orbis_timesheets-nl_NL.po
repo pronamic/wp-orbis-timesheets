@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Orbis Timesheets\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/orbis-timesheets\n"
-"POT-Creation-Date: 2014-03-14 15:29:49+00:00\n"
-"PO-Revision-Date: 2014-03-14 16:30+0100\n"
+"POT-Creation-Date: 2014-07-01 14:05:04+00:00\n"
+"PO-Revision-Date: 2014-07-01 16:05+0100\n"
 "Last-Translator: Remco Tolsma <info@remcotolsma.nl>\n"
 "Language-Team: Pronamic <info@pronamic.nl>\n"
 "Language: nl_NL\n"
@@ -13,9 +13,7 @@ msgstr ""
 "X-Poedit-KeywordsList: __;_e;_x:2c,1\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 1.6.4\n"
-"X-Poedit-Basepath: ../\n"
-"X-Poedit-SearchPath-0: .\n"
+"X-Generator: Poedit 1.6.5\n"
 
 #: admin/page-settings.php:10
 msgid "The Orbis Timesheets plugin requires an page with the shortcode %s."
@@ -52,41 +50,41 @@ msgstr "Beschrijving"
 msgid "Date"
 msgstr "Datum"
 
-#: admin/page-timesheets.php:83 classes/orbis-timesheets-admin.php:41
+#: admin/page-timesheets.php:83 classes/orbis-timesheets-admin.php:87
 #: templates/project-timesheet.php:43 templates/timesheets_overview.php:113
 #: templates/work_registration_fields.php:86
 msgid "Time"
 msgstr "Tijd"
 
-#: classes/orbis-timesheets-admin.php:17
+#: classes/orbis-timesheets-admin.php:63
 msgid "E-mail Settings"
 msgstr "E-mail instellingen"
 
-#: classes/orbis-timesheets-admin.php:29
+#: classes/orbis-timesheets-admin.php:75
 msgid "Frequency"
 msgstr "Frequentie"
 
-#: classes/orbis-timesheets-admin.php:53
+#: classes/orbis-timesheets-admin.php:99
 msgid "Next Schedule"
 msgstr "Volgende planning"
 
-#: classes/orbis-timesheets-admin.php:61
+#: classes/orbis-timesheets-admin.php:107
 msgid "Subject"
 msgstr "Onderwerp"
 
-#: classes/orbis-timesheets-admin.php:80
+#: classes/orbis-timesheets-admin.php:126
 msgid "Receivers"
 msgstr "Ontvangers"
 
-#: classes/orbis-timesheets-admin.php:93
+#: classes/orbis-timesheets-admin.php:139
 msgid "E-mail Manually"
 msgstr "E-mail handmatig"
 
-#: classes/orbis-timesheets-admin.php:203
+#: classes/orbis-timesheets-admin.php:249
 msgid "Send E-mail"
 msgstr "Verstuur e-mail"
 
-#: classes/orbis-timesheets-admin.php:218
+#: classes/orbis-timesheets-admin.php:264
 msgid "Not scheduled"
 msgstr "Niet ingepland"
 
@@ -94,18 +92,54 @@ msgstr "Niet ingepland"
 msgid "Orbis Timesheets"
 msgstr "Orbis werkregistraties"
 
-#: classes/orbis-timesheets-admin.php:225
+#: classes/orbis-timesheets-admin.php:289
 #: classes/orbis-timesheets-email.php:79 classes/orbis-timesheets-email.php:82
 msgid "Timesheets"
 msgstr "Werkregistraties"
 
-#: classes/orbis-timesheets-admin.php:235
+#: classes/orbis-timesheets-admin.php:299
 msgid "Orbis Timesheets Settings"
 msgstr "Orbis werkregistraties instellingen"
 
-#: classes/orbis-timesheets-admin.php:236
+#: classes/orbis-timesheets-admin.php:300
 msgid "Settings"
 msgstr "Instellingen"
+
+#: classes/orbis-timesheets-plugin.php:71
+msgid "Search Timesheets Activities"
+msgstr "Zoek werkregistraties activiteiten"
+
+#: classes/orbis-timesheets-plugin.php:72
+msgid "All Timesheets Activities"
+msgstr "Alle werkregistraties activiteiten"
+
+#: classes/orbis-timesheets-plugin.php:73
+msgid "Parent Timesheets Activity"
+msgstr "Bovenliggende werkregistraties activiteit"
+
+#: classes/orbis-timesheets-plugin.php:74
+msgid "Parent Activity:"
+msgstr "Bovenliggende activiteit:"
+
+#: classes/orbis-timesheets-plugin.php:75
+msgid "Edit Activity"
+msgstr "Activiteit bewerken"
+
+#: classes/orbis-timesheets-plugin.php:76
+msgid "Update Activity"
+msgstr "Activiteit bijwerken"
+
+#: classes/orbis-timesheets-plugin.php:77
+msgid "Add New Activity"
+msgstr "Nieuwe activiteit toevoegen"
+
+#: classes/orbis-timesheets-plugin.php:78
+msgid "New Activity Name"
+msgstr "Nieuwe activiteit naam"
+
+#: classes/orbis-timesheets-plugin.php:79
+msgid "Activities"
+msgstr "Activiteiten"
 
 #: includes/functions.php:318
 msgid "You have to specify an company or project."
@@ -165,11 +199,11 @@ msgstr "Vandaag"
 
 #: templates/timesheets_overview.php:76
 msgid "Your work registration was succesfull added."
-msgstr "Je werk registratie is succesvol toegevoegd."
+msgstr "Je werkregistratie is succesvol toegevoegd."
 
 #: templates/timesheets_overview.php:80
 msgid "Your work registration was succesfull updated."
-msgstr "Je werk registratie is succesvol bijgewerkt."
+msgstr "Je werkregistratie is succesvol bijgewerkt."
 
 #: templates/timesheets_overview.php:114
 msgid "Actions"
@@ -201,7 +235,7 @@ msgstr "Selecteer abonnement…"
 
 #: templates/work_registration_fields.php:80
 msgid "Work registration description"
-msgstr "Werk registratie beschrijving"
+msgstr "Werkregistratie beschrijving"
 
 #: templates/work_registration_fields.php:90
 msgid "hours"
@@ -230,6 +264,16 @@ msgstr "Pronamic"
 #. Author URI of the plugin/theme
 msgid "http://www.pronamic.eu/"
 msgstr "http://www.pronamic.nl/"
+
+#: classes/orbis-timesheets-plugin.php:69
+msgctxt "taxonomy general name"
+msgid "Timesheets Activities"
+msgstr "Werkregistraties activiteiten"
+
+#: classes/orbis-timesheets-plugin.php:70
+msgctxt "taxonomy singular name"
+msgid "Timesheets Activity"
+msgstr "Werkregistraties activiteit"
 
 #~ msgid "Automatically send timesheet emails"
 #~ msgstr "Verstuur werkregistraties automatisch"
@@ -548,9 +592,6 @@ msgstr "http://www.pronamic.nl/"
 
 #~ msgid "Add New Category"
 #~ msgstr "Nieuwe categorie"
-
-#~ msgid "New Category Name"
-#~ msgstr "Nieuwe categorie naam"
 
 #~ msgctxt "slug"
 #~ msgid "keychain-categorie"

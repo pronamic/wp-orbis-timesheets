@@ -3,8 +3,8 @@ Contributors: pronamic, remcotolsma
 Donate link: http://www.orbiswp.com/
 Tags: orbis, subscription, licence
 Requires at least: 3.5
-Tested up to: 3.8.1
-Stable tag: 1.2.1
+Tested up to: 3.9.1
+Stable tag: 1.3.0
 License: Copyright (c) Pronamic
 License URI: http://www.pronamic.eu/copyright/
 
@@ -27,6 +27,11 @@ License URI: http://www.pronamic.eu/copyright/
 
 
 == Changelog ==
+
+= 1.3.0 =
+*	Feature - Made the timesheet activitiets editable from the WordPress admin environment.
+*	Tweak - WordPress Coding Standards optimizations.
+*	Tweak - Improved Dutch translations.
 
 = 1.2.1 =
 *	Tweak - Switched to the 'clock' dashicon for the admin menu item.
