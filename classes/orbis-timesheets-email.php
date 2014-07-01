@@ -40,6 +40,7 @@ class Orbis_Timesheets_Email {
 		}
 
 		$user_ids = filter_var( get_option( 'orbis_timesheets_email_users', array( -1 ) ), FILTER_VALIDATE_INT, array( 'flags' => FILTER_FORCE_ARRAY ) );
+		$query_user_ids = implode( ',', $user_ids );
 
 		$query = $wpdb->prepare( "
 			SELECT
@@ -51,7 +52,7 @@ class Orbis_Timesheets_Email {
 			WHERE
 				( date BETWEEN %s AND %s )
 					AND
-				user_id IN ( " . implode( ',', $user_ids ) . " )
+				user_id IN ( $query_user_ids )
 			GROUP BY
 				user_id, date
 			ORDER BY
