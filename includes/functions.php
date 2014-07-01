@@ -380,7 +380,7 @@ function orbis_timesheets_register_error( $name, $error ) {
 	// Errors
 	global $orbis_errors;
 
-	$orbis_errors[$name] = $error;
+	$orbis_errors[ $name ] = $error;
 
 	return $orbis_errors;
 }
