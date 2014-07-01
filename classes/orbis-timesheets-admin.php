@@ -10,9 +10,9 @@ class Orbis_Timesheets_Admin {
 
 		// Taxonomy actions
 		// @see https://github.com/WordPress/WordPress/blob/3.9.1/wp-includes/taxonomy.php#L2529
-		add_action( 'created_orbis_timesheets_activity', array( $this, 'sync_activity' ), 10, 2 );
+		add_action( 'created_orbis_timesheets_activity', array( $this, 'sync_activity' ), 10 );
 		// @see https://github.com/WordPress/WordPress/blob/3.9.1/wp-includes/taxonomy.php#L3024
-		add_action( 'edited_orbis_timesheets_activity', array( $this, 'sync_activity' ), 10, 2 );
+		add_action( 'edited_orbis_timesheets_activity', array( $this, 'sync_activity' ), 10 );
 
 		add_filter( 'parent_file', array( $this, 'parent_file' ) );
 	}
@@ -23,7 +23,7 @@ class Orbis_Timesheets_Admin {
 	 * @param int $term_id Term ID.
 	 * @param int $tt_id Term taxonomy ID.
 	 */
-	public function sync_activity( $term_id, $tt_id ) {
+	public function sync_activity( $term_id ) {
 		global $wpdb;
 
 		$term = get_term( $term_id, 'orbis_timesheets_activity' );
