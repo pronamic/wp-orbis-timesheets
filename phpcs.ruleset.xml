@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<ruleset name="Orbis Timesheets rules">
+	<rule ref="WordPress">
+		<exclude name="WordPress.XSS.EscapeOutput" />
+
+		<exclude name="WordPress.WhiteSpace.ScopeIndent" />
+		<exclude name="WordPress.Files.FileName" />
+
+		<exclude name="WordPress.VIP.DirectDatabaseQuery" />		
+		<exclude name="WordPress.VIP.RestrictedVariables.test" />
+	</rule>
+</ruleset>
