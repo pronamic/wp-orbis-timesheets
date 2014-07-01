@@ -131,7 +131,7 @@ $url = add_query_arg( 'message', false );
 
 			<tbody>
 
-				<?php foreach( $registrations as $registration ) : ?>
+				<?php foreach ( $registrations as $registration ) : ?>
 
 					<tr>
 						<td>
