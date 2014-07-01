@@ -22,16 +22,16 @@ function orbis_timesheets_can_register( $timestamp ) {
 	return ( $timestamp >= $dateline_bottom ) && ( $timestamp <= $dateline_top );
 }
 
-function get_edit_orbis_work_registration_link( $id ) {
+function get_edit_orbis_work_registration_link( $entry_id ) {
 	$link = add_query_arg( array(
-		'entry_id' => $id,
+		'entry_id' => $entry_id,
 		'action'   => 'edit'
 	), get_permalink() );
 
 	return $link;
 }
 
-function orbis_timesheets_get_entry( $id ) {
+function orbis_timesheets_get_entry( $entry_id ) {
 	global $wpdb;
 
 	$entry = false;
@@ -67,7 +67,7 @@ function orbis_timesheets_get_entry( $id ) {
 		WHERE
 			timesheet.id = %d
 		;
-	", $id );
+	", $entry_id );
 
 	// Row
 	$row = $wpdb->get_row( $query );
