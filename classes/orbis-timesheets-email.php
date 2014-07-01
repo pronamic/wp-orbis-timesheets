@@ -89,7 +89,6 @@ class Orbis_Timesheets_Email {
 		);
 
 		foreach ( $user_ids as $user_id ) {
-
 			$user_email = get_the_author_meta( 'user_email', $user_id );
 
 			if ( is_email( $user_email ) ) {
