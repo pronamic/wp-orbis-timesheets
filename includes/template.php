@@ -8,7 +8,7 @@ function orbis_timesheets_render_project_timesheet() {
 
 /**
  * Project section
- * 
+ *
  * @param array $sections
  */
 function orbis_timesheets_project_section( $sections ) {
@@ -17,7 +17,7 @@ function orbis_timesheets_project_section( $sections ) {
 		'name'     => __( 'Timesheet', 'orbis' ),
 		'callback' => 'orbis_timesheets_render_project_timesheet',
 	) );
-	
+
 	return $sections;
 }
 
