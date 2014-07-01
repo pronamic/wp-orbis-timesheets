@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Orbis Timesheets\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/orbis-timesheets\n"
 "POT-Creation-Date: 2014-06-05 14:08:50+00:00\n"
-"PO-Revision-Date: 2014-06-05 16:10+0100\n"
+"PO-Revision-Date: 2014-07-01 13:09+0100\n"
 "Last-Translator: Remco Tolsma <info@remcotolsma.nl>\n"
 "Language-Team: Pronamic <info@pronamic.nl>\n"
 "Language: nl_NL\n"
@@ -201,11 +201,11 @@ msgstr "Vandaag"
 
 #: templates/timesheets_overview.php:76
 msgid "Your work registration was succesfull added."
-msgstr "Je werk registratie is succesvol toegevoegd."
+msgstr "Je werkregistratie is succesvol toegevoegd."
 
 #: templates/timesheets_overview.php:80
 msgid "Your work registration was succesfull updated."
-msgstr "Je werk registratie is succesvol bijgewerkt."
+msgstr "Je werkregistratie is succesvol bijgewerkt."
 
 #: templates/timesheets_overview.php:114
 msgid "Actions"
@@ -237,7 +237,7 @@ msgstr "Selecteer abonnement…"
 
 #: templates/work_registration_fields.php:80
 msgid "Work registration description"
-msgstr "Werk registratie beschrijving"
+msgstr "Werkregistratie beschrijving"
 
 #: templates/work_registration_fields.php:90
 msgid "hours"
