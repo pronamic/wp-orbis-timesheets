@@ -7,9 +7,9 @@ function orbis_timesheets_posts_clauses( $pieces, $query ) {
 
 	if ( $post_type == 'orbis_project' ) {
 		// Fields
-		$fields = ",
+		$fields = ',
 			SUM( logged_time.number_seconds ) AS project_logged_time
-		";
+		';
 
 		// Join
 		$join = "
