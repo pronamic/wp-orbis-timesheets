@@ -32,13 +32,13 @@ class Orbis_Timesheets_Plugin extends Orbis_Plugin {
 
 	public function install() {
 		// Tables
-		orbis_install_table( 'orbis_activities', "
+		orbis_install_table( 'orbis_activities', '
 			id BIGINT(16) UNSIGNED NOT NULL AUTO_INCREMENT,
 			name VARCHAR(128) NOT NULL,
 			description TEXT NOT NULL,
 			term_id BIGINT(20) UNSIGNED DEFAULT NULL,
 			PRIMARY KEY  (id)
-		" );
+		' );
 
 		orbis_install_table( 'orbis_timesheets', "
 			id BIGINT(16) UNSIGNED NOT NULL AUTO_INCREMENT,
