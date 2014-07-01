@@ -21,7 +21,7 @@ module.exports = function( grunt ) {
 			},
 			options: {
 				exclude: 'node_modules',
-				reportFormat: 'text',
+				reportFormat: 'xml',
 				rulesets: 'phpmd.ruleset.xml'
 			}
 		},

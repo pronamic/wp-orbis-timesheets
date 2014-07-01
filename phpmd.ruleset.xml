@@ -6,11 +6,21 @@
 	xsi:schemaLocation="http://pmd.sf.net/ruleset/1.0.0 http://pmd.sf.net/ruleset_xml_schema.xsd"
 	xsi:noNamespaceSchemaLocation="http://pmd.sf.net/ruleset_xml_schema.xsd"
 >
-	<rule ref="rulesets/cleancode.xml" />
-	<rule ref="rulesets/unusedcode.xml" />
-	<rule ref="rulesets/controversial.xml" />
-	<rule ref="rulesets/design.xml" />
-	<rule ref="rulesets/unusedcode.xml" />
+	<rule ref="rulesets/cleancode.xml">
+		<exclude name="ElseExpression" />
+		<exclude name="StaticAccess" />
+	</rule>
+
+	<rule ref="rulesets/codesize.xml">
+		<exclude name="CyclomaticComplexity" />
+		<exclude name="NPathComplexity" />
+		<exclude name="TooManyMethods" />
+	</rule>
+
+	<rule ref="rulesets/design.xml">
+		<exclude name="ExitExpression" />
+		<exclude name="StaticAccess" />
+	</rule>
 
 	<rule ref="rulesets/naming.xml">
 		<exclude name="LongVariable" />
@@ -21,4 +31,6 @@
 			<property name="maximum" value="25" />
 		</properties>
     </rule>
+
+	<rule ref="rulesets/unusedcode.xml" />
 </ruleset>
