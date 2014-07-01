@@ -75,5 +75,6 @@ module.exports = function( grunt ) {
 	grunt.loadNpmTasks( 'grunt-wp-i18n' );
 
 	// Default task(s).
-	grunt.registerTask( 'default', [ 'phplint', 'checkwpversion', 'makepot' ] );
+	grunt.registerTask( 'default', [ 'phplint', 'phpmd', 'phpcs', 'checkwpversion' ] );
+	grunt.registerTask( 'pot', [ 'makepot' ] );
 };

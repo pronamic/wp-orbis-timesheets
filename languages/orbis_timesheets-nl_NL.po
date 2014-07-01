@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Orbis Timesheets\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/orbis-timesheets\n"
-"POT-Creation-Date: 2014-06-05 14:08:50+00:00\n"
-"PO-Revision-Date: 2014-07-01 13:09+0100\n"
+"POT-Creation-Date: 2014-07-01 14:05:04+00:00\n"
+"PO-Revision-Date: 2014-07-01 16:05+0100\n"
 "Last-Translator: Remco Tolsma <info@remcotolsma.nl>\n"
 "Language-Team: Pronamic <info@pronamic.nl>\n"
 "Language: nl_NL\n"
@@ -14,8 +14,6 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Generator: Poedit 1.6.5\n"
-"X-Poedit-Basepath: ../\n"
-"X-Poedit-SearchPath-0: .\n"
 
 #: admin/page-settings.php:10
 msgid "The Orbis Timesheets plugin requires an page with the shortcode %s."
@@ -52,41 +50,41 @@ msgstr "Beschrijving"
 msgid "Date"
 msgstr "Datum"
 
-#: admin/page-timesheets.php:83 classes/orbis-timesheets-admin.php:85
+#: admin/page-timesheets.php:83 classes/orbis-timesheets-admin.php:87
 #: templates/project-timesheet.php:43 templates/timesheets_overview.php:113
 #: templates/work_registration_fields.php:86
 msgid "Time"
 msgstr "Tijd"
 
-#: classes/orbis-timesheets-admin.php:61
+#: classes/orbis-timesheets-admin.php:63
 msgid "E-mail Settings"
 msgstr "E-mail instellingen"
 
-#: classes/orbis-timesheets-admin.php:73
+#: classes/orbis-timesheets-admin.php:75
 msgid "Frequency"
 msgstr "Frequentie"
 
-#: classes/orbis-timesheets-admin.php:97
+#: classes/orbis-timesheets-admin.php:99
 msgid "Next Schedule"
 msgstr "Volgende planning"
 
-#: classes/orbis-timesheets-admin.php:105
+#: classes/orbis-timesheets-admin.php:107
 msgid "Subject"
 msgstr "Onderwerp"
 
-#: classes/orbis-timesheets-admin.php:124
+#: classes/orbis-timesheets-admin.php:126
 msgid "Receivers"
 msgstr "Ontvangers"
 
-#: classes/orbis-timesheets-admin.php:137
+#: classes/orbis-timesheets-admin.php:139
 msgid "E-mail Manually"
 msgstr "E-mail handmatig"
 
-#: classes/orbis-timesheets-admin.php:247
+#: classes/orbis-timesheets-admin.php:249
 msgid "Send E-mail"
 msgstr "Verstuur e-mail"
 
-#: classes/orbis-timesheets-admin.php:262
+#: classes/orbis-timesheets-admin.php:264
 msgid "Not scheduled"
 msgstr "Niet ingepland"
 
@@ -94,16 +92,16 @@ msgstr "Niet ingepland"
 msgid "Orbis Timesheets"
 msgstr "Orbis werkregistraties"
 
-#: classes/orbis-timesheets-admin.php:269
+#: classes/orbis-timesheets-admin.php:289
 #: classes/orbis-timesheets-email.php:79 classes/orbis-timesheets-email.php:82
 msgid "Timesheets"
 msgstr "Werkregistraties"
 
-#: classes/orbis-timesheets-admin.php:279
+#: classes/orbis-timesheets-admin.php:299
 msgid "Orbis Timesheets Settings"
 msgstr "Orbis werkregistraties instellingen"
 
-#: classes/orbis-timesheets-admin.php:280
+#: classes/orbis-timesheets-admin.php:300
 msgid "Settings"
 msgstr "Instellingen"
 
