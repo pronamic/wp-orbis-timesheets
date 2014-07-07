@@ -5,8 +5,8 @@ Tags: orbis, subscription, licence
 Requires at least: 3.5
 Tested up to: 3.9.1
 Stable tag: 1.3.0
-License: Copyright (c) Pronamic
-License URI: http://www.pronamic.eu/copyright/
+License: GPLv3
+License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
 
 
