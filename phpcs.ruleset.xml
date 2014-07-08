@@ -8,5 +8,7 @@
 
 		<exclude name="WordPress.VIP.DirectDatabaseQuery" />		
 		<exclude name="WordPress.VIP.RestrictedVariables.test" />
+		
+		<exclude name="WordPress.VIP.SlowDBQuery.slow_db_query" />
 	</rule>
 </ruleset>

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Orbis Timesheets\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/orbis-timesheets\n"
-"POT-Creation-Date: 2014-07-01 14:05:04+00:00\n"
-"PO-Revision-Date: 2014-07-01 16:05+0100\n"
+"POT-Creation-Date: 2014-07-08 08:45:25+00:00\n"
+"PO-Revision-Date: 2014-07-08 10:49+0100\n"
 "Last-Translator: Remco Tolsma <info@remcotolsma.nl>\n"
 "Language-Team: Pronamic <info@pronamic.nl>\n"
 "Language: nl_NL\n"
@@ -13,7 +13,7 @@ msgstr ""
 "X-Poedit-KeywordsList: __;_e;_x:2c,1\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 1.6.5\n"
+"X-Generator: Poedit 1.6.6\n"
 
 #: admin/page-settings.php:10
 msgid "The Orbis Timesheets plugin requires an page with the shortcode %s."
@@ -50,41 +50,69 @@ msgstr "Beschrijving"
 msgid "Date"
 msgstr "Datum"
 
-#: admin/page-timesheets.php:83 classes/orbis-timesheets-admin.php:87
+#: admin/page-timesheets.php:83 classes/orbis-timesheets-admin.php:116
 #: templates/project-timesheet.php:43 templates/timesheets_overview.php:113
 #: templates/work_registration_fields.php:86
 msgid "Time"
 msgstr "Tijd"
 
-#: classes/orbis-timesheets-admin.php:63
+#: classes/orbis-timesheets-admin.php:64
+msgid "General Settings"
+msgstr "Algemene instellingen"
+
+#: classes/orbis-timesheets-admin.php:71
+msgid "Registration Lower Bound"
+msgstr "Registratie ondergrens"
+
+#: classes/orbis-timesheets-admin.php:78
+msgid "None"
+msgstr "Geen"
+
+#: classes/orbis-timesheets-admin.php:79
+msgid "1 Day"
+msgstr "1 dag"
+
+#: classes/orbis-timesheets-admin.php:80
+msgid "3 Days"
+msgstr "3 dagen"
+
+#: classes/orbis-timesheets-admin.php:81
+msgid "1 Week"
+msgstr "1 week"
+
+#: classes/orbis-timesheets-admin.php:82
+msgid "1 Month"
+msgstr "1 maand"
+
+#: classes/orbis-timesheets-admin.php:92
 msgid "E-mail Settings"
 msgstr "E-mail instellingen"
 
-#: classes/orbis-timesheets-admin.php:75
+#: classes/orbis-timesheets-admin.php:104
 msgid "Frequency"
 msgstr "Frequentie"
 
-#: classes/orbis-timesheets-admin.php:99
+#: classes/orbis-timesheets-admin.php:128
 msgid "Next Schedule"
 msgstr "Volgende planning"
 
-#: classes/orbis-timesheets-admin.php:107
+#: classes/orbis-timesheets-admin.php:136
 msgid "Subject"
 msgstr "Onderwerp"
 
-#: classes/orbis-timesheets-admin.php:126
+#: classes/orbis-timesheets-admin.php:155
 msgid "Receivers"
 msgstr "Ontvangers"
 
-#: classes/orbis-timesheets-admin.php:139
+#: classes/orbis-timesheets-admin.php:168
 msgid "E-mail Manually"
 msgstr "E-mail handmatig"
 
-#: classes/orbis-timesheets-admin.php:249
+#: classes/orbis-timesheets-admin.php:278
 msgid "Send E-mail"
 msgstr "Verstuur e-mail"
 
-#: classes/orbis-timesheets-admin.php:264
+#: classes/orbis-timesheets-admin.php:293
 msgid "Not scheduled"
 msgstr "Niet ingepland"
 
@@ -92,16 +120,16 @@ msgstr "Niet ingepland"
 msgid "Orbis Timesheets"
 msgstr "Orbis werkregistraties"
 
-#: classes/orbis-timesheets-admin.php:289
+#: classes/orbis-timesheets-admin.php:318
 #: classes/orbis-timesheets-email.php:79 classes/orbis-timesheets-email.php:82
 msgid "Timesheets"
 msgstr "Werkregistraties"
 
-#: classes/orbis-timesheets-admin.php:299
+#: classes/orbis-timesheets-admin.php:328
 msgid "Orbis Timesheets Settings"
 msgstr "Orbis werkregistraties instellingen"
 
-#: classes/orbis-timesheets-admin.php:300
+#: classes/orbis-timesheets-admin.php:329
 msgid "Settings"
 msgstr "Instellingen"
 
@@ -141,27 +169,27 @@ msgstr "Nieuwe activiteit naam"
 msgid "Activities"
 msgstr "Activiteiten"
 
-#: includes/functions.php:318
+#: includes/functions.php:324
 msgid "You have to specify an company or project."
 msgstr "Je moet een bedrijf of project specificeren."
 
-#: includes/functions.php:324
+#: includes/functions.php:330
 msgid "You have to specify an project."
 msgstr "Je moet een project specificeren."
 
-#: includes/functions.php:329
+#: includes/functions.php:335
 msgid "You have to specify an description (%d words)."
 msgstr "Je moet een beschrijving specificeren (%d woorden)."
 
-#: includes/functions.php:337
+#: includes/functions.php:343
 msgid "You have to specify an activity."
 msgstr "Je moet een activiteit specificeren."
 
-#: includes/functions.php:341
+#: includes/functions.php:347
 msgid "You can not register on this date."
 msgstr "Je kunt niet registreren op deze datum."
 
-#: includes/functions.php:361
+#: includes/functions.php:367
 msgid "Could not add timesheet entry."
 msgstr "Kon werk registratie niet toevoegen."
 
@@ -280,9 +308,6 @@ msgstr "Werkregistraties activiteit"
 
 #~ msgid "Daily"
 #~ msgstr "Dagelijks"
-
-#~ msgid "Weekly"
-#~ msgstr "Wekelijks"
 
 #~ msgid "Sunday"
 #~ msgstr "Zondag"
