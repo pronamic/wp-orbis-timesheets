@@ -17,10 +17,10 @@ function orbis_field_class( $class = array(), $field_id ) {
 function orbis_timesheets_can_register( $timestamp ) {
 	$can_register = true;
 
-	$lower_bound = get_option( 'orbis_timesheets_registration_lower_bound' );
+	$limit_lower = get_option( 'orbis_timesheets_registration_limit_lower' );
 
-	if ( ! empty( $lower_bound ) ) {
-		$dateline_lower = strtotime( sprintf( 'midnight -%s +10 hours', $lower_bound ) );
+	if ( ! empty( $limit_lower ) ) {
+		$dateline_lower = strtotime( sprintf( 'midnight -%s +10 hours', $limit_lower ) );
 
 		$can_register = ( $timestamp >= $dateline_lower );
 	}

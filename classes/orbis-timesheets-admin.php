@@ -67,13 +67,13 @@ class Orbis_Timesheets_Admin {
 		);
 
 		add_settings_field(
-			'orbis_timesheets_registration_lower_bound', // id
-			__( 'Registration Lower Bound', 'orbis_timesheets' ), // title
+			'orbis_timesheets_registration_limit_lower', // id
+			__( 'Registration Limit Lower', 'orbis_timesheets' ), // title
 			array( $this, 'input_select' ), // callback
 			'orbis_timesheets_settings', // page
 			'orbis_timesheets_settings_general', // section
 			array(
-				'label_for' => 'orbis_timesheets_registration_lower_bound',
+				'label_for' => 'orbis_timesheets_registration_limit_lower',
 				'options'   => array(
 					'0'       => __( 'None', 'orbis_timesheets' ),
 					'1 day'   => __( '1 Day', 'orbis_timesheets' ),
@@ -84,7 +84,7 @@ class Orbis_Timesheets_Admin {
 			) // args
 		);
 
-		register_setting( 'orbis_timesheets', 'orbis_timesheets_registration_lower_bound' );
+		register_setting( 'orbis_timesheets', 'orbis_timesheets_registration_limit_lower' );
 
 		// E-mail
 		add_settings_section(

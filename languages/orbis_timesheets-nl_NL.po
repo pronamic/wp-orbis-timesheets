@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Orbis Timesheets\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/orbis-timesheets\n"
-"POT-Creation-Date: 2014-07-08 08:45:25+00:00\n"
-"PO-Revision-Date: 2014-07-08 10:49+0100\n"
+"POT-Creation-Date: 2014-07-08 08:53:14+00:00\n"
+"PO-Revision-Date: 2014-07-08 10:53+0100\n"
 "Last-Translator: Remco Tolsma <info@remcotolsma.nl>\n"
 "Language-Team: Pronamic <info@pronamic.nl>\n"
 "Language: nl_NL\n"
@@ -61,8 +61,8 @@ msgid "General Settings"
 msgstr "Algemene instellingen"
 
 #: classes/orbis-timesheets-admin.php:71
-msgid "Registration Lower Bound"
-msgstr "Registratie ondergrens"
+msgid "Registration Limit Lower"
+msgstr "Registratie beperking ondergrens"
 
 #: classes/orbis-timesheets-admin.php:78
 msgid "None"
