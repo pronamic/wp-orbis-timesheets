@@ -40,7 +40,7 @@
 
 	<?php endif; ?>
 
-	<?php if ( true ) : ?>
+	<?php if ( function_exists( 'orbis_subscriptions_bootstrap' ) ) : ?>
 
 		<div class="col-md-6">
 			<div <?php orbis_field_class( array( 'form-group' ), 'orbis_registration_subscription_id' ); ?>>

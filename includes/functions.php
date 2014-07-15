@@ -43,7 +43,25 @@ function orbis_timesheets_get_entry( $entry_id ) {
 	$entry = false;
 
 	// Query
-	$query = $wpdb->prepare( "
+	$select = '';
+	$from   = '';
+
+	if ( function_exists( 'orbis_subscriptions_bootstrap' ) ) {
+		$select = ',
+			CONCAT( subscription_product.name, ' - ', subscription.name ) AS subscription_name
+		';
+
+		$from = '
+				LEFT JOIN
+			$wpdb->orbis_subscriptions AS subscription
+					ON timesheet.subscription_id = subscription.id
+				LEFT JOIN
+			$wpdb->orbis_subscription_products AS subscription_product
+					ON subscription.type_id = subscription_product.id
+		';
+	}
+
+	$query = "
 		SELECT
 			timesheet.id,
 			timesheet.company_id,
@@ -54,8 +72,8 @@ function orbis_timesheets_get_entry( $entry_id ) {
 			timesheet.date,
 			timesheet.number_seconds,
 			company.name AS company_name,
-			project.name AS project_name,
-			CONCAT( subscription_product.name, ' - ', subscription.name ) AS subscription_name
+			project.name AS project_name
+			$select
 		FROM
 			$wpdb->orbis_timesheets AS timesheet
 				LEFT JOIN
@@ -64,16 +82,13 @@ function orbis_timesheets_get_entry( $entry_id ) {
 				LEFT JOIN
 			$wpdb->orbis_projects AS project
 					ON timesheet.project_id = project.id
-				LEFT JOIN
-			$wpdb->orbis_subscriptions AS subscription
-					ON timesheet.subscription_id = subscription.id
-				LEFT JOIN
-			$wpdb->orbis_subscription_products AS subscription_product
-					ON subscription.type_id = subscription_product.id
+			$from
 		WHERE
 			timesheet.id = %d
 		;
-	", $entry_id );
+	";
+
+	$query = $wpdb->prepare( $query, $entry_id );
 
 	// Row
 	$row = $wpdb->get_row( $query );
@@ -243,24 +258,28 @@ function orbis_timesheets_get_project_name( $orbis_id ) {
 }
 
 function orbis_timesheets_get_subscription_name( $orbis_id ) {
-	global $wpdb;
+	$name = null;
 
-	$query = $wpdb->prepare( "
-		SELECT
-			CONCAT( subscription.id, '. ', product.name, ' - ', subscription.name ) AS name
-		FROM
-			$wpdb->orbis_subscriptions AS subscription
-				LEFT JOIN
-			$wpdb->orbis_subscription_products AS product
-				ON subscription.type_id = product.id
-		WHERE
-			subscription.id = %d
-		;
-	", $orbis_id );
+	if ( function_exists( 'orbis_subscriptions_bootstrap' ) ) {
+		global $wpdb;
 
-	$result = $wpdb->get_var( $query );
+		$query = $wpdb->prepare( "
+			SELECT
+				CONCAT( subscription.id, '. ', product.name, ' - ', subscription.name ) AS name
+			FROM
+				$wpdb->orbis_subscriptions AS subscription
+					LEFT JOIN
+				$wpdb->orbis_subscription_products AS product
+					ON subscription.type_id = product.id
+			WHERE
+				subscription.id = %d
+			;
+		", $orbis_id );
 
-	return $result;
+		$name = $wpdb->get_var( $query );
+	}
+
+	return $name;
 }
 
 function orbis_timesheets_get_entry_from_input( $type = INPUT_POST ) {
