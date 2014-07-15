@@ -79,7 +79,7 @@ class Orbis_Timesheets_Email {
 		$orbis_email_title = __( 'Timesheets', 'orbis_timesheets' );
 
 		$mail_to      = '';
-		$mail_subject = get_option( 'orbis_timesheets_email_subject', __( 'Timesheets', 'orbis_subscriptions' ) );
+		$mail_subject = get_option( 'orbis_timesheets_email_subject', __( 'Timesheets', 'orbis_timesheets' ) );
 		$mail_body  = $this->plugin->get_template( 'emails/user-timesheet.php', false, array(
 			'dates'      => $dates,
 			'timesheets' => $timesheets,
