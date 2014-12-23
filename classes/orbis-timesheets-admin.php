@@ -142,27 +142,6 @@ class Orbis_Timesheets_Admin {
 			) // args
 		);
 
-		$users        = get_users();
-		$user_options = array();
-
-		foreach ( $users as $user ) {
-
-			$user_options[ $user->ID ] = $user->display_name;
-		}
-
-		add_settings_field(
-			'orbis_timesheets_email_users', // id
-			__( 'Receivers', 'orbis_timesheets' ), // title
-			array( $this, 'input_select' ), // callback
-			'orbis_timesheets_settings', // page
-			'orbis_timesheets_settings_email', // section
-			array(
-				'label_for' => 'orbis_timesheets_email_users',
-				'options'   => $user_options,
-				'multiple'  => true,
-			) // args
-		);
-
 		add_settings_field(
 			'orbis_timesheets_email_manually', // id
 			__( 'E-mail Manually', 'orbis_timesheets' ), // title
@@ -177,7 +156,6 @@ class Orbis_Timesheets_Admin {
 		register_setting( 'orbis_timesheets', 'orbis_timesheets_email_frequency' );
 		register_setting( 'orbis_timesheets', 'orbis_timesheets_email_time' );
 		register_setting( 'orbis_timesheets', 'orbis_timesheets_email_subject' );
-		register_setting( 'orbis_timesheets', 'orbis_timesheets_email_users' );
 	}
 
 	/**

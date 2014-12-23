@@ -39,7 +39,12 @@ class Orbis_Timesheets_Email {
 			$dates[ date( 'Y-m-d', strtotime( '- ' . $i . ' day', $now ) ) ] = null;
 		}
 
-		$user_ids = filter_var( get_option( 'orbis_timesheets_email_users', array( -1 ) ), FILTER_VALIDATE_INT, array( 'flags' => FILTER_FORCE_ARRAY ) );
+		$user_ids = get_users( array(
+			'fields'     => 'ids',
+			'meta_key'   => '_orbis_user',
+			'meta_value' => 'true',
+		) );
+
 		$query_user_ids = implode( ',', $user_ids );
 
 		$query = $wpdb->prepare( "
