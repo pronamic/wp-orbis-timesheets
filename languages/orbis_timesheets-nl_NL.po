@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Orbis Timesheets\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/orbis-timesheets\n"
-"POT-Creation-Date: 2014-07-08 08:53:14+00:00\n"
-"PO-Revision-Date: 2014-07-08 10:53+0100\n"
+"POT-Creation-Date: 2015-03-06 09:14:22+00:00\n"
+"PO-Revision-Date: 2015-03-06 10:15+0100\n"
 "Last-Translator: Remco Tolsma <info@remcotolsma.nl>\n"
 "Language-Team: Pronamic <info@pronamic.nl>\n"
 "Language: nl_NL\n"
@@ -13,106 +13,133 @@ msgstr ""
 "X-Poedit-KeywordsList: __;_e;_x:2c,1\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 1.6.6\n"
+"X-Generator: Poedit 1.7.4\n"
 
-#: admin/page-settings.php:10
+#: admin/page-settings.php:10 deploy/latest/admin/page-settings.php:10
 msgid "The Orbis Timesheets plugin requires an page with the shortcode %s."
 msgstr ""
 "De Orbis werkregistraties plugin vereist een pagina met de shortcode %s."
 
-#: admin/page-timesheets.php:65
+#: admin/page-timesheets.php:65 deploy/latest/admin/page-timesheets.php:65
 msgid "Registered On"
 msgstr "Geregistreerd op"
 
-#: admin/page-timesheets.php:68 templates/emails/user-timesheet.php:8
-#: templates/project-timesheet.php:40
+#: admin/page-timesheets.php:68 deploy/latest/admin/page-timesheets.php:68
+#: deploy/latest/templates/emails/user-timesheet.php:8
+#: deploy/latest/templates/project-timesheet.php:40
+#: templates/emails/user-timesheet.php:8 templates/project-timesheet.php:40
 msgid "User"
 msgstr "Gebruiker"
 
-#: admin/page-timesheets.php:71 templates/timesheets_overview.php:109
+#: admin/page-timesheets.php:71 deploy/latest/admin/page-timesheets.php:71
+#: deploy/latest/templates/timesheets_overview.php:109
+#: templates/timesheets_overview.php:109
 msgid "Company/Project"
 msgstr "Bedrijf/project"
 
-#: admin/page-timesheets.php:74 templates/project-timesheet.php:41
-#: templates/timesheets_overview.php:110
+#: admin/page-timesheets.php:74 deploy/latest/admin/page-timesheets.php:74
+#: deploy/latest/templates/project-timesheet.php:41
+#: deploy/latest/templates/timesheets_overview.php:110
+#: deploy/latest/templates/work_registration_fields.php:56
+#: templates/project-timesheet.php:41 templates/timesheets_overview.php:110
 #: templates/work_registration_fields.php:56
 msgid "Activity"
 msgstr "Activiteit"
 
-#: admin/page-timesheets.php:77 templates/project-timesheet.php:42
-#: templates/timesheets_overview.php:111
+#: admin/page-timesheets.php:77 deploy/latest/admin/page-timesheets.php:77
+#: deploy/latest/templates/project-timesheet.php:42
+#: deploy/latest/templates/timesheets_overview.php:111
+#: deploy/latest/templates/work_registration_fields.php:79
+#: templates/project-timesheet.php:42 templates/timesheets_overview.php:111
 #: templates/work_registration_fields.php:79
 msgid "Description"
 msgstr "Beschrijving"
 
-#: admin/page-timesheets.php:80 templates/project-timesheet.php:39
-#: templates/timesheets_overview.php:112
+#: admin/page-timesheets.php:80 deploy/latest/admin/page-timesheets.php:80
+#: deploy/latest/templates/project-timesheet.php:39
+#: deploy/latest/templates/timesheets_overview.php:112
+#: templates/project-timesheet.php:39 templates/timesheets_overview.php:112
 msgid "Date"
 msgstr "Datum"
 
 #: admin/page-timesheets.php:83 classes/orbis-timesheets-admin.php:116
+#: deploy/latest/admin/page-timesheets.php:83
+#: deploy/latest/classes/orbis-timesheets-admin.php:116
+#: deploy/latest/templates/project-timesheet.php:43
+#: deploy/latest/templates/timesheets_overview.php:113
+#: deploy/latest/templates/work_registration_fields.php:86
 #: templates/project-timesheet.php:43 templates/timesheets_overview.php:113
 #: templates/work_registration_fields.php:86
 msgid "Time"
 msgstr "Tijd"
 
 #: classes/orbis-timesheets-admin.php:64
+#: deploy/latest/classes/orbis-timesheets-admin.php:64
 msgid "General Settings"
 msgstr "Algemene instellingen"
 
 #: classes/orbis-timesheets-admin.php:71
+#: deploy/latest/classes/orbis-timesheets-admin.php:71
 msgid "Registration Limit Lower"
 msgstr "Registratie beperking ondergrens"
 
 #: classes/orbis-timesheets-admin.php:78
+#: deploy/latest/classes/orbis-timesheets-admin.php:78
 msgid "None"
 msgstr "Geen"
 
 #: classes/orbis-timesheets-admin.php:79
+#: deploy/latest/classes/orbis-timesheets-admin.php:79
 msgid "1 Day"
 msgstr "1 dag"
 
 #: classes/orbis-timesheets-admin.php:80
+#: deploy/latest/classes/orbis-timesheets-admin.php:80
 msgid "3 Days"
 msgstr "3 dagen"
 
 #: classes/orbis-timesheets-admin.php:81
+#: deploy/latest/classes/orbis-timesheets-admin.php:81
 msgid "1 Week"
 msgstr "1 week"
 
 #: classes/orbis-timesheets-admin.php:82
+#: deploy/latest/classes/orbis-timesheets-admin.php:82
 msgid "1 Month"
 msgstr "1 maand"
 
 #: classes/orbis-timesheets-admin.php:92
+#: deploy/latest/classes/orbis-timesheets-admin.php:92
 msgid "E-mail Settings"
 msgstr "E-mail instellingen"
 
 #: classes/orbis-timesheets-admin.php:104
+#: deploy/latest/classes/orbis-timesheets-admin.php:104
 msgid "Frequency"
 msgstr "Frequentie"
 
 #: classes/orbis-timesheets-admin.php:128
+#: deploy/latest/classes/orbis-timesheets-admin.php:128
 msgid "Next Schedule"
 msgstr "Volgende planning"
 
 #: classes/orbis-timesheets-admin.php:136
+#: deploy/latest/classes/orbis-timesheets-admin.php:136
 msgid "Subject"
 msgstr "Onderwerp"
 
-#: classes/orbis-timesheets-admin.php:155
-msgid "Receivers"
-msgstr "Ontvangers"
-
-#: classes/orbis-timesheets-admin.php:168
+#: classes/orbis-timesheets-admin.php:147
+#: deploy/latest/classes/orbis-timesheets-admin.php:147
 msgid "E-mail Manually"
 msgstr "E-mail handmatig"
 
-#: classes/orbis-timesheets-admin.php:278
+#: classes/orbis-timesheets-admin.php:256
+#: deploy/latest/classes/orbis-timesheets-admin.php:256
 msgid "Send E-mail"
 msgstr "Verstuur e-mail"
 
-#: classes/orbis-timesheets-admin.php:293
+#: classes/orbis-timesheets-admin.php:271
+#: deploy/latest/classes/orbis-timesheets-admin.php:271
 msgid "Not scheduled"
 msgstr "Niet ingepland"
 
@@ -120,155 +147,189 @@ msgstr "Niet ingepland"
 msgid "Orbis Timesheets"
 msgstr "Orbis werkregistraties"
 
-#: classes/orbis-timesheets-admin.php:318
-#: classes/orbis-timesheets-email.php:79 classes/orbis-timesheets-email.php:82
+#: classes/orbis-timesheets-admin.php:296
+#: classes/orbis-timesheets-email.php:84 classes/orbis-timesheets-email.php:87
+#: deploy/latest/classes/orbis-timesheets-admin.php:296
+#: deploy/latest/classes/orbis-timesheets-email.php:84
+#: deploy/latest/classes/orbis-timesheets-email.php:87
 msgid "Timesheets"
 msgstr "Werkregistraties"
 
-#: classes/orbis-timesheets-admin.php:328
+#: classes/orbis-timesheets-admin.php:306
+#: deploy/latest/classes/orbis-timesheets-admin.php:306
 msgid "Orbis Timesheets Settings"
 msgstr "Orbis werkregistraties instellingen"
 
-#: classes/orbis-timesheets-admin.php:329
+#: classes/orbis-timesheets-admin.php:307
+#: deploy/latest/classes/orbis-timesheets-admin.php:307
 msgid "Settings"
 msgstr "Instellingen"
 
 #: classes/orbis-timesheets-plugin.php:71
+#: deploy/latest/classes/orbis-timesheets-plugin.php:71
 msgid "Search Timesheets Activities"
 msgstr "Zoek werkregistraties activiteiten"
 
 #: classes/orbis-timesheets-plugin.php:72
+#: deploy/latest/classes/orbis-timesheets-plugin.php:72
 msgid "All Timesheets Activities"
 msgstr "Alle werkregistraties activiteiten"
 
 #: classes/orbis-timesheets-plugin.php:73
+#: deploy/latest/classes/orbis-timesheets-plugin.php:73
 msgid "Parent Timesheets Activity"
 msgstr "Bovenliggende werkregistraties activiteit"
 
 #: classes/orbis-timesheets-plugin.php:74
+#: deploy/latest/classes/orbis-timesheets-plugin.php:74
 msgid "Parent Activity:"
 msgstr "Bovenliggende activiteit:"
 
 #: classes/orbis-timesheets-plugin.php:75
+#: deploy/latest/classes/orbis-timesheets-plugin.php:75
 msgid "Edit Activity"
 msgstr "Activiteit bewerken"
 
 #: classes/orbis-timesheets-plugin.php:76
+#: deploy/latest/classes/orbis-timesheets-plugin.php:76
 msgid "Update Activity"
 msgstr "Activiteit bijwerken"
 
 #: classes/orbis-timesheets-plugin.php:77
+#: deploy/latest/classes/orbis-timesheets-plugin.php:77
 msgid "Add New Activity"
 msgstr "Nieuwe activiteit toevoegen"
 
 #: classes/orbis-timesheets-plugin.php:78
+#: deploy/latest/classes/orbis-timesheets-plugin.php:78
 msgid "New Activity Name"
 msgstr "Nieuwe activiteit naam"
 
 #: classes/orbis-timesheets-plugin.php:79
+#: deploy/latest/classes/orbis-timesheets-plugin.php:79
 msgid "Activities"
 msgstr "Activiteiten"
 
-#: includes/functions.php:324
+#: deploy/latest/includes/functions.php:343 includes/functions.php:343
 msgid "You have to specify an company or project."
 msgstr "Je moet een bedrijf of project specificeren."
 
-#: includes/functions.php:330
+#: deploy/latest/includes/functions.php:349 includes/functions.php:349
 msgid "You have to specify an project."
 msgstr "Je moet een project specificeren."
 
-#: includes/functions.php:335
+#: deploy/latest/includes/functions.php:354 includes/functions.php:354
 msgid "You have to specify an description (%d words)."
 msgstr "Je moet een beschrijving specificeren (%d woorden)."
 
-#: includes/functions.php:343
+#: deploy/latest/includes/functions.php:362 includes/functions.php:362
 msgid "You have to specify an activity."
 msgstr "Je moet een activiteit specificeren."
 
-#: includes/functions.php:347
+#: deploy/latest/includes/functions.php:366 includes/functions.php:366
 msgid "You can not register on this date."
 msgstr "Je kunt niet registreren op deze datum."
 
-#: includes/functions.php:367
+#: deploy/latest/includes/functions.php:386 includes/functions.php:386
 msgid "Could not add timesheet entry."
 msgstr "Kon werk registratie niet toevoegen."
 
-#: includes/template.php:17
+#: deploy/latest/includes/template.php:17 includes/template.php:17
 msgid "Timesheet"
 msgstr "Timesheet"
 
+#: deploy/latest/templates/new-registration-form.php:26
 #: templates/new-registration-form.php:26
 msgid "Add registration"
 msgstr "Registratie toevoegen"
 
+#: deploy/latest/templates/new-registration-form.php:31
 #: templates/new-registration-form.php:31
 msgid "Register"
 msgstr "Registreer"
 
+#: deploy/latest/templates/project-timesheet.php:78
 #: templates/project-timesheet.php:78
 msgid "There are no time registrations for this project."
 msgstr "Er zijn geen tijd registraties voor dit project."
 
+#: deploy/latest/templates/timesheets_edit.php:20
 #: templates/timesheets_edit.php:20
 msgid "Edit registration"
 msgstr "Registratie bewerken"
 
+#: deploy/latest/templates/timesheets_edit.php:25
+#: deploy/latest/templates/timesheets_overview.php:167
 #: templates/timesheets_edit.php:25 templates/timesheets_overview.php:167
 msgid "Edit"
 msgstr "Bewerken"
 
+#: deploy/latest/templates/timesheets_edit.php:35
 #: templates/timesheets_edit.php:35
 msgid "Cancel"
 msgstr "Annuleer"
 
+#: deploy/latest/templates/timesheets_overview.php:59
 #: templates/timesheets_overview.php:59
 msgid "Today"
 msgstr "Vandaag"
 
+#: deploy/latest/templates/timesheets_overview.php:76
 #: templates/timesheets_overview.php:76
 msgid "Your work registration was succesfull added."
 msgstr "Je werkregistratie is succesvol toegevoegd."
 
+#: deploy/latest/templates/timesheets_overview.php:80
 #: templates/timesheets_overview.php:80
 msgid "Your work registration was succesfull updated."
 msgstr "Je werkregistratie is succesvol bijgewerkt."
 
+#: deploy/latest/templates/timesheets_overview.php:114
 #: templates/timesheets_overview.php:114
 msgid "Actions"
 msgstr "Acties"
 
+#: deploy/latest/templates/work_registration_fields.php:25
 #: templates/work_registration_fields.php:25
 msgid "Company"
 msgstr "Bedrijf"
 
+#: deploy/latest/templates/work_registration_fields.php:26
 #: templates/work_registration_fields.php:26
 msgid "Select company…"
 msgstr "Selecteer bedrijf…"
 
+#: deploy/latest/templates/work_registration_fields.php:36
 #: templates/work_registration_fields.php:36
 msgid "Project"
 msgstr "Project"
 
+#: deploy/latest/templates/work_registration_fields.php:37
 #: templates/work_registration_fields.php:37
 msgid "Select project…"
 msgstr "Selecteer project…"
 
+#: deploy/latest/templates/work_registration_fields.php:47
 #: templates/work_registration_fields.php:47
 msgid "Subscription"
 msgstr "Abonnement"
 
+#: deploy/latest/templates/work_registration_fields.php:48
 #: templates/work_registration_fields.php:48
 msgid "Select subscription…"
 msgstr "Selecteer abonnement…"
 
+#: deploy/latest/templates/work_registration_fields.php:80
 #: templates/work_registration_fields.php:80
 msgid "Work registration description"
 msgstr "Werkregistratie beschrijving"
 
+#: deploy/latest/templates/work_registration_fields.php:90
 #: templates/work_registration_fields.php:90
 msgid "hours"
 msgstr "uren"
 
+#: deploy/latest/templates/work_registration_fields.php:95
 #: templates/work_registration_fields.php:95
 msgid "minutes"
 msgstr "minuten"
@@ -294,14 +355,19 @@ msgid "http://www.pronamic.eu/"
 msgstr "http://www.pronamic.nl/"
 
 #: classes/orbis-timesheets-plugin.php:69
+#: deploy/latest/classes/orbis-timesheets-plugin.php:69
 msgctxt "taxonomy general name"
 msgid "Timesheets Activities"
 msgstr "Werkregistraties activiteiten"
 
 #: classes/orbis-timesheets-plugin.php:70
+#: deploy/latest/classes/orbis-timesheets-plugin.php:70
 msgctxt "taxonomy singular name"
 msgid "Timesheets Activity"
 msgstr "Werkregistraties activiteit"
+
+#~ msgid "Receivers"
+#~ msgstr "Ontvangers"
 
 #~ msgid "Automatically send timesheet emails"
 #~ msgstr "Verstuur werkregistraties automatisch"
