@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 wp_enqueue_script( 'orbis-autocomplete' );
 wp_enqueue_style( 'select2' );

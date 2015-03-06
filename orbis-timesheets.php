@@ -4,7 +4,7 @@ Plugin Name: Orbis Timesheets
 Plugin URI: http://www.orbiswp.com/
 Description: Time Management, Timesheet, Time Tracking solution for WordPress. Orbis Timesheets enables you to track your work time.
 
-Version: 1.3.0
+Version: 1.3.1
 Requires at least: 3.5
 
 Author: Pronamic
@@ -13,7 +13,7 @@ Author URI: http://www.pronamic.eu/
 Text Domain: orbis_timesheets
 Domain Path: /languages/
 
-License: Copyright (c) Pronamic
+License: GPLv3
 
 GitHub URI: https://github.com/pronamic/wp-orbis-subscriptions
 */

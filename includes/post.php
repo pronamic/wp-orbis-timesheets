@@ -5,7 +5,7 @@ function orbis_timesheets_posts_clauses( $pieces, $query ) {
 
 	$post_type = $query->get( 'post_type' );
 
-	if ( $post_type == 'orbis_project' ) {
+	if ( 'orbis_project' == $post_type ) {
 		// Fields
 		$fields = ',
 			SUM( logged_time.number_seconds ) AS project_logged_time

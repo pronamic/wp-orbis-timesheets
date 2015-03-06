@@ -3,10 +3,10 @@
 	<rule ref="WordPress">
 		<exclude name="WordPress.XSS.EscapeOutput" />
 
-		<exclude name="WordPress.WhiteSpace.ScopeIndent" />
 		<exclude name="WordPress.Files.FileName" />
 
-		<exclude name="WordPress.VIP.DirectDatabaseQuery" />		
-		<exclude name="WordPress.VIP.RestrictedVariables.test" />
+		<exclude name="WordPress.VIP.DirectDatabaseQuery" />
+		<exclude name="WordPress.VIP.RestrictedVariables.user_meta" />
+		<exclude name="WordPress.VIP.SlowDBQuery.slow_db_query" />
 	</rule>
 </ruleset>

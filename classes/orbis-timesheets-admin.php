@@ -58,6 +58,35 @@ class Orbis_Timesheets_Admin {
 	public function admin_init() {
 		add_filter( sprintf( 'pre_update_option_%s', 'orbis_timesheets_email_frequency' ), array( $this, 'update_option_frequency' ), 10, 2 );
 
+		// E-mail
+		add_settings_section(
+			'orbis_timesheets_settings_general', // id
+			__( 'General Settings', 'orbis_timesheets' ), // title
+			'__return_false', // callback
+			'orbis_timesheets_settings' // page
+		);
+
+		add_settings_field(
+			'orbis_timesheets_registration_limit_lower', // id
+			__( 'Registration Limit Lower', 'orbis_timesheets' ), // title
+			array( $this, 'input_select' ), // callback
+			'orbis_timesheets_settings', // page
+			'orbis_timesheets_settings_general', // section
+			array(
+				'label_for' => 'orbis_timesheets_registration_limit_lower',
+				'options'   => array(
+					'0'       => __( 'None', 'orbis_timesheets' ),
+					'1 day'   => __( '1 Day', 'orbis_timesheets' ),
+					'3 days'  => __( '3 Days', 'orbis_timesheets' ),
+					'1 week'  => __( '1 Week', 'orbis_timesheets' ),
+					'1 month' => __( '1 Month', 'orbis_timesheets' ),
+				),
+			) // args
+		);
+
+		register_setting( 'orbis_timesheets', 'orbis_timesheets_registration_limit_lower' );
+
+		// E-mail
 		add_settings_section(
 			'orbis_timesheets_settings_email', // id
 			__( 'E-mail Settings', 'orbis_timesheets' ), // title
@@ -113,27 +142,6 @@ class Orbis_Timesheets_Admin {
 			) // args
 		);
 
-		$users        = get_users();
-		$user_options = array();
-
-		foreach ( $users as $user ) {
-
-			$user_options[ $user->ID ] = $user->display_name;
-		}
-
-		add_settings_field(
-			'orbis_timesheets_email_users', // id
-			__( 'Receivers', 'orbis_timesheets' ), // title
-			array( $this, 'input_select' ), // callback
-			'orbis_timesheets_settings', // page
-			'orbis_timesheets_settings_email', // section
-			array(
-				'label_for' => 'orbis_timesheets_email_users',
-				'options'   => $user_options,
-				'multiple'  => true,
-			) // args
-		);
-
 		add_settings_field(
 			'orbis_timesheets_email_manually', // id
 			__( 'E-mail Manually', 'orbis_timesheets' ), // title
@@ -148,7 +156,6 @@ class Orbis_Timesheets_Admin {
 		register_setting( 'orbis_timesheets', 'orbis_timesheets_email_frequency' );
 		register_setting( 'orbis_timesheets', 'orbis_timesheets_email_time' );
 		register_setting( 'orbis_timesheets', 'orbis_timesheets_email_subject' );
-		register_setting( 'orbis_timesheets', 'orbis_timesheets_email_users' );
 	}
 
 	/**

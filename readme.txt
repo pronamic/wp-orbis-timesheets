@@ -4,9 +4,9 @@ Donate link: http://www.orbiswp.com/
 Tags: orbis, subscription, licence
 Requires at least: 3.5
 Tested up to: 3.9.1
-Stable tag: 1.3.0
-License: Copyright (c) Pronamic
-License URI: http://www.pronamic.eu/copyright/
+Stable tag: 1.3.1
+License: GPLv3
+License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
 
 
@@ -27,6 +27,9 @@ License URI: http://www.pronamic.eu/copyright/
 
 
 == Changelog ==
+
+= 1.3.1 =
+*	WordPress Coding Standards optimizations.
 
 = 1.3.0 =
 *	Feature - Made the timesheet activitiets editable from the WordPress admin environment.
