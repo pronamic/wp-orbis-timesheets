@@ -1,5 +1,7 @@
 <?xml version="1.0"?>
 <ruleset name="Orbis Timesheets rules">
+	<exclude-pattern>/node_modules</exclude-pattern>
+
 	<rule ref="WordPress">
 		<exclude name="WordPress.XSS.EscapeOutput" />
 

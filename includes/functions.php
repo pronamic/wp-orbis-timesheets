@@ -47,18 +47,18 @@ function orbis_timesheets_get_entry( $entry_id ) {
 	$from   = '';
 
 	if ( function_exists( 'orbis_subscriptions_bootstrap' ) ) {
-		$select = ',
+		$select = ",
 			CONCAT( subscription_product.name, ' - ', subscription.name ) AS subscription_name
-		';
+		";
 
-		$from = '
+		$from = "
 				LEFT JOIN
 			$wpdb->orbis_subscriptions AS subscription
 					ON timesheet.subscription_id = subscription.id
 				LEFT JOIN
 			$wpdb->orbis_subscription_products AS subscription_product
 					ON subscription.type_id = subscription_product.id
-		';
+		";
 	}
 
 	$query = "
