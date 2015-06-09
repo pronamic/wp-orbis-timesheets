@@ -5,7 +5,6 @@ class Orbis_Timesheets_Admin {
 		$this->plugin = $plugin;
 
 		add_action( 'admin_init', array( $this, 'admin_init' ) );
-		add_action( 'admin_init', array( $this, 'maybe_email_manually' ) );
 		add_action( 'admin_menu', array( $this, 'admin_menu' ) );
 
 		// Taxonomy actions
@@ -56,9 +55,7 @@ class Orbis_Timesheets_Admin {
 	}
 
 	public function admin_init() {
-		add_filter( sprintf( 'pre_update_option_%s', 'orbis_timesheets_email_frequency' ), array( $this, 'update_option_frequency' ), 10, 2 );
-
-		// E-mail
+		// General
 		add_settings_section(
 			'orbis_timesheets_settings_general', // id
 			__( 'General Settings', 'orbis_timesheets' ), // title
@@ -85,77 +82,6 @@ class Orbis_Timesheets_Admin {
 		);
 
 		register_setting( 'orbis_timesheets', 'orbis_timesheets_registration_limit_lower' );
-
-		// E-mail
-		add_settings_section(
-			'orbis_timesheets_settings_email', // id
-			__( 'E-mail Settings', 'orbis_timesheets' ), // title
-			'__return_false', // callback
-			'orbis_timesheets_settings' // page
-		);
-
-		$options = array( '' );
-		foreach ( wp_get_schedules() as $name => $schedule ) {
-			$options[ $name ] = $schedule['display'];
-		}
-
-		add_settings_field(
-			'orbis_timesheets_email_frequency', // id
-			__( 'Frequency', 'orbis_timesheets' ), // title
-			array( $this, 'input_select' ), // callback
-			'orbis_timesheets_settings', // page
-			'orbis_timesheets_settings_email', // section
-			array(
-				'label_for' => 'orbis_timesheets_email_frequency',
-				'options'   => $options,
-			) // args
-		);
-
-		add_settings_field(
-			'orbis_timesheets_email_time', // id
-			__( 'Time', 'orbis_timesheets' ), // title
-			array( $this, 'input_text' ), // callback
-			'orbis_timesheets_settings', // page
-			'orbis_timesheets_settings_email', // section
-			array(
-				'label_for' => 'orbis_timesheets_email_time',
-				'classes'   => array(),
-			) // args
-		);
-
-		add_settings_field(
-			'orbis_timesheets_emails_next_schedule', // id
-			__( 'Next Schedule', 'orbis_timesheets' ), // title
-			array( $this, 'next_schedule' ), // callback
-			'orbis_timesheets_settings', // page
-			'orbis_timesheets_settings_email' // section
-		);
-
-		add_settings_field(
-			'orbis_timesheets_email_subject', // id
-			__( 'Subject', 'orbis_timesheets' ), // title
-			array( $this, 'input_text' ), // callback
-			'orbis_timesheets_settings', // page
-			'orbis_timesheets_settings_email', // section
-			array(
-				'label_for' => 'orbis_timesheets_email_subject',
-			) // args
-		);
-
-		add_settings_field(
-			'orbis_timesheets_email_manually', // id
-			__( 'E-mail Manually', 'orbis_timesheets' ), // title
-			array( $this, 'button_email_manually' ), // callback
-			'orbis_timesheets_settings', // page
-			'orbis_timesheets_settings_email', // section
-			array(
-				'label_for' => 'orbis_timesheets_email_subject',
-			) // args
-		);
-
-		register_setting( 'orbis_timesheets', 'orbis_timesheets_email_frequency' );
-		register_setting( 'orbis_timesheets', 'orbis_timesheets_email_time' );
-		register_setting( 'orbis_timesheets', 'orbis_timesheets_email_subject' );
 	}
 
 	/**
@@ -251,27 +177,6 @@ class Orbis_Timesheets_Admin {
 		echo '</select>';
 	}
 
-	public function button_email_manually() {
-		submit_button(
-			__( 'Send E-mail', 'orbis_timesheets' ),
-			'secondary',
-			'orbis_timesheets_email_manually',
-			false
-		);
-	}
-
-	public function next_schedule() {
-		$timestamp = wp_next_scheduled( 'orbis_timesheets_emails' );
-
-		if ( $timestamp ) {
-			$timestamp = strtotime( get_date_from_gmt( '@' . $timestamp ) );
-
-			echo date_i18n( 'D j M Y H:i:s', $timestamp );
-		} else {
-			_e( 'Not scheduled', 'orbis_timesheets' );
-		}
-	}
-
 	/**
 	 * Parent file
 	 *
@@ -333,23 +238,5 @@ class Orbis_Timesheets_Admin {
 
 	public function page_settings() {
 		$this->plugin->plugin_include( 'admin/page-settings.php' );
-	}
-
-	public function update_option_frequency( $value ) {
-		wp_clear_scheduled_hook( 'orbis_timesheets_emails' );
-
-		if ( ! empty( $value ) ) {
-			$time = get_gmt_from_date( get_option( 'orbis_timesheets_email_time' ), 'U' );
-
-			wp_schedule_event( $time, $value, 'orbis_timesheets_emails' );
-		}
-
-		return $value;
-	}
-
-	public function maybe_email_manually() {
-		if ( filter_has_var( INPUT_POST, 'orbis_timesheets_email_manually' ) ) {
-			$this->plugin->email->send_timesheets_by_email();
-		}
 	}
 }
