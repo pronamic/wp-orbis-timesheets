@@ -53,10 +53,10 @@ $url = add_query_arg( 'message', false );
 
 ?>
 <form class="form-inline" action="" method="get">
-	<div class="btn-group">
-		<a href="<?php echo add_query_arg( 'date', date( 'Y-m-d', $prev ), $url ); ?>" class="btn btn-default">&lt;</a>
-		<a href="<?php echo add_query_arg( 'date', date( 'Y-m-d', $next ), $url ); ?>" class="btn btn-default">&gt;</a>
-		<a href="<?php echo add_query_arg( 'date', false, $url ); ?>" class="btn btn-default"><?php _e( 'Today', 'orbis_timesheets' ); ?></a>
+	<div class="btn-group" role="group">
+		<a href="<?php echo add_query_arg( 'date', date( 'Y-m-d', $prev ), $url ); ?>" class="btn btn-secondary">‹</a>
+		<a href="<?php echo add_query_arg( 'date', date( 'Y-m-d', $next ), $url ); ?>" class="btn btn-secondary">›</a>
+		<a href="<?php echo add_query_arg( 'date', false, $url ); ?>" class="btn btn-secondary"><?php _e( 'Today', 'orbis_timesheets' ); ?></a>
 	</div>
 </form>
 
@@ -164,7 +164,7 @@ $url = add_query_arg( 'message', false );
 							<?php echo orbis_time( $registration->work_duration ); ?>
 						</td>
 						<td>
-							<a href="<?php echo get_edit_orbis_work_registration_link( $registration->work_id ); ?>"><span class="glyphicon glyphicon-pencil"></span> <span style="display: none"><?php _e( 'Edit', 'orbis_timesheets' ); ?></span></a>
+							<a href="<?php echo get_edit_orbis_work_registration_link( $registration->work_id ); ?>"><i class="fa fa-pencil" aria-hidden="true"></i> <span style="display: none"><?php _e( 'Edit', 'orbis_timesheets' ); ?></span></a>
 						</td>
 					</tr>
 
