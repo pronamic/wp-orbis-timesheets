@@ -36,7 +36,7 @@
 				<label><?php _e( 'Project', 'orbis_timesheets' ); ?></label>
 
 				<select class="select2 select-form-control" name="orbis_registration_project_id" tabindex="<?php echo esc_attr( $tabindex++ ); ?>" autofocus="autofocus">
-					<option value=""><?php esc_html_e( 'Select project…', 'orbis_timesheets' ); ?></option>
+					<option value=""><?php esc_html_e( '— Select Project —', 'orbis_timesheets' ); ?></option>
 					<?php
 
 					$query = new WP_Query( array(
