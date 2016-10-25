@@ -34,55 +34,7 @@
 		<div class="col-md-6">
 			<div <?php orbis_field_class( array( 'form-group' ), 'orbis_registration_project_id' ); ?>>
 				<label><?php _e( 'Project', 'orbis_timesheets' ); ?></label>
-
-				<select class="select2 select-form-control" name="orbis_registration_project_id" tabindex="<?php echo esc_attr( $tabindex++ ); ?>" autofocus="autofocus">
-					<option value=""><?php esc_html_e( '— Select Project —', 'orbis_timesheets' ); ?></option>
-					<?php
-
-					$query = new WP_Query( array(
-						'post_type'                 => 'orbis_project',
-						'nopaging'                  => true,
-						'orbis_project_is_finished' => false,
-					) );
-
-					if ( $query->have_posts() ) {
-						while ( $query->have_posts() ) {
-							$query->the_post();
-
-							$post = get_post();
-
-							$orbis_id = get_post_meta( get_the_ID(), '_orbis_project_id', true );
-
-							$text = sprintf(
-								'%s. %s - %s ( %s )',
-								$orbis_id,
-								$post->principal_name,
-								get_the_title(),
-								orbis_time( $post->project_number_seconds )
-							);
-
-							if ( isset( $project->project_logged_time ) ) {
-								$text = sprintf(
-									'%s. %s - %s ( %s / %s )',
-									$orbis_id,
-									$post->principal_name,
-									get_the_title(),
-									orbis_time( $post->project_number_seconds ),
-									orbis_time( $post->project_logged_time )
-								);
-							}
-
-							printf(
-								'<option value="%s" %s>%s</a>',
-								esc_attr( $orbis_id ),
-								selected( $orbis_id, $entry->project_id, false ),
-								esc_html( $text ) 
-							);
-						}
-					}
-
-					?>
-				</select>
+				<input  placeholder="<?php esc_attr_e( 'Select project…', 'orbis_timesheets' ); ?>" type="text" name="orbis_registration_project_id" value="<?php echo esc_attr( $entry->project_id ); ?>" class="orbis-id-control orbis-project-id-control select-form-control" data-text="<?php echo esc_attr( $entry->project_name ); ?>" tabindex="<?php echo esc_attr( $tabindex++ ); ?>" autofocus="autofocus" />
 			</div>
 		</div>
 
