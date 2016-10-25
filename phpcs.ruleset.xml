@@ -3,12 +3,22 @@
 	<exclude-pattern>/node_modules</exclude-pattern>
 
 	<rule ref="WordPress">
+		<exclude name="Generic.CodeAnalysis.EmptyStatement.DetectedIF" />
+		<exclude name="Generic.CodeAnalysis.UnconditionalIfStatement.Found" />
+
+		<exclude name="Squiz.Commenting" />
+		<exclude name="Squiz.PHP.CommentedOutCode.Found" />
+
 		<exclude name="WordPress.XSS.EscapeOutput" />
 
 		<exclude name="WordPress.Files.FileName" />
 
+		<exclude name="WordPress.PHP.StrictComparisons.LooseComparison" />
+
 		<exclude name="WordPress.VIP.DirectDatabaseQuery" />
 		<exclude name="WordPress.VIP.RestrictedVariables.user_meta" />
 		<exclude name="WordPress.VIP.SlowDBQuery.slow_db_query" />
+
+		<exclude name="WordPress.WP.PreparedSQL.NotPrepared" />
 	</rule>
 </ruleset>

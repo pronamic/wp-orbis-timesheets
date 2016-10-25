@@ -1,5 +1,18 @@
 <?php
 
+function orbis_timesheets_the_entry_description( $description ) {
+	$description = apply_filters( 'orbis_timesheets_entry_description', $description );
+
+	echo $description;
+}
+
+// @see https://github.com/WordPress/WordPress/blob/4.6.1/wp-includes/default-filters.php#L153-L158
+add_filter( 'orbis_timesheets_entry_description', 'wptexturize' );
+add_filter( 'orbis_timesheets_entry_description', 'convert_chars' );
+add_filter( 'orbis_timesheets_entry_description', 'make_clickable', 9 );
+add_filter( 'orbis_timesheets_entry_description', 'force_balance_tags', 25 );
+add_filter( 'orbis_timesheets_entry_description', 'convert_smilies', 20 );
+
 function orbis_post_link( $post_id ) {
 	return add_query_arg( 'p', $post_id, home_url( '/' ) );
 }

@@ -1,13 +1,16 @@
 <?php
 
 class Orbis_Timesheets_Email {
-
 	/**
+	 * Plugin.
+	 *
 	 * @var Orbis_Timesheets_Plugin
 	 */
 	private $plugin;
 
 	/**
+	 * Constructs and intialize e-mail object.
+	 *
 	 * @param Orbis_Timesheets_Plugin $plugin
 	 */
 	public function __construct( $plugin ) {

@@ -7,10 +7,16 @@ module.exports = function( grunt ) {
 		// PHP Code Sniffer
 		phpcs: {
 			application: {
-				src: [ '**/*.php' ],
+				src: [
+					'**/*.php',
+					'!deploy/**',
+					'!vendor/**'
+				],
 			},
 			options: {
-				standard: 'phpcs.ruleset.xml'
+				bin: 'vendor/bin/phpcs',
+				standard: 'phpcs.ruleset.xml',
+				showSniffCodes: true
 			}
 		},
 
@@ -27,7 +33,7 @@ module.exports = function( grunt ) {
 		// PHP Mess Detector
 		phpmd: {
 			application: {
-				dir: '.'
+				dir: 'classes'
 			},
 			options: {
 				exclude: 'node_modules',

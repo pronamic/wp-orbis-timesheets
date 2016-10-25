@@ -155,7 +155,7 @@ $url = add_query_arg( 'message', false );
 							<?php echo $registration->activity_name; ?>
 						</td>
 						<td>
-							<?php echo $registration->work_description; ?>
+							<?php orbis_timesheets_the_entry_description( $registration->work_description ); ?>
 						</td>
 						<td>
 							<?php echo $registration->work_date; ?>
