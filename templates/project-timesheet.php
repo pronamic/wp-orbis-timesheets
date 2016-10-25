@@ -59,7 +59,7 @@ if ( $registrations ) : ?>
 						<?php echo $registration->activity_name; ?>
 					</td>
 					<td>
-						<?php echo $registration->description; ?>
+						<?php orbis_timesheets_the_entry_description( $registration->description ); ?>
 					</td>
 					<td>
 						<?php echo orbis_time( $registration->number_seconds ); ?>
