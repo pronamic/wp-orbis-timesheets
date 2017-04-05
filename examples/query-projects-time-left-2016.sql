@@ -20,11 +20,13 @@ FROM
 	orbis_hours_registration AS timesheet
 			ON project.id = timesheet.project_id
 WHERE
-	project.start_date BETWEEN '2016-01-01' AND '2016-12-31'
+	project.invoice_number LIKE '16%'
 		AND
 	project.name LIKE '%Strippenkaart%'
 		AND
 	timesheet.date < '2016-12-31'
+		AND
+	project.invoicable
 GROUP BY
 	project.id
 		HAVING ( project.number_seconds - SUM( timesheet.number_seconds ) ) > 0

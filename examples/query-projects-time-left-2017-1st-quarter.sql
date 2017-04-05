@@ -25,6 +25,8 @@ WHERE
 	project.name LIKE '%Strippenkaart%'
 		AND
 	timesheet.date < '2016-04-01'
+		AND
+	project.invoicable
 GROUP BY
 	project.id
 		HAVING ( project.number_seconds - SUM( timesheet.number_seconds ) ) > 0
