@@ -33,7 +33,7 @@ $registrations = $wpdb->get_results( $query );
 
 if ( $registrations ) : ?>
 
-	<table class="table table-striped table-bordered">
+	<table class="table table-striped table-bordered mb-0">
 		<thead>
 			<tr>
 				<th scope="col"><?php _e( 'Date', 'orbis_timesheets' ); ?></th>
@@ -73,7 +73,7 @@ if ( $registrations ) : ?>
 
 <?php else : ?>
 
-	<div class="content">
+	<div class="content mt-3">
 		<p class="alt">
 			<?php _e( 'There are no time registrations for this project.', 'orbis_timesheets' ); ?>
 		</p>
