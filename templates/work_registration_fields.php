@@ -89,14 +89,20 @@
 				<div class="col-md-4">
 					<div class="input-group">
 						<input class="form-control" size="2" type="text" name="orbis_registration_hours" value="<?php echo empty( $entry->time ) ? '' : esc_attr( orbis_time( $entry->time, 'H' ) ); ?>" tabindex="<?php echo esc_attr( $tabindex++ ); ?>" />
-						<span class="input-group-addon"><?php _e( 'hours', 'orbis_timesheets' ); ?></span>
+						<div class="input-group-append">
+							<span class="input-group-text"><?php _e( 'hours', 'orbis_timesheets' ); ?></span>
+						</div>
+						
 					</div>
 				</div>
 
 				<div class="col-md-4">
 					<div class="input-group">
 						<input class="form-control" size="2" type="text" name="orbis_registration_minutes" value="<?php echo empty( $entry->time ) ? '' : esc_attr( orbis_time( $entry->time, 'M' ) ); ?>" tabindex="<?php echo esc_attr( $tabindex++ ); ?>" />
-						<span class="input-group-addon"><?php _e( 'minutes', 'orbis_timesheets' ); ?></span>
+						<div class="input-group-append">
+							<span class="input-group-text"><?php _e( 'minutes', 'orbis_timesheets' ); ?></span>
+						</div>
+						
 					</div>
 				</div>
 			</div>

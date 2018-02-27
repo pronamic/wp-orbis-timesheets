@@ -18,8 +18,8 @@ if ( filter_has_var( INPUT_GET, 'date' ) ) {
 }
 
 ?>
-<div class="panel">
-	<div class="content">
+<div class="card">
+	<div class="card-body">
 		<form action="" method="post">
 			<?php wp_nonce_field( 'orbis_timesheets_add_new_registration', 'orbis_timesheets_new_registration_nonce' ); ?>
 
