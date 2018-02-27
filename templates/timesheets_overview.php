@@ -73,11 +73,11 @@ $url = add_query_arg( 'message', false );
 
 		switch ( $message ) {
 			case 'added':
-				_e( 'Your work registration was succesfull added.', 'orbis_timesheets' );
+				_e( 'Your work registration was succesfully added.', 'orbis_timesheets' );
 
 				break;
 			case 'updated':
-				_e( 'Your work registration was succesfull updated.', 'orbis_timesheets' );
+				_e( 'Your work registration was succesfully updated.', 'orbis_timesheets' );
 
 				break;
 		}
