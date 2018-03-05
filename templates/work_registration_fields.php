@@ -34,7 +34,8 @@
 		<div class="col-md-6">
 			<div <?php orbis_field_class( array( 'form-group' ), 'orbis_registration_project_id' ); ?>>
 				<label><?php _e( 'Project', 'orbis_timesheets' ); ?></label>
-				<input  placeholder="<?php esc_attr_e( 'Select project…', 'orbis_timesheets' ); ?>" type="text" name="orbis_registration_project_id" value="<?php echo esc_attr( $entry->project_id ); ?>" class="orbis-id-control orbis-project-id-control select-form-control" data-text="<?php echo esc_attr( $entry->project_name ); ?>" tabindex="<?php echo esc_attr( $tabindex++ ); ?>" autofocus="autofocus" />
+				<select  placeholder="<?php esc_attr_e( 'Select project…', 'orbis_timesheets' ); ?>" name="orbis_registration_project_id" value="<?php echo esc_attr( $entry->project_id ); ?>" class="custom-select orbis-id-control orbis-project-id-control select-form-control" tabindex="<?php echo esc_attr( $tabindex++ ); ?>" autofocus="autofocus"></select>
+
 			</div>
 		</div>
 
@@ -45,7 +46,7 @@
 		<div class="col-md-6">
 			<div <?php orbis_field_class( array( 'form-group' ), 'orbis_registration_subscription_id' ); ?>>
 				<label><?php _e( 'Subscription', 'orbis_timesheets' ); ?></label>
-				<input placeholder="<?php esc_attr_e( 'Select subscription…', 'orbis_timesheets' ); ?>" type="text" name="orbis_registration_subscription_id" value="<?php echo esc_attr( $entry->subscription_id ); ?>" class="orbis-id-control orbis-subscription-id-control select-form-control" data-text="<?php echo esc_attr( $entry->subscription_name ); ?>" tabindex="<?php echo esc_attr( $tabindex++ ); ?>" />
+				<select placeholder="<?php esc_attr_e( 'Select subscription…', 'orbis_timesheets' ); ?>" type="text" name="orbis_registration_subscription_id" value="<?php echo esc_attr( $entry->subscription_id ); ?>" class="custom-select orbis-id-control orbis-subscription-id-control select-form-control" data-text="<?php echo esc_attr( $entry->subscription_name ); ?>" tabindex="<?php echo esc_attr( $tabindex++ ); ?>"></select>
 			</div>
 		</div>
 

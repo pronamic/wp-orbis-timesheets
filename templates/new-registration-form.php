@@ -2,6 +2,7 @@
 
 wp_enqueue_script( 'orbis-autocomplete' );
 wp_enqueue_style( 'select2' );
+wp_enqueue_style( 'select2-bootstrap4' );
 
 // Errors
 global $orbis_errors;
