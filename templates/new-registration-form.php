@@ -29,7 +29,7 @@ if ( filter_has_var( INPUT_GET, 'date' ) ) {
 			<?php require 'work_registration_fields.php'; ?>
 
 			<div class="form-actions">
-				<button type="submit" class="btn btn-primary" name="orbis_timesheets_add_registration"><?php esc_html_e( 'Register', 'orbis_timesheets' ); ?></button>
+				<button type="submit" class="btn btn-primary" name="orbis_timesheets_add_registration" tabindex="10"><?php esc_html_e( 'Register', 'orbis_timesheets' ); ?></button>
 			</div>
 		</form>
 	</div>
