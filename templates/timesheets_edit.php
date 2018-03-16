@@ -29,6 +29,7 @@ if ( $entry ) : ?>
 					$cancel_url = add_query_arg( array(
 						'work_registration' => false,
 						'action'            => false,
+						'entry_id'          => false,
 					) );
 
 					?>
