@@ -1,3 +1,58 @@
+<?php
+
+global $wpdb;
+
+$project_query = "
+	SELECT
+		principal.name AS principal_name,
+		project.name AS project_name,
+		project.number_seconds AS project_time
+	FROM
+		$wpdb->orbis_projects AS project
+			LEFT JOIN
+		$wpdb->orbis_companies AS principal
+				ON project.principal_id = principal.id
+	WHERE
+		project.finished = 0
+			AND
+		project.id = %s
+";
+
+$project_query = $wpdb->prepare( $project_query, $entry->project_id );
+
+$project = $wpdb->get_row( $project_query );
+
+if ( $project ) {
+	$project_value = sprintf(
+		'%s. %s - %s ( %s )',
+		$entry->project_id,
+		$project->principal_name,
+		$project->project_name,
+		orbis_time( $project->project_time )
+	);
+}
+
+$subscription_query = "
+	SELECT
+		subscription.id AS id,
+		CONCAT( subscription.id, '. ', IFNULL( CONCAT( product.name, ' - ' ), '' ), subscription.name ) AS text
+	FROM
+		$wpdb->orbis_subscriptions AS subscription
+			LEFT JOIN
+		$wpdb->orbis_subscription_products AS product
+				ON subscription.type_id = product.id
+	WHERE
+		subscription.cancel_date IS NULL
+			AND
+		subscription.id = %s
+";
+
+$subscription_query = $wpdb->prepare( $subscription_query, $entry->subscription_id );
+
+$subscription = $wpdb->get_row( $subscription_query );
+
+?>
+
 <?php if ( ! empty( $orbis_errors ) ) : ?>
 
 	<div class="alert alert-danger">
@@ -34,7 +89,12 @@
 		<div class="col-md-6">
 			<div <?php orbis_field_class( array( 'form-group' ), 'orbis_registration_project_id' ); ?>>
 				<label><?php _e( 'Project', 'orbis_timesheets' ); ?></label>
-				<select  placeholder="<?php esc_attr_e( 'Select project…', 'orbis_timesheets' ); ?>" name="orbis_registration_project_id" value="<?php echo esc_attr( $entry->project_id ); ?>" class="custom-select orbis-id-control orbis-project-id-control select-form-control" tabindex="<?php echo esc_attr( $tabindex++ ); ?>" autofocus="autofocus"></select>
+
+				<select name="orbis_registration_project_id" class="custom-select orbis-id-control orbis-project-id-control select-form-control" placeholder="<?php esc_attr_e( 'Select project…', 'orbis_timesheets' ); ?>">
+					<option selected="selected" value="<?php echo esc_attr( $entry->project_id ); ?>">
+						<?php echo esc_attr( $project_value ); ?>
+					</option>
+				</select>
 
 			</div>
 		</div>
@@ -46,7 +106,11 @@
 		<div class="col-md-6">
 			<div <?php orbis_field_class( array( 'form-group' ), 'orbis_registration_subscription_id' ); ?>>
 				<label><?php _e( 'Subscription', 'orbis_timesheets' ); ?></label>
-				<select placeholder="<?php esc_attr_e( 'Select subscription…', 'orbis_timesheets' ); ?>" type="text" name="orbis_registration_subscription_id" value="<?php echo esc_attr( $entry->subscription_id ); ?>" class="custom-select orbis-id-control orbis-subscription-id-control select-form-control" data-text="<?php echo esc_attr( $entry->subscription_name ); ?>" tabindex="<?php echo esc_attr( $tabindex++ ); ?>"></select>
+				<select name="orbis_registration_subscription_id" class="custom-select orbis-id-control orbis-subscription-id-control select-form-control" placeholder="<?php esc_attr_e( 'Select subscription…', 'orbis_timesheets' ); ?>">
+					<option selected="selected" value="<?php echo esc_attr( $entry->subscription_id ); ?>">
+						<?php echo esc_attr( $subscription->text ); ?>
+					</option>
+				</select>
 			</div>
 		</div>
 
