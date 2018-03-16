@@ -46,8 +46,8 @@ $query = $wpdb->prepare( $query, $user_id, date( 'Y-m-d', $timestamp ) );
 
 $registrations = $wpdb->get_results( $query );
 
-$prev      = strtotime( '-1 day', $timestamp );
-$next      = strtotime( '+1 day', $timestamp );
+$prev = strtotime( '-1 day', $timestamp );
+$next = strtotime( '+1 day', $timestamp );
 
 $url = add_query_arg( 'message', false );
 
@@ -176,4 +176,4 @@ $url = add_query_arg( 'message', false );
 
 <?php endif; ?>
 
-<?php include 'new-registration-form.php'; ?>
+<?php require 'new-registration-form.php'; ?>

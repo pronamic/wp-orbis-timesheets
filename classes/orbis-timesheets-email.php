@@ -43,8 +43,8 @@ class Orbis_Timesheets_Email {
 
 		$user_ids = get_users( array(
 			'fields'     => 'ids',
-			'meta_key'   => '_orbis_user',
-			'meta_value' => 'true',
+			'meta_key'   => '_orbis_user', // WPCS: slow query ok.
+			'meta_value' => 'true', // WPCS: slow query ok.
 		) );
 
 		$query_user_ids = implode( ',', $user_ids );

@@ -2,6 +2,9 @@
 
 global $wpdb;
 
+$project_value      = '';
+$subscription_value = '';
+
 $project_query = "
 	SELECT
 		principal.name AS principal_name,
@@ -50,6 +53,8 @@ $subscription_query = "
 $subscription_query = $wpdb->prepare( $subscription_query, $entry->subscription_id );
 
 $subscription = $wpdb->get_row( $subscription_query );
+
+$subscription_value = ( $subscription ) ? $subscription->text : '';
 
 ?>
 
@@ -108,7 +113,7 @@ $subscription = $wpdb->get_row( $subscription_query );
 				<label><?php _e( 'Subscription', 'orbis_timesheets' ); ?></label>
 				<select name="orbis_registration_subscription_id" class="custom-select orbis-id-control orbis-subscription-id-control select-form-control" placeholder="<?php esc_attr_e( 'Select subscription…', 'orbis_timesheets' ); ?>">
 					<option selected="selected" value="<?php echo esc_attr( $entry->subscription_id ); ?>">
-						<?php echo esc_attr( $subscription->text ); ?>
+						<?php echo esc_attr( $subscription_value ); ?>
 					</option>
 				</select>
 			</div>
@@ -134,7 +139,7 @@ $subscription = $wpdb->get_row( $subscription_query );
 
 				?>
 			</select>
-	 	</div>
+		</div>
 	</div>
 </div>
 
@@ -157,7 +162,6 @@ $subscription = $wpdb->get_row( $subscription_query );
 						<div class="input-group-append">
 							<span class="input-group-text"><?php _e( 'hours', 'orbis_timesheets' ); ?></span>
 						</div>
-						
 					</div>
 				</div>
 
@@ -167,7 +171,6 @@ $subscription = $wpdb->get_row( $subscription_query );
 						<div class="input-group-append">
 							<span class="input-group-text"><?php _e( 'minutes', 'orbis_timesheets' ); ?></span>
 						</div>
-						
 					</div>
 				</div>
 			</div>

@@ -3,7 +3,7 @@
 function orbis_timesheets_shortcode() {
 	global $orbis_timesheets_plugin;
 
-	$return  = '';
+	$return = '';
 
 	ob_start();
 

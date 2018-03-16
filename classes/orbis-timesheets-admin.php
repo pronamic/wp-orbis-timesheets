@@ -27,9 +27,7 @@ class Orbis_Timesheets_Admin {
 
 		$term = get_term( $term_id, 'orbis_timesheets_activity' );
 
-		if ( is_wp_error( $term ) || is_null( $term ) ) {
-
-		} else {
+		if ( ! is_wp_error( $term ) || ! is_null( $term ) ) {
 			$activity_id = $wpdb->get_var( $wpdb->prepare( "SELECT id FROM $wpdb->orbis_activities WHERE term_id = %d;", $term_id ) );
 
 			// Format and data
@@ -224,7 +222,7 @@ class Orbis_Timesheets_Admin {
 		if ( isset( $submenu['orbis_timesheets'] ) ) {
 			$tax = get_taxonomy( 'orbis_timesheets_activity' );
 
-			$submenu['orbis_timesheets'][] = array(
+			$submenu['orbis_timesheets'][] = array( // WPCS: override ok.
 				esc_attr( $tax->labels->menu_name ),
 				$tax->cap->manage_terms,
 				add_query_arg( 'taxonomy', $tax->name, 'edit-tags.php' ),

@@ -20,5 +20,6 @@
 		<exclude name="WordPress.VIP.SlowDBQuery.slow_db_query" />
 
 		<exclude name="WordPress.WP.PreparedSQL.NotPrepared" />
+		<exclude name="WordPress.VIP.RestrictedVariables.user_meta__wpdb__users" />
 	</rule>
 </ruleset>

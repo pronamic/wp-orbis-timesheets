@@ -45,7 +45,7 @@ if ( $registrations ) : ?>
 		</thead>
 
 		<tbody>
-			
+
 			<?php foreach ( $registrations as $registration ) : ?>
 
 				<tr>
@@ -65,7 +65,7 @@ if ( $registrations ) : ?>
 						<?php echo orbis_time( $registration->number_seconds ); ?>
 					</td>
 				</tr>
-			
+
 			<?php endforeach; ?>
 
 		</tbody>
