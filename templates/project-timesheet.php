@@ -33,14 +33,14 @@ $registrations = $wpdb->get_results( $query );
 
 if ( $registrations ) : ?>
 
-	<table class="table table-striped table-bordered mb-0">
+	<table class="table table-striped mb-0">
 		<thead>
 			<tr>
-				<th scope="col"><?php _e( 'Date', 'orbis_timesheets' ); ?></th>
-				<th scope="col"><?php _e( 'User', 'orbis_timesheets' ); ?></th>
-				<th scope="col"><?php _e( 'Activity', 'orbis_timesheets' ); ?></th>
-				<th scope="col"><?php _e( 'Description', 'orbis_timesheets' ); ?></th>
-				<th scope="col"><?php _e( 'Time', 'orbis_timesheets' ); ?></th>
+				<th class="border-top-0" scope="col"><?php _e( 'Date', 'orbis_timesheets' ); ?></th>
+				<th class="border-top-0" scope="col"><?php _e( 'User', 'orbis_timesheets' ); ?></th>
+				<th class="border-top-0" scope="col"><?php _e( 'Activity', 'orbis_timesheets' ); ?></th>
+				<th class="border-top-0" scope="col"><?php _e( 'Description', 'orbis_timesheets' ); ?></th>
+				<th class="border-top-0" scope="col"><?php _e( 'Time', 'orbis_timesheets' ); ?></th>
 			</tr>
 		</thead>
 
