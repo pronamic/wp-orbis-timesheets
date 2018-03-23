@@ -73,7 +73,7 @@ if ( $registrations ) : ?>
 
 <?php else : ?>
 
-	<div class="content mt-3">
+	<div class="content">
 		<p class="alt">
 			<?php _e( 'There are no time registrations for this project.', 'orbis_timesheets' ); ?>
 		</p>
