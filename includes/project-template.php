@@ -3,10 +3,13 @@
 function orbis_project_get_the_logged_time( $format = 'HH:MM' ) {
 	global $post;
 
+	$orbis_project  = new Orbis_Project( get_post() );
+	$logged_seconds = $orbis_project->get_registered_seconds();
+
 	$time = null;
 
-	if ( isset( $post->project_logged_time ) ) {
-		$time = orbis_time( $post->project_logged_time, $format );
+	if ( isset( $logged_seconds ) ) {
+		$time = orbis_time( $logged_seconds, $format );
 	}
 
 	return $time;
@@ -19,10 +22,13 @@ function orbis_project_the_logged_time( $format = 'HH:MM' ) {
 function orbis_project_in_time() {
 	global $post;
 
+	$orbis_project  = new Orbis_Project( get_post() );
+	$logged_seconds = $orbis_project->get_registered_seconds();
+
 	$in_time = true;
 
-	if ( isset( $post->project_logged_time, $post->project_number_seconds ) ) {
-		$in_time = $post->project_logged_time <= $post->project_number_seconds;
+	if ( isset( $logged_seconds, $post->project_number_seconds ) ) {
+		$in_time = $logged_seconds <= $post->project_number_seconds;
 	}
 
 	return $in_time;

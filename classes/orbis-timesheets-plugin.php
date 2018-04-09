@@ -8,7 +8,6 @@ class Orbis_Timesheets_Plugin extends Orbis_Plugin {
 		$this->set_db_version( '1.2.3' );
 
 		$this->plugin_include( 'includes/functions.php' );
-		$this->plugin_include( 'includes/post.php' );
 		$this->plugin_include( 'includes/template.php' );
 		$this->plugin_include( 'includes/project-template.php' );
 		$this->plugin_include( 'includes/shortcodes.php' );

@@ -184,8 +184,12 @@ function orbis_insert_timesheet_entry( $entry ) {
 	$data['number_seconds']   = $entry->time;
 	$format['number_seconds'] = '%d';
 
-	// Insert or update
+	$query = $wpdb->prepare( "SELECT post_id FROM $wpdb->orbis_projects WHERE id = %d;", $data['project_id'] );
+
+	$project_post_id = $wpdb->get_var( $query );
+
 	if ( empty( $entry->id ) ) {
+		// Insert
 		$result = $wpdb->insert(
 			$wpdb->orbis_timesheets,
 			$data,
@@ -195,7 +199,18 @@ function orbis_insert_timesheet_entry( $entry ) {
 		if ( $result ) {
 			$entry->id = $wpdb->insert_id;
 		}
+
+		if ( get_post_meta( $project_post_id, 'orbis_project_registered_time' ) ) {
+			$registered_seconds  = (int) get_post_meta( $project_post_id, 'orbis_project_registered_time', true );
+			$registered_seconds += $data['number_seconds'];
+
+			update_post_meta( $project_post_id, 'orbis_project_registered_time', $registered_seconds );
+		} else{
+			update_post_meta( $project_post_id, 'orbis_project_registered_time', $data['number_seconds'] );
+		}
+		
 	} else {
+		// Update
 		$result = $wpdb->update(
 			$wpdb->orbis_timesheets,
 			$data,
@@ -203,6 +218,12 @@ function orbis_insert_timesheet_entry( $entry ) {
 			$format,
 			array( 'id' => '%d' )
 		);
+
+		$registered_seconds  = (int) get_post_meta( $project_post_id, 'orbis_project_registered_time', true );
+		$registered_seconds -= $entry->time_old;
+		$registered_seconds += $data['number_seconds'];
+
+		update_post_meta( $project_post_id, 'orbis_project_registered_time', $registered_seconds );
 	}
 
 	return $result;
@@ -330,6 +351,18 @@ function orbis_timesheets_get_entry_from_input( $type = INPUT_POST ) {
 		$time += $minutes * 60;
 
 		$entry->time = $time;
+	}
+
+	if ( filter_has_var( $type, 'orbis_registration_hours_old' ) ) {
+		$time_old = 0;
+
+		$hours   = filter_input( $type, 'orbis_registration_hours_old', FILTER_VALIDATE_INT );
+		$minutes = filter_input( $type, 'orbis_registration_minutes_old', FILTER_VALIDATE_INT );
+
+		$time_old += $hours * 3600;
+		$time_old += $minutes * 60;
+
+		$entry->time_old = $time_old;
 	}
 
 	$entry->user_id = get_current_user_id();
