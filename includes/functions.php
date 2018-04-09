@@ -205,10 +205,9 @@ function orbis_insert_timesheet_entry( $entry ) {
 			$registered_seconds += $data['number_seconds'];
 
 			update_post_meta( $project_post_id, 'orbis_project_registered_time', $registered_seconds );
-		} else{
+		} else {
 			update_post_meta( $project_post_id, 'orbis_project_registered_time', $data['number_seconds'] );
 		}
-		
 	} else {
 		// Update
 		$result = $wpdb->update(
