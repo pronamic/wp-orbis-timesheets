@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Orbis Timesheets\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/orbis-timesheets\n"
-"POT-Creation-Date: 2018-03-29 12:19:24+00:00\n"
-"PO-Revision-Date: 2018-03-29 14:20+0100\n"
+"POT-Creation-Date: 2018-04-10 09:00:15+00:00\n"
+"PO-Revision-Date: 2018-04-10 11:00+0100\n"
 "Last-Translator: Remco Tolsma <info@remcotolsma.nl>\n"
 "Language-Team: Pronamic <info@pronamic.nl>\n"
 "Language: nl_NL\n"
@@ -101,63 +101,63 @@ msgstr "Orbis werkregistraties instellingen"
 msgid "Settings"
 msgstr "Instellingen"
 
-#: classes/orbis-timesheets-plugin.php:77
+#: classes/orbis-timesheets-plugin.php:76
 msgid "Search Timesheets Activities"
 msgstr "Zoek werkregistraties activiteiten"
 
-#: classes/orbis-timesheets-plugin.php:78
+#: classes/orbis-timesheets-plugin.php:77
 msgid "All Timesheets Activities"
 msgstr "Alle werkregistraties activiteiten"
 
-#: classes/orbis-timesheets-plugin.php:79
+#: classes/orbis-timesheets-plugin.php:78
 msgid "Parent Timesheets Activity"
 msgstr "Bovenliggende werkregistraties activiteit"
 
-#: classes/orbis-timesheets-plugin.php:80
+#: classes/orbis-timesheets-plugin.php:79
 msgid "Parent Activity:"
 msgstr "Bovenliggende activiteit:"
 
-#: classes/orbis-timesheets-plugin.php:81
+#: classes/orbis-timesheets-plugin.php:80
 msgid "Edit Activity"
 msgstr "Activiteit bewerken"
 
-#: classes/orbis-timesheets-plugin.php:82
+#: classes/orbis-timesheets-plugin.php:81
 msgid "Update Activity"
 msgstr "Activiteit bijwerken"
 
-#: classes/orbis-timesheets-plugin.php:83
+#: classes/orbis-timesheets-plugin.php:82
 msgid "Add New Activity"
 msgstr "Nieuwe activiteit toevoegen"
 
-#: classes/orbis-timesheets-plugin.php:84
+#: classes/orbis-timesheets-plugin.php:83
 msgid "New Activity Name"
 msgstr "Nieuwe activiteit naam"
 
-#: classes/orbis-timesheets-plugin.php:85
+#: classes/orbis-timesheets-plugin.php:84
 msgid "Activities"
 msgstr "Activiteiten"
 
-#: includes/functions.php:355
+#: includes/functions.php:387
 msgid "You have to specify an company or project."
 msgstr "Je moet een bedrijf of project specificeren."
 
-#: includes/functions.php:361
+#: includes/functions.php:393
 msgid "You have to specify an project."
 msgstr "Je moet een project specificeren."
 
-#: includes/functions.php:366
+#: includes/functions.php:398
 msgid "You have to specify an description (%d words)."
 msgstr "Je moet een beschrijving specificeren (%d woorden)."
 
-#: includes/functions.php:370
+#: includes/functions.php:402
 msgid "You have to specify an activity."
 msgstr "Je moet een activiteit specificeren."
 
-#: includes/functions.php:374
+#: includes/functions.php:406
 msgid "You can not register on this date."
 msgstr "Je kunt niet registreren op deze datum."
 
-#: includes/functions.php:394
+#: includes/functions.php:426
 msgid "Could not add timesheet entry."
 msgstr "Kon werk registratie niet toevoegen."
 
@@ -233,6 +233,10 @@ msgstr "Abonnement"
 msgid "Select subscription…"
 msgstr "Selecteer abonnement…"
 
+#: templates/work_registration_fields.php:127
+msgid "Select activity…"
+msgstr "Selecteer activiteit…"
+
 #: templates/work_registration_fields.php:150
 msgid "Work registration description"
 msgstr "Werkregistratie beschrijving"
@@ -265,12 +269,12 @@ msgstr "Pronamic"
 msgid "http://www.pronamic.eu/"
 msgstr "http://www.pronamic.nl/"
 
-#: classes/orbis-timesheets-plugin.php:75
+#: classes/orbis-timesheets-plugin.php:74
 msgctxt "taxonomy general name"
 msgid "Timesheets Activities"
 msgstr "Werkregistraties activiteiten"
 
-#: classes/orbis-timesheets-plugin.php:76
+#: classes/orbis-timesheets-plugin.php:75
 msgctxt "taxonomy singular name"
 msgid "Timesheets Activity"
 msgstr "Werkregistraties activiteit"

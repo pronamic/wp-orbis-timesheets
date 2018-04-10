@@ -124,7 +124,7 @@ $subscription_value = ( $subscription ) ? $subscription->text : '';
 	<div class="col-md-6">
 		<div <?php orbis_field_class( array( 'form-group' ), 'orbis_registration_activity_id' ); ?>>
 			<label><?php _e( 'Activity', 'orbis_timesheets' ); ?></label>
-			<select name="orbis_registration_activity_id" class="select2 select-form-control" tabindex="<?php echo esc_attr( $tabindex++ ); ?>" />
+			<select name="orbis_registration_activity_id" class="select2 select-form-control" tabindex="<?php echo esc_attr( $tabindex++ ); ?>" data-placeholder="<?php esc_attr_e( 'Select activity…', 'orbis_timesheets' ); ?>" data-allow-clear="true" />
 				<option value=""></option>
 				<?php
 
