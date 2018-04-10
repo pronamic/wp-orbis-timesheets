@@ -64,9 +64,15 @@ module.exports = function( grunt ) {
 		makepot: {
 			target: {
 				options: {
-					cwd: '',
 					domainPath: 'languages',
-					type: 'wp-plugin'
+					exclude: [
+						'deploy/.*',
+						'node_modules/.*',
+						'vendor/.*'
+					],
+					type: 'wp-plugin',
+					updateTimestamp: false,
+					updatePoFiles: true
 				}
 			}
 		},
