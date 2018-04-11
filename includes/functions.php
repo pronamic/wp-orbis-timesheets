@@ -50,6 +50,29 @@ function get_edit_orbis_work_registration_link( $entry_id ) {
 	return $link;
 }
 
+function orbis_update_project_registered_time( $project_id, $post_id ) {
+	$registered_time = orbis_calculate_project_registered_time( $project_id );
+
+	update_post_meta( $post_id, 'orbis_project_registered_time', $registered_time );
+}
+
+function orbis_calculate_project_registered_time( $project_id ) {
+	global $wpdb;
+
+	$query = "
+		SELECT
+			SUM( number_seconds ) AS logged_time
+		FROM
+			$wpdb->orbis_timesheets
+		WHERE
+			project_id = %d
+	";
+
+	$registered_time = $wpdb->get_var( $wpdb->prepare( $query, $project_id ) );
+
+	return $registered_time;
+}
+
 function orbis_timesheets_get_entry( $entry_id ) {
 	global $wpdb;
 
