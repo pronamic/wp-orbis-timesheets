@@ -222,15 +222,6 @@ function orbis_insert_timesheet_entry( $entry ) {
 		if ( $result ) {
 			$entry->id = $wpdb->insert_id;
 		}
-
-		if ( get_post_meta( $project_post_id, 'orbis_project_registered_time' ) ) {
-			$registered_seconds  = (int) get_post_meta( $project_post_id, 'orbis_project_registered_time', true );
-			$registered_seconds += $data['number_seconds'];
-
-			update_post_meta( $project_post_id, 'orbis_project_registered_time', $registered_seconds );
-		} else {
-			update_post_meta( $project_post_id, 'orbis_project_registered_time', $data['number_seconds'] );
-		}
 	} else {
 		// Update
 		$result = $wpdb->update(
@@ -240,13 +231,9 @@ function orbis_insert_timesheet_entry( $entry ) {
 			$format,
 			array( 'id' => '%d' )
 		);
-
-		$registered_seconds  = (int) get_post_meta( $project_post_id, 'orbis_project_registered_time', true );
-		$registered_seconds -= $entry->time_old;
-		$registered_seconds += $data['number_seconds'];
-
-		update_post_meta( $project_post_id, 'orbis_project_registered_time', $registered_seconds );
 	}
+
+	orbis_update_project_registered_time( $data['project_id'], $project_post_id );
 
 	return $result;
 }
