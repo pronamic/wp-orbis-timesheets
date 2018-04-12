@@ -53,7 +53,7 @@ function get_edit_orbis_work_registration_link( $entry_id ) {
 function orbis_update_project_registered_time( $project_id, $post_id ) {
 	$registered_time = orbis_calculate_project_registered_time( $project_id );
 
-	update_post_meta( $post_id, 'orbis_project_registered_time', $registered_time );
+	update_post_meta( $post_id, '_orbis_project_registered_time', $registered_time );
 }
 
 function orbis_calculate_project_registered_time( $project_id ) {
