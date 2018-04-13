@@ -5,7 +5,7 @@ class Orbis_Timesheets_Plugin extends Orbis_Plugin {
 		parent::__construct( $file );
 
 		$this->set_name( 'orbis_timesheets' );
-		$this->set_db_version( '1.2.3' );
+		$this->set_db_version( '1.2.4' );
 
 		$this->plugin_include( 'includes/functions.php' );
 		$this->plugin_include( 'includes/template.php' );
@@ -60,6 +60,28 @@ class Orbis_Timesheets_Plugin extends Orbis_Plugin {
 
 		// Maybe convert
 		global $wpdb;
+
+		// Save logged time in project meta
+		$query = "
+			SELECT
+				SUM( number_seconds ) AS logged_time
+			FROM
+				$wpdb->orbis_timesheets
+			WHERE
+				project_id = %d
+		";
+
+		$projects = $wpdb->get_results( "
+			SELECT
+				*
+			FROM
+				$wpdb->orbis_projects
+		" );
+	
+		foreach ( $projects as $project ) {
+			$registered_time = $wpdb->get_var( $wpdb->prepare( $query, $project->id ) );
+			update_post_meta( $project->post_id, '_orbis_project_registered_time', $registered_time );
+		}
 
 		maybe_convert_table_to_utf8mb4( $wpdb->orbis_activities );
 		maybe_convert_table_to_utf8mb4( $wpdb->orbis_timesheets );
