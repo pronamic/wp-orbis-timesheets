@@ -47,26 +47,28 @@ if ( $project ) {
 	);
 }
 
-$subscription_query = "
-	SELECT
-		subscription.id AS id,
-		CONCAT( subscription.id, '. ', IFNULL( CONCAT( product.name, ' - ' ), '' ), subscription.name ) AS text
-	FROM
-		$wpdb->orbis_subscriptions AS subscription
-			LEFT JOIN
-		$wpdb->orbis_subscription_products AS product
-				ON subscription.type_id = product.id
-	WHERE
-		subscription.cancel_date IS NULL
-			AND
-		subscription.id = %s
-";
+if ( orbis_plugin_activated( 'subscriptions' ) ) {
+	$subscription_query = "
+		SELECT
+			subscription.id AS id,
+			CONCAT( subscription.id, '. ', IFNULL( CONCAT( product.name, ' - ' ), '' ), subscription.name ) AS text
+		FROM
+			$wpdb->orbis_subscriptions AS subscription
+				LEFT JOIN
+			$wpdb->orbis_subscription_products AS product
+					ON subscription.type_id = product.id
+		WHERE
+			subscription.cancel_date IS NULL
+				AND
+			subscription.id = %s
+	";
 
-$subscription_query = $wpdb->prepare( $subscription_query, $entry->subscription_id );
+	$subscription_query = $wpdb->prepare( $subscription_query, $entry->subscription_id );
 
-$subscription = $wpdb->get_row( $subscription_query );
+	$subscription = $wpdb->get_row( $subscription_query );
 
-$subscription_value = ( $subscription ) ? $subscription->text : '';
+	$subscription_value = ( $subscription ) ? $subscription->text : '';
+}
 
 ?>
 
@@ -118,7 +120,7 @@ $subscription_value = ( $subscription ) ? $subscription->text : '';
 
 	<?php endif; ?>
 
-	<?php if ( function_exists( 'orbis_subscriptions_bootstrap' ) ) : ?>
+	<?php if ( orbis_plugin_activated( 'subscriptions' ) ) : ?>
 
 		<div class="col-md-6">
 			<div <?php orbis_field_class( array( 'form-group' ), 'orbis_registration_subscription_id' ); ?>>
