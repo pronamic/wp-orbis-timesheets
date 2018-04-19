@@ -265,9 +265,9 @@ function orbis_timesheets_get_project_name( $orbis_id ) {
 	$extra_join   = '';
 
 	if ( orbis_plugin_activated( 'companies' ) ) {
-		$extra_select .= "
+		$extra_select .= '
 		, principal.name AS principal_name
-		";
+		';
 
 		$extra_join .= "
 		LEFT JOIN

@@ -5,8 +5,8 @@ global $wpdb;
 $project_value      = '';
 $subscription_value = '';
 
-$extra_select  = '';
-$extra_join    = '';
+$extra_select = '';
+$extra_join   = '';
 
 $project_query = "
 	SELECT
@@ -23,9 +23,10 @@ $project_query = "
 ";
 
 if ( orbis_plugin_activated( 'companies' ) ) {
-	$extra_select .= "
+	$extra_select .= '
 	, principal.name AS principal_name
-	";
+	';
+
 	$extra_join .= "
 	LEFT JOIN
 		$wpdb->orbis_companies AS principal
