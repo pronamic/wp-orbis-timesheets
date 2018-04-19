@@ -5,21 +5,33 @@ global $wpdb;
 $project_value      = '';
 $subscription_value = '';
 
+$extra_select  = '';
+$extra_join    = '';
+
 $project_query = "
 	SELECT
-		principal.name AS principal_name,
 		project.name AS project_name,
 		project.number_seconds AS project_time
+		$extra_select
 	FROM
 		$wpdb->orbis_projects AS project
-			LEFT JOIN
-		$wpdb->orbis_companies AS principal
-				ON project.principal_id = principal.id
+		$extra_join
 	WHERE
 		project.finished = 0
 			AND
 		project.id = %s
 ";
+
+if ( orbis_plugin_activated( 'companies' ) ) {
+	$extra_select .= "
+	, principal.name AS principal_name
+	";
+	$extra_join .= "
+	LEFT JOIN
+		$wpdb->orbis_companies AS principal
+				ON project.principal_id = principal.id
+	";
+}
 
 $project_query = $wpdb->prepare( $project_query, $entry->project_id );
 

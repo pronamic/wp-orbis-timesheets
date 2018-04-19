@@ -261,22 +261,35 @@ function orbis_timesheets_get_project_name( $orbis_id ) {
 
 	$name = $orbis_id;
 
+	$extra_select = '';
+	$extra_join   = '';
+
+	if ( orbis_plugin_activated( 'companies' ) ) {
+		$extra_select .= "
+		, principal.name AS principal_name
+		";
+
+		$extra_join .= "
+		LEFT JOIN
+			$wpdb->orbis_companies AS principal
+				ON project.principal_id = principal.id
+		";
+	}
+
 	// Query
 	$query = $wpdb->prepare( "
 		SELECT
 			project.id AS project_id,
-			principal.name AS principal_name,
 			project.name AS project_name,
 			project.number_seconds AS project_time,
 			SUM( entry.number_seconds ) AS project_logged_time
+			$extra_select
 		FROM
 			$wpdb->orbis_projects AS project
 				LEFT JOIN
-			$wpdb->orbis_companies AS principal
-					ON project.principal_id = principal.id
-				LEFT JOIN
 			$wpdb->orbis_timesheets AS entry
 					ON entry.project_id = project.id
+				$extra_join
 		WHERE
 			project.id = %d
 		;
@@ -285,11 +298,13 @@ function orbis_timesheets_get_project_name( $orbis_id ) {
 	// Project
 	$result = $wpdb->get_row( $query );
 
+	$principal_name = ( isset( $result->principal_name ) ) ? '- ' . $result->principal_name : '';
+
 	if ( $result ) {
 		$name = sprintf(
-			'%s. %s - %s ( %s / %s )',
+			'%s. %s %s ( %s / %s )',
 			$result->project_id,
-			$result->principal_name,
+			$principal_name,
 			$result->project_name,
 			orbis_time( $result->project_logged_time ),
 			orbis_time( $result->project_time )
@@ -329,8 +344,10 @@ function orbis_timesheets_get_entry_from_input( $type = INPUT_POST ) {
 
 	$entry->id = filter_input( $type, 'orbis_registration_id', FILTER_SANITIZE_STRING );
 
-	$entry->company_id   = filter_input( $type, 'orbis_registration_company_id', FILTER_SANITIZE_STRING );
-	$entry->company_name = orbis_timesheets_get_company_name( $entry->company_id );
+	if ( orbis_plugin_activated( 'companies' ) ) {
+		$entry->company_id   = filter_input( $type, 'orbis_registration_company_id', FILTER_SANITIZE_STRING );
+		$entry->company_name = orbis_timesheets_get_company_name( $entry->company_id );
+	}
 
 	$entry->project_id   = filter_input( $type, 'orbis_registration_project_id', FILTER_SANITIZE_STRING );
 	$entry->project_name = orbis_timesheets_get_project_name( $entry->project_id );

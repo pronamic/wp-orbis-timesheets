@@ -5,6 +5,27 @@
 
 	global $wpdb;
 
+	$extra_select  = '';
+	$extra_join    = '';
+
+	if ( orbis_plugin_activated( 'companies' ) ) {
+		$extra_select .= "
+		, company.id AS company_id,
+		company.post_id AS company_post_id,
+		company.name AS company_name,
+		principal.name AS principal_name
+		";
+
+		$extra_join .= "
+		LEFT JOIN
+			$wpdb->orbis_companies AS principal
+				ON project.principal_id = principal.id
+		LEFT JOIN
+			$wpdb->orbis_companies AS company
+				ON work.company_id = company.id
+		";
+	}
+
 	$query = "
 		SELECT
 			work.id AS work_id,
@@ -17,14 +38,11 @@
 			activity.id AS activity_id,
 			activity.name AS activity_name,
 			activity.description AS activity_description,
-			company.id AS company_id,
-			company.post_id AS company_post_id,
-			company.name AS company_name,
 			project.id AS project_id,
 			project.post_id AS project_post_id,
 			project.number_seconds AS project_time_available,
-			project.name AS project_name,
-			principal.name AS principal_name
+			project.name AS project_name
+			$extra_select
 		FROM
 			$wpdb->orbis_timesheets AS work
 				LEFT JOIN
@@ -34,14 +52,9 @@
 			$wpdb->orbis_activities AS activity
 					ON work.activity_id = activity.id
 				LEFT JOIN
-			$wpdb->orbis_companies AS company
-					ON work.company_id = company.id
-				LEFT JOIN
 			$wpdb->orbis_projects AS project
 					ON work.project_id = project.id
-				LEFT JOIN
-			$wpdb->orbis_companies AS principal
-					ON project.principal_id = principal.id
+				$extra_join
 		ORDER BY
 			work.`date` DESC
 		LIMIT
