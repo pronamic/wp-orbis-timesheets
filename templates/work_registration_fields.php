@@ -191,6 +191,4 @@ if ( orbis_plugin_activated( 'subscriptions' ) ) {
 			</div>
 		</div>
 	</div>
-	<input type="hidden" name="orbis_registration_hours_old" value="<?php echo empty( $entry->time ) ? '' : esc_attr( orbis_time( $entry->time, 'H' ) ); ?>">
-	<input type="hidden" name="orbis_registration_minutes_old" value="<?php echo empty( $entry->time ) ? '' : esc_attr( orbis_time( $entry->time, 'M' ) ); ?>">
 </div>
