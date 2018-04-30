@@ -379,18 +379,6 @@ function orbis_timesheets_get_entry_from_input( $type = INPUT_POST ) {
 		$entry->time = $time;
 	}
 
-	if ( filter_has_var( $type, 'orbis_registration_hours_old' ) ) {
-		$time_old = 0;
-
-		$hours   = filter_input( $type, 'orbis_registration_hours_old', FILTER_VALIDATE_INT );
-		$minutes = filter_input( $type, 'orbis_registration_minutes_old', FILTER_VALIDATE_INT );
-
-		$time_old += $hours * 3600;
-		$time_old += $minutes * 60;
-
-		$entry->time_old = $time_old;
-	}
-
 	$entry->user_id = get_current_user_id();
 
 	return $entry;
