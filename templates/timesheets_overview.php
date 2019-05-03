@@ -5,7 +5,7 @@ global $wpdb;
 $extra_select = '';
 $extra_join   = '';
 
-if ( orbis_plugin_activated( 'companies' ) ) {
+if ( isset( $wpdb->orbis_companies ) ) {
 	$extra_select .= '
 	, company.id AS company_id,
 	company.post_id AS company_post_id,
@@ -177,7 +177,7 @@ $url = add_query_arg( 'message', false );
 							<?php echo orbis_time( $registration->work_duration ); ?>
 						</td>
 						<td>
-							<a href="<?php echo get_edit_orbis_work_registration_link( $registration->work_id ); ?>"><i class="fa fa-pencil" aria-hidden="true"></i> <span style="display: none"><?php _e( 'Edit', 'orbis_timesheets' ); ?></span></a>
+							<a href="<?php echo get_edit_orbis_work_registration_link( $registration->work_id ); ?>"><i class="fas fa-edit" aria-hidden="true"></i> <span style="display: none"><?php _e( 'Edit', 'orbis_timesheets' ); ?></span></a>
 						</td>
 					</tr>
 
