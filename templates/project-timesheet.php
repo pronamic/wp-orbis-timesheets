@@ -31,7 +31,19 @@ $query = $wpdb->prepare( "
 
 $registrations = $wpdb->get_results( $query );
 
+$note = get_option( 'orbis_timesheets_note' );
+
 if ( $registrations ) : ?>
+
+	<?php if ( $note ) : ?>
+
+		<div class="card-body">
+			<div class="alert alert-warning mb-0" role="alert">
+				<i class="fas fa-exclamation-triangle"></i> <?php echo wp_kses_post( $note ); ?>
+			</div>
+		</div>
+
+	<?php endif; ?>
 
 	<table class="table table-striped mb-0">
 		<thead>

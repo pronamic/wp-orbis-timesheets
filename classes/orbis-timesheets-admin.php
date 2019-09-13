@@ -80,6 +80,19 @@ class Orbis_Timesheets_Admin {
 		);
 
 		register_setting( 'orbis_timesheets', 'orbis_timesheets_registration_limit_lower' );
+
+		add_settings_field(
+			'orbis_timesheets_note', // id
+			__( 'Note', 'orbis_timesheets' ), // title
+			array( $this, 'input_text' ), // callback
+			'orbis_timesheets_settings', // page
+			'orbis_timesheets_settings_general', // section
+			array(
+				'label_for' => 'orbis_timesheets_note',
+			) // args
+		);
+
+		register_setting( 'orbis_timesheets', 'orbis_timesheets_note' );
 	}
 
 	/**
