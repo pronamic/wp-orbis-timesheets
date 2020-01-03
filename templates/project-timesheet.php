@@ -85,8 +85,8 @@ if ( $registrations ) : ?>
 
 <?php else : ?>
 
-	<div class="content">
-		<p class="alt">
+	<div class="card-body">
+		<p class="text-muted m-0">
 			<?php _e( 'There are no time registrations for this project.', 'orbis_timesheets' ); ?>
 		</p>
 	</div>
