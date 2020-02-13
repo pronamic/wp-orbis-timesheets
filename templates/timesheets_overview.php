@@ -23,6 +23,20 @@ if ( isset( $wpdb->orbis_companies ) ) {
 	";
 }
 
+if ( isset( $wpdb->orbis_subscriptions ) ) {
+	$extra_select .= ',
+		subscription.id AS subscription_id,
+		subscription.name AS subscription_name,
+		subscription.post_id AS subscription_post_id
+	';
+
+	$extra_join .= "
+		LEFT JOIN
+			$wpdb->orbis_subscriptions AS subscription
+				ON work.subscription_id = subscription.id
+	";
+}
+
 $query = "
 	SELECT
 		work.id AS work_id,
@@ -158,6 +172,10 @@ $url = add_query_arg( 'message', false );
 
 							if ( ! empty( $registration->project_post_id ) ) {
 								$links[] = sprintf( '<a href="%s">%s</a>', esc_attr( orbis_post_link( $registration->project_post_id ) ), esc_html( $registration->project_name ) );
+							}
+
+							if ( ! empty( $registration->subscription_post_id ) ) {
+								$links[] = sprintf( '<a href="%s">%s</a>', esc_attr( orbis_post_link( $registration->subscription_post_id ) ), esc_html( $registration->subscription_name ) );
 							}
 
 							echo implode( ' - ', $links );
