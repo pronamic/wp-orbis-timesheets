@@ -1,7 +1,7 @@
 SELECT
 	SUM( projects.project_billable_amount ) AS billable_amount,
-	TIME_FORMAT( SEC_TO_TIME( SUM( projects.project_seconds_spent ) ), '%H:%i' ) AS time_spent
-	TIME_FORMAT( SEC_TO_TIME( SUM( projects.project_seconds_left ) ), '%H:%i' ) AS time_left
+	TIME_FORMAT( SEC_TO_TIME( SUM( projects.project_seconds_spent ) ), '%H:%i' ) AS time_spent,
+	TIME_FORMAT( SEC_TO_TIME( SUM( projects.project_seconds_left ) ), '%H:%i' ) AS time_left,
 	SUM( projects.project_available_amount ) AS available_amount
 FROM (
 	SELECT
