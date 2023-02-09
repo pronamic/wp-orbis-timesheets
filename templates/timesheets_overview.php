@@ -207,4 +207,34 @@ $url = add_query_arg( 'message', false );
 
 <?php endif; ?>
 
-<?php require 'new-registration-form.php'; ?>
+<div class="mb-3">
+	<?php require 'new-registration-form.php'; ?>
+</div>
+
+<div class="card">
+	<div class="card-header">
+		Jaaroverzicht
+	</div>
+
+	<div class="card-body">
+		<?php
+
+		$current_user = wp_get_current_user();
+
+		$report = get_orbis_timesheets_annual_report(
+			[
+				'user' => $current_user->user_login,
+			]
+		);
+
+		include __DIR__ . '/time-tracking-annual-overview-style.php';
+
+		foreach ( $report->users as $user ) {
+			include __DIR__ . '/time-tracking-annual-overview-table.php';
+		}
+
+		include __DIR__ . '/time-tracking-annual-overview-script.php';
+
+		?>
+	</div>
+</div>
