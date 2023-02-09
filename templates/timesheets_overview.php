@@ -129,8 +129,8 @@ $url = add_query_arg( 'message', false );
 
 	?>
 
-	<div class="panel">
-		<table class="table table-striped table-bordered table-condense">
+	<div class="card mb-3">
+		<table class="table table-striped table-bordered table-condense mb-0">
 			<thead>
 				<tr>
 					<th scope="col"><?php _e( 'Company/Project', 'orbis_timesheets' ); ?></th>
