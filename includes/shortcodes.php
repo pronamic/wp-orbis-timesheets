@@ -17,3 +17,21 @@ function orbis_timesheets_shortcode() {
 }
 
 add_shortcode( 'orbis_timesheets', 'orbis_timesheets_shortcode' );
+
+function orbis_timesheets_annual_overview() {
+	global $orbis_timesheets_plugin;
+
+	$return = '';
+
+	ob_start();
+
+	$orbis_timesheets_plugin->plugin_include( 'templates/time-tracking-annual-overview.php' );
+
+	$return = ob_get_contents();
+
+	ob_end_clean();
+
+	return $return;
+}
+
+add_shortcode( 'orbis_timesheets_annual_overview', 'orbis_timesheets_annual_overview' );
