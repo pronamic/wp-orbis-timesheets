@@ -221,6 +221,8 @@ $url = add_query_arg( 'message', false );
 
 		$current_user = wp_get_current_user();
 
+		$selected = new DateTime( '@' . $timestamp );
+
 		$report = get_orbis_timesheets_annual_report(
 			[
 				'user' => $current_user->user_login,

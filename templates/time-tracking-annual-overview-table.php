@@ -1,3 +1,8 @@
+<?php
+
+$today = new DateTime();
+
+?>
 <table class="orbis-timesheet-table">
 	<thead>
 		<tr>
@@ -31,20 +36,36 @@
 						$level = 'holiday';
 					}
 
+					$classes = [
+						'orbis-timesheet-level-' . $level,
+					];
+
+					if ( $day->date->format( 'Ymd' ) == $today->format( 'Ymd' ) ) {
+						$classes[] = 'border';
+						$classes[] = 'border-dark';
+					}
+
+					if ( isset( $selected ) && $day->date->format( 'Ymd' ) == $selected->format( 'Ymd' ) ) {
+						$classes[] = 'border';
+						$classes[] = 'border-primary';
+					}
+
+					$classes = array_unique( $classes );
+
 					$days[] = (object) array(
-						'date'  => $day->date,
-						'tippy' => sprintf(
+						'date'    => $day->date,
+						'tippy'   => sprintf(
 							'%s - %s / %s',
 							$day->date->format( 'D j M' ),
 							orbis_time( $day->total ),
 							orbis_time( $day->threshold )
 						),
-						'url'   => add_query_arg(
+						'url'     => add_query_arg(
 							'date',
 							$day->date->format( 'Y-m-d' ),
 							home_url( '/werk/' )
 						),
-						'level' => $level,
+						'classes' => $classes,
 					);
 				}
 
@@ -54,7 +75,7 @@
 				<?php foreach ( $days as $day ) : ?>
 
 					<td data-tippy-content="<?php echo esc_attr( $day->tippy ); ?>">
-						<a class="orbis-timesheet-day orbis-timesheet-level-<?php echo esc_attr( $day->level ); ?>" href="<?php echo esc_url( $day->url ); ?>"></a>
+						<a class="orbis-timesheet-day <?php echo esc_attr( implode( ' ', $day->classes ) ); ?>" href="<?php echo esc_url( $day->url ); ?>"></a>
 					</td>
 
 				<?php endforeach; ?>
