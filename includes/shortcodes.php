@@ -89,7 +89,7 @@ function orbis_timesheet_is_holiday( $date ) {
 		// Eerste pinksterdag - https://nl.wikipedia.org/wiki/Pinksteren
 		'2023-05-28',
 		// Tweede pinksterdag - https://nl.wikipedia.org/wiki/Pinksteren
-		'2023-05-09',
+		'2023-05-29',
 		// Eerste kerstdag - https://nl.wikipedia.org/wiki/Eerste_kerstdag
 		'2023-12-25',
 		// Tweede kerstdag - https://nl.wikipedia.org/wiki/Tweede_kerstdag
