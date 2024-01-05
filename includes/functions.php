@@ -1,5 +1,18 @@
 <?php
 
+function orbis_timesheets_the_entry_description( $description ) {
+	$description = apply_filters( 'orbis_timesheets_entry_description', $description );
+
+	echo $description;
+}
+
+// @see https://github.com/WordPress/WordPress/blob/4.6.1/wp-includes/default-filters.php#L153-L158
+add_filter( 'orbis_timesheets_entry_description', 'wptexturize' );
+add_filter( 'orbis_timesheets_entry_description', 'convert_chars' );
+add_filter( 'orbis_timesheets_entry_description', 'make_clickable', 9 );
+add_filter( 'orbis_timesheets_entry_description', 'force_balance_tags', 25 );
+add_filter( 'orbis_timesheets_entry_description', 'convert_smilies', 20 );
+
 function orbis_post_link( $post_id ) {
 	return add_query_arg( 'p', $post_id, home_url( '/' ) );
 }
@@ -35,6 +48,29 @@ function get_edit_orbis_work_registration_link( $entry_id ) {
 	), get_permalink() );
 
 	return $link;
+}
+
+function orbis_update_project_registered_time( $project_id, $post_id ) {
+	$registered_time = orbis_calculate_project_registered_time( $project_id );
+
+	update_post_meta( $post_id, '_orbis_project_registered_time', $registered_time );
+}
+
+function orbis_calculate_project_registered_time( $project_id ) {
+	global $wpdb;
+
+	$query = "
+		SELECT
+			SUM( number_seconds ) AS logged_time
+		FROM
+			$wpdb->orbis_timesheets
+		WHERE
+			project_id = %d
+	";
+
+	$registered_time = $wpdb->get_var( $wpdb->prepare( $query, $project_id ) );
+
+	return $registered_time;
 }
 
 function orbis_timesheets_get_entry( $entry_id ) {
@@ -96,7 +132,7 @@ function orbis_timesheets_get_entry( $entry_id ) {
 	if ( $row ) {
 		$entry = new Orbis_Timesheets_TimesheetEntry();
 
-		$entry->id           = $row->id;
+		$entry->id = $row->id;
 
 		$entry->company_id   = $row->company_id;
 		$entry->company_name = $row->company_name;
@@ -107,13 +143,12 @@ function orbis_timesheets_get_entry( $entry_id ) {
 		$entry->subscription_id   = $row->subscription_id;
 		$entry->subscription_name = $row->subscription_name;
 
-		$entry->activity_id  = $row->activity_id;
-
-		$entry->description  = $row->description;
+		$entry->activity_id = $row->activity_id;
+		$entry->description = $row->description;
 
 		$entry->set_date( new DateTime( $row->date ) );
 
-		$entry->time         = $row->number_seconds;
+		$entry->time = $row->number_seconds;
 	}
 
 	return $entry;
@@ -172,8 +207,12 @@ function orbis_insert_timesheet_entry( $entry ) {
 	$data['number_seconds']   = $entry->time;
 	$format['number_seconds'] = '%d';
 
-	// Insert or update
+	$query = $wpdb->prepare( "SELECT post_id FROM $wpdb->orbis_projects WHERE id = %d;", $data['project_id'] );
+
+	$project_post_id = $wpdb->get_var( $query );
+
 	if ( empty( $entry->id ) ) {
+		// Insert
 		$result = $wpdb->insert(
 			$wpdb->orbis_timesheets,
 			$data,
@@ -184,6 +223,7 @@ function orbis_insert_timesheet_entry( $entry ) {
 			$entry->id = $wpdb->insert_id;
 		}
 	} else {
+		// Update
 		$result = $wpdb->update(
 			$wpdb->orbis_timesheets,
 			$data,
@@ -192,6 +232,8 @@ function orbis_insert_timesheet_entry( $entry ) {
 			array( 'id' => '%d' )
 		);
 	}
+
+	orbis_update_project_registered_time( $data['project_id'], $project_post_id );
 
 	return $result;
 }
@@ -219,22 +261,35 @@ function orbis_timesheets_get_project_name( $orbis_id ) {
 
 	$name = $orbis_id;
 
+	$extra_select = '';
+	$extra_join   = '';
+
+	if ( orbis_plugin_activated( 'companies' ) ) {
+		$extra_select .= '
+		, principal.name AS principal_name
+		';
+
+		$extra_join .= "
+		LEFT JOIN
+			$wpdb->orbis_companies AS principal
+				ON project.principal_id = principal.id
+		";
+	}
+
 	// Query
 	$query = $wpdb->prepare( "
 		SELECT
 			project.id AS project_id,
-			principal.name AS principal_name,
 			project.name AS project_name,
 			project.number_seconds AS project_time,
 			SUM( entry.number_seconds ) AS project_logged_time
+			$extra_select
 		FROM
 			$wpdb->orbis_projects AS project
 				LEFT JOIN
-			$wpdb->orbis_companies AS principal
-					ON project.principal_id = principal.id
-				LEFT JOIN
 			$wpdb->orbis_timesheets AS entry
 					ON entry.project_id = project.id
+				$extra_join
 		WHERE
 			project.id = %d
 		;
@@ -243,11 +298,13 @@ function orbis_timesheets_get_project_name( $orbis_id ) {
 	// Project
 	$result = $wpdb->get_row( $query );
 
+	$principal_name = ( isset( $result->principal_name ) ) ? '- ' . $result->principal_name : '';
+
 	if ( $result ) {
 		$name = sprintf(
-			'%s. %s - %s ( %s / %s )',
+			'%s. %s %s ( %s / %s )',
 			$result->project_id,
-			$result->principal_name,
+			$principal_name,
 			$result->project_name,
 			orbis_time( $result->project_logged_time ),
 			orbis_time( $result->project_time )
@@ -285,21 +342,23 @@ function orbis_timesheets_get_subscription_name( $orbis_id ) {
 function orbis_timesheets_get_entry_from_input( $type = INPUT_POST ) {
 	$entry = new Orbis_Timesheets_TimesheetEntry();
 
-	$entry->id              = filter_input( $type, 'orbis_registration_id', FILTER_SANITIZE_STRING );
+	$entry->id = filter_input( $type, 'orbis_registration_id', FILTER_SANITIZE_STRING );
 
-	$entry->company_id      = filter_input( $type, 'orbis_registration_company_id', FILTER_SANITIZE_STRING );
-	$entry->company_name    = orbis_timesheets_get_company_name( $entry->company_id );
+	if ( orbis_plugin_activated( 'companies' ) ) {
+		$entry->company_id   = filter_input( $type, 'orbis_registration_company_id', FILTER_SANITIZE_STRING );
+		$entry->company_name = orbis_timesheets_get_company_name( $entry->company_id );
+	}
 
-	$entry->project_id      = filter_input( $type, 'orbis_registration_project_id', FILTER_SANITIZE_STRING );
-	$entry->project_name    = orbis_timesheets_get_project_name( $entry->project_id );
+	$entry->project_id   = filter_input( $type, 'orbis_registration_project_id', FILTER_SANITIZE_STRING );
+	$entry->project_name = orbis_timesheets_get_project_name( $entry->project_id );
 
 	$entry->subscription_id   = filter_input( $type, 'orbis_registration_subscription_id', FILTER_SANITIZE_STRING );
 	$entry->subscription_name = orbis_timesheets_get_subscription_name( $entry->subscription_id );
 
-	$entry->activity_id     = filter_input( $type, 'orbis_registration_activity_id', FILTER_SANITIZE_STRING );
-	$entry->description     = filter_input( $type, 'orbis_registration_description', FILTER_SANITIZE_STRING );
+	$entry->activity_id = filter_input( $type, 'orbis_registration_activity_id', FILTER_SANITIZE_STRING );
+	$entry->description = filter_input( $type, 'orbis_registration_description', FILTER_SANITIZE_STRING );
 
-	$date_string     = filter_input( $type, 'orbis_registration_date', FILTER_SANITIZE_STRING );
+	$date_string = filter_input( $type, 'orbis_registration_date', FILTER_SANITIZE_STRING );
 	if ( ! empty( $date_string ) ) {
 		$entry->set_date( new DateTime( $date_string ) );
 	}
@@ -351,11 +410,7 @@ function orbis_timesheets_maybe_add_entry() {
 
 			$required_word_count = 2;
 			if ( str_word_count( $entry->description ) < $required_word_count ) {
-				orbis_timesheets_register_error( 'orbis_registration_description', sprintf( __( 'You have to specify an description (%d words).', 'orbis_timesheets' ), $required_word_count ) );
-			}
-
-			if ( empty( $entry->time ) ) {
-				// $orbis_errors['orbis_registration_time'] = __( 'You have to specify an time.', 'orbis_timesheets' );
+				orbis_timesheets_register_error( 'orbis_registration_description', sprintf( __( 'You have to specify an description (%d words).', 'orbis_timesheets' ), $required_word_count ) ); // phpcs:ignore WordPress.WP.I18n.MissingTranslatorsComment
 			}
 
 			if ( empty( $entry->activity_id ) ) {
@@ -379,7 +434,7 @@ function orbis_timesheets_maybe_add_entry() {
 						'date'     => $entry->get_date()->format( 'Y-m-d' ),
 					) );
 
-					wp_redirect( $url );
+					wp_safe_redirect( $url );
 
 					exit;
 				} else {

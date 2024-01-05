@@ -1,6 +1,6 @@
 <?php
 
-$user_id   = get_current_user_id();
+$user_id = get_current_user_id();
 
 $date     = filter_input( INPUT_GET, 'date', FILTER_SANITIZE_STRING );
 $action   = filter_input( INPUT_GET, 'edit', FILTER_SANITIZE_STRING );

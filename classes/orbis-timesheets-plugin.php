@@ -5,7 +5,7 @@ class Orbis_Timesheets_Plugin extends Orbis_Plugin {
 		parent::__construct( $file );
 
 		$this->set_name( 'orbis_timesheets' );
-		$this->set_db_version( '1.2.2' );
+		$this->set_db_version( '1.2.4' );
 
 		$this->plugin_include( 'includes/functions.php' );
 		$this->plugin_include( 'includes/post.php' );
@@ -58,6 +58,12 @@ class Orbis_Timesheets_Plugin extends Orbis_Plugin {
 			KEY subscription_id (subscription_id),
 			KEY activity_id (activity_id)
 		" );
+
+		// Maybe convert
+		global $wpdb;
+
+		maybe_convert_table_to_utf8mb4( $wpdb->orbis_activities );
+		maybe_convert_table_to_utf8mb4( $wpdb->orbis_timesheets );
 
 		parent::install();
 	}

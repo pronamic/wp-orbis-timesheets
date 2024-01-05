@@ -1,8 +1,5 @@
 <?php
 
-wp_enqueue_script( 'orbis-autocomplete' );
-wp_enqueue_style( 'select2' );
-
 // Errors
 global $orbis_errors;
 
@@ -29,6 +26,7 @@ if ( $entry ) : ?>
 					$cancel_url = add_query_arg( array(
 						'work_registration' => false,
 						'action'            => false,
+						'entry_id'          => false,
 					) );
 
 					?>

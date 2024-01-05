@@ -1,17 +1,16 @@
-<?php do_action( 'orbis_email_header' ); ?>
+<h2><?php esc_html_e( 'Timesheets', 'orbis_timesheets' ); ?></h2>
 
-<table style="width: 100%; max-width: 100%; margin-bottom: 20px; border: 1px solid #ddd; ">
+<table style="width: 100%; max-width: 100%;" cellpadding="5">
 	<thead>
 		<tr>
-
-			<th scope="col" style="text-align: left; border: 1px solid #ddd;">
+			<th scope="col" style="text-align: left;">
 				<?php _e( 'User', 'orbis_timesheets' ); ?>
 			</th>
 
 			<?php foreach ( $dates as $date => $null ) : ?>
 
-				<th scope="col" style="text-align: left; border: 1px solid #ddd;">
-					<?php echo date( 'D j M', strtotime( $date ) ); ?>
+				<th scope="col" style="text-align: left;">
+					<?php echo esc_html( date_i18n( 'D j M', strtotime( $date ) ) ); ?>
 				</th>
 
 			<?php endforeach; ?>
@@ -24,7 +23,7 @@
 		<?php foreach ( $timesheets as $user_id => $timesheet ) : ?>
 
 			<tr>
-				<td scope="row" style="text-align: left; border: 1px solid #ddd;">
+				<td scope="row" style="text-align: left;">
 					<?php echo get_the_author_meta( 'display_name', $user_id ); ?>
 				</td>
 
@@ -40,8 +39,8 @@
 
 					?>
 
-					<td scope="row" style="text-align: left; border: 1px solid #ddd;">
-						<?php echo orbis_time( $time ); ?>
+					<td scope="row" style="text-align: left;">
+						<?php echo esc_html( orbis_time( $time ) ); ?>
 					</td>
 
 				<?php endforeach; ?>
@@ -52,5 +51,3 @@
 
 	</tbody>
 </table>
-
-<?php do_action( 'orbis_email_footer' ); ?>

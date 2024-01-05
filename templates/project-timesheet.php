@@ -31,21 +31,33 @@ $query = $wpdb->prepare( "
 
 $registrations = $wpdb->get_results( $query );
 
+$note = get_option( 'orbis_timesheets_note' );
+
 if ( $registrations ) : ?>
 
-	<table class="table table-striped table-bordered">
+	<?php if ( $note ) : ?>
+
+		<div class="card-body">
+			<div class="alert alert-warning mb-0" role="alert">
+				<i class="fas fa-exclamation-triangle"></i> <?php echo wp_kses_post( $note ); ?>
+			</div>
+		</div>
+
+	<?php endif; ?>
+
+	<table class="table table-striped mb-0">
 		<thead>
 			<tr>
-				<th scope="col"><?php _e( 'Date', 'orbis_timesheets' ); ?></th>
-				<th scope="col"><?php _e( 'User', 'orbis_timesheets' ); ?></th>
-				<th scope="col"><?php _e( 'Activity', 'orbis_timesheets' ); ?></th>
-				<th scope="col"><?php _e( 'Description', 'orbis_timesheets' ); ?></th>
-				<th scope="col"><?php _e( 'Time', 'orbis_timesheets' ); ?></th>
+				<th class="border-top-0" scope="col"><?php _e( 'Date', 'orbis_timesheets' ); ?></th>
+				<th class="border-top-0" scope="col"><?php _e( 'User', 'orbis_timesheets' ); ?></th>
+				<th class="border-top-0" scope="col"><?php _e( 'Activity', 'orbis_timesheets' ); ?></th>
+				<th class="border-top-0" scope="col"><?php _e( 'Description', 'orbis_timesheets' ); ?></th>
+				<th class="border-top-0" scope="col"><?php _e( 'Time', 'orbis_timesheets' ); ?></th>
 			</tr>
 		</thead>
 
 		<tbody>
-			
+
 			<?php foreach ( $registrations as $registration ) : ?>
 
 				<tr>
@@ -59,13 +71,13 @@ if ( $registrations ) : ?>
 						<?php echo $registration->activity_name; ?>
 					</td>
 					<td>
-						<?php echo $registration->description; ?>
+						<?php orbis_timesheets_the_entry_description( $registration->description ); ?>
 					</td>
 					<td>
 						<?php echo orbis_time( $registration->number_seconds ); ?>
 					</td>
 				</tr>
-			
+
 			<?php endforeach; ?>
 
 		</tbody>
@@ -73,8 +85,8 @@ if ( $registrations ) : ?>
 
 <?php else : ?>
 
-	<div class="content">
-		<p class="alt">
+	<div class="card-body">
+		<p class="text-muted m-0">
 			<?php _e( 'There are no time registrations for this project.', 'orbis_timesheets' ); ?>
 		</p>
 	</div>
