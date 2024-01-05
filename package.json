@@ -1,5 +1,5 @@
 {
-	"name": "orbis-timesheets",
+	"name": "@pronamic/wp-orbis-timesheets",
 	"version": "1.3.3",
 	"repository": {
 		"type": "git",
