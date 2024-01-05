@@ -1,6 +1,12 @@
 {
-    "require-dev": {
-        "squizlabs/php_codesniffer": "3.2.3",
-        "wp-coding-standards/wpcs": "0.14.1"
-    }
+	"name": "pronamic/wp-orbis-timesheets",
+	"description": "Time Management, Timesheet, Time Tracking solution for WordPress. Orbis Timesheets enables you to track your work time.",
+	"require-dev": {
+		"pronamic/wp-coding-standards": "^2.1"
+	},
+	"config": {
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true
+		}
+	}
 }
