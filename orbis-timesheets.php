@@ -18,6 +18,14 @@ License: GPLv3
 GitHub URI: https://github.com/pronamic/wp-orbis-subscriptions
 */
 
+/**
+ * Autoload.
+ */
+require_once __DIR__ . '/vendor/autoload_packages.php';
+
+/**
+ * Bootstrap.
+ */
 function orbis_timesheets_bootstrap() {
 	// Classes
 	require_once 'classes/orbis-timesheets-plugin.php';
