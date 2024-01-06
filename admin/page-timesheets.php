@@ -8,7 +8,7 @@
 	$extra_select = '';
 	$extra_join   = '';
 
-	if ( orbis_plugin_activated( 'companies' ) ) {
+	if ( property_exists( $wpdb, 'orbis_companies' ) ) {
 		$extra_select .= '
 		, company.id AS company_id,
 		company.post_id AS company_post_id,
