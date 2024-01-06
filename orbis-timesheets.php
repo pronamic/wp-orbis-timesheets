@@ -53,6 +53,6 @@ add_action(
 		// Initialize
 		global $orbis_timesheets_plugin;
 
-		$orbis_timesheets_plugin = new \Orbis_Timesheets_Plugin( __FILE__ );
+		$orbis_timesheets_plugin = new \Orbis_Timesheets_Plugin();
 	}
 );

@@ -244,10 +244,10 @@ class Orbis_Timesheets_Admin {
 	}
 
 	public function page_admin() {
-		$this->plugin->plugin_include( 'admin/page-timesheets.php' );
+		include __DIR__ . '/../admin/page-timesheets.php';
 	}
 
 	public function page_settings() {
-		$this->plugin->plugin_include( 'admin/page-settings.php' );
+		include __DIR__ . '/../admin/page-settings.php';
 	}
 }

@@ -1,20 +1,20 @@
 <?php
 
-class Orbis_Timesheets_Plugin extends Orbis_Plugin {
-	public function __construct( $file ) {
-		parent::__construct( $file );
+class Orbis_Timesheets_Plugin {
+	public function __construct() {
+//		parent::__construct( $file );
 
-		$this->set_name( 'orbis_timesheets' );
-		$this->set_db_version( '1.2.4' );
+		// $this->set_name( 'orbis_timesheets' );
+		// $this->set_db_version( '1.2.4' );
 
-		$this->plugin_include( 'includes/functions.php' );
-		$this->plugin_include( 'includes/post.php' );
-		$this->plugin_include( 'includes/template.php' );
-		$this->plugin_include( 'includes/project-template.php' );
-		$this->plugin_include( 'includes/shortcodes.php' );
+		include __DIR__ . '/../includes/functions.php';
+		include __DIR__ . '/../includes/post.php';
+		include __DIR__ . '/../includes/template.php';
+		include __DIR__ . '/../includes/project-template.php';
+		include __DIR__ . '/../includes/shortcodes.php';
 
-		orbis_register_table( 'orbis_timesheets', 'orbis_hours_registration' );
-		orbis_register_table( 'orbis_activities' );
+		//orbis_register_table( 'orbis_timesheets', 'orbis_hours_registration' );
+		//orbis_register_table( 'orbis_activities' );
 
 		$this->email = new Orbis_Timesheets_Email( $this );
 
@@ -24,10 +24,6 @@ class Orbis_Timesheets_Plugin extends Orbis_Plugin {
 
 		// Actions
 		add_action( 'init', [ $this, 'init' ] );
-	}
-
-	public function loaded() {
-		$this->load_textdomain( 'orbis_timesheets', '/languages/' );
 	}
 
 	public function install() {
@@ -71,7 +67,6 @@ class Orbis_Timesheets_Plugin extends Orbis_Plugin {
 		maybe_convert_table_to_utf8mb4( $wpdb->orbis_activities );
 		maybe_convert_table_to_utf8mb4( $wpdb->orbis_timesheets );
 
-		parent::install();
 	}
 
 	public function init() {
