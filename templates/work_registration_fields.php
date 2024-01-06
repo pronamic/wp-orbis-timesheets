@@ -22,7 +22,7 @@ $project_query = "
 		project.id = %s
 ";
 
-if ( orbis_plugin_activated( 'companies' ) ) {
+if ( property_exists( $wpdb, 'orbis_companies' ) ) {
 	$extra_select .= '
 	, principal.name AS principal_name
 	';
@@ -48,7 +48,7 @@ if ( $project ) {
 	);
 }
 
-if ( orbis_plugin_activated( 'subscriptions' ) ) {
+if ( property_exists( $wpdb, 'orbis_subscriptions' ) ) {
 	$subscription_query = "
 		SELECT
 			subscription.id AS id,
@@ -122,7 +122,7 @@ if ( orbis_plugin_activated( 'subscriptions' ) ) {
 
 	<?php endif; ?>
 
-	<?php if ( orbis_plugin_activated( 'subscriptions' ) ) : ?>
+	<?php if ( property_exists( $wpdb, 'orbis_subscriptions' ) ) : ?>
 
 		<div class="col-md-6">
 			<div <?php orbis_field_class( [ 'mb-3' ], 'orbis_registration_subscription_id' ); ?>>

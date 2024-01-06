@@ -7,7 +7,7 @@ function orbis_timesheets_shortcode() {
 
 	ob_start();
 
-	$orbis_timesheets_plugin->plugin_include( 'templates/timesheets.php' );
+	include __DIR__ . '/../templates/timesheets.php';
 
 	$return = ob_get_contents();
 
@@ -25,7 +25,7 @@ function orbis_timesheets_annual_overview() {
 
 	ob_start();
 
-	$orbis_timesheets_plugin->plugin_include( 'templates/time-tracking-annual-overview.php' );
+	include __DIR__ . '/../templates/time-tracking-annual-overview.php';
 
 	$return = ob_get_contents();
 
