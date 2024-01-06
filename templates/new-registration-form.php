@@ -20,12 +20,12 @@ if ( filter_has_var( INPUT_GET, 'date' ) ) {
 		<form action="" method="post">
 			<?php wp_nonce_field( 'orbis_timesheets_add_new_registration', 'orbis_timesheets_new_registration_nonce' ); ?>
 
-			<legend><?php _e( 'Add registration', 'orbis_timesheets' ); ?></legend>
+			<legend><?php _e( 'Add registration', 'orbis-timesheets' ); ?></legend>
 
 			<?php require 'work_registration_fields.php'; ?>
 
 			<div class="form-actions">
-				<button type="submit" class="btn btn-primary" name="orbis_timesheets_add_registration" tabindex="10"><?php esc_html_e( 'Register', 'orbis_timesheets' ); ?></button>
+				<button type="submit" class="btn btn-primary" name="orbis_timesheets_add_registration" tabindex="10"><?php esc_html_e( 'Register', 'orbis-timesheets' ); ?></button>
 			</div>
 		</form>
 	</div>

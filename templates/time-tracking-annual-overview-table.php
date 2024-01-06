@@ -25,7 +25,7 @@ $today = new DateTime();
 			<tr>
 				<?php
 
-				$days = array();
+				$days = [];
 
 				foreach ( $user->weeks as $week ) {
 					$day = $week->days[ $week_day->day_of_week ];
@@ -52,7 +52,7 @@ $today = new DateTime();
 
 					$classes = array_unique( $classes );
 
-					$days[] = (object) array(
+					$days[] = (object) [
 						'date'    => $day->date,
 						'tippy'   => sprintf(
 							'%s - %s / %s',
@@ -66,7 +66,7 @@ $today = new DateTime();
 							home_url( '/werk/' )
 						),
 						'classes' => $classes,
-					);
+					];
 				}
 
 				?>

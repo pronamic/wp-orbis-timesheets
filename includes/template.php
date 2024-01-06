@@ -12,12 +12,15 @@ function orbis_timesheets_render_project_timesheet() {
  * @param array $sections
  */
 function orbis_timesheets_project_section( $sections ) {
-	array_unshift( $sections, array(
-		'id'       => 'timesheet',
-		'slug'     => __( 'timesheet', 'orbis' ),
-		'name'     => __( 'Timesheet', 'orbis' ),
-		'callback' => 'orbis_timesheets_render_project_timesheet',
-	) );
+	array_unshift(
+		$sections,
+		[
+			'id'       => 'timesheet',
+			'slug'     => __( 'timesheet', 'orbis' ),
+			'name'     => __( 'Timesheet', 'orbis' ),
+			'callback' => 'orbis_timesheets_render_project_timesheet',
+		] 
+	);
 
 	return $sections;
 }

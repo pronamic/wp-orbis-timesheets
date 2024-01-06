@@ -73,25 +73,25 @@
 		<thead>
 			<tr>
 				<th scope="col">
-					<?php _e( 'Registered On', 'orbis_timesheets' ); ?>
+					<?php _e( 'Registered On', 'orbis-timesheets' ); ?>
 				</th>
 				<th scope="col">
-					<?php _e( 'User', 'orbis_timesheets' ); ?>
+					<?php _e( 'User', 'orbis-timesheets' ); ?>
 				</th>
 				<th scope="col">
-					<?php _e( 'Company/Project', 'orbis_timesheets' ); ?>
+					<?php _e( 'Company/Project', 'orbis-timesheets' ); ?>
 				</th>
 				<th scope="col">
-					<?php _e( 'Activity', 'orbis_timesheets' ); ?>
+					<?php _e( 'Activity', 'orbis-timesheets' ); ?>
 				</th>
 				<th scope="col">
-					<?php _e( 'Description', 'orbis_timesheets' ); ?>
+					<?php _e( 'Description', 'orbis-timesheets' ); ?>
 				</th>
 				<th scope="col">
-					<?php _e( 'Date', 'orbis_timesheets' ); ?>
+					<?php _e( 'Date', 'orbis-timesheets' ); ?>
 				</th>
 				<th scope="col">
-					<?php _e( 'Time', 'orbis_timesheets' ); ?>
+					<?php _e( 'Time', 'orbis-timesheets' ); ?>
 				</th>
 			</tr>
 		</thead>
@@ -110,7 +110,7 @@
 					<td>
 						<?php
 
-						$links = array();
+						$links = [];
 
 						if ( ! empty( $registration->company_post_id ) ) {
 							$links[] = sprintf( '<a href="%s">%s</a>', esc_attr( orbis_post_link( $registration->company_post_id ) ), esc_html( $registration->company_name ) );

@@ -23,7 +23,7 @@ class Orbis_Timesheets_Plugin extends Orbis_Plugin {
 		}
 
 		// Actions
-		add_action( 'init', array( $this, 'init' ) );
+		add_action( 'init', [ $this, 'init' ] );
 	}
 
 	public function loaded() {
@@ -32,15 +32,20 @@ class Orbis_Timesheets_Plugin extends Orbis_Plugin {
 
 	public function install() {
 		// Tables
-		orbis_install_table( 'orbis_activities', '
+		orbis_install_table(
+			'orbis_activities',
+			'
 			id BIGINT(16) UNSIGNED NOT NULL AUTO_INCREMENT,
 			name VARCHAR(128) NOT NULL,
 			description TEXT NOT NULL,
 			term_id BIGINT(20) UNSIGNED DEFAULT NULL,
 			PRIMARY KEY  (id)
-		' );
+		' 
+		);
 
-		orbis_install_table( 'orbis_timesheets', "
+		orbis_install_table(
+			'orbis_timesheets',
+			"
 			id BIGINT(16) UNSIGNED NOT NULL AUTO_INCREMENT,
 			created TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
 			user_id BIGINT(20) UNSIGNED DEFAULT NULL,
@@ -57,7 +62,8 @@ class Orbis_Timesheets_Plugin extends Orbis_Plugin {
 			KEY project_id (project_id),
 			KEY subscription_id (subscription_id),
 			KEY activity_id (activity_id)
-		" );
+		" 
+		);
 
 		// Maybe convert
 		global $wpdb;
@@ -69,25 +75,29 @@ class Orbis_Timesheets_Plugin extends Orbis_Plugin {
 	}
 
 	public function init() {
-		register_taxonomy( 'orbis_timesheets_activity', null, array(
-			'hierarchical'      => true,
-			'labels'            => array(
-				'name'              => _x( 'Timesheets Activities', 'taxonomy general name', 'orbis_timesheets' ),
-				'singular_name'     => _x( 'Timesheets Activity', 'taxonomy singular name', 'orbis_timesheets' ),
-				'search_items'      => __( 'Search Timesheets Activities', 'orbis_timesheets' ),
-				'all_items'         => __( 'All Timesheets Activities', 'orbis_timesheets' ),
-				'parent_item'       => __( 'Parent Timesheets Activity', 'orbis_timesheets' ),
-				'parent_item_colon' => __( 'Parent Activity:', 'orbis_timesheets' ),
-				'edit_item'         => __( 'Edit Activity', 'orbis_timesheets' ),
-				'update_item'       => __( 'Update Activity', 'orbis_timesheets' ),
-				'add_new_item'      => __( 'Add New Activity', 'orbis_timesheets' ),
-				'new_item_name'     => __( 'New Activity Name', 'orbis_timesheets' ),
-				'menu_name'         => __( 'Activities', 'orbis_timesheets' ),
-			),
-			'show_ui'           => true,
-			'show_admin_column' => true,
-			'query_var'         => true,
-			'rewrite'           => array( 'slug' => 'genre' ),
-		) );
+		register_taxonomy(
+			'orbis_timesheets_activity',
+			null,
+			[
+				'hierarchical'      => true,
+				'labels'            => [
+					'name'              => _x( 'Timesheets Activities', 'taxonomy general name', 'orbis-timesheets' ),
+					'singular_name'     => _x( 'Timesheets Activity', 'taxonomy singular name', 'orbis-timesheets' ),
+					'search_items'      => __( 'Search Timesheets Activities', 'orbis-timesheets' ),
+					'all_items'         => __( 'All Timesheets Activities', 'orbis-timesheets' ),
+					'parent_item'       => __( 'Parent Timesheets Activity', 'orbis-timesheets' ),
+					'parent_item_colon' => __( 'Parent Activity:', 'orbis-timesheets' ),
+					'edit_item'         => __( 'Edit Activity', 'orbis-timesheets' ),
+					'update_item'       => __( 'Update Activity', 'orbis-timesheets' ),
+					'add_new_item'      => __( 'Add New Activity', 'orbis-timesheets' ),
+					'new_item_name'     => __( 'New Activity Name', 'orbis-timesheets' ),
+					'menu_name'         => __( 'Activities', 'orbis-timesheets' ),
+				],
+				'show_ui'           => true,
+				'show_admin_column' => true,
+				'query_var'         => true,
+				'rewrite'           => [ 'slug' => 'genre' ],
+			] 
+		);
 	}
 }

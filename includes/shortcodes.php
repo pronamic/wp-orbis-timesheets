@@ -37,7 +37,7 @@ function orbis_timesheets_annual_overview() {
 add_shortcode( 'orbis_timesheets_annual_overview', 'orbis_timesheets_annual_overview' );
 
 function orbis_timesheet_is_holiday( $date ) {
-	$holidays = array(
+	$holidays = [
 		// Good Friday - https://en.wikipedia.org/wiki/Good_Friday
 		'2021-04-02',
 		// Easter Monday - https://en.wikipedia.org/wiki/Easter_Monday
@@ -94,7 +94,7 @@ function orbis_timesheet_is_holiday( $date ) {
 		'2023-12-25',
 		// Tweede kerstdag - https://nl.wikipedia.org/wiki/Tweede_kerstdag
 		'2023-12-26',
-	);
+	];
 
 	return in_array( $date->format( 'Y-m-d' ), $holidays, true );
 }
@@ -157,48 +157,48 @@ function get_orbis_timesheets_annual_report( $args ) {
 
 	$weeks = new DatePeriod( $start_date, new DateInterval( 'P1W' ), $end_date );
 
-	$week_days = array(
-		0 => (object) array(
+	$week_days = [
+		0 => (object) [
 			'label'       => '',
 			'day_of_week' => 0,
-		),
-		1 => (object) array(
+		],
+		1 => (object) [
 			'label'       => 'ma',
 			'day_of_week' => 1,
-		),
-		2 => (object) array(
+		],
+		2 => (object) [
 			'label'       => '',
 			'day_of_week' => 2,
-		),
-		3 => (object) array(
+		],
+		3 => (object) [
 			'label'       => 'wo',
 			'day_of_week' => 3,
-		),
-		4 => (object) array(
+		],
+		4 => (object) [
 			'label'       => '',
 			'day_of_week' => 4,
-		),
-		5 => (object) array(
+		],
+		5 => (object) [
 			'label'       => 'vr',
 			'day_of_week' => 5,
-		),
-		6 => (object) array(
+		],
+		6 => (object) [
 			'label'       => '',
 			'day_of_week' => 6,
-		),
-	);
+		],
+	];
 
 
 	/**
 	 * Users.
 	 */
-	$users = array(
+	$users = [
 		'erikcordes',
 		'leooosterloo',
 		'kj',
 		'remco',
 		'reuel',
-	);
+	];
 
 	if ( $year <= 2021 ) {
 		$users[] = 'jelke';
@@ -236,7 +236,7 @@ function get_orbis_timesheets_annual_report( $args ) {
 	 * Timesheet
 	 */
 	$query = $wpdb->prepare(
-		"
+		'
 		SELECT
 			orbis_timesheet.user_id AS user_id,
 			orbis_timesheet.date AS date,
@@ -248,7 +248,7 @@ function get_orbis_timesheets_annual_report( $args ) {
 		GROUP BY
 			orbis_timesheet.user_id, orbis_timesheet.date
 		;
-		",
+		',
 		$start_date->format( 'Y-m-d' ),
 		$end_date->format( 'Y-m-d' )
 	);
@@ -258,16 +258,16 @@ function get_orbis_timesheets_annual_report( $args ) {
 	/**
 	 * Summaries.
 	 */
-	$users = array();
+	$users = [];
 
 	foreach ( $user_data as $user ) {
-		$object = (object) array(
+		$object = (object) [
 			'id'           => $user->ID,
 			'username'     => $user->user_login,
 			'display_name' => $user->display_name,
-			'timesheet'    => array(),
-			'weeks'        => array(),
-		);
+			'timesheet'    => [],
+			'weeks'        => [],
+		];
 
 		$users[ $user->ID ] = $object;
 	}
@@ -284,7 +284,7 @@ function get_orbis_timesheets_annual_report( $args ) {
 
 	foreach ( $users as $user ) {
 		foreach ( $weeks as $week ) {
-			$days = array();
+			$days = [];
 
 			foreach ( $week_days as $week_day ) {
 				$date = $week->setISODate( $week->format( 'o' ), $week->format( 'W' ), $week_day->day_of_week );
@@ -297,21 +297,21 @@ function get_orbis_timesheets_annual_report( $args ) {
 					$total = $user->timesheet[ $key ];
 				}
 
-				$days[ $week_day->day_of_week ] = (object) array(
+				$days[ $week_day->day_of_week ] = (object) [
 					'date'      => $date,
 					'total'     => $total,
 					'threshold' => orbis_timesheet_get_day_threshold( $user, $date ),
-				);
+				];
 			}
 
 			$key = $week->format( 'oW' );
 
-			$object = (object) array(
+			$object = (object) [
 				'date'      => $week,
 				'total'     => 0,
 				'threshold' => 0,
 				'days'      => $days,
-			);
+			];
 
 			foreach ( $object->days as $day ) {
 				$object->total     += $day->total;

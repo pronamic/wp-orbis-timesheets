@@ -1,10 +1,10 @@
-<h2><?php esc_html_e( 'Timesheets', 'orbis_timesheets' ); ?></h2>
+<h2><?php esc_html_e( 'Timesheets', 'orbis-timesheets' ); ?></h2>
 
 <table style="width: 100%; max-width: 100%;" cellpadding="5">
 	<thead>
 		<tr>
 			<th scope="col" style="text-align: left;">
-				<?php _e( 'User', 'orbis_timesheets' ); ?>
+				<?php _e( 'User', 'orbis-timesheets' ); ?>
 			</th>
 
 			<?php foreach ( $dates as $date => $null ) : ?>
@@ -31,11 +31,13 @@
 
 					<?php
 
-					$url = add_query_arg( array(
-						'start_date' => date( 'Y-m-d', strtotime( $date ) ),
-						'end_date'   => date( 'Y-m-d', strtotime( $date ) ),
-						'user'       => $user_id,
-					) );
+					$url = add_query_arg(
+						[
+							'start_date' => date( 'Y-m-d', strtotime( $date ) ),
+							'end_date'   => date( 'Y-m-d', strtotime( $date ) ),
+							'user'       => $user_id,
+						] 
+					);
 
 					?>
 

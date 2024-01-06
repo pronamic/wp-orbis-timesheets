@@ -5,7 +5,7 @@
 		<?php
 
 		printf(
-			__( 'The Orbis Timesheets plugin requires an page with the shortcode %s.', 'orbis_timesheets' ), // phpcs:ignore WordPress.WP.I18n.MissingTranslatorsComment
+			__( 'The Orbis Timesheets plugin requires an page with the shortcode %s.', 'orbis-timesheets' ), // phpcs:ignore WordPress.WP.I18n.MissingTranslatorsComment
 			'<code>[orbis_timesheets]</code>'
 		);
 

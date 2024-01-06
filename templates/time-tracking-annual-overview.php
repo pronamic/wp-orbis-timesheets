@@ -2,7 +2,7 @@
 
 $report = get_orbis_timesheets_annual_report( $_GET );
 
-include __DIR__ . '/time-tracking-annual-overview-style.php';
+require __DIR__ . '/time-tracking-annual-overview-style.php';
 
 ?>
 
@@ -25,7 +25,7 @@ include __DIR__ . '/time-tracking-annual-overview-style.php';
 <div class="card">
 	<div class="card-body">
 
-		<?php foreach ( $report->users as $user ) :?>
+		<?php foreach ( $report->users as $user ) : ?>
 
 			<h2><?php echo esc_html( $user->display_name ); ?></h2>
 
@@ -36,4 +36,4 @@ include __DIR__ . '/time-tracking-annual-overview-style.php';
 	</div>
 </div>
 
-<?php include __DIR__ . '/time-tracking-annual-overview-script.php'; ?>
+<?php require __DIR__ . '/time-tracking-annual-overview-script.php'; ?>

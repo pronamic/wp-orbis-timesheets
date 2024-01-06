@@ -17,7 +17,7 @@ function orbis_post_link( $post_id ) {
 	return add_query_arg( 'p', $post_id, home_url( '/' ) );
 }
 
-function orbis_field_class( $class = array(), $field_id ) {
+function orbis_field_class( $class = [], $field_id ) {
 	global $orbis_errors;
 
 	if ( isset( $orbis_errors[ $field_id ] ) ) {
@@ -42,10 +42,13 @@ function orbis_timesheets_can_register( $timestamp ) {
 }
 
 function get_edit_orbis_work_registration_link( $entry_id ) {
-	$link = add_query_arg( array(
-		'entry_id' => $entry_id,
-		'action'   => 'edit',
-	), get_permalink() );
+	$link = add_query_arg(
+		[
+			'entry_id' => $entry_id,
+			'action'   => 'edit',
+		],
+		get_permalink() 
+	);
 
 	return $link;
 }
@@ -173,8 +176,8 @@ function orbis_insert_timesheet_entry( $entry ) {
 	}
 
 	// Data
-	$data   = array();
-	$format = array();
+	$data   = [];
+	$format = [];
 
 	$data['created']   = date( 'Y-m-d H:i:s' );
 	$format['created'] = '%s';
@@ -227,9 +230,9 @@ function orbis_insert_timesheet_entry( $entry ) {
 		$result = $wpdb->update(
 			$wpdb->orbis_timesheets,
 			$data,
-			array( 'id' => $entry->id ),
+			[ 'id' => $entry->id ],
 			$format,
-			array( 'id' => '%d' )
+			[ 'id' => '%d' ]
 		);
 	}
 
@@ -241,7 +244,8 @@ function orbis_insert_timesheet_entry( $entry ) {
 function orbis_timesheets_get_company_name( $orbis_id ) {
 	global $wpdb;
 
-	$query = $wpdb->prepare( "
+	$query = $wpdb->prepare(
+		"
 		SELECT
 			CONCAT( company.id, '. ', company.name )
 		FROM
@@ -249,7 +253,9 @@ function orbis_timesheets_get_company_name( $orbis_id ) {
 		WHERE
 			company.id = %d
 		;
-	", $orbis_id );
+	",
+		$orbis_id 
+	);
 
 	$result = $wpdb->get_var( $query );
 
@@ -277,7 +283,8 @@ function orbis_timesheets_get_project_name( $orbis_id ) {
 	}
 
 	// Query
-	$query = $wpdb->prepare( "
+	$query = $wpdb->prepare(
+		"
 		SELECT
 			project.id AS project_id,
 			project.name AS project_name,
@@ -293,7 +300,9 @@ function orbis_timesheets_get_project_name( $orbis_id ) {
 		WHERE
 			project.id = %d
 		;
-	", $orbis_id );
+	",
+		$orbis_id 
+	);
 
 	// Project
 	$result = $wpdb->get_row( $query );
@@ -320,7 +329,8 @@ function orbis_timesheets_get_subscription_name( $orbis_id ) {
 	if ( function_exists( 'orbis_subscriptions_bootstrap' ) ) {
 		global $wpdb;
 
-		$query = $wpdb->prepare( "
+		$query = $wpdb->prepare(
+			"
 			SELECT
 				CONCAT( subscription.id, '. ', product.name, ' - ', subscription.name ) AS name
 			FROM
@@ -331,7 +341,9 @@ function orbis_timesheets_get_subscription_name( $orbis_id ) {
 			WHERE
 				subscription.id = %d
 			;
-		", $orbis_id );
+		",
+			$orbis_id 
+		);
 
 		$name = $wpdb->get_var( $query );
 	}
@@ -399,26 +411,26 @@ function orbis_timesheets_maybe_add_entry() {
 				orbis_timesheets_register_error( 'orbis_registration_project_id', '' ); // __( 'You have to specify an project.', 'orbis_timesheets' ) );
 				orbis_timesheets_register_error( 'orbis_registration_subscription_id', '' ); // __( 'You have to specify an subscription.', 'orbis_timesheets' ) );
 
-				orbis_timesheets_register_error( 'orbis_registration_on', __( 'You have to specify an company or project.', 'orbis_timesheets' ) );
+				orbis_timesheets_register_error( 'orbis_registration_on', __( 'You have to specify an company or project.', 'orbis-timesheets' ) );
 			}
 
 			if ( empty( $entry->project_id ) ) {
 				orbis_timesheets_register_error( 'orbis_registration_project_id', '' ); // __( 'You have to specify an project.', 'orbis_timesheets' ) );
 
-				orbis_timesheets_register_error( 'orbis_registration_on', __( 'You have to specify an project.', 'orbis_timesheets' ) );
+				orbis_timesheets_register_error( 'orbis_registration_on', __( 'You have to specify an project.', 'orbis-timesheets' ) );
 			}
 
 			$required_word_count = 2;
 			if ( str_word_count( $entry->description ) < $required_word_count ) {
-				orbis_timesheets_register_error( 'orbis_registration_description', sprintf( __( 'You have to specify an description (%d words).', 'orbis_timesheets' ), $required_word_count ) ); // phpcs:ignore WordPress.WP.I18n.MissingTranslatorsComment
+				orbis_timesheets_register_error( 'orbis_registration_description', sprintf( __( 'You have to specify an description (%d words).', 'orbis-timesheets' ), $required_word_count ) ); // phpcs:ignore WordPress.WP.I18n.MissingTranslatorsComment
 			}
 
 			if ( empty( $entry->activity_id ) ) {
-				orbis_timesheets_register_error( 'orbis_registration_activity_id', __( 'You have to specify an activity.', 'orbis_timesheets' ) );
+				orbis_timesheets_register_error( 'orbis_registration_activity_id', __( 'You have to specify an activity.', 'orbis-timesheets' ) );
 			}
 
 			if ( ! orbis_timesheets_can_register( $entry->get_date()->format( 'U' ) ) ) {
-				orbis_timesheets_register_error( 'orbis_registration_date', __( 'You can not register on this date.', 'orbis_timesheets' ) );
+				orbis_timesheets_register_error( 'orbis_registration_date', __( 'You can not register on this date.', 'orbis-timesheets' ) );
 			}
 
 			$message = empty( $entry->id ) ? 'added' : 'updated';
@@ -427,18 +439,20 @@ function orbis_timesheets_maybe_add_entry() {
 				$result = orbis_insert_timesheet_entry( $entry );
 
 				if ( $result ) {
-					$url = add_query_arg( array(
-						'entry_id' => false,
-						'action'   => false,
-						'message'  => $message,
-						'date'     => $entry->get_date()->format( 'Y-m-d' ),
-					) );
+					$url = add_query_arg(
+						[
+							'entry_id' => false,
+							'action'   => false,
+							'message'  => $message,
+							'date'     => $entry->get_date()->format( 'Y-m-d' ),
+						] 
+					);
 
 					wp_safe_redirect( $url );
 
 					exit;
 				} else {
-					orbis_timesheets_register_error( 'orbis_registration_error', __( 'Could not add timesheet entry.', 'orbis_timesheets' ) );
+					orbis_timesheets_register_error( 'orbis_registration_error', __( 'Could not add timesheet entry.', 'orbis-timesheets' ) );
 				}
 			}
 		}
@@ -451,7 +465,7 @@ function orbis_timesheets_init() {
 	// Errors
 	global $orbis_errors;
 
-	$orbis_errors = array();
+	$orbis_errors = [];
 }
 
 add_action( 'init', 'orbis_timesheets_init', 1 );

@@ -4,7 +4,8 @@ global $wpdb;
 
 $id = $wpdb->get_var( $wpdb->prepare( "SELECT id FROM $wpdb->orbis_projects WHERE post_id = %d;", get_the_ID() ) );
 
-$query = $wpdb->prepare( "
+$query = $wpdb->prepare(
+	"
 	SELECT
 		registration.id,
 		registration.user_id,
@@ -48,11 +49,11 @@ if ( $registrations ) : ?>
 	<table class="table table-striped mb-0">
 		<thead>
 			<tr>
-				<th class="border-top-0" scope="col"><?php _e( 'Date', 'orbis_timesheets' ); ?></th>
-				<th class="border-top-0" scope="col"><?php _e( 'User', 'orbis_timesheets' ); ?></th>
-				<th class="border-top-0" scope="col"><?php _e( 'Activity', 'orbis_timesheets' ); ?></th>
-				<th class="border-top-0" scope="col"><?php _e( 'Description', 'orbis_timesheets' ); ?></th>
-				<th class="border-top-0" scope="col"><?php _e( 'Time', 'orbis_timesheets' ); ?></th>
+				<th class="border-top-0" scope="col"><?php _e( 'Date', 'orbis-timesheets' ); ?></th>
+				<th class="border-top-0" scope="col"><?php _e( 'User', 'orbis-timesheets' ); ?></th>
+				<th class="border-top-0" scope="col"><?php _e( 'Activity', 'orbis-timesheets' ); ?></th>
+				<th class="border-top-0" scope="col"><?php _e( 'Description', 'orbis-timesheets' ); ?></th>
+				<th class="border-top-0" scope="col"><?php _e( 'Time', 'orbis-timesheets' ); ?></th>
 			</tr>
 		</thead>
 
@@ -87,7 +88,7 @@ if ( $registrations ) : ?>
 
 	<div class="card-body">
 		<p class="text-muted m-0">
-			<?php _e( 'There are no time registrations for this project.', 'orbis_timesheets' ); ?>
+			<?php _e( 'There are no time registrations for this project.', 'orbis-timesheets' ); ?>
 		</p>
 	</div>
 

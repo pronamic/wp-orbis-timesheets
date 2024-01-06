@@ -16,7 +16,7 @@ class Orbis_Timesheets_Email {
 	public function __construct( $plugin ) {
 		$this->plugin = $plugin;
 
-		add_action( 'orbis_email_top', array( $this, 'email_top' ) );
+		add_action( 'orbis_email_top', [ $this, 'email_top' ] );
 	}
 
 	/**
@@ -35,21 +35,24 @@ class Orbis_Timesheets_Email {
 
 		$days = $interval->format( '%a' );
 
-		$dates = array();
+		$dates = [];
 
 		for ( $i = $days; $i >= 0; $i-- ) {
 			$dates[ date( 'Y-m-d', strtotime( '- ' . $i . ' day', $now ) ) ] = null;
 		}
 
-		$user_ids = get_users( array(
-			'fields'     => 'ids',
-			'meta_key'   => '_orbis_user', // WPCS: slow query ok.
-			'meta_value' => 'true', // WPCS: slow query ok.
-		) );
+		$user_ids = get_users(
+			[
+				'fields'     => 'ids',
+				'meta_key'   => '_orbis_user', // WPCS: slow query ok.
+				'meta_value' => 'true', // WPCS: slow query ok.
+			] 
+		);
 
 		$query_user_ids = implode( ',', $user_ids );
 
-		$query = $wpdb->prepare( "
+		$query = $wpdb->prepare(
+			"
 			SELECT
 				user_id,
 				SUM( number_seconds ) AS number_seconds,
@@ -71,7 +74,7 @@ class Orbis_Timesheets_Email {
 
 		$results = $wpdb->get_results( $query );
 
-		$timesheets = array();
+		$timesheets = [];
 
 		foreach ( $user_ids as $user_id ) {
 			$timesheets[ $user_id ] = $dates;
@@ -81,9 +84,13 @@ class Orbis_Timesheets_Email {
 			$timesheets[ $result->user_id ][ $result->date ] = $result->number_seconds;
 		}
 
-		$this->plugin->get_template( 'emails/user-timesheet.php', true, array(
-			'dates'      => $dates,
-			'timesheets' => $timesheets,
-		) );
+		$this->plugin->get_template(
+			'emails/user-timesheet.php',
+			true,
+			[
+				'dates'      => $dates,
+				'timesheets' => $timesheets,
+			] 
+		);
 	}
 }

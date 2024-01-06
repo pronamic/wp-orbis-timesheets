@@ -4,16 +4,16 @@ class Orbis_Timesheets_Admin {
 	public function __construct( $plugin ) {
 		$this->plugin = $plugin;
 
-		add_action( 'admin_init', array( $this, 'admin_init' ) );
-		add_action( 'admin_menu', array( $this, 'admin_menu' ) );
+		add_action( 'admin_init', [ $this, 'admin_init' ] );
+		add_action( 'admin_menu', [ $this, 'admin_menu' ] );
 
 		// Taxonomy actions
 		// @see https://github.com/WordPress/WordPress/blob/3.9.1/wp-includes/taxonomy.php#L2529
-		add_action( 'created_orbis_timesheets_activity', array( $this, 'sync_activity' ), 10 );
+		add_action( 'created_orbis_timesheets_activity', [ $this, 'sync_activity' ], 10 );
 		// @see https://github.com/WordPress/WordPress/blob/3.9.1/wp-includes/taxonomy.php#L3024
-		add_action( 'edited_orbis_timesheets_activity', array( $this, 'sync_activity' ), 10 );
+		add_action( 'edited_orbis_timesheets_activity', [ $this, 'sync_activity' ], 10 );
 
-		add_filter( 'parent_file', array( $this, 'parent_file' ) );
+		add_filter( 'parent_file', [ $this, 'parent_file' ] );
 	}
 
 	/**
@@ -31,21 +31,21 @@ class Orbis_Timesheets_Admin {
 			$activity_id = $wpdb->get_var( $wpdb->prepare( "SELECT id FROM $wpdb->orbis_activities WHERE term_id = %d;", $term_id ) );
 
 			// Format and data
-			$format = array(
+			$format = [
 				'name'        => '%s',
 				'description' => '%s',
 				'term_id'     => '%d',
-			);
+			];
 
-			$data = array(
+			$data = [
 				'name'        => $term->name,
 				'description' => $term->description,
 				'term_id'     => $term_id,
-			);
+			];
 
 			// Activity
 			if ( $activity_id ) {
-				$result = $wpdb->update( $wpdb->orbis_activities, $data, array( 'id' => $activity_id ), $format );
+				$result = $wpdb->update( $wpdb->orbis_activities, $data, [ 'id' => $activity_id ], $format );
 			} else {
 				$result = $wpdb->insert( $wpdb->orbis_activities, $data, $format );
 			}
@@ -56,40 +56,40 @@ class Orbis_Timesheets_Admin {
 		// General
 		add_settings_section(
 			'orbis_timesheets_settings_general', // id
-			__( 'General Settings', 'orbis_timesheets' ), // title
+			__( 'General Settings', 'orbis-timesheets' ), // title
 			'__return_false', // callback
 			'orbis_timesheets_settings' // page
 		);
 
 		add_settings_field(
 			'orbis_timesheets_registration_limit_lower', // id
-			__( 'Registration Limit Lower', 'orbis_timesheets' ), // title
-			array( $this, 'input_select' ), // callback
+			__( 'Registration Limit Lower', 'orbis-timesheets' ), // title
+			[ $this, 'input_select' ], // callback
 			'orbis_timesheets_settings', // page
 			'orbis_timesheets_settings_general', // section
-			array(
+			[
 				'label_for' => 'orbis_timesheets_registration_limit_lower',
-				'options'   => array(
-					'0'       => __( 'None', 'orbis_timesheets' ),
-					'1 day'   => __( '1 Day', 'orbis_timesheets' ),
-					'3 days'  => __( '3 Days', 'orbis_timesheets' ),
-					'1 week'  => __( '1 Week', 'orbis_timesheets' ),
-					'1 month' => __( '1 Month', 'orbis_timesheets' ),
-				),
-			) // args
+				'options'   => [
+					'0'       => __( 'None', 'orbis-timesheets' ),
+					'1 day'   => __( '1 Day', 'orbis-timesheets' ),
+					'3 days'  => __( '3 Days', 'orbis-timesheets' ),
+					'1 week'  => __( '1 Week', 'orbis-timesheets' ),
+					'1 month' => __( '1 Month', 'orbis-timesheets' ),
+				],
+			] // args
 		);
 
 		register_setting( 'orbis_timesheets', 'orbis_timesheets_registration_limit_lower' );
 
 		add_settings_field(
 			'orbis_timesheets_note', // id
-			__( 'Note', 'orbis_timesheets' ), // title
-			array( $this, 'input_text' ), // callback
+			__( 'Note', 'orbis-timesheets' ), // title
+			[ $this, 'input_text' ], // callback
 			'orbis_timesheets_settings', // page
 			'orbis_timesheets_settings_general', // section
-			array(
+			[
 				'label_for' => 'orbis_timesheets_note',
-			) // args
+			] // args
 		);
 
 		register_setting( 'orbis_timesheets', 'orbis_timesheets_note' );
@@ -103,7 +103,7 @@ class Orbis_Timesheets_Admin {
 	public function input_text( $args ) {
 		$name = $args['label_for'];
 
-		$classes = array( 'regular-text' );
+		$classes = [ 'regular-text' ];
 		if ( isset( $args['classes'] ) ) {
 			$classes = $args['classes'];
 		}
@@ -125,7 +125,7 @@ class Orbis_Timesheets_Admin {
 	public function input_checkbox( $args ) {
 		$name = $args['label_for'];
 
-		$classes = array();
+		$classes = [];
 		if ( isset( $args['classes'] ) ) {
 			$classes = $args['classes'];
 		}
@@ -147,12 +147,12 @@ class Orbis_Timesheets_Admin {
 	public function input_select( $args ) {
 		$name = $args['label_for'];
 
-		$classes = array();
+		$classes = [];
 		if ( isset( $args['classes'] ) ) {
 			$classes = $args['classes'];
 		}
 
-		$options = array();
+		$options = [];
 		if ( isset( $args['options'] ) ) {
 			$options = $args['options'];
 		}
@@ -208,22 +208,22 @@ class Orbis_Timesheets_Admin {
 
 	public function admin_menu() {
 		add_menu_page(
-			__( 'Orbis Timesheets', 'orbis_timesheets' ),
-			__( 'Timesheets', 'orbis_timesheets' ),
+			__( 'Orbis Timesheets', 'orbis-timesheets' ),
+			__( 'Timesheets', 'orbis-timesheets' ),
 			'manage_options',
 			'orbis_timesheets',
-			array( $this, 'page_admin' ),
+			[ $this, 'page_admin' ],
 			'dashicons-clock',
 			40
 		);
 
 		add_submenu_page(
 			'orbis_timesheets', // parent_slug
-			__( 'Orbis Timesheets Settings', 'orbis_timesheets' ), // page_title
-			__( 'Settings', 'orbis_timesheets' ), // menu_title
+			__( 'Orbis Timesheets Settings', 'orbis-timesheets' ), // page_title
+			__( 'Settings', 'orbis-timesheets' ), // menu_title
 			'manage_options', // capability
 			'orbis_timesheets_settings', // menu_slug
-			array( $this, 'page_settings' ) // function
+			[ $this, 'page_settings' ] // function
 		);
 
 		global $submenu;
@@ -235,11 +235,11 @@ class Orbis_Timesheets_Admin {
 		if ( isset( $submenu['orbis_timesheets'] ) ) {
 			$tax = get_taxonomy( 'orbis_timesheets_activity' );
 
-			$submenu['orbis_timesheets'][] = array( // WPCS: override ok.
+			$submenu['orbis_timesheets'][] = [ // WPCS: override ok.
 				esc_attr( $tax->labels->menu_name ),
 				$tax->cap->manage_terms,
 				add_query_arg( 'taxonomy', $tax->name, 'edit-tags.php' ),
-			);
+			];
 		}
 	}
 

@@ -83,7 +83,7 @@ $url = add_query_arg( 'message', false );
 	<div class="btn-group" role="group">
 		<a href="<?php echo add_query_arg( 'date', date( 'Y-m-d', $prev ), $url ); ?>" class="btn btn-secondary">‹</a>
 		<a href="<?php echo add_query_arg( 'date', date( 'Y-m-d', $next ), $url ); ?>" class="btn btn-secondary">›</a>
-		<a href="<?php echo add_query_arg( 'date', false, $url ); ?>" class="btn btn-secondary"><?php _e( 'Today', 'orbis_timesheets' ); ?></a>
+		<a href="<?php echo add_query_arg( 'date', false, $url ); ?>" class="btn btn-secondary"><?php _e( 'Today', 'orbis-timesheets' ); ?></a>
 	</div>
 </form>
 
@@ -100,11 +100,11 @@ $url = add_query_arg( 'message', false );
 
 		switch ( $message ) {
 			case 'added':
-				_e( 'Your work registration was succesfully added.', 'orbis_timesheets' );
+				_e( 'Your work registration was succesfully added.', 'orbis-timesheets' );
 
 				break;
 			case 'updated':
-				_e( 'Your work registration was succesfully updated.', 'orbis_timesheets' );
+				_e( 'Your work registration was succesfully updated.', 'orbis-timesheets' );
 
 				break;
 		}
@@ -133,12 +133,12 @@ $url = add_query_arg( 'message', false );
 		<table class="table table-striped mb-0">
 			<thead>
 				<tr>
-					<th scope="col"><?php _e( 'Company/Project', 'orbis_timesheets' ); ?></th>
-					<th scope="col"><?php _e( 'Activity', 'orbis_timesheets' ); ?></th>
-					<th scope="col"><?php _e( 'Description', 'orbis_timesheets' ); ?></th>
-					<th scope="col"><?php _e( 'Date', 'orbis_timesheets' ); ?></th>
-					<th scope="col"><?php _e( 'Time', 'orbis_timesheets' ); ?></th>
-					<th scope="col"><?php _e( 'Actions', 'orbis_timesheets' ); ?></th>
+					<th scope="col"><?php _e( 'Company/Project', 'orbis-timesheets' ); ?></th>
+					<th scope="col"><?php _e( 'Activity', 'orbis-timesheets' ); ?></th>
+					<th scope="col"><?php _e( 'Description', 'orbis-timesheets' ); ?></th>
+					<th scope="col"><?php _e( 'Date', 'orbis-timesheets' ); ?></th>
+					<th scope="col"><?php _e( 'Time', 'orbis-timesheets' ); ?></th>
+					<th scope="col"><?php _e( 'Actions', 'orbis-timesheets' ); ?></th>
 				</tr>
 			</thead>
 
@@ -164,7 +164,7 @@ $url = add_query_arg( 'message', false );
 						<td>
 							<?php
 
-							$links = array();
+							$links = [];
 
 							if ( ! empty( $registration->company_post_id ) ) {
 								$links[] = sprintf( '<a href="%s">%s</a>', esc_attr( orbis_post_link( $registration->company_post_id ) ), esc_html( $registration->company_name ) );
@@ -195,7 +195,7 @@ $url = add_query_arg( 'message', false );
 							<?php echo orbis_time( $registration->work_duration ); ?>
 						</td>
 						<td>
-							<a href="<?php echo get_edit_orbis_work_registration_link( $registration->work_id ); ?>"><i class="fas fa-edit" aria-hidden="true"></i> <span style="display: none"><?php _e( 'Edit', 'orbis_timesheets' ); ?></span></a>
+							<a href="<?php echo get_edit_orbis_work_registration_link( $registration->work_id ); ?>"><i class="fas fa-edit" aria-hidden="true"></i> <span style="display: none"><?php _e( 'Edit', 'orbis-timesheets' ); ?></span></a>
 						</td>
 					</tr>
 
@@ -229,13 +229,13 @@ $url = add_query_arg( 'message', false );
 			]
 		);
 
-		include __DIR__ . '/time-tracking-annual-overview-style.php';
+		require __DIR__ . '/time-tracking-annual-overview-style.php';
 
 		foreach ( $report->users as $user ) {
 			include __DIR__ . '/time-tracking-annual-overview-table.php';
 		}
 
-		include __DIR__ . '/time-tracking-annual-overview-script.php';
+		require __DIR__ . '/time-tracking-annual-overview-script.php';
 
 		?>
 	</div>
