@@ -193,7 +193,7 @@ function get_orbis_timesheets_annual_report( $args ) {
 	 * Users.
 	 */
 	$users = [
-		'erikcordes',
+		'erik',
 		'leooosterloo',
 		'kj',
 		'remco',
