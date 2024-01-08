@@ -2,19 +2,11 @@
 
 class Orbis_Timesheets_Plugin {
 	public function __construct() {
-//		parent::__construct( $file );
-
-		// $this->set_name( 'orbis_timesheets' );
-		// $this->set_db_version( '1.2.4' );
-
 		include __DIR__ . '/../includes/functions.php';
 		include __DIR__ . '/../includes/post.php';
 		include __DIR__ . '/../includes/template.php';
 		include __DIR__ . '/../includes/project-template.php';
 		include __DIR__ . '/../includes/shortcodes.php';
-
-		//orbis_register_table( 'orbis_timesheets', 'orbis_hours_registration' );
-		//orbis_register_table( 'orbis_activities' );
 
 		$this->email = new Orbis_Timesheets_Email( $this );
 
