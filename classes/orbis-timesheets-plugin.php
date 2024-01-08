@@ -26,51 +26,21 @@ class Orbis_Timesheets_Plugin {
 		add_action( 'init', [ $this, 'init' ] );
 	}
 
-	public function install() {
-		// Tables
-		orbis_install_table(
-			'orbis_activities',
-			'
-			id BIGINT(16) UNSIGNED NOT NULL AUTO_INCREMENT,
-			name VARCHAR(128) NOT NULL,
-			description TEXT NOT NULL,
-			term_id BIGINT(20) UNSIGNED DEFAULT NULL,
-			PRIMARY KEY  (id)
-		' 
-		);
-
-		orbis_install_table(
-			'orbis_timesheets',
-			"
-			id BIGINT(16) UNSIGNED NOT NULL AUTO_INCREMENT,
-			created TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
-			user_id BIGINT(20) UNSIGNED DEFAULT NULL,
-			company_id BIGINT(16) UNSIGNED DEFAULT NULL,
-			project_id BIGINT(16) UNSIGNED DEFAULT NULL,
-			subscription_id BIGINT(16) UNSIGNED DEFAULT NULL,
-			activity_id BIGINT(16) UNSIGNED DEFAULT NULL,
-			description TEXT NOT NULL,
-			`date` DATE NOT NULL DEFAULT '0000-00-00',
-			number_seconds INT(16) UNSIGNED NOT NULL DEFAULT 0,
-			PRIMARY KEY  (id),
-			KEY user_id (user_id),
-			KEY company_id (company_id),
-			KEY project_id (project_id),
-			KEY subscription_id (subscription_id),
-			KEY activity_id (activity_id)
-		" 
-		);
-
-		// Maybe convert
+	public function init() {
 		global $wpdb;
 
-		maybe_convert_table_to_utf8mb4( $wpdb->orbis_activities );
-		maybe_convert_table_to_utf8mb4( $wpdb->orbis_timesheets );
+		$wpdb->orbis_timesheets = $wpdb->prefix . 'orbis_timesheets';
+		$wpdb->orbis_activities = $wpdb->prefix . 'orbis_activities';
 
-	}
+		$version = '1.2.4';
 
-	public function init() {
-		register_taxonomy(
+		if ( \get_option( 'orbis_timesheets_db_version' ) !== $version ) {
+			$this->install();
+
+			\update_option( 'orbis_timesheets_db_version', $version );
+		}
+
+		\register_taxonomy(
 			'orbis_timesheets_activity',
 			null,
 			[
@@ -94,5 +64,47 @@ class Orbis_Timesheets_Plugin {
 				'rewrite'           => [ 'slug' => 'genre' ],
 			] 
 		);
+	}
+
+	public function install() {
+		global $wpdb;
+
+		$charset_collate = $wpdb->get_charset_collate();
+
+		$sql = "
+			CREATE TABLE $wpdb->orbis_activities (
+				id BIGINT(16) UNSIGNED NOT NULL AUTO_INCREMENT,
+				name VARCHAR(128) NOT NULL,
+				description TEXT NOT NULL,
+				term_id BIGINT(20) UNSIGNED DEFAULT NULL,
+				PRIMARY KEY  (id)
+			) $charset_collate;
+
+			CREATE TABLE $wpdb->orbis_timesheets (
+				id BIGINT(16) UNSIGNED NOT NULL AUTO_INCREMENT,
+				created TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+				user_id BIGINT(20) UNSIGNED DEFAULT NULL,
+				company_id BIGINT(16) UNSIGNED DEFAULT NULL,
+				project_id BIGINT(16) UNSIGNED DEFAULT NULL,
+				subscription_id BIGINT(16) UNSIGNED DEFAULT NULL,
+				activity_id BIGINT(16) UNSIGNED DEFAULT NULL,
+				description TEXT NOT NULL,
+				`date` DATE NOT NULL DEFAULT '0000-00-00',
+				number_seconds INT(16) UNSIGNED NOT NULL DEFAULT 0,
+				PRIMARY KEY  (id),
+				KEY user_id (user_id),
+				KEY company_id (company_id),
+				KEY project_id (project_id),
+				KEY subscription_id (subscription_id),
+				KEY activity_id (activity_id)
+			) $charset_collate;
+		";
+
+		require_once ABSPATH . 'wp-admin/includes/upgrade.php';
+
+		\dbDelta( $sql );
+
+		\maybe_convert_table_to_utf8mb4( $wpdb->orbis_activities );
+		\maybe_convert_table_to_utf8mb4( $wpdb->orbis_timesheets );
 	}
 }
