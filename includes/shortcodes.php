@@ -94,6 +94,28 @@ function orbis_timesheet_is_holiday( $date ) {
 		'2023-12-25',
 		// Tweede kerstdag - https://nl.wikipedia.org/wiki/Tweede_kerstdag
 		'2023-12-26',
+		// New Year - https://en.wikipedia.org/wiki/New_Year
+		'2024-01-01',
+		// Good Friday - https://en.wikipedia.org/wiki/Good_Friday
+		'2024-03-29',
+		// Eerste paasdag - https://nl.wikipedia.org/wiki/Pasen
+		'2024-03-31',
+		// Tweede paasdag - https://nl.wikipedia.org/wiki/Pasen
+		'2024-04-01',
+		// Koningsdag - https://en.wikipedia.org/wiki/Koningsdag
+		'2024-04-27',
+		// Liberation Day (Netherlands) - https://en.wikipedia.org/wiki/Liberation_Day_(Netherlands)
+		'2024-05-05',
+		// Hemelvaartsdag - https://nl.wikipedia.org/wiki/Hemelvaartsdag
+		'2024-05-09',
+		// Eerste pinksterdag - https://nl.wikipedia.org/wiki/Pinksteren
+		'2024-05-19',
+		// Tweede pinksterdag - https://nl.wikipedia.org/wiki/Pinksteren
+		'2024-05-20',
+		// Eerste kerstdag - https://nl.wikipedia.org/wiki/Eerste_kerstdag
+		'2024-12-25',
+		// Tweede kerstdag - https://nl.wikipedia.org/wiki/Tweede_kerstdag
+		'2024-12-26',
 	];
 
 	return in_array( $date->format( 'Y-m-d' ), $holidays, true );
