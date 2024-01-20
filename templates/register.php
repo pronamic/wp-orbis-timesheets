@@ -12,7 +12,7 @@ get_header();
 
 ?>
 <div>
-	<?php include __DIR__ . '/timesheets.php'; ?>
+	<?php require __DIR__ . '/timesheets.php'; ?>
 </div>
 <?php
 

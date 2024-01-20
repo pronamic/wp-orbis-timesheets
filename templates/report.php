@@ -15,20 +15,20 @@ global $wpdb;
 
 // Functions
 function orbis_format_timestamps( array $timestamps, $format ) {
-	$dates = array();
+	$dates = [];
 	
-	foreach( $timestamps as $key => $value ) {
-		$dates[$key] = date( $format, $value );
+	foreach ( $timestamps as $key => $value ) {
+		$dates[ $key ] = date( $format, $value );
 	}
 	
 	return $dates;
 }
 
 // This week
-$week_this = array(
+$week_this = [
 	'start_date' => strtotime( 'sunday this week -1 week' ),
 	'end_date'   => strtotime( 'sunday this week' ),
-);
+];
 
 // Start date
 $value = filter_input( INPUT_GET, 'start_date', FILTER_SANITIZE_STRING );
@@ -49,15 +49,15 @@ if ( empty( $value ) ) {
 // Step
 $step = max( $end_date - $start_date, ( 3600 * 12 ) );
 
-$previous = array(
+$previous = [
 	'start_date' => $start_date - $step,
 	'end_date'   => $end_date - $step,
-);
+];
 
-$next = array(
+$next = [
 	'start_date' => $start_date + $step,
 	'end_date'   => $end_date + $step,
-);
+];
 
 // Inputs
 $user = filter_input( INPUT_GET, 'user', FILTER_SANITIZE_STRING );
@@ -102,7 +102,7 @@ $query_budgets = $wpdb->prepare(
 
 $budgets = $wpdb->get_results( $query_budgets, OBJECT_K );
 
-$query_hours =  "
+$query_hours = "
 	SELECT
 		hr.id AS registration_id,
 		project.id AS project_id,
@@ -139,16 +139,16 @@ foreach ( $result as $row ) {
 	$row->billable_seconds   = 0;
 	$row->unbillable_seconds = 0;
 	
-	if ( isset( $budgets[$row->project_id] ) ) {
-		$project = $budgets[$row->project_id];
+	if ( isset( $budgets[ $row->project_id ] ) ) {
+		$project = $budgets[ $row->project_id ];
 		
 		if ( $project->invoicable ) {
 			if ( $row->number_seconds < $project->seconds_available ) {
 				// 1800 seconds registred < 3600 seconds available
-				$row->billable_seconds   = $row->number_seconds;
+				$row->billable_seconds = $row->number_seconds;
 			} else {
 				// 3600 seconds registred < 1800 seconds available
-				$seconds_avilable        = max( 0, $project->seconds_available );
+				$seconds_avilable = max( 0, $project->seconds_available );
 
 				$row->billable_seconds   = $seconds_avilable;
 				$row->unbillable_seconds = $row->number_seconds - $seconds_avilable;
@@ -172,7 +172,7 @@ $billable_hours   = $billable_seconds / 60 / 60;
 $total_hours      = $total_seconds / 60 / 60;
 
 if ( $total_seconds > 0 ) {
-	$total = $billable_seconds / $total_seconds  * 100;
+	$total = $billable_seconds / $total_seconds * 100;
 } else {
 	$total = 0;
 }
@@ -189,18 +189,19 @@ $url_next      = add_query_arg( orbis_format_timestamps( $next, 'd-m-Y' ) );
 	<div class="d-flex justify-content-between bd-highlight mb-3">
 		<div>
 			<div class="btn-group">
-				<a class="btn btn-secondary" href="<?php echo $url_previous; ?>"><?php echo esc_html( _x( '<', 'previous', 'orbis_pronamic' ) ); ?></a>
-				<a class="btn btn-secondary" href="<?php echo $url_next; ?>"><?php echo esc_html( _x( '>', 'next', 'orbis_pronamic' ) ); ?></a>
-				<a class="btn btn-secondary" href="<?php echo $url_week_this; ?>"><?php echo esc_html( __( 'This week', 'orbis_pronamic' ) ); ?></a>
+				<a class="btn btn-secondary" href="<?php echo $url_previous; ?>"><?php echo esc_html( _x( '<', 'previous', 'orbis-timesheets' ) ); ?></a>
+				<a class="btn btn-secondary" href="<?php echo $url_next; ?>"><?php echo esc_html( _x( '>', 'next', 'orbis-timesheets' ) ); ?></a>
+				<a class="btn btn-secondary" href="<?php echo $url_week_this; ?>"><?php echo esc_html( __( 'This week', 'orbis-timesheets' ) ); ?></a>
 			</div>
 		</div>
 
 		<div class="form-inline">
 			<div class="form-group">
-				<span><?php
+				<span>
+				<?php
 
 				printf(
-					__( 'View report from %s to %s', 'orbis_pronamic' ),
+					__( 'View report from %1$s to %2$s', 'orbis-timesheets' ),
 					sprintf(
 						'<input type="text" name="start_date" class="form-control input-small" placeholder="0000-00-00" value="%s" />',
 						esc_attr( date( 'd-m-Y', $start_date ) )
@@ -215,33 +216,39 @@ $url_next      = add_query_arg( orbis_format_timestamps( $next, 'd-m-Y' ) );
 
 				printf(
 					'<button type="submit" class="btn btn-secondary">%s</button>',
-					esc_html__( 'Filter', 'orbis_pronamic' )
+					esc_html__( 'Filter', 'orbis-timesheets' )
 				);
 
-				?></span>
+				?>
+				</span>
 			</div>
 		</div>
 
 		<div class="form-inline">
-			<span><?php
+			<span>
+			<?php
 
-			$users = get_users( array(
-				'fields'     => 'ids',
-				'meta_key'   => '_orbis_user',
-				'meta_value' => 'true',
-			) );
+			$users = get_users(
+				[
+					'fields'     => 'ids',
+					'meta_key'   => '_orbis_user',
+					'meta_value' => 'true',
+				] 
+			);
 
-			wp_dropdown_users( array(
-				'name'             => 'user',
-				'selected'         => filter_input( INPUT_GET, 'user', FILTER_SANITIZE_STRING ),
-				'show_option_none' => __( '&mdash; All Users &mdash;', 'orbis_pronamic' ),
-				'class'            => 'form-control',
-				'include'          => $users,
-			) );
+			wp_dropdown_users(
+				[
+					'name'             => 'user',
+					'selected'         => filter_input( INPUT_GET, 'user', FILTER_SANITIZE_STRING ),
+					'show_option_none' => __( '&mdash; All Users &mdash;', 'orbis-timesheets' ),
+					'class'            => 'form-control',
+					'include'          => $users,
+				] 
+			);
 
 			?>
 
-			<button type="submit" class="btn btn-secondary"><?php esc_html_e( 'Filter', 'orbis_pronamic' ); ?></button></span>
+			<button type="submit" class="btn btn-secondary"><?php esc_html_e( 'Filter', 'orbis-timesheets' ); ?></button></span>
 		</div>
 	</div>
 </form>
@@ -254,7 +261,7 @@ $url_next      = add_query_arg( orbis_format_timestamps( $next, 'd-m-Y' ) );
 			<?php
 
 			printf(
-				__( '%s of the hours are billable', 'orbis_pronamic' ),
+				__( '%s of the hours are billable', 'orbis-timesheets' ),
 				'<span style="font-size: 2.5rem">' . esc_html( '' . round( $total ) . '%' ) . '</span>'
 			);
 
@@ -263,7 +270,7 @@ $url_next      = add_query_arg( orbis_format_timestamps( $next, 'd-m-Y' ) );
 
 		<div class="progress progress-striped active">
 			<div class="progress-bar" role="progressbar" aria-valuenow="<?php echo round( $total ); ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo round( $total ) . '%'; ?>;">
-				<span class="sr-only"><?php printf( __( '%s Complete', 'orbis_pronamic' ), '' . round( $total ) . '%' ); ?></span>
+				<span class="sr-only"><?php printf( __( '%s Complete', 'orbis-timesheets' ), '' . round( $total ) . '%' ); ?></span>
 			</div>
 		</div>
 	</div>
@@ -271,22 +278,22 @@ $url_next      = add_query_arg( orbis_format_timestamps( $next, 'd-m-Y' ) );
 
 <div class="row">
 	<div class="col-md-3">
-		<p><?php _e( 'Total tracked hours', 'orbis_pronamic' ); ?></p>
+		<p><?php _e( 'Total tracked hours', 'orbis-timesheets' ); ?></p>
 		<h1><?php echo orbis_time( $total_seconds ); ?></h1>
 	</div>
 
 	<div class="col-md-3">
-		<p><?php _e( 'Billabale hours', 'orbis_pronamic' ); ?></p>
+		<p><?php _e( 'Billabale hours', 'orbis-timesheets' ); ?></p>
 		<h1><?php echo orbis_time( $billable_seconds ); ?></h1>
 	</div>
 
 	<div class="col-md-3">
-		<p><?php _e( 'Unbillabale hours', 'orbis_pronamic' ); ?></p>
+		<p><?php _e( 'Unbillabale hours', 'orbis-timesheets' ); ?></p>
 		<h1><?php echo orbis_time( $unbillable_seconds ); ?></h1>
 	</div>
 
 	<div class="col-md-3">
-		<p><?php _e( 'Billable Amount', 'orbis_pronamic' ); ?></p>
+		<p><?php _e( 'Billable Amount', 'orbis-timesheets' ); ?></p>
 		<h1><?php echo orbis_price( $amount ); ?></h1>
 	</div>
 </div>
@@ -296,18 +303,22 @@ $url_next      = add_query_arg( orbis_format_timestamps( $next, 'd-m-Y' ) );
 <table class="table table-striped table-bordered panel">
 	<thead>
 		<tr>
-			<th><?php _e( 'User', 'orbis_pronamic' ); ?></th>
-			<th><?php _e( 'Client', 'orbis_pronamic' ); ?></th>
-			<th><?php _e( 'Project', 'orbis_pronamic' ); ?></th>
-			<th><?php _e( 'Description', 'orbis_pronamic' ); ?></th>
-			<th><?php _e( 'Time', 'orbis_pronamic' ); ?></th>
-			<th><?php _e( 'Total', 'orbis_pronamic' ); ?></th>
+			<th><?php _e( 'User', 'orbis-timesheets' ); ?></th>
+			<th><?php _e( 'Client', 'orbis-timesheets' ); ?></th>
+			<th><?php _e( 'Project', 'orbis-timesheets' ); ?></th>
+			<th><?php _e( 'Description', 'orbis-timesheets' ); ?></th>
+			<th><?php _e( 'Time', 'orbis-timesheets' ); ?></th>
+			<th><?php _e( 'Total', 'orbis-timesheets' ); ?></th>
 		</tr>
 	</thead>
 	<tbody>
-		<?php $date = 0; foreach( $result as $row ) : ?>
+		<?php $date = 0; foreach ( $result as $row ) : ?>
 	
-			<?php if ( $date != $row->date ) : $date = $row->date; $total = 0; ?>
+			<?php 
+			if ( $date != $row->date ) :
+				$date  = $row->date;
+				$total = 0; 
+				?>
 			
 				<tr>
 					<td colspan="6">
@@ -338,7 +349,7 @@ $url_next      = add_query_arg( orbis_format_timestamps( $next, 'd-m-Y' ) );
 					<?php 
 					
 					$title = sprintf(
-						__( '%s billable, %s unbillable', 'orbis_pronamic' ),
+						__( '%1$s billable, %2$s unbillable', 'orbis-timesheets' ),
 						orbis_time( $row->billable_seconds ),
 						orbis_time( $row->unbillable_seconds )
 					);

@@ -10,19 +10,21 @@ global $wpdb;
 
 // Functions
 function orbis_format_timestamps( array $timestamps, $format ) {
-	$dates = array();
+	$dates = [];
 	
-	foreach( $timestamps as $key => $value ) {
-		$dates[$key] = date( $format, $value );
+	foreach ( $timestamps as $key => $value ) {
+		$dates[ $key ] = date( $format, $value );
 	}
 	
 	return $dates;
 }
 
-$users = get_users( array(
-	'meta_key'   => '_orbis_user',
-	'meta_value' => 'true',
-) );
+$users = get_users(
+	[
+		'meta_key'   => '_orbis_user',
+		'meta_value' => 'true',
+	] 
+);
 
 // This week
 $week_this = strtotime( 'previous Sunday' );
@@ -35,15 +37,15 @@ if ( empty( $value ) ) {
 	$date = strtotime( $value );
 }
 
-$days = array(
+$days = [
 	1 => strtotime( '+1 day', $date ),
 	2 => strtotime( '+2 day', $date ),
 	3 => strtotime( '+3 day', $date ),
 	4 => strtotime( '+4 day', $date ),
 	5 => strtotime( '+5 day', $date ),
 	6 => strtotime( '+6 day', $date ),
-	7 => strtotime( '+7 day', $date )
-);
+	7 => strtotime( '+7 day', $date ),
+];
 
 $query = "
 	SELECT
@@ -70,9 +72,9 @@ $url_week_this = add_query_arg( 'date', date( 'd-m-Y', $week_this ) );
 
 <form class="form-inline" method="get" action="">
 	<div class="btn-group">
-		<a class="btn btn-secondary" href="<?php echo $url_previous; ?>"><?php echo esc_html( _x( '<', 'previous', 'orbis_pronamic' ) ); ?></a>
-		<a class="btn btn-secondary" href="<?php echo $url_next; ?>"><?php echo esc_html( _x( '>', 'next', 'orbis_pronamic' ) ); ?></a>
-		<a class="btn btn-secondary" href="<?php echo $url_week_this; ?>"><?php echo esc_html( __( 'This week', 'orbis_pronamic' ) ); ?></a>
+		<a class="btn btn-secondary" href="<?php echo $url_previous; ?>"><?php echo esc_html( _x( '<', 'previous', 'orbis-timesheets' ) ); ?></a>
+		<a class="btn btn-secondary" href="<?php echo $url_next; ?>"><?php echo esc_html( _x( '>', 'next', 'orbis-timesheets' ) ); ?></a>
+		<a class="btn btn-secondary" href="<?php echo $url_week_this; ?>"><?php echo esc_html( __( 'This week', 'orbis-timesheets' ) ); ?></a>
 	</div>
 </form>
 
@@ -83,7 +85,7 @@ $url_week_this = add_query_arg( 'date', date( 'd-m-Y', $week_this ) );
 		<?php
 
 		printf(
-			__( 'Week %s', 'orbis_pronamic' ),
+			__( 'Week %s', 'orbis-timesheets' ),
 			date_i18n( 'W', strtotime( '+1 day', $date ) )
 		);
 
@@ -94,19 +96,19 @@ $url_week_this = add_query_arg( 'date', date( 'd-m-Y', $week_this ) );
 		<table class="table table-striped table-bordered">
 			<thead>
 				<tr>
-					<th><?php esc_html_e( 'User', 'orbis_pronamic' ); ?></th>
+					<th><?php esc_html_e( 'User', 'orbis-timesheets' ); ?></th>
 
-					<?php foreach ( $days as $day ): ?>
+					<?php foreach ( $days as $day ) : ?>
 
 						<th><?php echo esc_html( date_i18n( 'D j M', $day ) ); ?></th>
 					
 					<?php endforeach; ?>
 
-					<th><?php esc_html_e( 'Total', 'orbis_pronamic' ); ?></th>
+					<th><?php esc_html_e( 'Total', 'orbis-timesheets' ); ?></th>
 				</tr>
 			</thead>
 			<tbody>
-				<?php foreach ( $users as $user ): ?>
+				<?php foreach ( $users as $user ) : ?>
 				
 					<tr>
 						<td>
@@ -119,7 +121,7 @@ $url_week_this = add_query_arg( 'date', date( 'd-m-Y', $week_this ) );
 							?>
 						</td>
 
-						<?php foreach ( $days as $day ): ?>
+						<?php foreach ( $days as $day ) : ?>
 
 							<?php 
 							
@@ -129,11 +131,14 @@ $url_week_this = add_query_arg( 'date', date( 'd-m-Y', $week_this ) );
 							
 							$total += $seconds;
 							
-							$url = add_query_arg( array(
-								'start_date' => date( 'Y-m-d', $day ),
-								'end_date'   => date( 'Y-m-d', $day ),
-								'user'       => $user->ID,
-							), 'http://in.pronamic.nl/rapporten/werk/' );
+							$url = add_query_arg(
+								[
+									'start_date' => date( 'Y-m-d', $day ),
+									'end_date'   => date( 'Y-m-d', $day ),
+									'user'       => $user->ID,
+								],
+								'http://in.pronamic.nl/rapporten/werk/' 
+							);
 							
 							?>
 							<td>
