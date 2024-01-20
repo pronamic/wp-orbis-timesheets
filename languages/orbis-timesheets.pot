@@ -1,274 +1,354 @@
-# Copyright (C) 2018 Pronamic
-# This file is distributed under the GPLv3.
+# Copyright (C) 2024 Pronamic
+# This file is distributed under the GPL v2 or later.
 msgid ""
 msgstr ""
 "Project-Id-Version: Orbis Timesheets 1.3.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/orbis-timesheets\n"
-"POT-Creation-Date: 2018-04-10 10:45:51+00:00\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2018-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"X-Generator: grunt-wp-i18n1.0.2\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2024-01-20T13:20:39+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.9.0\n"
+"X-Domain: orbis-timesheets\n"
+
+#. Plugin Name of the plugin
+#: classes/AdminController.php:224
+msgid "Orbis Timesheets"
+msgstr ""
+
+#. Plugin URI of the plugin
+msgid "https://wp.pronamic.directory/plugins/orbis-timesheets/"
+msgstr ""
+
+#. Description of the plugin
+msgid "Time Management, Timesheet, Time Tracking solution for WordPress. Orbis Timesheets enables you to track your work time."
+msgstr ""
+
+#. Author of the plugin
+msgid "Pronamic"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://www.pronamic.eu/"
+msgstr ""
 
 #: admin/page-settings.php:8
 msgid "The Orbis Timesheets plugin requires an page with the shortcode %s."
 msgstr ""
 
-#: admin/page-timesheets.php:63
+#: admin/page-timesheets.php:76
 msgid "Registered On"
 msgstr ""
 
-#: admin/page-timesheets.php:66 templates/emails/user-timesheet.php:7
-#: templates/project-timesheet.php:40
+#: admin/page-timesheets.php:79
+#: templates/emails/user-timesheet.php:7
+#: templates/project-timesheet.php:53
+#: templates/report.php:306
+#: templates/weekly-overview.php:99
 msgid "User"
 msgstr ""
 
-#: admin/page-timesheets.php:69 templates/timesheets_overview.php:109
+#: admin/page-timesheets.php:82
+#: templates/timesheets_overview.php:136
 msgid "Company/Project"
 msgstr ""
 
-#: admin/page-timesheets.php:72 templates/project-timesheet.php:41
-#: templates/timesheets_overview.php:110
-#: templates/work_registration_fields.php:126
+#: admin/page-timesheets.php:85
+#: templates/project-timesheet.php:54
+#: templates/timesheets_overview.php:137
+#: templates/work_registration_fields.php:143
 msgid "Activity"
 msgstr ""
 
-#: admin/page-timesheets.php:75 templates/project-timesheet.php:42
-#: templates/timesheets_overview.php:111
-#: templates/work_registration_fields.php:149
+#: admin/page-timesheets.php:88
+#: templates/project-timesheet.php:55
+#: templates/report.php:309
+#: templates/timesheets_overview.php:138
+#: templates/work_registration_fields.php:167
 msgid "Description"
 msgstr ""
 
-#: admin/page-timesheets.php:78 templates/project-timesheet.php:39
-#: templates/timesheets_overview.php:112
+#: admin/page-timesheets.php:91
+#: templates/project-timesheet.php:52
+#: templates/timesheets_overview.php:139
 msgid "Date"
 msgstr ""
 
-#: admin/page-timesheets.php:81 templates/project-timesheet.php:43
-#: templates/timesheets_overview.php:113
-#: templates/work_registration_fields.php:156
+#: admin/page-timesheets.php:94
+#: templates/project-timesheet.php:56
+#: templates/report.php:310
+#: templates/timesheets_overview.php:140
+#: templates/work_registration_fields.php:175
 msgid "Time"
 msgstr ""
 
-#: classes/orbis-timesheets-admin.php:59
+#: classes/AdminController.php:72
 msgid "General Settings"
 msgstr ""
 
-#: classes/orbis-timesheets-admin.php:66
+#: classes/AdminController.php:79
 msgid "Registration Limit Lower"
 msgstr ""
 
-#: classes/orbis-timesheets-admin.php:73
+#: classes/AdminController.php:86
 msgid "None"
 msgstr ""
 
-#: classes/orbis-timesheets-admin.php:74
+#: classes/AdminController.php:87
 msgid "1 Day"
 msgstr ""
 
-#: classes/orbis-timesheets-admin.php:75
+#: classes/AdminController.php:88
 msgid "3 Days"
 msgstr ""
 
-#: classes/orbis-timesheets-admin.php:76
+#: classes/AdminController.php:89
 msgid "1 Week"
 msgstr ""
 
-#: classes/orbis-timesheets-admin.php:77
+#: classes/AdminController.php:90
 msgid "1 Month"
 msgstr ""
 
-#. Plugin Name of the plugin/theme
-msgid "Orbis Timesheets"
+#: classes/AdminController.php:99
+msgid "Note"
 msgstr ""
 
-#: classes/orbis-timesheets-admin.php:199 templates/emails/user-timesheet.php:1
+#: classes/AdminController.php:225
+#: templates/emails/user-timesheet.php:1
 msgid "Timesheets"
 msgstr ""
 
-#: classes/orbis-timesheets-admin.php:209
+#: classes/AdminController.php:235
 msgid "Orbis Timesheets Settings"
 msgstr ""
 
-#: classes/orbis-timesheets-admin.php:210
+#: classes/AdminController.php:236
 msgid "Settings"
 msgstr ""
 
-#: classes/orbis-timesheets-plugin.php:76
-msgid "Search Timesheets Activities"
-msgstr ""
-
-#: classes/orbis-timesheets-plugin.php:77
-msgid "All Timesheets Activities"
-msgstr ""
-
-#: classes/orbis-timesheets-plugin.php:78
-msgid "Parent Timesheets Activity"
-msgstr ""
-
-#: classes/orbis-timesheets-plugin.php:79
-msgid "Parent Activity:"
-msgstr ""
-
-#: classes/orbis-timesheets-plugin.php:80
-msgid "Edit Activity"
-msgstr ""
-
-#: classes/orbis-timesheets-plugin.php:81
-msgid "Update Activity"
-msgstr ""
-
-#: classes/orbis-timesheets-plugin.php:82
-msgid "Add New Activity"
-msgstr ""
-
-#: classes/orbis-timesheets-plugin.php:83
-msgid "New Activity Name"
-msgstr ""
-
-#: classes/orbis-timesheets-plugin.php:84
-msgid "Activities"
-msgstr ""
-
-#: includes/functions.php:387
-msgid "You have to specify an company or project."
-msgstr ""
-
-#: includes/functions.php:393
-msgid "You have to specify an project."
-msgstr ""
-
-#: includes/functions.php:398
-msgid "You have to specify an description (%d words)."
-msgstr ""
-
-#: includes/functions.php:402
-msgid "You have to specify an activity."
-msgstr ""
-
-#: includes/functions.php:406
-msgid "You can not register on this date."
-msgstr ""
-
-#: includes/functions.php:426
-msgid "Could not add timesheet entry."
-msgstr ""
-
-#: includes/template.php:17
-msgid "timesheet"
-msgstr ""
-
-#: includes/template.php:18
-msgid "Timesheet"
-msgstr ""
-
-#: templates/new-registration-form.php:27
-msgid "Add registration"
-msgstr ""
-
-#: templates/new-registration-form.php:32
-msgid "Register"
-msgstr ""
-
-#: templates/project-timesheet.php:78
-msgid "There are no time registrations for this project."
-msgstr ""
-
-#: templates/timesheets_edit.php:20
-msgid "Edit registration"
-msgstr ""
-
-#: templates/timesheets_edit.php:25 templates/timesheets_overview.php:167
-msgid "Edit"
-msgstr ""
-
-#: templates/timesheets_edit.php:36
-msgid "Cancel"
-msgstr ""
-
-#: templates/timesheets_overview.php:59
-msgid "Today"
-msgstr ""
-
-#: templates/timesheets_overview.php:76
-msgid "Your work registration was succesfully added."
-msgstr ""
-
-#: templates/timesheets_overview.php:80
-msgid "Your work registration was succesfully updated."
-msgstr ""
-
-#: templates/timesheets_overview.php:114
-msgid "Actions"
-msgstr ""
-
-#: templates/work_registration_fields.php:85
-msgid "Company"
-msgstr ""
-
-#: templates/work_registration_fields.php:86
-msgid "Select company…"
-msgstr ""
-
-#: templates/work_registration_fields.php:96
-msgid "Project"
-msgstr ""
-
-#: templates/work_registration_fields.php:98
-msgid "Select project…"
-msgstr ""
-
-#: templates/work_registration_fields.php:113
-msgid "Subscription"
-msgstr ""
-
-#: templates/work_registration_fields.php:114
-msgid "Select subscription…"
-msgstr ""
-
-#: templates/work_registration_fields.php:127
-msgid "Select activity…"
-msgstr ""
-
-#: templates/work_registration_fields.php:150
-msgid "Work registration description"
-msgstr ""
-
-#: templates/work_registration_fields.php:163
-msgid "hours"
-msgstr ""
-
-#: templates/work_registration_fields.php:172
-msgid "minutes"
-msgstr ""
-
-#. Plugin URI of the plugin/theme
-msgid "http://www.orbiswp.com/"
-msgstr ""
-
-#. Description of the plugin/theme
-msgid ""
-"Time Management, Timesheet, Time Tracking solution for WordPress. Orbis "
-"Timesheets enables you to track your work time."
-msgstr ""
-
-#. Author of the plugin/theme
-msgid "Pronamic"
-msgstr ""
-
-#. Author URI of the plugin/theme
-msgid "http://www.pronamic.eu/"
-msgstr ""
-
-#: classes/orbis-timesheets-plugin.php:74
+#: classes/Plugin.php:64
 msgctxt "taxonomy general name"
 msgid "Timesheets Activities"
 msgstr ""
 
-#: classes/orbis-timesheets-plugin.php:75
+#: classes/Plugin.php:65
 msgctxt "taxonomy singular name"
 msgid "Timesheets Activity"
+msgstr ""
+
+#: classes/Plugin.php:66
+msgid "Search Timesheets Activities"
+msgstr ""
+
+#: classes/Plugin.php:67
+msgid "All Timesheets Activities"
+msgstr ""
+
+#: classes/Plugin.php:68
+msgid "Parent Timesheets Activity"
+msgstr ""
+
+#: classes/Plugin.php:69
+msgid "Parent Activity:"
+msgstr ""
+
+#: classes/Plugin.php:70
+msgid "Edit Activity"
+msgstr ""
+
+#: classes/Plugin.php:71
+msgid "Update Activity"
+msgstr ""
+
+#: classes/Plugin.php:72
+msgid "Add New Activity"
+msgstr ""
+
+#: classes/Plugin.php:73
+msgid "New Activity Name"
+msgstr ""
+
+#: classes/Plugin.php:74
+msgid "Activities"
+msgstr ""
+
+#: includes/functions.php:416
+msgid "You have to specify an company or project."
+msgstr ""
+
+#: includes/functions.php:422
+msgid "You have to specify an project."
+msgstr ""
+
+#: includes/functions.php:427
+msgid "You have to specify an description (%d words)."
+msgstr ""
+
+#: includes/functions.php:431
+msgid "You have to specify an activity."
+msgstr ""
+
+#: includes/functions.php:435
+msgid "You can not register on this date."
+msgstr ""
+
+#: includes/functions.php:457
+msgid "Could not add timesheet entry."
+msgstr ""
+
+#: templates/new-registration-form.php:23
+msgid "Add registration"
+msgstr ""
+
+#: templates/new-registration-form.php:28
+msgid "Register"
+msgstr ""
+
+#: templates/project-timesheet.php:91
+msgid "There are no time registrations for this project."
+msgstr ""
+
+#: templates/report.php:192
+#: templates/weekly-overview.php:75
+msgctxt "previous"
+msgid "<"
+msgstr ""
+
+#: templates/report.php:193
+#: templates/weekly-overview.php:76
+msgctxt "next"
+msgid ">"
+msgstr ""
+
+#: templates/report.php:194
+#: templates/weekly-overview.php:77
+msgid "This week"
+msgstr ""
+
+#: templates/report.php:204
+msgid "View report from %1$s to %2$s"
+msgstr ""
+
+#: templates/report.php:219
+#: templates/report.php:251
+msgid "Filter"
+msgstr ""
+
+#: templates/report.php:243
+msgid "&mdash; All Users &mdash;"
+msgstr ""
+
+#: templates/report.php:264
+msgid "%s of the hours are billable"
+msgstr ""
+
+#: templates/report.php:273
+msgid "%s Complete"
+msgstr ""
+
+#: templates/report.php:281
+msgid "Total tracked hours"
+msgstr ""
+
+#: templates/report.php:286
+msgid "Billabale hours"
+msgstr ""
+
+#: templates/report.php:291
+msgid "Unbillabale hours"
+msgstr ""
+
+#: templates/report.php:296
+msgid "Billable Amount"
+msgstr ""
+
+#: templates/report.php:307
+msgid "Client"
+msgstr ""
+
+#: templates/report.php:308
+#: templates/work_registration_fields.php:112
+msgid "Project"
+msgstr ""
+
+#: templates/report.php:311
+#: templates/weekly-overview.php:107
+msgid "Total"
+msgstr ""
+
+#: templates/report.php:352
+msgid "%1$s billable, %2$s unbillable"
+msgstr ""
+
+#: templates/timesheets_edit.php:17
+msgid "Edit registration"
+msgstr ""
+
+#: templates/timesheets_edit.php:22
+#: templates/timesheets_overview.php:198
+msgid "Edit"
+msgstr ""
+
+#: templates/timesheets_edit.php:35
+msgid "Cancel"
+msgstr ""
+
+#: templates/timesheets_overview.php:86
+msgid "Today"
+msgstr ""
+
+#: templates/timesheets_overview.php:103
+msgid "Your work registration was succesfully added."
+msgstr ""
+
+#: templates/timesheets_overview.php:107
+msgid "Your work registration was succesfully updated."
+msgstr ""
+
+#: templates/timesheets_overview.php:141
+msgid "Actions"
+msgstr ""
+
+#: templates/weekly-overview.php:88
+msgid "Week %s"
+msgstr ""
+
+#: templates/work_registration_fields.php:100
+msgid "Company"
+msgstr ""
+
+#: templates/work_registration_fields.php:102
+msgid "Select company…"
+msgstr ""
+
+#: templates/work_registration_fields.php:114
+msgid "Select project…"
+msgstr ""
+
+#: templates/work_registration_fields.php:129
+msgid "Subscription"
+msgstr ""
+
+#: templates/work_registration_fields.php:131
+msgid "Select subscription…"
+msgstr ""
+
+#: templates/work_registration_fields.php:145
+msgid "Select activity…"
+msgstr ""
+
+#: templates/work_registration_fields.php:169
+msgid "Work registration description"
+msgstr ""
+
+#: templates/work_registration_fields.php:182
+msgid "hours"
+msgstr ""
+
+#: templates/work_registration_fields.php:190
+msgid "minutes"
 msgstr ""

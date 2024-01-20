@@ -12,7 +12,8 @@
 		"allow-plugins": {
 			"dealerdirect/phpcodesniffer-composer-installer": true,
 			"automattic/jetpack-autoloader": true
-		}
+		},
+		"wp-slug": "orbis-timesheets"
 	},
 	"require": {
 		"automattic/jetpack-autoloader": "^3.0"
