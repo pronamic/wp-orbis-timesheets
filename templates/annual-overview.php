@@ -12,7 +12,7 @@ get_header();
 
 ?>
 <div>
-	Jaaroverzicht
+	<?php require __DIR__ . '/time-tracking-annual-overview.php'; ?>
 </div>
 <?php
 
