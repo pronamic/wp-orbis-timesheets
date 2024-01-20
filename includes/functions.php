@@ -133,7 +133,7 @@ function orbis_timesheets_get_entry( $entry_id ) {
 	$row = $wpdb->get_row( $query );
 
 	if ( $row ) {
-		$entry = new Orbis_Timesheets_TimesheetEntry();
+		$entry = new \Pronamic\Orbis\Timesheets\TimesheetEntry();
 
 		$entry->id = $row->id;
 
@@ -354,7 +354,7 @@ function orbis_timesheets_get_subscription_name( $orbis_id ) {
 function orbis_timesheets_get_entry_from_input( $type = INPUT_POST ) {
 	global $wpdb;
 
-	$entry = new Orbis_Timesheets_TimesheetEntry();
+	$entry = new \Pronamic\Orbis\Timesheets\TimesheetEntry();
 
 	$entry->id = filter_input( $type, 'orbis_registration_id', FILTER_SANITIZE_STRING );
 

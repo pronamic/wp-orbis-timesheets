@@ -37,22 +37,15 @@ require_once __DIR__ . '/vendor/autoload_packages.php';
 add_action(
 	'plugins_loaded',
 	function () {
-		load_plugin_textdomain( 'orbis-subscriptions', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' ); 
+		load_plugin_textdomain( 'orbis-timesheets', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' ); 
 	}
 );
 
 add_action(
 	'plugins_loaded',
 	function () {
-		// Classes
-		require_once 'classes/orbis-timesheets-plugin.php';
-		require_once 'classes/orbis-timesheets-admin.php';
-		require_once 'classes/orbis-timesheet-entry.php';
-		require_once 'classes/orbis-timesheets-email.php';
-
-		// Initialize
 		global $orbis_timesheets_plugin;
 
-		$orbis_timesheets_plugin = new \Orbis_Timesheets_Plugin();
+		$orbis_timesheets_plugin = new Plugin();
 	}
 );

@@ -1,6 +1,19 @@
 <?php
+/**
+ * Admin controller
+ *
+ * @author    Pronamic <info@pronamic.eu>
+ * @copyright 2005-2024 Pronamic
+ * @license   GPL-2.0-or-later
+ * @package   Pronamic\Orbis\Tasks
+ */
 
-class Orbis_Timesheets_Admin {
+namespace Pronamic\Orbis\Timesheets;
+
+/**
+ * Admin controller class
+ */
+class AdminController {
 	public function __construct( $plugin ) {
 		$this->plugin = $plugin;
 

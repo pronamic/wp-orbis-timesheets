@@ -1,6 +1,19 @@
 <?php
+/**
+ * Plugin
+ *
+ * @author    Pronamic <info@pronamic.eu>
+ * @copyright 2005-2024 Pronamic
+ * @license   GPL-2.0-or-later
+ * @package   Pronamic\Orbis\Tasks
+ */
 
-class Orbis_Timesheets_Plugin {
+namespace Pronamic\Orbis\Timesheets;
+
+/**
+ * Plugin class
+ */
+class Plugin {
 	public function __construct() {
 		include __DIR__ . '/../includes/functions.php';
 		include __DIR__ . '/../includes/post.php';
@@ -8,10 +21,20 @@ class Orbis_Timesheets_Plugin {
 		include __DIR__ . '/../includes/project-template.php';
 		include __DIR__ . '/../includes/shortcodes.php';
 
-		$this->email = new Orbis_Timesheets_Email( $this );
+		$controllers = [
+			new EmailController( $this ),
+			new RewriteController( $this ),
+			new TemplateController( $this ),
+		];
 
 		if ( is_admin() ) {
-			$this->admin = new Orbis_Timesheets_Admin( $this );
+			$controllers[] = new AdminController( $this );
+		}
+
+		foreach ( $controllers as $controller ) {
+			if ( \method_exists( $controller, 'setup' ) ) {
+				$controller->setup();
+			}
 		}
 
 		// Actions
