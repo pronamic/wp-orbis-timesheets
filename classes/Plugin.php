@@ -16,7 +16,6 @@ namespace Pronamic\Orbis\Timesheets;
 class Plugin {
 	public function __construct() {
 		include __DIR__ . '/../includes/functions.php';
-		include __DIR__ . '/../includes/post.php';
 		include __DIR__ . '/../includes/project-template.php';
 		include __DIR__ . '/../includes/shortcodes.php';
 
@@ -24,6 +23,7 @@ class Plugin {
 			new EmailController( $this ),
 			new RewriteController( $this ),
 			new TemplateController( $this ),
+			new QueryController( $this ),
 		];
 
 		if ( is_admin() ) {
