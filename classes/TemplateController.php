@@ -28,6 +28,8 @@ class TemplateController {
 	public function setup() {
 		\add_filter( 'template_include', [ $this, 'template_include' ] );
 
+		\add_filter( 'get_the_archive_title', [ $this, 'get_the_archive_title' ] );
+
 		\add_filter( 'orbis_project_sections', [ $this, 'orbis_project_sections' ] );
 	}
 
@@ -38,7 +40,7 @@ class TemplateController {
 	 * @return string
 	 */
 	public function template_include( $template ) {
-		$route = get_query_var( 'orbis_timesheets_route', null );
+		$route = \get_query_var( 'orbis_timesheets_route', null );
 
 		if ( null === $route ) {
 			return $template;
@@ -61,12 +63,31 @@ class TemplateController {
 	}
 
 	/**
+	 * Get the archive title.
+	 * 
+	 * @link https://developer.wordpress.org/reference/functions/get_the_archive_title/
+	 * @param string $title Title.
+	 * @return string
+	 */
+	public function get_the_archive_title( $title ) {
+		$route = \get_query_var( 'orbis_timesheets_route', null );
+
+		if ( null === $route ) {
+			return $title;
+		}
+
+		$title = \__( 'Timesheets', 'orbis-timesheets' );
+
+		return $title;
+	}
+
+	/**
 	 * Template include register.
 	 * 
 	 * @param string $template Template.
 	 * @return string
 	 */
-	public function template_include_register( $template ) {
+	private function template_include_register( $template ) {
 		$template = __DIR__ . '/../templates/register.php';
 
 		return $template;
@@ -78,7 +99,7 @@ class TemplateController {
 	 * @param string $template Template.
 	 * @return string
 	 */
-	public function template_include_annual_overview( $template ) {
+	private function template_include_annual_overview( $template ) {
 		$template = __DIR__ . '/../templates/annual-overview.php';
 
 		return $template;
@@ -90,7 +111,7 @@ class TemplateController {
 	 * @param string $template Template.
 	 * @return string
 	 */
-	public function template_include_weekly_overview( $template ) {
+	private function template_include_weekly_overview( $template ) {
 		$template = __DIR__ . '/../templates/weekly-overview.php';
 
 		return $template;
@@ -102,7 +123,7 @@ class TemplateController {
 	 * @param string $template Template.
 	 * @return string
 	 */
-	public function template_include_weekly_report( $template ) {
+	private function template_include_weekly_report( $template ) {
 		$template = __DIR__ . '/../templates/weekly-report.php';
 
 		return $template;
@@ -114,12 +135,11 @@ class TemplateController {
 	 * @param string $template Template.
 	 * @return string
 	 */
-	public function template_include_monthly_report( $template ) {
+	private function template_include_monthly_report( $template ) {
 		$template = __DIR__ . '/../templates/monthly-report.php';
 
 		return $template;
 	}
-
 
 	/**
 	 * Orbis project sections.
