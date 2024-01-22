@@ -67,7 +67,9 @@ class TemplateController {
 	 * @return string
 	 */
 	public function template_include_register( $template ) {
-		return __DIR__ . '/../templates/register.php';
+		$template = __DIR__ . '/../templates/register.php';
+
+		return $template;
 	}
 
 	/**
@@ -77,7 +79,9 @@ class TemplateController {
 	 * @return string
 	 */
 	public function template_include_annual_overview( $template ) {
-		return __DIR__ . '/../templates/annual-overview.php';
+		$template = __DIR__ . '/../templates/annual-overview.php';
+
+		return $template;
 	}
 
 	/**
@@ -87,7 +91,9 @@ class TemplateController {
 	 * @return string
 	 */
 	public function template_include_weekly_overview( $template ) {
-		return __DIR__ . '/../templates/weekly-overview.php';
+		$template = __DIR__ . '/../templates/weekly-overview.php';
+
+		return $template;
 	}
 
 	/**
@@ -97,7 +103,9 @@ class TemplateController {
 	 * @return string
 	 */
 	public function template_include_report( $template ) {
-		return __DIR__ . '/../templates/report.php';
+		$template = __DIR__ . '/../templates/report.php';
+
+		return $template;
 	}
 
 	/**
@@ -107,7 +115,9 @@ class TemplateController {
 	 * @return string
 	 */
 	public function template_include_monthly_report( $template ) {
-		return __DIR__ . '/../templates/monthly-report.php';
+		$template = __DIR__ . '/../templates/monthly-report.php';
+
+		return $template;
 	}
 
 
