@@ -41,18 +41,6 @@ function orbis_timesheets_can_register( $timestamp ) {
 	return $can_register;
 }
 
-function get_edit_orbis_work_registration_link( $entry_id ) {
-	$link = add_query_arg(
-		[
-			'entry_id' => $entry_id,
-			'action'   => 'edit',
-		],
-		get_permalink() 
-	);
-
-	return $link;
-}
-
 function orbis_update_project_registered_time( $project_id, $post_id ) {
 	$registered_time = orbis_calculate_project_registered_time( $project_id );
 
