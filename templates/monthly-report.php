@@ -8,8 +8,26 @@
  * @package   Pronamic\Orbis\Tasks
  */
 
-$start_date = new DateTime( 'first day of this month' );
-$end_date   = new DateTime( 'last day of this month' );
+$date = new DateTimeImmutable();
+
+if ( \array_key_exists( 'date', $_GET ) ) {
+	$date_string = \sanitize_text_field( \wp_unslash( $_GET['date'] ) );
+
+	try {
+		$date_result = \DateTimeImmutable::createFromFormat( 'Y-m-d', $date_string );
+
+		if ( false === $date_result ) {
+			throw new \Exception( 'Failed to parse date.' );
+		}
+
+		$date = $date_result->setTime( 0, 0 );
+	} catch ( \Exception $e ) {
+		\wp_die( $e->getMessage() );
+	}
+}
+
+$start_date = $date->modify( 'first day of this month' );
+$end_date   = $date->modify( 'last day of this month' );
 
 $where = '1 = 1';
 
@@ -53,6 +71,17 @@ get_header();
 
 ?>
 <div>
+	<form class="mb-4 row gy-2 gx-3 align-items-center" method="get">
+		<div class="col-auto">
+			<label class="visually-hidden" for="date-input"><?php \esc_html_e( 'Date', 'orbis-timesheets' ); ?></label>
+			<input name="date" type="date" class="form-control" id="date-input" value="<?php echo \esc_attr( $date->format( 'Y-m-d' ) ); ?>">
+		</div>
+
+		<div class="col-auto">
+			<button type="submit" class="btn btn-primary"><?php \esc_html_e( 'Filter', 'orbis-timesheets' ); ?></button>
+		</div>
+	</form>
+
 	<h2>
 		<?php
 
@@ -101,15 +130,15 @@ get_header();
 							$week_end   = $date->modify( 'sunday this week' );
 
 							?>
-							<tr class="text-opacity-50">
+							<tr class="fw-bold">
 								<td colspan="5">
 									<?php
 
 									\printf(
 										\__( 'Week %s: %s - %s', 'orbis-timesheets' ),
-										\ltrim( $date->format( 'W' ), '0' ),
-										\wp_date( 'l j F Y', $week_start->getTimestamp() ),
-										\wp_date( 'l j F Y', $week_end->getTimestamp() )
+										\esc_html( \ltrim( $date->format( 'W' ), '0' ) ),
+										\esc_html( \wp_date( 'l j F Y', $week_start->getTimestamp() ) ),
+										\esc_html( \wp_date( 'l j F Y', $week_end->getTimestamp() ) )
 									);
 
 									?>
