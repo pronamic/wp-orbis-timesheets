@@ -67,6 +67,26 @@ $query_hours = "
 
 $data = $wpdb->get_results( $query_hours );
 
+$weeks = [];
+
+foreach ( $data as $item ) {
+	$date = \DateTimeImmutable::createFromFormat( 'Y-m-d', $item->date )->setTime( 0, 0 );
+
+	$week_id = $date->format( 'o.W' );
+
+	if ( ! \array_key_exists( $week_id, $weeks ) ) {
+		$weeks[ $week_id ] = (object) [
+			'start_date' => $date->modify( 'monday this week' ),
+			'end_date'   => $date->modify( 'sunday this week' ),
+			'data'       => [],
+		];
+	}
+
+	$item->date = $date;
+
+	$weeks[ $week_id ]->data[] = $item;
+}
+
 get_header();
 
 ?>
@@ -113,56 +133,69 @@ get_header();
 
 				<tbody>
 
-					<?php $week_id = ''; ?>
+					<?php foreach ( $weeks as $week ) : ?>
 
-					<?php foreach ( $data as $item ) : ?>
+						<tr class="fw-bold">
+							<td colspan="5">
+								<?php
 
-						<?php
+								\printf(
+									\__( 'Week %s: %s - %s', 'orbis-timesheets' ),
+									\esc_html( \ltrim( $week->start_date->format( 'W' ), '0' ) ),
+									\esc_html( \wp_date( 'l j F Y', $week->start_date->getTimestamp() ) ),
+									\esc_html( \wp_date( 'l j F Y', $week->end_date->getTimestamp() ) )
+								);
 
-						$date = \DateTimeImmutable::createFromFormat( 'Y-m-d', $item->date )->setTime( 0, 0 );
+								?>
+							</td>
+						</tr>
 
-						$item_week_id = $date->format( 'o.W' );
+						<?php foreach ( $week->data as $item ) : ?>
 
-						if ( $week_id !== $item_week_id ) {
-							$week_id = $item_week_id;
-
-							$week_start = $date->modify( 'monday this week' );
-							$week_end   = $date->modify( 'sunday this week' );
-
-							?>
-							<tr class="fw-bold">
-								<td colspan="5">
-									<?php
-
-									\printf(
-										\__( 'Week %s: %s - %s', 'orbis-timesheets' ),
-										\esc_html( \ltrim( $date->format( 'W' ), '0' ) ),
-										\esc_html( \wp_date( 'l j F Y', $week_start->getTimestamp() ) ),
-										\esc_html( \wp_date( 'l j F Y', $week_end->getTimestamp() ) )
-									);
-
-									?>
+							<tr>
+								<td class="text-nowrap">
+									<?php echo \esc_html( \wp_date( 'l j F Y', $date->getTimestamp() ) ); ?>
+								</td>
+								<td>
+									<?php echo \esc_html( $item->company_name ); ?>
+								</td>
+								<td>
+									<?php echo \esc_html( $item->project_name ); ?>
+								</td>
+								<td>
+									<?php echo \wp_kses_post( \apply_filters( 'orbis_timesheets_entry_description', $item->description ) ); ?>
+								</td>
+								<td>
+									<?php echo \esc_html( \orbis_time( $item->number_seconds ) ); ?>
 								</td>
 							</tr>
-							<?php
-						}
 
-						?>
+						<?php endforeach; ?>
+
+						<tr class="fw-bold">
+							<th colspan="4" scope="row">
+								<?php
+
+								\printf(
+									\__( 'Subtotal week %s', 'orbis-timesheets' ),
+									\esc_html( \ltrim( $week->start_date->format( 'W' ), '0' ) )
+								);
+
+								?>
+							</th>
+							<td>
+								<?php
+
+								$total = \array_sum( \wp_list_pluck( $week->data, 'number_seconds' ) );
+
+								echo \esc_html( \orbis_time( $total ) );
+
+								?>
+							</td>
+						</tr>
 						<tr>
-							<td class="text-nowrap">
-								<?php echo \esc_html( \wp_date( 'l j F Y', $date->getTimestamp() ) ); ?>
-							</td>
-							<td>
-								<?php echo \esc_html( $item->company_name ); ?>
-							</td>
-							<td>
-								<?php echo \esc_html( $item->project_name ); ?>
-							</td>
-							<td>
-								<?php echo \esc_html( $item->description ); ?>
-							</td>
-							<td>
-								<?php echo \esc_html( orbis_time( $item->number_seconds ) ); ?>
+							<td colspan="5">
+								<hr>
 							</td>
 						</tr>
 
@@ -171,16 +204,16 @@ get_header();
 				</tbody>
 
 				<tfoot>
-					<tr>
+					<tr class="fw-bold">
 						<th colspan="4" scope="row">
 							<?php \esc_html_e( 'Total', 'orbis-timesheets' ); ?>
 						</th>
-						<td class="fw-bold">
+						<td>
 							<?php
 
 							$total = \array_sum( \wp_list_pluck( $data, 'number_seconds' ) );
 
-							echo \esc_html( orbis_time( $total ) );
+							echo \esc_html( \orbis_time( $total ) );
 
 							?>
 						</td>
