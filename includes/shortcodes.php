@@ -258,19 +258,19 @@ function get_orbis_timesheets_annual_report( $args ) {
 	 * Timesheet
 	 */
 	$query = $wpdb->prepare(
-		'
+		"
 		SELECT
 			orbis_timesheet.user_id AS user_id,
 			orbis_timesheet.date AS date,
 			SUM( orbis_timesheet.number_seconds ) AS number_seconds
 		FROM
-			orbis_hours_registration AS orbis_timesheet
+			$wpdb->orbis_timesheets AS orbis_timesheet
 		WHERE
 			orbis_timesheet.date BETWEEN %s and %s
 		GROUP BY
 			orbis_timesheet.user_id, orbis_timesheet.date
 		;
-		',
+		",
 		$start_date->format( 'Y-m-d' ),
 		$end_date->format( 'Y-m-d' )
 	);
