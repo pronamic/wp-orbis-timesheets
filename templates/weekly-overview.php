@@ -137,7 +137,7 @@ $url_week_this = add_query_arg( 'date', date( 'd-m-Y', $week_this ) );
 									'end_date'   => date( 'Y-m-d', $day ),
 									'user'       => $user->ID,
 								],
-								'http://in.pronamic.nl/rapporten/werk/' 
+								\home_url( 'tijdregistraties/weekrapport' )
 							);
 							
 							?>
