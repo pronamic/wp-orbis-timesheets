@@ -107,8 +107,10 @@ get_header();
 
 		printf(
 			/* translators: %s: Report name. */
-			\__( 'Monthly report - %s', 'orbis-timesheets' ),
-			\ucfirst( \wp_date( 'F Y', $start_date->getTimestamp() ) )
+			\__( 'Monthly report - %s - %s - %s', 'orbis-timesheets' ),
+			\ucfirst( \wp_date( 'F Y', $start_date->getTimestamp() ) ),
+			\esc_html( \wp_date( 'l j', $start_date->getTimestamp() ) ),
+			\esc_html( \wp_date( 'l j F Y', $end_date->getTimestamp() ) )
 		);
 
 		?>
