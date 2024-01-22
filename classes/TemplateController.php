@@ -51,8 +51,8 @@ class TemplateController {
 				return $this->template_include_annual_overview( $template );
 			case 'weekly_overview':
 				return $this->template_include_weekly_overview( $template );
-			case 'report':
-				return $this->template_include_report( $template );
+			case 'weekly_report':
+				return $this->template_include_weekly_report( $template );
 			case 'monthly_report':
 				return $this->template_include_monthly_report( $template );
 			default:
@@ -97,13 +97,13 @@ class TemplateController {
 	}
 
 	/**
-	 * Template include report.
+	 * Template include weekly report.
 	 * 
 	 * @param string $template Template.
 	 * @return string
 	 */
-	public function template_include_report( $template ) {
-		$template = __DIR__ . '/../templates/report.php';
+	public function template_include_weekly_report( $template ) {
+		$template = __DIR__ . '/../templates/weekly-report.php';
 
 		return $template;
 	}

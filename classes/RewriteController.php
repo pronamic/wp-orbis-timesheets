@@ -76,9 +76,9 @@ class RewriteController {
 		);
 
 		\add_rewrite_rule(
-			'tijdregistraties/rapport/?$', 
+			'tijdregistraties/weekrapport/?$', 
 			[
-				'orbis_timesheets_route' => 'report',
+				'orbis_timesheets_route' => 'weekly_report',
 			],
 			'top'
 		);
