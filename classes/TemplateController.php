@@ -27,6 +27,8 @@ class TemplateController {
 	 */
 	public function setup() {
 		\add_filter( 'template_include', [ $this, 'template_include' ] );
+
+		\add_filter( 'orbis_project_sections', [ $this, 'orbis_project_sections' ] );
 	}
 
 	/**
@@ -106,5 +108,35 @@ class TemplateController {
 	 */
 	public function template_include_monthly_report( $template ) {
 		return __DIR__ . '/../templates/monthly-report.php';
+	}
+
+
+	/**
+	 * Orbis project sections.
+	 * 
+	 * @param array $sections Sections.
+	 * @return array
+	 */
+	public function orbis_project_sections( $sections ) {
+		\array_unshift(
+			$sections,
+			[
+				'id'       => 'timesheet',
+				'slug'     => __( 'timesheet', 'orbis' ),
+				'name'     => __( 'Timesheet', 'orbis' ),
+				'callback' => [ $this, 'render_project_timesheet' ],
+			] 
+		);
+
+		return $sections;
+	}
+
+	/**
+	 * Render project timesheet.
+	 * 
+	 * @return void
+	 */
+	public function render_project_timesheet() {
+		include __DIR__ . '/../templates/project-timesheet.php';
 	}
 }
