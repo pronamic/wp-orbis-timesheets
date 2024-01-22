@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3f7d9efce38892c5cff1a5247f4cdcfc",
+    "content-hash": "464b6911646d1df8f218cb8ebe1c1a13",
     "packages": [
         {
             "name": "automattic/jetpack-autoloader",
@@ -68,6 +68,57 @@
                 "source": "https://github.com/Automattic/jetpack-autoloader/tree/v3.0.2"
             },
             "time": "2023-11-21T18:59:10+00:00"
+        },
+        {
+            "name": "pronamic/wp-datetime",
+            "version": "v2.1.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pronamic/wp-datetime.git",
+                "reference": "2dcc158beff33f27611a7d5ec4bf0fd658a0a42f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pronamic/wp-datetime/zipball/2dcc158beff33f27611a7d5ec4bf0fd658a0a42f",
+                "reference": "2dcc158beff33f27611a7d5ec4bf0fd658a0a42f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.4"
+            },
+            "require-dev": {
+                "automattic/wordbless": "^0.4.1",
+                "bamarni/composer-bin-plugin": "^1.4",
+                "koodimonni-language/de_de": "*",
+                "koodimonni-language/en_gb": "*",
+                "koodimonni-language/fr_fr": "*",
+                "koodimonni-language/ja": "*",
+                "koodimonni-language/nl_nl": "*",
+                "overtrue/phplint": "^9.0",
+                "php-coveralls/php-coveralls": "^2.4",
+                "php-stubs/wordpress-globals": "^0.2.0",
+                "phpmd/phpmd": "^2.9",
+                "pronamic/pronamic-cli": "^1.1",
+                "pronamic/wp-coding-standards": "^2.0",
+                "roots/wordpress": "^6.0",
+                "yoast/phpunit-polyfills": "^2.0"
+            },
+            "type": "wordpress-plugin",
+            "autoload": {
+                "psr-4": {
+                    "Pronamic\\WordPress\\DateTime\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "description": "WordPress DateTime library.",
+            "support": {
+                "issues": "https://github.com/pronamic/wp-datetime/issues",
+                "source": "https://github.com/pronamic/wp-datetime/tree/v2.1.7"
+            },
+            "time": "2023-10-30T10:15:01+00:00"
         }
     ],
     "packages-dev": [
