@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Orbis Timesheets\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/orbis-timesheets\n"
 "POT-Creation-Date: 2024-01-22T12:54:54+00:00\n"
-"PO-Revision-Date: 2024-01-22 13:56+0100\n"
+"PO-Revision-Date: 2024-01-22 14:44+0100\n"
 "Last-Translator: Remco Tolsma <info@remcotolsma.nl>\n"
 "Language-Team: Pronamic <info@pronamic.nl>\n"
 "Language: nl_NL\n"
@@ -22,7 +22,7 @@ msgstr "Orbis werkregistraties"
 
 #. Plugin URI of the plugin
 msgid "https://wp.pronamic.directory/plugins/orbis-timesheets/"
-msgstr ""
+msgstr "https://wp.pronamic.directory/plugins/orbis-timesheets/"
 
 #. Description of the plugin
 msgid ""
@@ -208,7 +208,7 @@ msgstr "Kon werk registratie niet toevoegen."
 #: templates/monthly-report.php:101 templates/weekly-report.php:219
 #: templates/weekly-report.php:251
 msgid "Filter"
-msgstr ""
+msgstr "Filteren"
 
 #. translators: %s: Report name.
 #: templates/monthly-report.php:110
@@ -217,7 +217,7 @@ msgstr "Maandrapport - %s - %s - %s"
 
 #: templates/monthly-report.php:121
 msgid "Registrations"
-msgstr ""
+msgstr "Registraties"
 
 #: templates/monthly-report.php:129 templates/work_registration_fields.php:100
 msgid "Company"
