@@ -122,8 +122,8 @@ class TemplateController {
 			$sections,
 			[
 				'id'       => 'timesheet',
-				'slug'     => __( 'timesheet', 'orbis' ),
-				'name'     => __( 'Timesheet', 'orbis' ),
+				'slug'     => __( 'timesheet', 'orbis-timesheets' ),
+				'name'     => __( 'Timesheet', 'orbis-timesheets' ),
 				'callback' => [ $this, 'render_project_timesheet' ],
 			] 
 		);
