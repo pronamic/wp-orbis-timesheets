@@ -116,6 +116,8 @@ function orbis_timesheet_is_holiday( $date ) {
 		'2024-12-25',
 		// Tweede kerstdag - https://nl.wikipedia.org/wiki/Tweede_kerstdag
 		'2024-12-26',
+		// New Year's Day - https://en.wikipedia.org/wiki/New_Year%27s_Day
+		'2025-01-01',
 	];
 
 	return in_array( $date->format( 'Y-m-d' ), $holidays, true );
