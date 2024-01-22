@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Orbis Timesheets\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/orbis-timesheets\n"
-"POT-Creation-Date: 2024-01-20T13:20:39+00:00\n"
-"PO-Revision-Date: 2024-01-20 14:21+0100\n"
+"POT-Creation-Date: 2024-01-22T11:56:37+00:00\n"
+"PO-Revision-Date: 2024-01-22 12:56+0100\n"
 "Last-Translator: Remco Tolsma <info@remcotolsma.nl>\n"
 "Language-Team: Pronamic <info@pronamic.nl>\n"
 "Language: nl_NL\n"
@@ -50,8 +50,8 @@ msgid "Registered On"
 msgstr "Geregistreerd op"
 
 #: admin/page-timesheets.php:79 templates/emails/user-timesheet.php:7
-#: templates/project-timesheet.php:53 templates/report.php:306
-#: templates/weekly-overview.php:99
+#: templates/project-timesheet.php:53 templates/weekly-overview.php:99
+#: templates/weekly-report.php:306
 msgid "User"
 msgstr "Gebruiker"
 
@@ -65,20 +65,20 @@ msgstr "Bedrijf/project"
 msgid "Activity"
 msgstr "Activiteit"
 
-#: admin/page-timesheets.php:88 templates/project-timesheet.php:55
-#: templates/report.php:309 templates/timesheets_overview.php:138
-#: templates/work_registration_fields.php:167
+#: admin/page-timesheets.php:88 templates/monthly-report.php:80
+#: templates/project-timesheet.php:55 templates/timesheets_overview.php:138
+#: templates/weekly-report.php:309 templates/work_registration_fields.php:167
 msgid "Description"
 msgstr "Beschrijving"
 
-#: admin/page-timesheets.php:91 templates/project-timesheet.php:52
-#: templates/timesheets_overview.php:139
+#: admin/page-timesheets.php:91 templates/monthly-report.php:77
+#: templates/project-timesheet.php:52 templates/timesheets_overview.php:139
 msgid "Date"
 msgstr "Datum"
 
-#: admin/page-timesheets.php:94 templates/project-timesheet.php:56
-#: templates/report.php:310 templates/timesheets_overview.php:140
-#: templates/work_registration_fields.php:175
+#: admin/page-timesheets.php:94 templates/monthly-report.php:81
+#: templates/project-timesheet.php:56 templates/timesheets_overview.php:140
+#: templates/weekly-report.php:310 templates/work_registration_fields.php:175
 msgid "Time"
 msgstr "Tijd"
 
@@ -126,75 +126,110 @@ msgstr "Orbis werkregistraties instellingen"
 msgid "Settings"
 msgstr "Instellingen"
 
-#: classes/Plugin.php:64
+#: classes/Plugin.php:63
 msgctxt "taxonomy general name"
 msgid "Timesheets Activities"
 msgstr "Werkregistraties activiteiten"
 
-#: classes/Plugin.php:65
+#: classes/Plugin.php:64
 msgctxt "taxonomy singular name"
 msgid "Timesheets Activity"
 msgstr "Werkregistraties activiteit"
 
-#: classes/Plugin.php:66
+#: classes/Plugin.php:65
 msgid "Search Timesheets Activities"
 msgstr "Zoek werkregistraties activiteiten"
 
-#: classes/Plugin.php:67
+#: classes/Plugin.php:66
 msgid "All Timesheets Activities"
 msgstr "Alle werkregistraties activiteiten"
 
-#: classes/Plugin.php:68
+#: classes/Plugin.php:67
 msgid "Parent Timesheets Activity"
 msgstr "Bovenliggende werkregistraties activiteit"
 
-#: classes/Plugin.php:69
+#: classes/Plugin.php:68
 msgid "Parent Activity:"
 msgstr "Bovenliggende activiteit:"
 
-#: classes/Plugin.php:70
+#: classes/Plugin.php:69
 msgid "Edit Activity"
 msgstr "Activiteit bewerken"
 
-#: classes/Plugin.php:71
+#: classes/Plugin.php:70
 msgid "Update Activity"
 msgstr "Activiteit bijwerken"
 
-#: classes/Plugin.php:72
+#: classes/Plugin.php:71
 msgid "Add New Activity"
 msgstr "Nieuwe activiteit toevoegen"
 
-#: classes/Plugin.php:73
+#: classes/Plugin.php:72
 msgid "New Activity Name"
 msgstr "Nieuwe activiteit naam"
 
-#: classes/Plugin.php:74
+#: classes/Plugin.php:73
 msgid "Activities"
 msgstr "Activiteiten"
 
-#: includes/functions.php:416
+#: classes/TemplateController.php:135
+msgid "timesheet"
+msgstr "werkregistratie"
+
+#: classes/TemplateController.php:136
+msgid "Timesheet"
+msgstr "Timesheet"
+
+#: includes/functions.php:404
 msgid "You have to specify an company or project."
 msgstr "Je moet een bedrijf of project specificeren."
 
-#: includes/functions.php:422
+#: includes/functions.php:410
 msgid "You have to specify an project."
 msgstr "Je moet een project specificeren."
 
-#: includes/functions.php:427
+#: includes/functions.php:415
 msgid "You have to specify an description (%d words)."
 msgstr "Je moet een beschrijving specificeren (%d woorden)."
 
-#: includes/functions.php:431
+#: includes/functions.php:419
 msgid "You have to specify an activity."
 msgstr "Je moet een activiteit specificeren."
 
-#: includes/functions.php:435
+#: includes/functions.php:423
 msgid "You can not register on this date."
 msgstr "Je kunt niet registreren op deze datum."
 
-#: includes/functions.php:457
+#: includes/functions.php:445
 msgid "Could not add timesheet entry."
 msgstr "Kon werk registratie niet toevoegen."
+
+#. translators: %s: Report name.
+#: templates/monthly-report.php:61
+msgid "Monthly report - %s"
+msgstr "Maandrapport - %s"
+
+#: templates/monthly-report.php:70
+msgid "Registrations"
+msgstr ""
+
+#: templates/monthly-report.php:78 templates/work_registration_fields.php:100
+msgid "Company"
+msgstr "Bedrijf"
+
+#: templates/monthly-report.php:79 templates/weekly-report.php:308
+#: templates/work_registration_fields.php:112
+msgid "Project"
+msgstr "Project"
+
+#: templates/monthly-report.php:109
+msgid "Week %s: %s - %s"
+msgstr "Week %s: %s - %s"
+
+#: templates/monthly-report.php:147 templates/weekly-overview.php:107
+#: templates/weekly-report.php:311
+msgid "Total"
+msgstr "Totaal"
 
 #: templates/new-registration-form.php:23
 msgid "Add registration"
@@ -208,77 +243,11 @@ msgstr "Registreer"
 msgid "There are no time registrations for this project."
 msgstr "Er zijn geen tijd registraties voor dit project."
 
-#: templates/report.php:192 templates/weekly-overview.php:75
-msgctxt "previous"
-msgid "<"
-msgstr "<"
-
-#: templates/report.php:193 templates/weekly-overview.php:76
-msgctxt "next"
-msgid ">"
-msgstr ">"
-
-#: templates/report.php:194 templates/weekly-overview.php:77
-msgid "This week"
-msgstr "Deze week"
-
-#: templates/report.php:204
-msgid "View report from %1$s to %2$s"
-msgstr ""
-
-#: templates/report.php:219 templates/report.php:251
-msgid "Filter"
-msgstr ""
-
-#: templates/report.php:243
-msgid "&mdash; All Users &mdash;"
-msgstr ""
-
-#: templates/report.php:264
-msgid "%s of the hours are billable"
-msgstr ""
-
-#: templates/report.php:273
-msgid "%s Complete"
-msgstr ""
-
-#: templates/report.php:281
-msgid "Total tracked hours"
-msgstr ""
-
-#: templates/report.php:286
-msgid "Billabale hours"
-msgstr ""
-
-#: templates/report.php:291
-msgid "Unbillabale hours"
-msgstr ""
-
-#: templates/report.php:296
-msgid "Billable Amount"
-msgstr ""
-
-#: templates/report.php:307
-msgid "Client"
-msgstr ""
-
-#: templates/report.php:308 templates/work_registration_fields.php:112
-msgid "Project"
-msgstr "Project"
-
-#: templates/report.php:311 templates/weekly-overview.php:107
-msgid "Total"
-msgstr "Totaal"
-
-#: templates/report.php:352
-msgid "%1$s billable, %2$s unbillable"
-msgstr ""
-
 #: templates/timesheets_edit.php:17
 msgid "Edit registration"
 msgstr "Registratie bewerken"
 
-#: templates/timesheets_edit.php:22 templates/timesheets_overview.php:198
+#: templates/timesheets_edit.php:22 templates/timesheets_overview.php:209
 msgid "Edit"
 msgstr "Bewerken"
 
@@ -302,13 +271,67 @@ msgstr "Je werkregistratie is succesvol bijgewerkt."
 msgid "Actions"
 msgstr "Acties"
 
+#: templates/weekly-overview.php:75 templates/weekly-report.php:192
+msgctxt "previous"
+msgid "<"
+msgstr "<"
+
+#: templates/weekly-overview.php:76 templates/weekly-report.php:193
+msgctxt "next"
+msgid ">"
+msgstr ">"
+
+#: templates/weekly-overview.php:77 templates/weekly-report.php:194
+msgid "This week"
+msgstr "Deze week"
+
 #: templates/weekly-overview.php:88
 msgid "Week %s"
 msgstr "Week %s"
 
-#: templates/work_registration_fields.php:100
-msgid "Company"
-msgstr "Bedrijf"
+#: templates/weekly-report.php:204
+msgid "View report from %1$s to %2$s"
+msgstr ""
+
+#: templates/weekly-report.php:219 templates/weekly-report.php:251
+msgid "Filter"
+msgstr ""
+
+#: templates/weekly-report.php:243
+msgid "&mdash; All Users &mdash;"
+msgstr ""
+
+#: templates/weekly-report.php:264
+msgid "%s of the hours are billable"
+msgstr ""
+
+#: templates/weekly-report.php:273
+msgid "%s Complete"
+msgstr ""
+
+#: templates/weekly-report.php:281
+msgid "Total tracked hours"
+msgstr ""
+
+#: templates/weekly-report.php:286
+msgid "Billabale hours"
+msgstr ""
+
+#: templates/weekly-report.php:291
+msgid "Unbillabale hours"
+msgstr ""
+
+#: templates/weekly-report.php:296
+msgid "Billable Amount"
+msgstr ""
+
+#: templates/weekly-report.php:307
+msgid "Client"
+msgstr ""
+
+#: templates/weekly-report.php:352
+msgid "%1$s billable, %2$s unbillable"
+msgstr ""
 
 #: templates/work_registration_fields.php:102
 msgid "Select company…"
@@ -341,12 +364,6 @@ msgstr "uren"
 #: templates/work_registration_fields.php:190
 msgid "minutes"
 msgstr "minuten"
-
-#~ msgid "timesheet"
-#~ msgstr "werkregistratie"
-
-#~ msgid "Timesheet"
-#~ msgstr "Timesheet"
 
 #~ msgid "http://www.orbiswp.com/"
 #~ msgstr "http://www.orbiswp.com/"
