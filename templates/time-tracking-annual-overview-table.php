@@ -56,9 +56,9 @@ $today = new DateTime();
 						'date'    => $day->date,
 						'tippy'   => sprintf(
 							'%s - %s / %s',
-							$day->date->format( 'D j M' ),
-							orbis_time( $day->total ),
-							orbis_time( $day->threshold )
+							\wp_date( 'D j M', $day->date->getTimestamp() ),
+							\orbis_time( $day->total ),
+							\orbis_time( $day->threshold )
 						),
 						'url'     => add_query_arg(
 							'date',
