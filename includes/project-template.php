@@ -3,7 +3,7 @@
 function orbis_project_get_the_logged_time( $format = 'HH:MM' ) {
 	global $post;
 
-	$orbis_project  = new Orbis_Project( get_post() );
+	$orbis_project  = new Pronamic\Orbis\Projects\Project( get_post() );
 	$logged_seconds = $orbis_project->get_registered_seconds();
 
 	$time = null;
@@ -22,7 +22,7 @@ function orbis_project_the_logged_time( $format = 'HH:MM' ) {
 function orbis_project_in_time() {
 	global $post;
 
-	$orbis_project  = new Orbis_Project( get_post() );
+	$orbis_project  = new Pronamic\Orbis\Projects\Project( get_post() );
 	$logged_seconds = $orbis_project->get_registered_seconds();
 
 	$in_time = true;
