@@ -37,7 +37,7 @@ require_once __DIR__ . '/vendor/autoload_packages.php';
 add_action(
 	'plugins_loaded',
 	function () {
-		load_plugin_textdomain( 'orbis-timesheets', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' ); 
+		\load_plugin_textdomain( 'orbis-timesheets', false, \dirname( \plugin_basename( __FILE__ ) ) . '/languages' ); 
 
 		global $orbis_timesheets_plugin;
 
