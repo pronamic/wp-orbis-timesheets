@@ -38,12 +38,7 @@ add_action(
 	'plugins_loaded',
 	function () {
 		load_plugin_textdomain( 'orbis-timesheets', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' ); 
-	}
-);
 
-add_action(
-	'plugins_loaded',
-	function () {
 		global $orbis_timesheets_plugin;
 
 		$orbis_timesheets_plugin = new Plugin();
