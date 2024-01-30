@@ -156,7 +156,7 @@ get_header();
 
 							<tr>
 								<td class="text-nowrap">
-									<?php echo \esc_html( \wp_date( 'l j F Y', $date->getTimestamp() ) ); ?>
+									<?php echo \esc_html( \wp_date( 'l j F Y', $item->date->getTimestamp() ) ); ?>
 								</td>
 								<td>
 									<?php echo \esc_html( $item->company_name ); ?>
