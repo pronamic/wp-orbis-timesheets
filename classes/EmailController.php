@@ -10,6 +10,8 @@
 
 namespace Pronamic\Orbis\Timesheets;
 
+use DateTime;
+
 /**
  * Email controller class
  */
