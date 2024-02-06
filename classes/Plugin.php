@@ -14,6 +14,9 @@ namespace Pronamic\Orbis\Timesheets;
  * Plugin class
  */
 class Plugin {
+	/**
+	 * Construct plugin.
+	 */
 	public function __construct() {
 		include __DIR__ . '/../includes/functions.php';
 		include __DIR__ . '/../includes/project-template.php';
@@ -36,10 +39,14 @@ class Plugin {
 			}
 		}
 
-		// Actions
 		add_action( 'init', [ $this, 'init' ] );
 	}
 
+	/**
+	 * Initialize.
+	 * 
+	 * @return void
+	 */
 	public function init() {
 		global $wpdb;
 
@@ -80,6 +87,11 @@ class Plugin {
 		);
 	}
 
+	/**
+	 * Install.
+	 * 
+	 * @return void
+	 */
 	public function install() {
 		global $wpdb;
 
