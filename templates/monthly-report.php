@@ -111,7 +111,7 @@ get_header();
 
 		printf(
 			/* translators: %s: Report name. */
-			\__( 'Monthly report - %s - %s - %s', 'orbis-timesheets' ),
+			\__( 'Monthly report - %1$s - %2$s - %3$s', 'orbis-timesheets' ),
 			\ucfirst( \wp_date( 'F Y', $start_date->getTimestamp() ) ),
 			\esc_html( \wp_date( 'l j', $start_date->getTimestamp() ) ),
 			\esc_html( \wp_date( 'l j F Y', $end_date->getTimestamp() ) )
@@ -146,7 +146,7 @@ get_header();
 								<?php
 
 								\printf(
-									\__( 'Week %s: %s - %s', 'orbis-timesheets' ),
+									\__( 'Week %1$s: %2$s - %3$s', 'orbis-timesheets' ),
 									\esc_html( \ltrim( $week->start_date->format( 'W' ), '0' ) ),
 									\esc_html( \wp_date( 'l j F Y', $week->start_date->getTimestamp() ) ),
 									\esc_html( \wp_date( 'l j F Y', $week->end_date->getTimestamp() ) )
