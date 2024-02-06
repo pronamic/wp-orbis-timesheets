@@ -1,5 +1,9 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 $user_id = get_current_user_id();
 
 $date     = filter_input( INPUT_GET, 'date', FILTER_SANITIZE_STRING );

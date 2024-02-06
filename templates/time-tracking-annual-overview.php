@@ -1,5 +1,9 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 $report = get_orbis_timesheets_annual_report( $_GET );
 
 require __DIR__ . '/time-tracking-annual-overview-style.php';

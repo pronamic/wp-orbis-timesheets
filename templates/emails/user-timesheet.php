@@ -1,3 +1,10 @@
+<?php
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+?>
 <h2><?php esc_html_e( 'Timesheets', 'orbis-timesheets' ); ?></h2>
 
 <table style="width: 100%; max-width: 100%;" cellpadding="5">

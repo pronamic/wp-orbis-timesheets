@@ -3,6 +3,10 @@
  * Template Name: Timesheet week
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 get_header();
 
 // Globals

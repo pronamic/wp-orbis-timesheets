@@ -8,6 +8,10 @@
  * @package   Pronamic\Orbis\Tasks
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 get_header();
 
 ?>

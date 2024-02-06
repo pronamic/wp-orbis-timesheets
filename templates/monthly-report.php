@@ -8,6 +8,10 @@
  * @package   Pronamic\Orbis\Tasks
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 $date = new DateTimeImmutable();
 
 if ( \array_key_exists( 'date', $_GET ) ) {
