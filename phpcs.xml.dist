@@ -9,7 +9,7 @@
 	<exclude-pattern type="relative">^vendor/*</exclude-pattern>
 
 	<rule ref="PronamicWP">
-		
+		<exclude name="WordPress.DB.DirectDatabaseQuery.DirectQuery" />
 	</rule>
 
 	<rule ref="WordPress.WP.I18n">
