@@ -99,13 +99,6 @@ class EmailController {
 			$timesheets[ $result->user_id ][ $result->date ] = $result->number_seconds;
 		}
 
-		$this->plugin->get_template(
-			'emails/user-timesheet.php',
-			true,
-			[
-				'dates'      => $dates,
-				'timesheets' => $timesheets,
-			] 
-		);
+		include __DIR__ . '/../templates/emails/user-timesheet.php';
 	}
 }
