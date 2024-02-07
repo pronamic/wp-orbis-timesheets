@@ -30,13 +30,25 @@ if ( \array_key_exists( 'date', $_GET ) ) {
 	}
 }
 
+$user_id = \get_current_user_id();
+
+if ( \array_key_exists( 'user_id', $_GET ) ) {
+	$user_id_string = \sanitize_text_field( \wp_unslash( $_GET['user_id'] ) );
+
+	$user = \get_user_by( 'ID', $user_id_string );
+
+	if ( false !== $user ) {
+		$user_id = $user->ID;
+	}
+}
+
 $start_date = $date->modify( 'first day of this month' );
 $end_date   = $date->modify( 'last day of this month' );
 
 $where = '1 = 1';
 
 $where .= $wpdb->prepare( ' AND timesheet.date BETWEEN %s AND %s', $start_date->format( 'Y-m-d' ), $end_date->format( 'Y-m-d' ) );
-$where .= $wpdb->prepare( ' AND timesheet.user_id = %d', \get_current_user_id() );
+$where .= $wpdb->prepare( ' AND timesheet.user_id = %d', $user_id );
 
 $query_hours = "
 	SELECT
@@ -99,6 +111,30 @@ get_header();
 		<div class="col-auto">
 			<label class="visually-hidden" for="date-input"><?php \esc_html_e( 'Date', 'orbis-timesheets' ); ?></label>
 			<input name="date" type="date" class="form-control" id="date-input" value="<?php echo \esc_attr( $date->format( 'Y-m-d' ) ); ?>">
+		</div>
+
+		<div class="col-auto">
+			<?php
+
+			$users = get_users(
+				[
+					'fields'     => 'ids',
+					'meta_key'   => '_orbis_user',
+					'meta_value' => 'true',
+				] 
+			);
+
+			wp_dropdown_users(
+				[
+					'name'             => 'user_id',
+					'selected'         => $user_id,
+					'show_option_none' => __( '— Current user —', 'orbis-timesheets' ),
+					'class'            => 'form-control',
+					'include'          => $users,
+				] 
+			);
+
+			?>
 		</div>
 
 		<div class="col-auto">

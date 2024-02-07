@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-01-31T12:29:16+00:00\n"
+"POT-Creation-Date: 2024-02-07T09:08:53+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.9.0\n"
 "X-Domain: orbis-timesheets\n"
@@ -35,57 +35,57 @@ msgstr ""
 msgid "https://www.pronamic.eu/"
 msgstr ""
 
-#: admin/page-settings.php:8
+#: admin/page-settings.php:15
 msgid "The Orbis Timesheets plugin requires an page with the shortcode %s."
 msgstr ""
 
-#: admin/page-timesheets.php:76
+#: admin/page-timesheets.php:83
 msgid "Registered On"
 msgstr ""
 
-#: admin/page-timesheets.php:79
-#: templates/emails/user-timesheet.php:7
-#: templates/project-timesheet.php:53
-#: templates/weekly-overview.php:99
-#: templates/weekly-report.php:306
+#: admin/page-timesheets.php:86
+#: templates/emails/user-timesheet.php:22
+#: templates/project-timesheet.php:57
+#: templates/weekly-overview.php:103
+#: templates/weekly-report.php:310
 msgid "User"
 msgstr ""
 
-#: admin/page-timesheets.php:82
-#: templates/timesheets_overview.php:136
+#: admin/page-timesheets.php:89
+#: templates/timesheets_overview.php:140
 msgid "Company/Project"
 msgstr ""
 
-#: admin/page-timesheets.php:85
-#: templates/project-timesheet.php:54
-#: templates/timesheets_overview.php:137
-#: templates/work_registration_fields.php:143
+#: admin/page-timesheets.php:92
+#: templates/project-timesheet.php:58
+#: templates/timesheets_overview.php:141
+#: templates/work_registration_fields.php:147
 msgid "Activity"
 msgstr ""
 
-#: admin/page-timesheets.php:88
-#: templates/monthly-report.php:131
-#: templates/project-timesheet.php:55
-#: templates/timesheets_overview.php:138
-#: templates/weekly-report.php:309
-#: templates/work_registration_fields.php:167
+#: admin/page-timesheets.php:95
+#: templates/monthly-report.php:171
+#: templates/project-timesheet.php:59
+#: templates/timesheets_overview.php:142
+#: templates/weekly-report.php:313
+#: templates/work_registration_fields.php:171
 msgid "Description"
 msgstr ""
 
-#: admin/page-timesheets.php:91
-#: templates/monthly-report.php:96
-#: templates/monthly-report.php:128
-#: templates/project-timesheet.php:52
-#: templates/timesheets_overview.php:139
+#: admin/page-timesheets.php:98
+#: templates/monthly-report.php:112
+#: templates/monthly-report.php:168
+#: templates/project-timesheet.php:56
+#: templates/timesheets_overview.php:143
 msgid "Date"
 msgstr ""
 
-#: admin/page-timesheets.php:94
-#: templates/monthly-report.php:132
-#: templates/project-timesheet.php:56
-#: templates/timesheets_overview.php:140
-#: templates/weekly-report.php:310
-#: templates/work_registration_fields.php:175
+#: admin/page-timesheets.php:101
+#: templates/monthly-report.php:172
+#: templates/project-timesheet.php:60
+#: templates/timesheets_overview.php:144
+#: templates/weekly-report.php:314
+#: templates/work_registration_fields.php:179
 msgid "Time"
 msgstr ""
 
@@ -123,7 +123,7 @@ msgstr ""
 
 #: classes/AdminController.php:225
 #: classes/TemplateController.php:79
-#: templates/emails/user-timesheet.php:1
+#: templates/emails/user-timesheet.php:16
 msgid "Timesheets"
 msgstr ""
 
@@ -135,49 +135,49 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: classes/Plugin.php:63
+#: classes/Plugin.php:70
 msgctxt "taxonomy general name"
 msgid "Timesheets Activities"
 msgstr ""
 
-#: classes/Plugin.php:64
+#: classes/Plugin.php:71
 msgctxt "taxonomy singular name"
 msgid "Timesheets Activity"
 msgstr ""
 
-#: classes/Plugin.php:65
+#: classes/Plugin.php:72
 msgid "Search Timesheets Activities"
 msgstr ""
 
-#: classes/Plugin.php:66
+#: classes/Plugin.php:73
 msgid "All Timesheets Activities"
 msgstr ""
 
-#: classes/Plugin.php:67
+#: classes/Plugin.php:74
 msgid "Parent Timesheets Activity"
 msgstr ""
 
-#: classes/Plugin.php:68
+#: classes/Plugin.php:75
 msgid "Parent Activity:"
 msgstr ""
 
-#: classes/Plugin.php:69
+#: classes/Plugin.php:76
 msgid "Edit Activity"
 msgstr ""
 
-#: classes/Plugin.php:70
+#: classes/Plugin.php:77
 msgid "Update Activity"
 msgstr ""
 
-#: classes/Plugin.php:71
+#: classes/Plugin.php:78
 msgid "Add New Activity"
 msgstr ""
 
-#: classes/Plugin.php:72
+#: classes/Plugin.php:79
 msgid "New Activity Name"
 msgstr ""
 
-#: classes/Plugin.php:73
+#: classes/Plugin.php:80
 msgid "Activities"
 msgstr ""
 
@@ -213,176 +213,180 @@ msgstr ""
 msgid "Could not add timesheet entry."
 msgstr ""
 
-#: templates/monthly-report.php:101
-#: templates/weekly-report.php:219
-#: templates/weekly-report.php:251
+#: templates/monthly-report.php:131
+msgid "— Current user —"
+msgstr ""
+
+#: templates/monthly-report.php:141
+#: templates/weekly-report.php:223
+#: templates/weekly-report.php:255
 msgid "Filter"
 msgstr ""
 
 #. translators: %s: Report name.
-#: templates/monthly-report.php:110
-msgid "Monthly report - %s - %s - %s"
+#: templates/monthly-report.php:150
+msgid "Monthly report - %1$s - %2$s - %3$s"
 msgstr ""
 
-#: templates/monthly-report.php:121
+#: templates/monthly-report.php:161
 msgid "Registrations"
 msgstr ""
 
-#: templates/monthly-report.php:129
-#: templates/work_registration_fields.php:100
+#: templates/monthly-report.php:169
+#: templates/work_registration_fields.php:104
 msgid "Company"
 msgstr ""
 
-#: templates/monthly-report.php:130
-#: templates/weekly-report.php:308
-#: templates/work_registration_fields.php:112
+#: templates/monthly-report.php:170
+#: templates/weekly-report.php:312
+#: templates/work_registration_fields.php:116
 msgid "Project"
 msgstr ""
 
-#: templates/monthly-report.php:145
-msgid "Week %s: %s - %s"
+#: templates/monthly-report.php:185
+msgid "Week %1$s: %2$s - %3$s"
 msgstr ""
 
-#: templates/monthly-report.php:182
+#: templates/monthly-report.php:222
 msgid "Subtotal week %s"
 msgstr ""
 
-#: templates/monthly-report.php:211
-#: templates/weekly-overview.php:107
-#: templates/weekly-report.php:311
+#: templates/monthly-report.php:251
+#: templates/weekly-overview.php:111
+#: templates/weekly-report.php:315
 msgid "Total"
 msgstr ""
 
-#: templates/new-registration-form.php:23
+#: templates/new-registration-form.php:27
 msgid "Add registration"
 msgstr ""
 
-#: templates/new-registration-form.php:28
+#: templates/new-registration-form.php:32
 msgid "Register"
 msgstr ""
 
-#: templates/project-timesheet.php:91
+#: templates/project-timesheet.php:95
 msgid "There are no time registrations for this project."
 msgstr ""
 
-#: templates/timesheets_edit.php:17
+#: templates/timesheets_edit.php:21
 msgid "Edit registration"
 msgstr ""
 
-#: templates/timesheets_edit.php:22
-#: templates/timesheets_overview.php:209
+#: templates/timesheets_edit.php:26
+#: templates/timesheets_overview.php:213
 msgid "Edit"
 msgstr ""
 
-#: templates/timesheets_edit.php:35
+#: templates/timesheets_edit.php:39
 msgid "Cancel"
 msgstr ""
 
-#: templates/timesheets_overview.php:86
+#: templates/timesheets_overview.php:90
 msgid "Today"
 msgstr ""
 
-#: templates/timesheets_overview.php:103
+#: templates/timesheets_overview.php:107
 msgid "Your work registration was succesfully added."
 msgstr ""
 
-#: templates/timesheets_overview.php:107
+#: templates/timesheets_overview.php:111
 msgid "Your work registration was succesfully updated."
 msgstr ""
 
-#: templates/timesheets_overview.php:141
+#: templates/timesheets_overview.php:145
 msgid "Actions"
 msgstr ""
 
-#: templates/weekly-overview.php:75
-#: templates/weekly-report.php:192
+#: templates/weekly-overview.php:79
+#: templates/weekly-report.php:196
 msgctxt "previous"
 msgid "<"
 msgstr ""
 
-#: templates/weekly-overview.php:76
-#: templates/weekly-report.php:193
+#: templates/weekly-overview.php:80
+#: templates/weekly-report.php:197
 msgctxt "next"
 msgid ">"
 msgstr ""
 
-#: templates/weekly-overview.php:77
-#: templates/weekly-report.php:194
+#: templates/weekly-overview.php:81
+#: templates/weekly-report.php:198
 msgid "This week"
 msgstr ""
 
-#: templates/weekly-overview.php:88
+#: templates/weekly-overview.php:92
 msgid "Week %s"
 msgstr ""
 
-#: templates/weekly-report.php:204
+#: templates/weekly-report.php:208
 msgid "View report from %1$s to %2$s"
 msgstr ""
 
-#: templates/weekly-report.php:243
-msgid "&mdash; All Users &mdash;"
+#: templates/weekly-report.php:247
+msgid "— All users —"
 msgstr ""
 
-#: templates/weekly-report.php:264
+#: templates/weekly-report.php:268
 msgid "%s of the hours are billable"
 msgstr ""
 
-#: templates/weekly-report.php:273
+#: templates/weekly-report.php:277
 msgid "%s Complete"
 msgstr ""
 
-#: templates/weekly-report.php:281
+#: templates/weekly-report.php:285
 msgid "Total tracked hours"
 msgstr ""
 
-#: templates/weekly-report.php:286
+#: templates/weekly-report.php:290
 msgid "Billabale hours"
 msgstr ""
 
-#: templates/weekly-report.php:291
+#: templates/weekly-report.php:295
 msgid "Unbillabale hours"
 msgstr ""
 
-#: templates/weekly-report.php:296
+#: templates/weekly-report.php:300
 msgid "Billable Amount"
 msgstr ""
 
-#: templates/weekly-report.php:307
+#: templates/weekly-report.php:311
 msgid "Client"
 msgstr ""
 
-#: templates/weekly-report.php:352
+#: templates/weekly-report.php:356
 msgid "%1$s billable, %2$s unbillable"
 msgstr ""
 
-#: templates/work_registration_fields.php:102
+#: templates/work_registration_fields.php:106
 msgid "Select company…"
 msgstr ""
 
-#: templates/work_registration_fields.php:114
+#: templates/work_registration_fields.php:118
 msgid "Select project…"
 msgstr ""
 
-#: templates/work_registration_fields.php:129
+#: templates/work_registration_fields.php:133
 msgid "Subscription"
 msgstr ""
 
-#: templates/work_registration_fields.php:131
+#: templates/work_registration_fields.php:135
 msgid "Select subscription…"
 msgstr ""
 
-#: templates/work_registration_fields.php:145
+#: templates/work_registration_fields.php:149
 msgid "Select activity…"
 msgstr ""
 
-#: templates/work_registration_fields.php:169
+#: templates/work_registration_fields.php:173
 msgid "Work registration description"
 msgstr ""
 
-#: templates/work_registration_fields.php:182
+#: templates/work_registration_fields.php:186
 msgid "hours"
 msgstr ""
 
-#: templates/work_registration_fields.php:190
+#: templates/work_registration_fields.php:194
 msgid "minutes"
 msgstr ""
