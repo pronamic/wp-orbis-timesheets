@@ -244,7 +244,7 @@ $url_next      = add_query_arg( orbis_format_timestamps( $next, 'd-m-Y' ) );
 				[
 					'name'             => 'user',
 					'selected'         => filter_input( INPUT_GET, 'user', FILTER_SANITIZE_STRING ),
-					'show_option_none' => __( '&mdash; All Users &mdash;', 'orbis-timesheets' ),
+					'show_option_none' => __( '— All users —', 'orbis-timesheets' ),
 					'class'            => 'form-control',
 					'include'          => $users,
 				] 
