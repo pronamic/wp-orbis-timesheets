@@ -24,7 +24,7 @@ FROM
 		FROM
 			wp_orbis_projects AS project
 				LEFT JOIN
-			wp_orbis_hours_registration AS timesheet
+			wp_orbis_timesheets AS timesheet
 					ON (
 						project.id = timesheet.project_id
 							AND
