@@ -1,41 +1,5 @@
 <?php
 
-function orbis_timesheets_shortcode() {
-	global $orbis_timesheets_plugin;
-
-	$return = '';
-
-	ob_start();
-
-	include __DIR__ . '/../templates/timesheets.php';
-
-	$return = ob_get_contents();
-
-	ob_end_clean();
-
-	return $return;
-}
-
-add_shortcode( 'orbis_timesheets', 'orbis_timesheets_shortcode' );
-
-function orbis_timesheets_annual_overview() {
-	global $orbis_timesheets_plugin;
-
-	$return = '';
-
-	ob_start();
-
-	include __DIR__ . '/../templates/time-tracking-annual-overview.php';
-
-	$return = ob_get_contents();
-
-	ob_end_clean();
-
-	return $return;
-}
-
-add_shortcode( 'orbis_timesheets_annual_overview', 'orbis_timesheets_annual_overview' );
-
 function orbis_timesheet_is_holiday( $date ) {
 	$holidays = [
 		// Good Friday - https://en.wikipedia.org/wiki/Good_Friday
