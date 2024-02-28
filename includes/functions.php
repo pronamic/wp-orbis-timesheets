@@ -73,7 +73,7 @@ function orbis_timesheets_get_entry( $entry_id ) {
 	$select = '';
 	$from   = '';
 
-	if ( function_exists( 'orbis_subscriptions_bootstrap' ) ) {
+	if ( property_exists( $wpdb, 'orbis_subscriptions' ) ) {
 		$select = ",
 			CONCAT( subscription_product.name, ' - ', subscription.name ) AS subscription_name
 		";
