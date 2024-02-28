@@ -12,6 +12,11 @@ $subscription_value = '';
 $extra_select = '';
 $extra_join   = '';
 
+if ( property_exists( $wpdb, 'orbis_companies' ) ) {
+	$extra_select .= ', principal.name AS principal_name';
+	$extra_join   .= " LEFT JOIN $wpdb->orbis_companies AS principal ON project.principal_id = principal.id";
+}
+
 $project_query = "
 	SELECT
 		project.name AS project_name,
@@ -25,18 +30,6 @@ $project_query = "
 			AND
 		project.id = %s
 ";
-
-if ( property_exists( $wpdb, 'orbis_companies' ) ) {
-	$extra_select .= '
-	, principal.name AS principal_name
-	';
-
-	$extra_join .= "
-	LEFT JOIN
-		$wpdb->orbis_companies AS principal
-				ON project.principal_id = principal.id
-	";
-}
 
 $project_query = $wpdb->prepare( $project_query, $entry->project_id );
 
