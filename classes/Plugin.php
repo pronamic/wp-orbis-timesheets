@@ -26,7 +26,6 @@ class Plugin {
 			new EmailController( $this ),
 			new RewriteController( $this ),
 			new TemplateController( $this ),
-			new QueryController( $this ),
 		];
 
 		if ( is_admin() ) {
