@@ -73,7 +73,7 @@ function orbis_timesheets_get_entry( $entry_id ) {
 	$select = '';
 	$from   = '';
 
-	if ( property_exists( $wpdb, 'orbis_subscriptions' ) ) {
+	if ( property_exists( $wpdb, 'orbis_subscriptions' ) && property_exists( $wpdb, 'orbis_products' ) ) {
 		$select = ",
 			CONCAT( subscription_product.name, ' - ', subscription.name ) AS subscription_name
 		";
@@ -83,8 +83,8 @@ function orbis_timesheets_get_entry( $entry_id ) {
 			$wpdb->orbis_subscriptions AS subscription
 					ON timesheet.subscription_id = subscription.id
 				LEFT JOIN
-			$wpdb->orbis_subscription_products AS subscription_product
-					ON subscription.type_id = subscription_product.id
+			$wpdb->orbis_products AS subscription_product
+					ON subscription.product_id = subscription_product.id
 		";
 	}
 
@@ -324,8 +324,8 @@ function orbis_timesheets_get_subscription_name( $orbis_id ) {
 			FROM
 				$wpdb->orbis_subscriptions AS subscription
 					LEFT JOIN
-				$wpdb->orbis_subscription_products AS product
-					ON subscription.type_id = product.id
+				$wpdb->orbis_products AS product
+					ON subscription.product_id = product.id
 			WHERE
 				subscription.id = %d
 			;

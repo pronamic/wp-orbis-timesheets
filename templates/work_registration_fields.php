@@ -53,8 +53,8 @@ if ( property_exists( $wpdb, 'orbis_subscriptions' ) ) {
 		FROM
 			$wpdb->orbis_subscriptions AS subscription
 				LEFT JOIN
-			$wpdb->orbis_subscription_products AS product
-					ON subscription.type_id = product.id
+			$wpdb->orbis_products AS product
+					ON subscription.product_id = product.id
 		WHERE
 			subscription.cancel_date IS NULL
 				AND
