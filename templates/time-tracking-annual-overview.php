@@ -42,22 +42,6 @@ require __DIR__ . '/time-tracking-annual-overview-style.php';
 	</div>
 </form>
 
-<dl>
-	<dt>Start Date</dt>
-	<dd><?php echo esc_html( $report->start_date->format( 'Y-m-d' ) ); ?></dd>
-
-	<dt>End Date</dt>
-	<dd><?php echo esc_html( $report->end_date->format( 'Y-m-d' ) ); ?></dd>
-
-	<?php if ( filter_input( INPUT_GET, 'debug', FILTER_VALIDATE_BOOLEAN ) ) : ?>
-
-		<dt>Query</dt>
-		<dd><pre><?php echo esc_html( $report->query ); ?></pre></dd>
-
-	<?php endif; ?>
-
-</dl>
-
 <div class="card">
 	<div class="card-body">
 
