@@ -134,14 +134,16 @@ function orbis_timesheet_get_threshold_level( $total, $threshold ) {
 function get_orbis_timesheets_annual_report( $args ) {
 	global $wpdb;
 
-	$year = filter_input( INPUT_GET, 'year', FILTER_SANITIZE_STRING );
+	$date = new DateTimeImmutable();
 
-	if ( empty( $year ) ) {
-		$year = \date( 'Y' );
+	if ( \array_key_exists( 'date', $args ) && $args['date'] instanceof DateTimeImmutable ) {
+		$date = $args['date'];
 	}
 
-	$start_date = new DateTimeImmutable( 'First monday of January ' . $year );
-	$end_date   = new DateTimeImmutable( 'Last day of December ' . $year );
+	$year = $date->format( 'Y' );
+
+	$start_date = $date->modify( 'First day of January this year' )->modify( 'previous sunday' );
+	$end_date   = $date->modify( 'Last day of December this year' )->modify( 'next monday' );
 
 	$weeks = new DatePeriod( $start_date, new DateInterval( 'P1W' ), $end_date );
 
