@@ -142,8 +142,8 @@ function get_orbis_timesheets_annual_report( $args ) {
 
 	$year = $date->format( 'Y' );
 
-	$start_date = $date->modify( 'First day of January this year' )->modify( 'previous sunday' );
-	$end_date   = $date->modify( 'Last day of December this year' )->modify( 'next monday' );
+	$start_date = $date->setISODate( $year, 1, 1 );
+	$end_date   = $date->modify( 'Last day of December this year' )->modify( '+1 day' )->modify( 'next monday' );
 
 	$weeks = new DatePeriod( $start_date, new DateInterval( 'P1W' ), $end_date );
 
