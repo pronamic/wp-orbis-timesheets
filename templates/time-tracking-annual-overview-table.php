@@ -36,7 +36,7 @@ $today = new DateTime();
 
 					$level = orbis_timesheet_get_threshold_level( $day->total, $day->threshold );
 
-					if ( orbis_timesheet_is_holiday( $day->date ) ) {
+					if ( in_array( 'holiday', $day->classes, true ) ) {
 						$level = 'holiday';
 					}
 

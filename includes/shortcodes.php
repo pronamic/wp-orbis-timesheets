@@ -1,118 +1,11 @@
 <?php
 
-function orbis_timesheet_is_holiday( $date ) {
-	$holidays = [
-		// Good Friday - https://en.wikipedia.org/wiki/Good_Friday
-		'2021-04-02',
-		// Easter Monday - https://en.wikipedia.org/wiki/Easter_Monday
-		'2021-04-05',
-		// Koningsdag - https://en.wikipedia.org/wiki/Koningsdag
-		'2021-04-27',
-		// Liberation Day (Netherlands) - https://en.wikipedia.org/wiki/Liberation_Day_(Netherlands)
-		'2021-05-05',
-		// Feast of the Ascension - https://en.wikipedia.org/wiki/Feast_of_the_Ascension
-		'2021-05-13',
-		// Pentecost - https://en.wikipedia.org/wiki/Pentecost
-		'2021-05-24',
-		// First Christmas Day - https://nl.wikipedia.org/wiki/Eerste_kerstdag
-		'2021-12-25',
-		// Boxing Day - https://nl.wikipedia.org/wiki/Tweede_kerstdag
-		'2021-12-26',
-		// New Year's Day - https://en.wikipedia.org/wiki/New_Year%27s_Day
-		'2022-01-01',
-		// Good Friday - https://en.wikipedia.org/wiki/Good_Friday
-		'2022-04-15',
-		// Easter Monday - https://en.wikipedia.org/wiki/Easter_Monday
-		'2022-04-18',
-		// Koningsdag - https://en.wikipedia.org/wiki/Koningsdag
-		'2022-04-27',
-		// Liberation Day (Netherlands) - https://en.wikipedia.org/wiki/Liberation_Day_(Netherlands)
-		'2022-05-05',
-		// Feast of the Ascension - https://en.wikipedia.org/wiki/Feast_of_the_Ascension
-		'2022-05-26',
-		// Pentecost - https://en.wikipedia.org/wiki/Pentecost
-		'2022-06-06',
-		// First Christmas Day - https://nl.wikipedia.org/wiki/Eerste_kerstdag
-		'2022-12-25',
-		// Boxing Day - https://nl.wikipedia.org/wiki/Tweede_kerstdag
-		'2022-12-26',
-		// New Year - https://en.wikipedia.org/wiki/New_Year
-		'2023-01-01',
-		// Good Friday - https://en.wikipedia.org/wiki/Good_Friday
-		'2023-04-07',
-		// Eerste paasdag - https://nl.wikipedia.org/wiki/Pasen
-		'2023-04-09',
-		// Tweede paasdag - https://nl.wikipedia.org/wiki/Pasen
-		'2023-04-10',
-		// Koningsdag - https://en.wikipedia.org/wiki/Koningsdag
-		'2023-04-27',
-		// Liberation Day (Netherlands) - https://en.wikipedia.org/wiki/Liberation_Day_(Netherlands)
-		'2023-05-05',
-		// Hemelvaartsdag - https://nl.wikipedia.org/wiki/Hemelvaartsdag
-		'2023-05-18',
-		// Eerste pinksterdag - https://nl.wikipedia.org/wiki/Pinksteren
-		'2023-05-28',
-		// Tweede pinksterdag - https://nl.wikipedia.org/wiki/Pinksteren
-		'2023-05-29',
-		// Eerste kerstdag - https://nl.wikipedia.org/wiki/Eerste_kerstdag
-		'2023-12-25',
-		// Tweede kerstdag - https://nl.wikipedia.org/wiki/Tweede_kerstdag
-		'2023-12-26',
-		// New Year - https://en.wikipedia.org/wiki/New_Year
-		'2024-01-01',
-		// Good Friday - https://en.wikipedia.org/wiki/Good_Friday
-		'2024-03-29',
-		// Eerste paasdag - https://nl.wikipedia.org/wiki/Pasen
-		'2024-03-31',
-		// Tweede paasdag - https://nl.wikipedia.org/wiki/Pasen
-		'2024-04-01',
-		// Koningsdag - https://en.wikipedia.org/wiki/Koningsdag
-		'2024-04-27',
-		// Liberation Day (Netherlands) - https://en.wikipedia.org/wiki/Liberation_Day_(Netherlands)
-		'2024-05-05',
-		// Hemelvaartsdag - https://nl.wikipedia.org/wiki/Hemelvaartsdag
-		'2024-05-09',
-		// Eerste pinksterdag - https://nl.wikipedia.org/wiki/Pinksteren
-		'2024-05-19',
-		// Tweede pinksterdag - https://nl.wikipedia.org/wiki/Pinksteren
-		'2024-05-20',
-		// Eerste kerstdag - https://nl.wikipedia.org/wiki/Eerste_kerstdag
-		'2024-12-25',
-		// Tweede kerstdag - https://nl.wikipedia.org/wiki/Tweede_kerstdag
-		'2024-12-26',
-		// New Year's Day - https://en.wikipedia.org/wiki/New_Year%27s_Day
-		'2025-01-01',
-	];
-
-	return in_array( $date->format( 'Y-m-d' ), $holidays, true );
-}
-
-function orbis_timesheet_get_day_threshold( $user, $date ) {
-	if ( 'Saturday' === $date->format( 'l' ) ) {
-		return null;
-	}
-
-	if ( 'Sunday' === $date->format( 'l' ) ) {
-		return null;
-	}
-
-	if ( orbis_timesheet_is_holiday( $date ) ) {
+function orbis_timesheet_get_threshold_level( $total, $threshold ) {
+	if ( null === $threshold && 0 === $total ) {
 		return 0;
 	}
 
-	if ( 'Tuesday' === $date->format( 'l' ) && 'reuel' === $user->username ) {
-		return ( 4 * HOUR_IN_SECONDS );
-	}
-
-	if ( 'Thursday' === $date->format( 'l' ) && 'odilio' === $user->username ) {
-		return null;
-	}
-
-	return 8 * HOUR_IN_SECONDS;
-}
-
-function orbis_timesheet_get_threshold_level( $total, $threshold ) {
-	if ( null === $threshold && 0 === $total ) {
+	if ( 0 === $threshold && 0 === $total ) {
 		return 0;
 	}
 
@@ -178,6 +71,28 @@ function get_orbis_timesheets_annual_report( $args ) {
 		],
 	];
 
+	/**
+	 * Schedule.
+	 */
+	$schedule = $wpdb->get_results(
+		$wpdb->prepare(
+			"
+			SELECT
+				CONCAT_WS( '-', schedule.user_id, schedule.date ) AS schedule_key,
+				schedule.*
+			FROM
+				wp_orbis_timesheets_schedule AS schedule
+			WHERE
+				schedule.date >= %s
+					AND
+				schedule.date <= %s
+			;
+			",
+			$start_date->format( 'Y-m-d' ),
+			$end_date->format( 'Y-m-d' )
+		),
+		OBJECT_K
+	);
 
 	/**
 	 * Users.
@@ -287,10 +202,28 @@ function get_orbis_timesheets_annual_report( $args ) {
 					$total = $user->timesheet[ $key ];
 				}
 
+				$threshold = 0;
+				$classes   = [];
+
+				$schedule_key = \sprintf(
+					'%s-%s',
+					$user->id,
+					$date->format( 'Y-m-d' )
+				);
+
+				if ( array_key_exists( $schedule_key, $schedule ) ) {
+					$item = $schedule[ $schedule_key ];
+
+					$threshold = (int) $item->number_seconds;
+
+					$classes[] = $item->class;
+				}
+
 				$days[ $week_day->day_of_week ] = (object) [
 					'date'      => $date,
 					'total'     => $total,
-					'threshold' => orbis_timesheet_get_day_threshold( $user, $date ),
+					'threshold' => $threshold,
+					'classes'   => $classes,
 				];
 			}
 
