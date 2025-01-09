@@ -116,6 +116,7 @@ class Plugin {
 				description TEXT NOT NULL,
 				`date` DATE NOT NULL DEFAULT '0000-00-00',
 				number_seconds INT(16) UNSIGNED NOT NULL DEFAULT 0,
+				declarability VARCHAR(16) DEFAULT '',
 				PRIMARY KEY  (id),
 				KEY user_id (user_id),
 				KEY company_id (company_id),
