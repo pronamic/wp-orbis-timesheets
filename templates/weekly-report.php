@@ -183,6 +183,33 @@ if ( $total_seconds > 0 ) {
 
 $amount = $billable_hours * 75;
 
+$declarability_report = $wpdb->get_row(
+	$wpdb->prepare(
+		"
+		SELECT
+			time_registration.user_id,
+			SUM( time_registration.number_seconds ) AS total_seconds,
+			SUM( IF ( 'chargeable' = time_registration.declarability, time_registration.number_seconds, 0 ) ) AS chargeable_seconds,
+			SUM( IF ( 'non_chargeable' = time_registration.declarability, time_registration.number_seconds, 0 ) ) AS non_chargeable_seconds,
+			SUM( IF ( time_registration.declarability IN ( 'chargeable', 'non_chargeable' ), 0, time_registration.number_seconds ) ) AS other_seconds
+		FROM
+			wp_orbis_timesheets AS time_registration
+		WHERE
+			time_registration.date >= %s
+				AND
+			time_registration.date <= %s
+				AND
+			time_registration.user_id = %d
+		GROUP BY
+			time_registration.user_id
+		;
+		",
+		date( 'Y-m-d', $start_date ),
+		date( 'Y-m-d', $end_date ),
+		$user
+	)
+);
+
 // URL's
 $url_week_this = add_query_arg( orbis_format_timestamps( $week_this, 'd-m-Y' ) );
 $url_previous  = add_query_arg( orbis_format_timestamps( $previous, 'd-m-Y' ) );
@@ -264,6 +291,10 @@ $url_next      = add_query_arg( orbis_format_timestamps( $next, 'd-m-Y' ) );
 		<p>
 			<?php
 
+			if ( $declarability_report ) {
+				$total = ( $declarability_report->chargeable_seconds / $declarability_report->total_seconds ) * 100;
+			}
+
 			printf(
 				__( '%s of the hours are billable', 'orbis-timesheets' ),
 				'<span style="font-size: 2.5rem">' . esc_html( '' . round( $total ) . '%' ) . '</span>'
@@ -280,27 +311,31 @@ $url_next      = add_query_arg( orbis_format_timestamps( $next, 'd-m-Y' ) );
 	</div>
 </div>
 
-<div class="row">
-	<div class="col-md-3">
-		<p><?php _e( 'Total tracked hours', 'orbis-timesheets' ); ?></p>
-		<h1><?php echo orbis_time( $total_seconds ); ?></h1>
+<?php if ( $declarability_report ) : ?>
+
+	<div class="row">
+		<div class="col-md-3">
+			<p><?php _e( 'Total', 'orbis-timesheets' ); ?></p>
+			<h1><?php echo orbis_time( $declarability_report->total_seconds ); ?></h1>
+		</div>
+
+		<div class="col-md-3">
+			<p><?php echo \esc_html( _x( 'Chargeable', 'declarability', 'orbis-timesheets' ) ); ?></p>
+			<h1><?php echo orbis_time( $declarability_report->chargeable_seconds ); ?></h1>
+		</div>
+
+		<div class="col-md-3">
+			<p><?php echo \esc_html( _x( 'Non-chargeable', 'declarability', 'orbis-timesheets' ) ); ?></p>
+			<h1><?php echo orbis_time( $declarability_report->non_chargeable_seconds ); ?></h1>
+		</div>
+
+		<div class="col-md-3">
+			<p><?php echo \esc_html( _x( 'Other', 'declarability', 'orbis-timesheets' ) ); ?></p>
+			<h1><?php echo orbis_time( $declarability_report->other_seconds ); ?></h1>
+		</div>
 	</div>
 
-	<div class="col-md-3">
-		<p><?php _e( 'Billabale hours', 'orbis-timesheets' ); ?></p>
-		<h1><?php echo orbis_time( $billable_seconds ); ?></h1>
-	</div>
-
-	<div class="col-md-3">
-		<p><?php _e( 'Unbillabale hours', 'orbis-timesheets' ); ?></p>
-		<h1><?php echo orbis_time( $unbillable_seconds ); ?></h1>
-	</div>
-
-	<div class="col-md-3">
-		<p><?php _e( 'Billable Amount', 'orbis-timesheets' ); ?></p>
-		<h1><?php echo orbis_price( $amount ); ?></h1>
-	</div>
-</div>
+<?php endif; ?>
 
 <hr />
 
