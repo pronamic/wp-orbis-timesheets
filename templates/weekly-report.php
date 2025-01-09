@@ -189,6 +189,7 @@ $declarability_report = $wpdb->get_row(
 		SELECT
 			time_registration.user_id,
 			SUM( time_registration.number_seconds ) AS total_seconds,
+			SUM( IF ( time_registration.declarability IN ( 'chargeable', 'non_chargeable' ), time_registration.number_seconds, 0 ) ) AS declarability_seconds,
 			SUM( IF ( 'chargeable' = time_registration.declarability, time_registration.number_seconds, 0 ) ) AS chargeable_seconds,
 			SUM( IF ( 'non_chargeable' = time_registration.declarability, time_registration.number_seconds, 0 ) ) AS non_chargeable_seconds,
 			SUM( IF ( time_registration.declarability IN ( 'chargeable', 'non_chargeable' ), 0, time_registration.number_seconds ) ) AS other_seconds
@@ -292,7 +293,7 @@ $url_next      = add_query_arg( orbis_format_timestamps( $next, 'd-m-Y' ) );
 			<?php
 
 			if ( $declarability_report ) {
-				$total = ( $declarability_report->chargeable_seconds / $declarability_report->total_seconds ) * 100;
+				$total = ( $declarability_report->chargeable_seconds / $declarability_report->declarability_seconds ) * 100;
 			}
 
 			printf(
