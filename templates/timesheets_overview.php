@@ -69,7 +69,8 @@ $query = "
 			AND
 		work.`date` = %s
 	ORDER BY
-		work.`date` DESC
+		work.`date` DESC,
+		work.created ASC
 	;
 ";
 
