@@ -35,7 +35,7 @@
 		"email": "support@pronamic.eu"
 	},
 	"devDependencies": {
-		"@wordpress/env": "^9.3.0",
+		"@wordpress/env": "^10.31.0",
 		"@wordpress/scripts": "^29.0.0"
 	},
 	"scripts": {
