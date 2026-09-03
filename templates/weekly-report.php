@@ -35,7 +35,7 @@ $week_this = [
 ];
 
 // Start date
-$value = filter_input( INPUT_GET, 'start_date', FILTER_SANITIZE_STRING );
+$value = orbis_timesheets_filter_text_input( INPUT_GET, 'start_date' );
 if ( empty( $value ) ) {
 	$start_date = $week_this['start_date'];
 } else {
@@ -43,7 +43,7 @@ if ( empty( $value ) ) {
 }
 
 // End date
-$value = filter_input( INPUT_GET, 'end_date', FILTER_SANITIZE_STRING );
+$value = orbis_timesheets_filter_text_input( INPUT_GET, 'end_date' );
 if ( empty( $value ) ) {
 	$end_date = $week_this['end_date'];
 } else {
@@ -64,7 +64,7 @@ $next = [
 ];
 
 // Inputs
-$user = filter_input( INPUT_GET, 'user', FILTER_SANITIZE_STRING );
+$user = orbis_timesheets_filter_int_input( INPUT_GET, 'user' );
 
 // Build query
 $query = 'WHERE 1 = 1';
@@ -271,7 +271,7 @@ $url_next      = add_query_arg( orbis_format_timestamps( $next, 'd-m-Y' ) );
 			wp_dropdown_users(
 				[
 					'name'             => 'user',
-					'selected'         => filter_input( INPUT_GET, 'user', FILTER_SANITIZE_STRING ),
+					'selected'         => orbis_timesheets_filter_int_input( INPUT_GET, 'user' ) ?? 0,
 					'show_option_none' => __( '— All users —', 'orbis-timesheets' ),
 					'class'            => 'form-control',
 					'include'          => $users,

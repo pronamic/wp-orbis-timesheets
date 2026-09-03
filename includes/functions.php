@@ -17,7 +17,7 @@ function orbis_post_link( $post_id ) {
 	return add_query_arg( 'p', $post_id, home_url( '/' ) );
 }
 
-function orbis_field_class( $class = [], $field_id ) {
+function orbis_field_class( $class, $field_id ) {
 	global $orbis_errors;
 
 	if ( isset( $orbis_errors[ $field_id ] ) ) {
@@ -339,28 +339,63 @@ function orbis_timesheets_get_subscription_name( $orbis_id ) {
 	return $name;
 }
 
+/**
+ * Filter an integer input variable.
+ *
+ * Returns `null` when the variable is not set or does not hold a valid integer,
+ * this keeps the `empty()` checks throughout this plugin working as expected.
+ *
+ * @param int    $type One of `INPUT_GET`, `INPUT_POST`, etc.
+ * @param string $name Name of the input variable.
+ * @return int|null
+ */
+function orbis_timesheets_filter_int_input( $type, $name ) {
+	return filter_input( $type, $name, FILTER_VALIDATE_INT, FILTER_NULL_ON_FAILURE );
+}
+
+/**
+ * Filter a text input variable.
+ *
+ * The `FILTER_SANITIZE_STRING` constant is deprecated since PHP 8.1, therefore
+ * the raw value is requested and sanitized with WordPress functions instead.
+ *
+ * @param int    $type     One of `INPUT_GET`, `INPUT_POST`, etc.
+ * @param string $name     Name of the input variable.
+ * @param bool   $textarea Whether to keep new lines in the value.
+ * @return string|null
+ */
+function orbis_timesheets_filter_text_input( $type, $name, $textarea = false ) {
+	$value = filter_input( $type, $name, FILTER_UNSAFE_RAW ); // phpcs:ignore WordPressVIPMinimum.Security.PHPFilterFunctions.RestrictedFilter -- Value is sanitized below.
+
+	if ( ! is_string( $value ) ) {
+		return null;
+	}
+
+	return $textarea ? sanitize_textarea_field( $value ) : sanitize_text_field( $value );
+}
+
 function orbis_timesheets_get_entry_from_input( $type = INPUT_POST ) {
 	global $wpdb;
 
 	$entry = new \Pronamic\Orbis\Timesheets\TimesheetEntry();
 
-	$entry->id = filter_input( $type, 'orbis_registration_id', FILTER_SANITIZE_STRING );
+	$entry->id = orbis_timesheets_filter_int_input( $type, 'orbis_registration_id' );
 
 	if ( property_exists( $wpdb, 'orbis_companies' ) ) {
-		$entry->company_id   = filter_input( $type, 'orbis_registration_company_id', FILTER_SANITIZE_STRING );
+		$entry->company_id   = orbis_timesheets_filter_int_input( $type, 'orbis_registration_company_id' );
 		$entry->company_name = orbis_timesheets_get_company_name( $entry->company_id );
 	}
 
-	$entry->project_id   = filter_input( $type, 'orbis_registration_project_id', FILTER_SANITIZE_STRING );
+	$entry->project_id   = orbis_timesheets_filter_int_input( $type, 'orbis_registration_project_id' );
 	$entry->project_name = orbis_timesheets_get_project_name( $entry->project_id );
 
-	$entry->subscription_id   = filter_input( $type, 'orbis_registration_subscription_id', FILTER_SANITIZE_STRING );
+	$entry->subscription_id   = orbis_timesheets_filter_int_input( $type, 'orbis_registration_subscription_id' );
 	$entry->subscription_name = orbis_timesheets_get_subscription_name( $entry->subscription_id );
 
-	$entry->activity_id = filter_input( $type, 'orbis_registration_activity_id', FILTER_SANITIZE_STRING );
-	$entry->description = filter_input( $type, 'orbis_registration_description', FILTER_SANITIZE_STRING );
+	$entry->activity_id = orbis_timesheets_filter_int_input( $type, 'orbis_registration_activity_id' );
+	$entry->description = orbis_timesheets_filter_text_input( $type, 'orbis_registration_description', true );
 
-	$date_string = filter_input( $type, 'orbis_registration_date', FILTER_SANITIZE_STRING );
+	$date_string = orbis_timesheets_filter_text_input( $type, 'orbis_registration_date' );
 	if ( ! empty( $date_string ) ) {
 		$entry->set_date( new DateTime( $date_string ) );
 	}
@@ -394,7 +429,7 @@ function orbis_timesheets_maybe_add_entry() {
 		$entry = orbis_timesheets_get_entry_from_input();
 
 		// Verify nonce
-		$nonce = filter_input( INPUT_POST, 'orbis_timesheets_new_registration_nonce', FILTER_SANITIZE_STRING );
+		$nonce = orbis_timesheets_filter_text_input( INPUT_POST, 'orbis_timesheets_new_registration_nonce' );
 		if ( wp_verify_nonce( $nonce, 'orbis_timesheets_add_new_registration' ) ) {
 			if ( empty( $entry->company_id ) && empty( $entry->project_id ) && empty( $entry->subscription_id ) ) {
 				orbis_timesheets_register_error( 'orbis_registration_company_id', '' ); // __( 'You have to specify an company.', 'orbis_timesheets' ) );
@@ -411,7 +446,7 @@ function orbis_timesheets_maybe_add_entry() {
 			}
 
 			$required_word_count = 2;
-			if ( str_word_count( $entry->description ) < $required_word_count ) {
+			if ( str_word_count( (string) $entry->description ) < $required_word_count ) {
 				orbis_timesheets_register_error( 'orbis_registration_description', sprintf( __( 'You have to specify an description (%d words).', 'orbis-timesheets' ), $required_word_count ) ); // phpcs:ignore WordPress.WP.I18n.MissingTranslatorsComment
 			}
 

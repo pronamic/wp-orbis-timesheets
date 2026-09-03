@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 // Errors
 global $orbis_errors;
 
-$id = filter_input( INPUT_GET, 'entry_id', FILTER_SANITIZE_STRING );
+$id = orbis_timesheets_filter_int_input( INPUT_GET, 'entry_id' );
 
 $entry = orbis_timesheets_get_entry( $id );
 

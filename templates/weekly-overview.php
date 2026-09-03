@@ -34,7 +34,7 @@ $users = get_users(
 $week_this = strtotime( 'previous Sunday' );
 
 // Start date
-$value = filter_input( INPUT_GET, 'date', FILTER_SANITIZE_STRING );
+$value = orbis_timesheets_filter_text_input( INPUT_GET, 'date' );
 if ( empty( $value ) ) {
 	$date = $week_this;
 } else {

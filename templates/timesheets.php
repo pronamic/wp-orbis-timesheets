@@ -6,11 +6,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 $user_id = get_current_user_id();
 
-$date     = filter_input( INPUT_GET, 'date', FILTER_SANITIZE_STRING );
-$action   = filter_input( INPUT_GET, 'edit', FILTER_SANITIZE_STRING );
-$entry_id = filter_input( INPUT_GET, 'entry_id', FILTER_SANITIZE_STRING );
+$date     = orbis_timesheets_filter_text_input( INPUT_GET, 'date' );
+$action   = orbis_timesheets_filter_text_input( INPUT_GET, 'edit' );
+$entry_id = orbis_timesheets_filter_int_input( INPUT_GET, 'entry_id' );
 
-$timestamp = strtotime( $date );
+$timestamp = ( null === $date ) ? false : strtotime( $date );
 if ( ! $timestamp ) {
 	$timestamp = time();
 }
