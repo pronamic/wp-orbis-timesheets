@@ -1,9 +1,6 @@
 # Build
 /build/
 
-# Deploy
-/deploy/
-
 # Node
 /node_modules/
 
