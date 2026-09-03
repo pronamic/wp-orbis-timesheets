@@ -12,6 +12,13 @@ namespace Pronamic\Orbis\Timesheets;
  */
 class TemplateController {
 	/**
+	 * Plugin.
+	 *
+	 * @var Plugin
+	 */
+	private $plugin;
+
+	/**
 	 * Construct template controller.
 	 * 
 	 * @param Plugin $plugin Plugin.

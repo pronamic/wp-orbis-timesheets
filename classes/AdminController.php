@@ -14,6 +14,13 @@ namespace Pronamic\Orbis\Timesheets;
  * Admin controller class
  */
 class AdminController {
+	/**
+	 * Plugin.
+	 *
+	 * @var Plugin
+	 */
+	private $plugin;
+
 	public function __construct( $plugin ) {
 		$this->plugin = $plugin;
 

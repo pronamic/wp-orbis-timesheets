@@ -12,6 +12,13 @@ namespace Pronamic\Orbis\Timesheets;
  */
 class RewriteController {
 	/**
+	 * Plugin.
+	 *
+	 * @var Plugin
+	 */
+	private $plugin;
+
+	/**
 	 * Construct rewrite controller.
 	 * 
 	 * @param Plugin $plugin Plugin.
