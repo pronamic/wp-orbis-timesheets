@@ -21,15 +21,27 @@
 	},
 	"require-dev": {
 		"pronamic/wp-coding-standards": "^2.1",
-		"pronamic/pronamic-cli": "^1.1"
+		"wp-cli/dist-archive-command": "*",
+		"wp-cli/wp-cli-bundle": "*"
 	},
 	"scripts": {
-		"build": "vendor/bin/pronamic wp-build",
-		"phpcs": "vendor/bin/phpcs",
-		"translate": [
-			"@build",
-			"rsync --recursive --delete --verbose ./build/project/languages/ ./languages/"
+		"build": [
+			"rm -rf ./build/stage-1",
+			"rm -rf ./build/orbis-timesheets",
+			"rsync --recursive --verbose --exclude-from=.distignore --exclude=/vendor/ ./ ./build/stage-1/",
+			"composer install --no-dev --prefer-dist --optimize-autoloader --working-dir=./build/stage-1/",
+			"rsync --recursive --verbose --exclude-from=.distignore ./build/stage-1/ ./build/orbis-timesheets/",
+			"vendor/bin/wp i18n make-pot ./build/orbis-timesheets/ --slug=orbis-timesheets",
+			"vendor/bin/wp i18n make-mo ./build/orbis-timesheets/languages/",
+			"vendor/bin/wp dist-archive ./build/orbis-timesheets/ --plugin-dirname=orbis-timesheets --force"
 		],
+		"dist-archive": "wp dist-archive . --plugin-dirname=orbis-timesheets",
+		"make-pot": [
+			"@build",
+			"rsync --recursive --delete --verbose ./build/orbis-timesheets/languages/ ./languages/",
+			"vendor/bin/wp i18n update-po ./languages/orbis-timesheets.pot"
+		],
+		"phpcs": "vendor/bin/phpcs",
 		"qa": [
 			"@phpcs"
 		]
