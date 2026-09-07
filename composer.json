@@ -16,6 +16,7 @@
 		"wp-slug": "orbis-timesheets"
 	},
 	"require": {
+		"php": "^8.2",
 		"automattic/jetpack-autoloader": "^3.0",
 		"pronamic/wp-datetime": "^2.1"
 	},

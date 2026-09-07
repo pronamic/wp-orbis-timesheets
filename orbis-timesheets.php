@@ -13,7 +13,7 @@
  * Description:       Time Management, Timesheet, Time Tracking solution for WordPress. Orbis Timesheets enables you to track your work time.
  * Version:           1.3.3
  * Requires at least: 5.2
- * Requires PHP:      7.2
+ * Requires PHP:      8.2
  * Author:            Pronamic
  * Author URI:        https://www.pronamic.eu/
  * Text Domain:       orbis-timesheets
@@ -37,7 +37,7 @@ require_once __DIR__ . '/vendor/autoload_packages.php';
 add_action(
 	'plugins_loaded',
 	function () {
-		\load_plugin_textdomain( 'orbis-timesheets', false, \dirname( \plugin_basename( __FILE__ ) ) . '/languages' ); 
+		\load_plugin_textdomain( 'orbis-timesheets', false, \dirname( \plugin_basename( __FILE__ ) ) . '/languages' );
 
 		global $orbis_timesheets_plugin;
 

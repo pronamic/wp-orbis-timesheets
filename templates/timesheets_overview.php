@@ -78,19 +78,130 @@ $query = $wpdb->prepare( $query, $user_id, date( 'Y-m-d', $timestamp ) );
 
 $registrations = $wpdb->get_results( $query );
 
-$prev = strtotime( '-1 day', $timestamp );
-$next = strtotime( '+1 day', $timestamp );
+$selected_day = ( new DateTimeImmutable( '@' . $timestamp ) )->setTimezone( wp_timezone() );
+$week_start   = $selected_day->modify( 'monday this week' )->setTime( 0, 0 );
+$week_end     = $week_start->modify( '+6 days' );
+
+$query = "
+	SELECT
+		`date`,
+		SUM( number_seconds ) AS duration
+	FROM
+		$wpdb->orbis_timesheets
+	WHERE
+		user_id = %d
+			AND
+		`date` BETWEEN %s AND %s
+	GROUP BY
+		`date`
+	;
+";
+
+$query = $wpdb->prepare(
+	$query,
+	$user_id,
+	$week_start->format( 'Y-m-d' ),
+	$week_end->format( 'Y-m-d' )
+);
+
+$week_durations = $wpdb->get_results( $query, OBJECT_K );
+
+$schedule_table = $wpdb->prefix . 'orbis_timesheets_schedule';
+
+$query = "
+	SELECT
+		`date`,
+		number_seconds AS duration
+	FROM
+		$schedule_table
+	WHERE
+		user_id = %d
+			AND
+		`date` BETWEEN %s AND %s
+	;
+";
+
+$query = $wpdb->prepare(
+	$query,
+	$user_id,
+	$week_start->format( 'Y-m-d' ),
+	$week_end->format( 'Y-m-d' )
+);
+
+$week_schedule_durations = $wpdb->get_results( $query, OBJECT_K );
+$week_total              = 0;
+$week_schedule           = 0;
+$days                    = [];
+
+
+$week = new DatePeriod(
+	$week_start,
+	new DateInterval( 'P1D' ),
+	$week_end,
+	DatePeriod::INCLUDE_END_DATE
+);
+
+foreach ( $week as $day ) {
+	$day_date = $day->format( 'Y-m-d' );
+	$duration = isset( $week_durations[ $day_date ] ) ? (int) $week_durations[ $day_date ]->duration : 0;
+	$schedule = isset( $week_schedule_durations[ $day_date ] ) ? (int) $week_schedule_durations[ $day_date ]->duration : 0;
+
+	$days[] = [
+		'date'     => $day_date,
+		'duration' => $duration,
+		'schedule' => $schedule,
+		'label'    => wp_date( 'D d', $day->getTimestamp() ),
+	];
+
+	$week_total += $duration;
+	$week_schedule += $schedule;
+}
+
+$prev = $selected_day->modify( '-1 week' );
+$next = $selected_day->modify( '+1 week' );
 
 $url = add_query_arg( 'message', false );
 
 ?>
-<form class="form-inline" action="" method="get">
-	<div class="btn-group" role="group">
-		<a href="<?php echo add_query_arg( 'date', date( 'Y-m-d', $prev ), $url ); ?>" class="btn btn-secondary">‹</a>
-		<a href="<?php echo add_query_arg( 'date', date( 'Y-m-d', $next ), $url ); ?>" class="btn btn-secondary">›</a>
-		<a href="<?php echo add_query_arg( 'date', false, $url ); ?>" class="btn btn-secondary"><?php _e( 'Today', 'orbis-timesheets' ); ?></a>
+<nav class="d-flex align-items-stretch gap-3 mb-4" aria-label="<?php esc_attr_e( 'Week navigation', 'orbis-timesheets' ); ?>">
+	<div class="d-flex flex-grow-1 align-items-stretch overflow-auto">
+		<ul class="pagination flex-nowrap mb-0">
+			<li class="page-item">
+				<a class="page-link h-100 d-flex align-items-center" href="<?php echo esc_url( add_query_arg( 'date', $prev->format( 'Y-m-d' ), $url ) ); ?>">
+					<span class="visually-hidden"><?php esc_html_e( 'Previous week', 'orbis-timesheets' ); ?></span>
+					<i class="fas fa-angle-left" aria-hidden="true"></i>
+				</a>
+			</li>
+
+			<?php foreach ( $days as $day ) : ?>
+
+				<?php $is_selected = $selected_day->format( 'Y-m-d' ) === $day['date']; ?>
+
+				<li class="page-item <?php echo $is_selected ? 'active' : ''; ?>">
+					<a class="page-link text-center text-nowrap px-4 py-2" href="<?php echo esc_url( add_query_arg( 'date', $day['date'], $url ) ); ?>"<?php echo $is_selected ? ' aria-current="page"' : ''; ?>>
+						<span class="d-block fw-bold"><?php echo esc_html( $day['label'] ); ?></span>
+						<span class="d-block mt-1"><?php echo esc_html( orbis_time( $day['duration'] ) ); ?> / <?php echo esc_html( orbis_time( $day['schedule'] ) ); ?></span>
+					</a>
+				</li>
+
+			<?php endforeach; ?>
+
+			<li class="page-item">
+				<a class="page-link h-100 d-flex align-items-center" href="<?php echo esc_url( add_query_arg( 'date', $next->format( 'Y-m-d' ), $url ) ); ?>">
+					<span class="visually-hidden"><?php esc_html_e( 'Next week', 'orbis-timesheets' ); ?></span>
+					<i class="fas fa-angle-right" aria-hidden="true"></i>
+				</a>
+			</li>
+		</ul>
+
+		<div class="border rounded ms-3 px-3 py-2 text-center text-nowrap d-flex flex-column justify-content-center">
+			<strong class="d-block"><?php esc_html_e( 'Week total', 'orbis-timesheets' ); ?></strong>
+			<span><?php echo esc_html( orbis_time( $week_total ) ); ?> / <?php echo esc_html( orbis_time( $week_schedule ) ); ?></span>
+		</div>
 	</div>
-</form>
+
+	<a class="btn btn-secondary align-self-start ms-auto" href="<?php echo esc_url( add_query_arg( 'date', false, $url ) ); ?>"><?php esc_html_e( 'Today', 'orbis-timesheets' ); ?></a>
+</nav>
 
 <hr />
 
