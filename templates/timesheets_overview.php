@@ -105,8 +105,33 @@ $query = $wpdb->prepare(
 );
 
 $week_durations = $wpdb->get_results( $query, OBJECT_K );
-$week_total     = 0;
-$days           = [];
+
+$schedule_table = $wpdb->prefix . 'orbis_timesheets_schedule';
+
+$query = "
+	SELECT
+		`date`,
+		number_seconds AS duration
+	FROM
+		$schedule_table
+	WHERE
+		user_id = %d
+			AND
+		`date` BETWEEN %s AND %s
+	;
+";
+
+$query = $wpdb->prepare(
+	$query,
+	$user_id,
+	$week_start->format( 'Y-m-d' ),
+	$week_end->format( 'Y-m-d' )
+);
+
+$week_schedule_durations = $wpdb->get_results( $query, OBJECT_K );
+$week_total              = 0;
+$week_schedule           = 0;
+$days                    = [];
 
 
 $week = new DatePeriod(
@@ -119,14 +144,17 @@ $week = new DatePeriod(
 foreach ( $week as $day ) {
 	$day_date = $day->format( 'Y-m-d' );
 	$duration = isset( $week_durations[ $day_date ] ) ? (int) $week_durations[ $day_date ]->duration : 0;
+	$schedule = isset( $week_schedule_durations[ $day_date ] ) ? (int) $week_schedule_durations[ $day_date ]->duration : 0;
 
 	$days[] = [
-		'date'      => $day_date,
-		'duration'  => $duration,
-		'label'     => wp_date( 'D d', $day->getTimestamp() ),
+		'date'     => $day_date,
+		'duration' => $duration,
+		'schedule' => $schedule,
+		'label'    => wp_date( 'D d', $day->getTimestamp() ),
 	];
 
 	$week_total += $duration;
+	$week_schedule += $schedule;
 }
 
 $prev = $selected_day->modify( '-1 week' );
