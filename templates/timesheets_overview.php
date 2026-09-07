@@ -150,7 +150,7 @@ foreach ( $week as $day ) {
 		'date'     => $day_date,
 		'duration' => $duration,
 		'schedule' => $schedule,
-		'label'    => wp_date( 'D d', $day->getTimestamp() ),
+		'label'    => wp_date( 'D j M', $day->getTimestamp() ),
 	];
 
 	$week_total += $duration;
