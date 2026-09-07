@@ -180,7 +180,7 @@ $url = add_query_arg( 'message', false );
 				<li class="page-item <?php echo $is_selected ? 'active' : ''; ?>">
 					<a class="page-link text-center text-nowrap px-4 py-2" href="<?php echo esc_url( add_query_arg( 'date', $day['date'], $url ) ); ?>"<?php echo $is_selected ? ' aria-current="page"' : ''; ?>>
 						<span class="d-block fw-bold"><?php echo esc_html( $day['label'] ); ?></span>
-						<span class="d-block mt-1"><?php echo esc_html( orbis_time( $day['duration'] ) ); ?></span>
+						<span class="d-block mt-1"><?php echo esc_html( orbis_time( $day['duration'] ) ); ?> / <?php echo esc_html( orbis_time( $day['schedule'] ) ); ?></span>
 					</a>
 				</li>
 
@@ -196,7 +196,7 @@ $url = add_query_arg( 'message', false );
 
 		<div class="border rounded ms-3 px-3 py-2 text-center text-nowrap d-flex flex-column justify-content-center">
 			<strong class="d-block"><?php esc_html_e( 'Week total', 'orbis-timesheets' ); ?></strong>
-			<span><?php echo esc_html( orbis_time( $week_total ) ); ?></span>
+			<span><?php echo esc_html( orbis_time( $week_total ) ); ?> / <?php echo esc_html( orbis_time( $week_schedule ) ); ?></span>
 		</div>
 	</div>
 
