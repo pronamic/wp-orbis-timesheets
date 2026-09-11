@@ -30,6 +30,10 @@ function orbis_field_class( $class, $field_id ) {
 function orbis_timesheets_can_register( $timestamp ) {
 	$can_register = true;
 
+	if ( \current_user_can( 'manage_options' ) ) {
+		return true;
+	}
+
 	$limit_lower = get_option( 'orbis_timesheets_registration_limit_lower' );
 
 	if ( ! empty( $limit_lower ) ) {
@@ -242,7 +246,7 @@ function orbis_timesheets_get_company_name( $orbis_id ) {
 			company.id = %d
 		;
 	",
-		$orbis_id 
+		$orbis_id
 	);
 
 	$result = $wpdb->get_var( $query );
@@ -289,7 +293,7 @@ function orbis_timesheets_get_project_name( $orbis_id ) {
 			project.id = %d
 		;
 	",
-		$orbis_id 
+		$orbis_id
 	);
 
 	// Project
@@ -330,7 +334,7 @@ function orbis_timesheets_get_subscription_name( $orbis_id ) {
 				subscription.id = %d
 			;
 		",
-			$orbis_id 
+			$orbis_id
 		);
 
 		$name = $wpdb->get_var( $query );
@@ -470,7 +474,7 @@ function orbis_timesheets_maybe_add_entry() {
 							'action'   => false,
 							'message'  => $message,
 							'date'     => $entry->get_date()->format( 'Y-m-d' ),
-						] 
+						]
 					);
 
 					wp_safe_redirect( $url );
