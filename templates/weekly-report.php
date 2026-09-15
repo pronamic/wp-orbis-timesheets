@@ -217,71 +217,50 @@ $url_previous  = add_query_arg( orbis_format_timestamps( $previous, 'd-m-Y' ) );
 $url_next      = add_query_arg( orbis_format_timestamps( $next, 'd-m-Y' ) );
 
 ?>
-<form method="get" action="">
-	<div class="d-flex justify-content-between bd-highlight mb-3">
-		<div>
-			<div class="btn-group">
-				<a class="btn btn-secondary" href="<?php echo $url_previous; ?>"><?php echo esc_html( _x( '←', 'previous', 'orbis-timesheets' ) ); ?></a>
-				<a class="btn btn-secondary" href="<?php echo $url_next; ?>"><?php echo esc_html( _x( '→', 'next', 'orbis-timesheets' ) ); ?></a>
-				<a class="btn btn-secondary" href="<?php echo $url_week_this; ?>"><?php echo esc_html( __( 'This week', 'orbis-timesheets' ) ); ?></a>
-			</div>
+<form method="get" action="" class="row row-cols-auto g-2 align-items-center mb-3">
+	<div class="col-auto">
+		<div class="btn-group" role="group" aria-label="Date navigation">
+			<a class="btn btn-secondary" href="<?php echo $url_previous; ?>"><?php echo esc_html( _x( '←', 'previous', 'orbis-timesheets' ) ); ?></a>
+			<a class="btn btn-secondary" href="<?php echo $url_next; ?>"><?php echo esc_html( _x( '→', 'next', 'orbis-timesheets' ) ); ?></a>
+			<a class="btn btn-secondary" href="<?php echo $url_week_this; ?>"><?php echo esc_html( __( 'This week', 'orbis-timesheets' ) ); ?></a>
 		</div>
+	</div>
 
-		<div class="form-inline">
-			<div class="form-group">
-				<span>
-				<?php
+	<div class="col-auto">
+		<input type="date" name="start_date" class="form-control" value="<?php echo esc_attr( date( 'Y-m-d', $start_date ) ); ?>" aria-label="<?php esc_attr_e( 'Start date', 'orbis-timesheets' ); ?>" />
+	</div>
 
-				printf(
-					__( 'View report from %1$s to %2$s', 'orbis-timesheets' ),
-					sprintf(
-						'<input type="text" name="start_date" class="form-control input-small" placeholder="0000-00-00" value="%s" />',
-						esc_attr( date( 'd-m-Y', $start_date ) )
-					),
-					sprintf(
-						'<input type="text" name="end_date" class="form-control input-small" placeholder="0000-00-00" value="%s" />',
-						esc_attr( date( 'd-m-Y', $end_date ) )
-					)
-				);
+	<div class="col-auto">
+		<input type="date" name="end_date" class="form-control" value="<?php echo esc_attr( date( 'Y-m-d', $end_date ) ); ?>" aria-label="<?php esc_attr_e( 'End date', 'orbis-timesheets' ); ?>" />
+	</div>
 
-				echo ' ';
+	<div class="col-auto">
+		<?php
 
-				printf(
-					'<button type="submit" class="btn btn-secondary">%s</button>',
-					esc_html__( 'Filter', 'orbis-timesheets' )
-				);
+		$users = get_users(
+			[
+				'fields'     => 'ids',
+				'meta_key'   => '_orbis_user',
+				'meta_value' => 'true',
+			]
+		);
 
-				?>
-				</span>
-			</div>
-		</div>
+		wp_dropdown_users(
+			[
+				'name'             => 'user',
+				'id'               => 'user',
+				'selected'         => orbis_timesheets_filter_int_input( INPUT_GET, 'user' ) ?? 0,
+				'show_option_none' => __( 'All users', 'orbis-timesheets' ),
+				'class'            => 'form-select',
+				'include'          => $users,
+			]
+		);
 
-		<div class="form-inline">
-			<span>
-			<?php
+		?>
+	</div>
 
-			$users = get_users(
-				[
-					'fields'     => 'ids',
-					'meta_key'   => '_orbis_user',
-					'meta_value' => 'true',
-				]
-			);
-
-			wp_dropdown_users(
-				[
-					'name'             => 'user',
-					'selected'         => orbis_timesheets_filter_int_input( INPUT_GET, 'user' ) ?? 0,
-					'show_option_none' => __( '— All users —', 'orbis-timesheets' ),
-					'class'            => 'form-control',
-					'include'          => $users,
-				]
-			);
-
-			?>
-
-			<button type="submit" class="btn btn-secondary"><?php esc_html_e( 'Filter', 'orbis-timesheets' ); ?></button></span>
-		</div>
+	<div class="col-auto">
+		<button type="submit" class="btn btn-secondary"><?php esc_html_e( 'Filter', 'orbis-timesheets' ); ?></button>
 	</div>
 </form>
 
@@ -304,9 +283,9 @@ $url_next      = add_query_arg( orbis_format_timestamps( $next, 'd-m-Y' ) );
 			?>
 		</p>
 
-		<div class="progress progress-striped active">
+		<div class="progress" aria-label="<?php printf( __( '%s Complete', 'orbis-timesheets' ), '' . round( $total ) . '%' ); ?>">
 			<div class="progress-bar" role="progressbar" aria-valuenow="<?php echo round( $total ); ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo round( $total ) . '%'; ?>;">
-				<span class="sr-only"><?php printf( __( '%s Complete', 'orbis-timesheets' ), '' . round( $total ) . '%' ); ?></span>
+				<span class="visually-hidden"><?php printf( __( '%s Complete', 'orbis-timesheets' ), '' . round( $total ) . '%' ); ?></span>
 			</div>
 		</div>
 	</div>
@@ -395,7 +374,7 @@ $url_next      = add_query_arg( orbis_format_timestamps( $next, 'd-m-Y' ) );
 					);
 
 					?>
-					<a href="#" data-toggle="tooltip" title="<?php echo esc_attr( $title ); ?>">
+					<a href="#" data-bs-toggle="tooltip" title="<?php echo esc_attr( $title ); ?>">
 						<?php echo orbis_time( $row->number_seconds ); ?>
 					</a>
 				</td>

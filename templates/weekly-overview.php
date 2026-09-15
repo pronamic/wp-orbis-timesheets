@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
  * Template Name: Timesheet week
  */
@@ -15,11 +15,11 @@ global $wpdb;
 // Functions
 function orbis_format_timestamps( array $timestamps, $format ) {
 	$dates = [];
-	
+
 	foreach ( $timestamps as $key => $value ) {
 		$dates[ $key ] = date( $format, $value );
 	}
-	
+
 	return $dates;
 }
 
@@ -27,7 +27,7 @@ $users = get_users(
 	[
 		'meta_key'   => '_orbis_user',
 		'meta_value' => 'true',
-	] 
+	]
 );
 
 // This week
@@ -74,11 +74,13 @@ $url_week_this = add_query_arg( 'date', date( 'd-m-Y', $week_this ) );
 
 ?>
 
-<form class="form-inline" method="get" action="">
-	<div class="btn-group">
-		<a class="btn btn-secondary" href="<?php echo $url_previous; ?>"><?php echo esc_html( _x( '<', 'previous', 'orbis-timesheets' ) ); ?></a>
-		<a class="btn btn-secondary" href="<?php echo $url_next; ?>"><?php echo esc_html( _x( '>', 'next', 'orbis-timesheets' ) ); ?></a>
-		<a class="btn btn-secondary" href="<?php echo $url_week_this; ?>"><?php echo esc_html( __( 'This week', 'orbis-timesheets' ) ); ?></a>
+<form method="get" action="">
+	<div class="d-flex align-items-center gap-2">
+		<div class="btn-group" role="group" aria-label="Date navigation">
+			<a class="btn btn-secondary" href="<?php echo $url_previous; ?>"><?php echo esc_html( _x( '<', 'previous', 'orbis-timesheets' ) ); ?></a>
+			<a class="btn btn-secondary" href="<?php echo $url_next; ?>"><?php echo esc_html( _x( '>', 'next', 'orbis-timesheets' ) ); ?></a>
+			<a class="btn btn-secondary" href="<?php echo $url_week_this; ?>"><?php echo esc_html( __( 'This week', 'orbis-timesheets' ) ); ?></a>
+		</div>
 	</div>
 </form>
 
@@ -105,7 +107,7 @@ $url_week_this = add_query_arg( 'date', date( 'd-m-Y', $week_this ) );
 					<?php foreach ( $days as $day ) : ?>
 
 						<th><?php echo esc_html( date_i18n( 'D j M', $day ) ); ?></th>
-					
+
 					<?php endforeach; ?>
 
 					<th><?php esc_html_e( 'Total', 'orbis-timesheets' ); ?></th>
@@ -113,10 +115,10 @@ $url_week_this = add_query_arg( 'date', date( 'd-m-Y', $week_this ) );
 			</thead>
 			<tbody>
 				<?php foreach ( $users as $user ) : ?>
-				
+
 					<tr>
 						<td>
-							<?php 
+							<?php
 
 							echo esc_html( $user->display_name );
 
@@ -127,14 +129,14 @@ $url_week_this = add_query_arg( 'date', date( 'd-m-Y', $week_this ) );
 
 						<?php foreach ( $days as $day ) : ?>
 
-							<?php 
-							
+							<?php
+
 							$q = $wpdb->prepare( $query, $user->ID, date( 'Y-m-d', $day ) );
 
 							$seconds = $wpdb->get_var( $q );
-							
+
 							$total += $seconds;
-							
+
 							$url = add_query_arg(
 								[
 									'start_date' => date( 'Y-m-d', $day ),
@@ -143,12 +145,12 @@ $url_week_this = add_query_arg( 'date', date( 'd-m-Y', $week_this ) );
 								],
 								\home_url( 'tijdregistraties/weekrapport' )
 							);
-							
+
 							?>
 							<td>
 								<a href="<?php echo esc_url( $url ); ?>"><?php echo esc_html( orbis_time( $seconds ) ); ?></a>
 							</td>
-					
+
 						<?php endforeach; ?>
 
 						<td>
