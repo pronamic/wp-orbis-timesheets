@@ -82,26 +82,6 @@ class AdminController {
 		);
 
 		add_settings_field(
-			'orbis_timesheets_registration_limit_lower', // id
-			__( 'Registration Limit Lower', 'orbis-timesheets' ), // title
-			[ $this, 'input_select' ], // callback
-			'orbis_timesheets_settings', // page
-			'orbis_timesheets_settings_general', // section
-			[
-				'label_for' => 'orbis_timesheets_registration_limit_lower',
-				'options'   => [
-					'0'       => __( 'None', 'orbis-timesheets' ),
-					'1 day'   => __( '1 Day', 'orbis-timesheets' ),
-					'3 days'  => __( '3 Days', 'orbis-timesheets' ),
-					'1 week'  => __( '1 Week', 'orbis-timesheets' ),
-					'1 month' => __( '1 Month', 'orbis-timesheets' ),
-				],
-			] // args
-		);
-
-		register_setting( 'orbis_timesheets', 'orbis_timesheets_registration_limit_lower' );
-
-		add_settings_field(
 			'orbis_timesheets_note', // id
 			__( 'Note', 'orbis-timesheets' ), // title
 			[ $this, 'input_text' ], // callback

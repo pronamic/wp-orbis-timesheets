@@ -27,24 +27,6 @@ function orbis_field_class( $class, $field_id ) {
 	printf( 'class="%s"', implode( ' ', $class ) );
 }
 
-function orbis_timesheets_can_register( $timestamp ) {
-	$can_register = true;
-
-	if ( \current_user_can( 'manage_options' ) ) {
-		return true;
-	}
-
-	$limit_lower = get_option( 'orbis_timesheets_registration_limit_lower' );
-
-	if ( ! empty( $limit_lower ) ) {
-		$dateline_lower = strtotime( sprintf( 'midnight -%s +10 hours', $limit_lower ) );
-
-		$can_register = ( $timestamp >= $dateline_lower );
-	}
-
-	return $can_register;
-}
-
 function orbis_update_project_registered_time( $project_id, $post_id ) {
 	$registered_time = orbis_calculate_project_registered_time( $project_id );
 
@@ -456,10 +438,6 @@ function orbis_timesheets_maybe_add_entry() {
 
 			if ( empty( $entry->activity_id ) ) {
 				orbis_timesheets_register_error( 'orbis_registration_activity_id', __( 'You have to specify an activity.', 'orbis-timesheets' ) );
-			}
-
-			if ( ! orbis_timesheets_can_register( $entry->get_date()->format( 'U' ) ) ) {
-				orbis_timesheets_register_error( 'orbis_registration_date', __( 'You can not register on this date.', 'orbis-timesheets' ) );
 			}
 
 			$message = empty( $entry->id ) ? 'added' : 'updated';
