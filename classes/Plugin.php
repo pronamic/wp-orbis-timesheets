@@ -23,6 +23,7 @@ class Plugin {
 		include __DIR__ . '/../includes/shortcodes.php';
 
 		$controllers = [
+			new BillabilityController(),
 			new CliController(),
 			new EmailController( $this ),
 			new RewriteController( $this ),

@@ -212,6 +212,16 @@ function orbis_insert_timesheet_entry( $entry ) {
 
 	orbis_update_project_registered_time( $data['project_id'], $project_post_id );
 
+	if ( false !== $result ) {
+		/**
+		 * Timesheet entry saved.
+		 *
+		 * @param int                                      $entry_id Timesheet entry ID.
+		 * @param \Pronamic\Orbis\Timesheets\TimesheetEntry $entry    Timesheet entry.
+		 */
+		do_action( 'orbis_timesheets_entry_saved', (int) $entry->id, $entry );
+	}
+
 	return $result;
 }
 

@@ -32,6 +32,13 @@ namespace Pronamic\Orbis\Timesheets;
 require_once __DIR__ . '/vendor/autoload_packages.php';
 
 /**
+ * Action Scheduler.
+ *
+ * @link https://actionscheduler.org/
+ */
+require_once __DIR__ . '/vendor/woocommerce/action-scheduler/action-scheduler.php';
+
+/**
  * Bootstrap.
  */
 add_action(

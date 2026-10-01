@@ -18,7 +18,8 @@
 	"require": {
 		"php": "^8.2",
 		"automattic/jetpack-autoloader": "^3.0",
-		"pronamic/wp-datetime": "^2.1"
+		"pronamic/wp-datetime": "^2.1",
+		"woocommerce/action-scheduler": "^4.2"
 	},
 	"require-dev": {
 		"pronamic/wp-coding-standards": "^2.1",
