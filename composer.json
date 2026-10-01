@@ -24,7 +24,8 @@
 		"pronamic/wp-coding-standards": "^2.1",
 		"wp-cli/dist-archive-command": "*",
 		"wp-cli/wp-cli-bundle": "*",
-		"deployer/deployer": "^7.5"
+		"deployer/deployer": "^7.5",
+		"rector/rector": "^2.6"
 	},
 	"scripts": {
 		"build": [
@@ -46,6 +47,7 @@
 		"phpcs": "vendor/bin/phpcs",
 		"qa": [
 			"@phpcs"
-		]
+		],
+		"rector": "vendor/bin/rector"
 	}
 }

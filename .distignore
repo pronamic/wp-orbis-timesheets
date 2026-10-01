@@ -24,6 +24,8 @@ phpdoc.dist.xml
 phpcs.xml.dist
 phpmd.ruleset.xml
 
+/rector.php
+
 phpunit.xml.dist
 
 phpstan.neon
