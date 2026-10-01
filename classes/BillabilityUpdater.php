@@ -16,9 +16,10 @@ namespace Pronamic\Orbis\Timesheets;
  * Calculates the billability of timesheet entries based on their project:
  *
  * - Entries on excluded or non-billable projects get the project billability.
- * - Entries on billable projects are billable as long as the time registered on
- *   the project before the entry date, plus the entry itself, does not exceed the
- *   project budget, otherwise they are non-billable.
+ * - Entries on billable time and materials projects are always billable.
+ * - Entries on other billable projects are billable as long as the time registered
+ *   on the project before the entry date, plus the entry itself, does not exceed
+ *   the project budget, otherwise they are non-billable.
  * - Entries without a project are left untouched.
  */
 class BillabilityUpdater {
@@ -72,6 +73,8 @@ class BillabilityUpdater {
 				IF (
 					project.billability = %s,
 					IF (
+						project.billing_method = %s
+							OR
 						SUM( timesheet.number_seconds ) OVER ( ORDER BY timesheet.date )
 							-
 						SUM( timesheet.number_seconds ) OVER ( PARTITION BY timesheet.date )
@@ -91,6 +94,7 @@ class BillabilityUpdater {
 				timesheet.project_id = %d
 			",
 			Billability::Billable->value,
+			'time_and_materials',
 			Billability::Billable->value,
 			Billability::NonBillable->value,
 			$project_id

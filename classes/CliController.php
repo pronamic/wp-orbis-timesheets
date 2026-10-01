@@ -63,7 +63,7 @@ class CliController {
 			fn( $args, $assoc_args ) => $this->apply_billable_project_billability( $assoc_args ),
 			[
 				'shortdesc' => 'Set the billability of timesheet entries without billability on billable projects to billable or non-billable, based on the project budget.',
-				'longdesc'  => 'Timesheet entries are billable as long as the time registered on the project before the entry date, plus the entry itself, does not exceed the project budget.',
+				'longdesc'  => 'Timesheet entries on time and materials projects are always billable. Other timesheet entries are billable as long as the time registered on the project before the entry date, plus the entry itself, does not exceed the project budget.',
 				'synopsis'  => $synopsis,
 			]
 		);
@@ -151,6 +151,8 @@ class CliController {
 			SELECT
 				timesheet.id,
 				IF (
+					project.billing_method = %s
+						OR
 					SUM( timesheet.number_seconds ) OVER ( PARTITION BY timesheet.project_id ORDER BY timesheet.date )
 						-
 					SUM( timesheet.number_seconds ) OVER ( PARTITION BY timesheet.project_id, timesheet.date )
@@ -167,6 +169,7 @@ class CliController {
 			WHERE
 				project.billability = %s
 			",
+			'time_and_materials',
 			Billability::Billable->value,
 			Billability::NonBillable->value,
 			Billability::Billable->value
