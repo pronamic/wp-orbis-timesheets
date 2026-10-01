@@ -8,7 +8,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2024-02-07T09:08:53+00:00\n"
-"PO-Revision-Date: 2026-10-01T18:28:21+00:00\n"
+"PO-Revision-Date: 2026-10-01T18:35:21+00:00\n"
 "Language: nl_NL\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Poedit-KeywordsList: __;_e;_x:2c,1\n"
@@ -102,8 +102,8 @@ msgstr "Tijd"
 #: templates/project-timesheet.php:64
 #: templates/timesheets_overview.php:260
 #: templates/weekly-report.php:333
-msgid "Declarability"
-msgstr "Declarabiliteit"
+msgid "Billability"
+msgstr ""
 
 #: classes/AdminController.php:78
 msgid "General Settings"
@@ -127,32 +127,32 @@ msgstr "Orbis werkregistraties instellingen"
 msgid "Settings"
 msgstr "Instellingen"
 
-#: classes/Declarability.php:44
+#: classes/Billability.php:44
 #: templates/weekly-report.php:306
-msgctxt "declarability"
-msgid "Chargeable"
-msgstr "Declarabel"
+msgctxt "billability"
+msgid "Billable"
+msgstr ""
 
-#: classes/Declarability.php:45
+#: classes/Billability.php:45
 #: templates/weekly-report.php:311
-msgctxt "declarability"
-msgid "Non-chargeable"
-msgstr "Niet-declarabel"
+msgctxt "billability"
+msgid "Non-billable"
+msgstr ""
 
-#: classes/Declarability.php:46
-msgctxt "declarability"
+#: classes/Billability.php:46
+msgctxt "billability"
 msgid "Excluded"
-msgstr "Uitgesloten"
+msgstr ""
 
-#: classes/Declarability.php:47
-msgctxt "declarability"
+#: classes/Billability.php:47
+msgctxt "billability"
 msgid "Unknown"
-msgstr "Onbekend"
+msgstr ""
 
-#: classes/Declarability.php:48
-msgctxt "declarability"
+#: classes/Billability.php:48
+msgctxt "billability"
 msgid "Not set"
-msgstr "Niet ingesteld"
+msgstr ""
 
 #: classes/Plugin.php:69
 msgctxt "taxonomy general name"
@@ -388,9 +388,9 @@ msgid "%s Complete"
 msgstr "%s voltooid"
 
 #: templates/weekly-report.php:316
-msgctxt "declarability"
+msgctxt "billability"
 msgid "Other"
-msgstr "Overig"
+msgstr ""
 
 #: templates/weekly-report.php:329
 msgid "Client"

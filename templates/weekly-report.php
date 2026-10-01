@@ -8,7 +8,7 @@
  * @package   Pronamic\Orbis\Timesheets
  */
 
-use Pronamic\Orbis\Timesheets\Declarability;
+use Pronamic\Orbis\Timesheets\Billability;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -121,7 +121,7 @@ $query_hours = "
 		hr.date AS date,
 		hr.description AS description,
 		hr.number_seconds AS number_seconds,
-		hr.declarability AS declarability
+		hr.billability AS billability
 	FROM
 		$wpdb->orbis_timesheets AS hr
 			LEFT JOIN
@@ -186,16 +186,16 @@ if ( $total_seconds > 0 ) {
 
 $amount = $billable_hours * 75;
 
-$declarability_report = $wpdb->get_row(
+$billability_report = $wpdb->get_row(
 	$wpdb->prepare(
 		"
 		SELECT
 			time_registration.user_id,
 			SUM( time_registration.number_seconds ) AS total_seconds,
-			SUM( IF ( time_registration.declarability IN ( 'chargeable', 'non_chargeable' ), time_registration.number_seconds, 0 ) ) AS declarability_seconds,
-			SUM( IF ( 'chargeable' = time_registration.declarability, time_registration.number_seconds, 0 ) ) AS chargeable_seconds,
-			SUM( IF ( 'non_chargeable' = time_registration.declarability, time_registration.number_seconds, 0 ) ) AS non_chargeable_seconds,
-			SUM( IF ( time_registration.declarability IN ( 'chargeable', 'non_chargeable' ), 0, time_registration.number_seconds ) ) AS other_seconds
+			SUM( IF ( time_registration.billability IN ( 'billable', 'non_billable' ), time_registration.number_seconds, 0 ) ) AS billability_seconds,
+			SUM( IF ( 'billable' = time_registration.billability, time_registration.number_seconds, 0 ) ) AS billable_seconds,
+			SUM( IF ( 'non_billable' = time_registration.billability, time_registration.number_seconds, 0 ) ) AS non_billable_seconds,
+			SUM( IF ( time_registration.billability IN ( 'billable', 'non_billable' ), 0, time_registration.number_seconds ) ) AS other_seconds
 		FROM
 			wp_orbis_timesheets AS time_registration
 		WHERE
@@ -274,8 +274,8 @@ $url_next      = add_query_arg( orbis_format_timestamps( $next, 'd-m-Y' ) );
 		<p>
 			<?php
 
-			if ( $declarability_report && $declarability_report->declarability_seconds > 0 ) {
-				$total = ( $declarability_report->chargeable_seconds / $declarability_report->declarability_seconds ) * 100;
+			if ( $billability_report && $billability_report->billability_seconds > 0 ) {
+				$total = ( $billability_report->billable_seconds / $billability_report->billability_seconds ) * 100;
 			}
 
 			printf(
@@ -294,27 +294,27 @@ $url_next      = add_query_arg( orbis_format_timestamps( $next, 'd-m-Y' ) );
 	</div>
 </div>
 
-<?php if ( $declarability_report ) : ?>
+<?php if ( $billability_report ) : ?>
 
 	<div class="row">
 		<div class="col-md-3">
 			<p><?php _e( 'Total', 'orbis-timesheets' ); ?></p>
-			<h1><?php echo orbis_time( $declarability_report->total_seconds ); ?></h1>
+			<h1><?php echo orbis_time( $billability_report->total_seconds ); ?></h1>
 		</div>
 
 		<div class="col-md-3">
-			<p><?php echo \esc_html( _x( 'Chargeable', 'declarability', 'orbis-timesheets' ) ); ?></p>
-			<h1><?php echo orbis_time( $declarability_report->chargeable_seconds ); ?></h1>
+			<p><?php echo \esc_html( _x( 'Billable', 'billability', 'orbis-timesheets' ) ); ?></p>
+			<h1><?php echo orbis_time( $billability_report->billable_seconds ); ?></h1>
 		</div>
 
 		<div class="col-md-3">
-			<p><?php echo \esc_html( _x( 'Non-chargeable', 'declarability', 'orbis-timesheets' ) ); ?></p>
-			<h1><?php echo orbis_time( $declarability_report->non_chargeable_seconds ); ?></h1>
+			<p><?php echo \esc_html( _x( 'Non-billable', 'billability', 'orbis-timesheets' ) ); ?></p>
+			<h1><?php echo orbis_time( $billability_report->non_billable_seconds ); ?></h1>
 		</div>
 
 		<div class="col-md-3">
-			<p><?php echo \esc_html( _x( 'Other', 'declarability', 'orbis-timesheets' ) ); ?></p>
-			<h1><?php echo orbis_time( $declarability_report->other_seconds ); ?></h1>
+			<p><?php echo \esc_html( _x( 'Other', 'billability', 'orbis-timesheets' ) ); ?></p>
+			<h1><?php echo orbis_time( $billability_report->other_seconds ); ?></h1>
 		</div>
 	</div>
 
@@ -330,7 +330,7 @@ $url_next      = add_query_arg( orbis_format_timestamps( $next, 'd-m-Y' ) );
 			<th><?php _e( 'Project', 'orbis-timesheets' ); ?></th>
 			<th><?php _e( 'Description', 'orbis-timesheets' ); ?></th>
 			<th><?php _e( 'Time', 'orbis-timesheets' ); ?></th>
-			<th><?php esc_html_e( 'Declarability', 'orbis-timesheets' ); ?></th>
+			<th><?php esc_html_e( 'Billability', 'orbis-timesheets' ); ?></th>
 			<th><?php _e( 'Total', 'orbis-timesheets' ); ?></th>
 		</tr>
 	</thead>
@@ -382,7 +382,7 @@ $url_next      = add_query_arg( orbis_format_timestamps( $next, 'd-m-Y' ) );
 						<?php echo orbis_time( $row->number_seconds ); ?>
 					</a>
 				</td>
-				<td><?php echo wp_kses_post( Declarability::from_value( $row->declarability )->badge() ); ?></td>
+				<td><?php echo wp_kses_post( Billability::from_value( $row->billability )->badge() ); ?></td>
 				<td><?php echo orbis_time( $total ); ?></td>
 			</tr>
 

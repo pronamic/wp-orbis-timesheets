@@ -8,7 +8,7 @@
  * @package   Pronamic\Orbis\Timesheets
  */
 
-use Pronamic\Orbis\Timesheets\Declarability;
+use Pronamic\Orbis\Timesheets\Billability;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -65,7 +65,7 @@ $query_hours = "
 		timesheet.date AS date,
 		timesheet.description AS description,
 		timesheet.number_seconds AS number_seconds,
-		timesheet.declarability AS declarability
+		timesheet.billability AS billability
 	FROM
 		$wpdb->orbis_timesheets AS timesheet
 			LEFT JOIN
@@ -173,7 +173,7 @@ get_header();
 						<th scope="col"><?php \esc_html_e( 'Project', 'orbis-timesheets' ); ?></th>
 						<th scope="col"><?php \esc_html_e( 'Description', 'orbis-timesheets' ); ?></th>
 						<th scope="col"><?php \esc_html_e( 'Time', 'orbis-timesheets' ); ?></th>
-						<th scope="col"><?php \esc_html_e( 'Declarability', 'orbis-timesheets' ); ?></th>
+						<th scope="col"><?php \esc_html_e( 'Billability', 'orbis-timesheets' ); ?></th>
 					</tr>
 				</thead>
 
@@ -215,7 +215,7 @@ get_header();
 									<?php echo \esc_html( \orbis_time( $item->number_seconds ) ); ?>
 								</td>
 								<td>
-									<?php echo \wp_kses_post( Declarability::from_value( $item->declarability )->badge() ); ?>
+									<?php echo \wp_kses_post( Billability::from_value( $item->billability )->badge() ); ?>
 								</td>
 							</tr>
 
@@ -242,11 +242,11 @@ get_header();
 								?>
 							</td>
 							<td class="fw-normal">
-								<?php foreach ( Declarability::sum_seconds( $week->data, 'number_seconds' ) as $declarability_total ) : ?>
+								<?php foreach ( Billability::sum_seconds( $week->data, 'number_seconds' ) as $billability_total ) : ?>
 
 									<div class="text-nowrap">
-										<?php echo \wp_kses_post( $declarability_total->declarability->badge() ); ?>
-										<?php echo \esc_html( \orbis_time( $declarability_total->seconds ) ); ?>
+										<?php echo \wp_kses_post( $billability_total->billability->badge() ); ?>
+										<?php echo \esc_html( \orbis_time( $billability_total->seconds ) ); ?>
 									</div>
 
 								<?php endforeach; ?>
@@ -277,11 +277,11 @@ get_header();
 							?>
 						</td>
 						<td class="fw-normal">
-							<?php foreach ( Declarability::sum_seconds( $data, 'number_seconds' ) as $declarability_total ) : ?>
+							<?php foreach ( Billability::sum_seconds( $data, 'number_seconds' ) as $billability_total ) : ?>
 
 								<div class="text-nowrap">
-									<?php echo \wp_kses_post( $declarability_total->declarability->badge() ); ?>
-									<?php echo \esc_html( \orbis_time( $declarability_total->seconds ) ); ?>
+									<?php echo \wp_kses_post( $billability_total->billability->badge() ); ?>
+									<?php echo \esc_html( \orbis_time( $billability_total->seconds ) ); ?>
 								</div>
 
 							<?php endforeach; ?>

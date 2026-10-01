@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-01T18:28:21+00:00\n"
+"POT-Creation-Date: 2026-10-01T18:35:21+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: orbis-timesheets\n"
@@ -101,7 +101,7 @@ msgstr ""
 #: templates/project-timesheet.php:64
 #: templates/timesheets_overview.php:260
 #: templates/weekly-report.php:333
-msgid "Declarability"
+msgid "Billability"
 msgstr ""
 
 #: classes/AdminController.php:78
@@ -126,30 +126,30 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: classes/Declarability.php:44
+#: classes/Billability.php:44
 #: templates/weekly-report.php:306
-msgctxt "declarability"
-msgid "Chargeable"
+msgctxt "billability"
+msgid "Billable"
 msgstr ""
 
-#: classes/Declarability.php:45
+#: classes/Billability.php:45
 #: templates/weekly-report.php:311
-msgctxt "declarability"
-msgid "Non-chargeable"
+msgctxt "billability"
+msgid "Non-billable"
 msgstr ""
 
-#: classes/Declarability.php:46
-msgctxt "declarability"
+#: classes/Billability.php:46
+msgctxt "billability"
 msgid "Excluded"
 msgstr ""
 
-#: classes/Declarability.php:47
-msgctxt "declarability"
+#: classes/Billability.php:47
+msgctxt "billability"
 msgid "Unknown"
 msgstr ""
 
-#: classes/Declarability.php:48
-msgctxt "declarability"
+#: classes/Billability.php:48
+msgctxt "billability"
 msgid "Not set"
 msgstr ""
 
@@ -387,7 +387,7 @@ msgid "%s Complete"
 msgstr ""
 
 #: templates/weekly-report.php:316
-msgctxt "declarability"
+msgctxt "billability"
 msgid "Other"
 msgstr ""
 

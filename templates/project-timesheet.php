@@ -1,6 +1,6 @@
 <?php
 
-use Pronamic\Orbis\Timesheets\Declarability;
+use Pronamic\Orbis\Timesheets\Billability;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -20,7 +20,7 @@ $query = $wpdb->prepare(
 		registration.description,
 		registration.date,
 		registration.number_seconds,
-		registration.declarability
+		registration.billability
 	FROM
 		$wpdb->orbis_timesheets AS registration
 			LEFT JOIN
@@ -61,7 +61,7 @@ if ( $registrations ) : ?>
 				<th class="border-top-0" scope="col"><?php _e( 'Activity', 'orbis-timesheets' ); ?></th>
 				<th class="border-top-0" scope="col"><?php _e( 'Description', 'orbis-timesheets' ); ?></th>
 				<th class="border-top-0" scope="col"><?php _e( 'Time', 'orbis-timesheets' ); ?></th>
-				<th class="border-top-0" scope="col"><?php esc_html_e( 'Declarability', 'orbis-timesheets' ); ?></th>
+				<th class="border-top-0" scope="col"><?php esc_html_e( 'Billability', 'orbis-timesheets' ); ?></th>
 			</tr>
 		</thead>
 
@@ -86,7 +86,7 @@ if ( $registrations ) : ?>
 						<?php echo orbis_time( $registration->number_seconds ); ?>
 					</td>
 					<td>
-						<?php echo wp_kses_post( Declarability::from_value( $registration->declarability )->badge() ); ?>
+						<?php echo wp_kses_post( Billability::from_value( $registration->billability )->badge() ); ?>
 					</td>
 				</tr>
 

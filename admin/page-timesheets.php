@@ -1,6 +1,6 @@
 <?php
 
-use Pronamic\Orbis\Timesheets\Declarability;
+use Pronamic\Orbis\Timesheets\Billability;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -42,7 +42,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			work.description AS work_description,
 			work.date AS work_date,
 			work.number_seconds AS work_duration,
-			work.declarability AS declarability,
+			work.billability AS billability,
 			user.ID AS user_id,
 			user.display_name AS user_display_name,
 			activity.id AS activity_id,
@@ -104,7 +104,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 					<?php _e( 'Time', 'orbis-timesheets' ); ?>
 				</th>
 				<th scope="col">
-					<?php esc_html_e( 'Declarability', 'orbis-timesheets' ); ?>
+					<?php esc_html_e( 'Billability', 'orbis-timesheets' ); ?>
 				</th>
 			</tr>
 		</thead>
@@ -150,7 +150,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 						<?php echo orbis_time( $registration->work_duration ); ?>
 					</td>
 					<td>
-						<?php echo esc_html( Declarability::from_value( $registration->declarability )->label() ); ?>
+						<?php echo esc_html( Billability::from_value( $registration->billability )->label() ); ?>
 					</td>
 				</tr>
 

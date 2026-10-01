@@ -96,8 +96,8 @@ class Plugin {
 
 		$charset_collate = $wpdb->get_charset_collate();
 
-		$sql = "
-			CREATE TABLE $wpdb->orbis_activities (
+		$sql = <<<SQL
+			CREATE TABLE {$wpdb->orbis_activities} (
 				id BIGINT(16) UNSIGNED NOT NULL AUTO_INCREMENT,
 				name VARCHAR(128) NOT NULL,
 				description TEXT NOT NULL,
@@ -105,7 +105,7 @@ class Plugin {
 				PRIMARY KEY  (id)
 			) $charset_collate;
 
-			CREATE TABLE $wpdb->orbis_timesheets (
+			CREATE TABLE {$wpdb->orbis_timesheets} (
 				id BIGINT(16) UNSIGNED NOT NULL AUTO_INCREMENT,
 				created TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
 				user_id BIGINT(20) UNSIGNED DEFAULT NULL,
@@ -116,7 +116,7 @@ class Plugin {
 				description TEXT NOT NULL,
 				`date` DATE NOT NULL DEFAULT '0000-00-00',
 				number_seconds INT(16) UNSIGNED NOT NULL DEFAULT 0,
-				declarability VARCHAR(16) DEFAULT '',
+				billability VARCHAR(16) DEFAULT '',
 				PRIMARY KEY  (id),
 				KEY user_id (user_id),
 				KEY company_id (company_id),
@@ -124,7 +124,7 @@ class Plugin {
 				KEY subscription_id (subscription_id),
 				KEY activity_id (activity_id)
 			) $charset_collate;
-		";
+			SQL;
 
 		require_once ABSPATH . 'wp-admin/includes/upgrade.php';
 

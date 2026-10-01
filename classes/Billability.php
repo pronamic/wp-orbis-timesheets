@@ -1,6 +1,6 @@
 <?php
 /**
- * Declarability
+ * Billability
  *
  * @author    Pronamic <info@pronamic.eu>
  * @copyright 2005-2026 Pronamic
@@ -13,17 +13,17 @@ namespace Pronamic\Orbis\Timesheets;
 // phpcs:disable PHPCompatibility.Variables.ForbiddenThisUseContexts.OutsideObjectContext -- False positive, `$this` is valid in enum methods.
 
 /**
- * Declarability enum
+ * Billability enum
  */
-enum Declarability: string {
-	case Chargeable    = 'chargeable';
-	case NonChargeable = 'non_chargeable';
-	case Excluded      = 'excluded';
-	case Unknown       = 'unknown';
-	case NotSet        = '';
+enum Billability: string {
+	case Billable    = 'billable';
+	case NonBillable = 'non_billable';
+	case Excluded    = 'excluded';
+	case Unknown     = 'unknown';
+	case NotSet      = '';
 
 	/**
-	 * Get declarability from a database value.
+	 * Get billability from a database value.
 	 *
 	 * Empty values are mapped to `NotSet`, unrecognized values to `Unknown`.
 	 *
@@ -41,11 +41,11 @@ enum Declarability: string {
 	 */
 	public function label(): string {
 		return match ( $this ) {
-			self::Chargeable    => \_x( 'Chargeable', 'declarability', 'orbis-timesheets' ),
-			self::NonChargeable => \_x( 'Non-chargeable', 'declarability', 'orbis-timesheets' ),
-			self::Excluded      => \_x( 'Excluded', 'declarability', 'orbis-timesheets' ),
-			self::Unknown       => \_x( 'Unknown', 'declarability', 'orbis-timesheets' ),
-			self::NotSet        => \_x( 'Not set', 'declarability', 'orbis-timesheets' ),
+			self::Billable    => \_x( 'Billable', 'billability', 'orbis-timesheets' ),
+			self::NonBillable => \_x( 'Non-billable', 'billability', 'orbis-timesheets' ),
+			self::Excluded      => \_x( 'Excluded', 'billability', 'orbis-timesheets' ),
+			self::Unknown       => \_x( 'Unknown', 'billability', 'orbis-timesheets' ),
+			self::NotSet        => \_x( 'Not set', 'billability', 'orbis-timesheets' ),
 		};
 	}
 
@@ -56,8 +56,8 @@ enum Declarability: string {
 	 */
 	public function badge_class(): string {
 		return match ( $this ) {
-			self::Chargeable    => 'text-bg-success',
-			self::NonChargeable => 'text-bg-secondary',
+			self::Billable    => 'text-bg-success',
+			self::NonBillable => 'text-bg-secondary',
 			self::Excluded      => 'text-bg-dark',
 			self::Unknown       => 'text-bg-warning',
 			self::NotSet        => 'text-bg-light border',
@@ -78,26 +78,26 @@ enum Declarability: string {
 	}
 
 	/**
-	 * Sum the number of seconds per declarability.
+	 * Sum the number of seconds per billability.
 	 *
-	 * @param iterable $items         Items with a `declarability` property.
+	 * @param iterable $items         Items with a `billability` property.
 	 * @param string   $seconds_field Property with the number of seconds.
-	 * @return array<int, object{declarability: self, seconds: int}>
+	 * @return array<int, object{billability: self, seconds: int}>
 	 */
 	public static function sum_seconds( iterable $items, string $seconds_field ): array {
 		$totals = [];
 
-		foreach ( self::cases() as $declarability ) {
-			$totals[ $declarability->value ] = (object) [
-				'declarability' => $declarability,
-				'seconds'       => 0,
+		foreach ( self::cases() as $billability ) {
+			$totals[ $billability->value ] = (object) [
+				'billability' => $billability,
+				'seconds'     => 0,
 			];
 		}
 
 		foreach ( $items as $item ) {
-			$declarability = self::from_value( $item->declarability );
+			$billability = self::from_value( $item->billability );
 
-			$totals[ $declarability->value ]->seconds += (int) $item->$seconds_field;
+			$totals[ $billability->value ]->seconds += (int) $item->$seconds_field;
 		}
 
 		return \array_values(

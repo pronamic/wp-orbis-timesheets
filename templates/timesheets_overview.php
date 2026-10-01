@@ -1,6 +1,6 @@
 <?php
 
-use Pronamic\Orbis\Timesheets\Declarability;
+use Pronamic\Orbis\Timesheets\Billability;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -49,7 +49,7 @@ $query = "
 		work.description AS work_description,
 		work.date AS work_date,
 		work.number_seconds AS work_duration,
-		work.declarability AS declarability,
+		work.billability AS billability,
 		activity.id AS activity_id,
 		activity.name AS activity_name,
 		activity.description AS activity_description,
@@ -257,7 +257,7 @@ $url = add_query_arg( 'message', false );
 					<th scope="col"><?php _e( 'Description', 'orbis-timesheets' ); ?></th>
 					<th scope="col"><?php _e( 'Date', 'orbis-timesheets' ); ?></th>
 					<th scope="col"><?php _e( 'Time', 'orbis-timesheets' ); ?></th>
-					<th scope="col"><?php esc_html_e( 'Declarability', 'orbis-timesheets' ); ?></th>
+					<th scope="col"><?php esc_html_e( 'Billability', 'orbis-timesheets' ); ?></th>
 					<th scope="col"><?php _e( 'Actions', 'orbis-timesheets' ); ?></th>
 				</tr>
 			</thead>
@@ -271,11 +271,11 @@ $url = add_query_arg( 'message', false );
 						<strong><?php echo orbis_time( $total ); ?></strong>
 					</td>
 					<td>
-						<?php foreach ( Declarability::sum_seconds( $registrations, 'work_duration' ) as $declarability_total ) : ?>
+						<?php foreach ( Billability::sum_seconds( $registrations, 'work_duration' ) as $billability_total ) : ?>
 
 							<div class="text-nowrap">
-								<?php echo wp_kses_post( $declarability_total->declarability->badge() ); ?>
-								<?php echo esc_html( orbis_time( $declarability_total->seconds ) ); ?>
+								<?php echo wp_kses_post( $billability_total->billability->badge() ); ?>
+								<?php echo esc_html( orbis_time( $billability_total->seconds ) ); ?>
 							</div>
 
 						<?php endforeach; ?>
@@ -325,7 +325,7 @@ $url = add_query_arg( 'message', false );
 							<?php echo orbis_time( $registration->work_duration ); ?>
 						</td>
 						<td>
-							<?php echo wp_kses_post( Declarability::from_value( $registration->declarability )->badge() ); ?>
+							<?php echo wp_kses_post( Billability::from_value( $registration->billability )->badge() ); ?>
 						</td>
 						<td>
 							<?php
