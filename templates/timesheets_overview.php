@@ -132,6 +132,46 @@ $query = $wpdb->prepare(
 );
 
 $week_schedule_durations = $wpdb->get_results( $query, OBJECT_K );
+
+$query = "
+	SELECT
+		billability,
+		SUM( number_seconds ) AS duration
+	FROM
+		$wpdb->orbis_timesheets
+	WHERE
+		user_id = %d
+			AND
+		`date` BETWEEN %s AND %s
+	GROUP BY
+		billability
+	;
+";
+
+$query = $wpdb->prepare(
+	$query,
+	$user_id,
+	$week_start->format( 'Y-m-d' ),
+	$week_end->format( 'Y-m-d' )
+);
+
+$week_billable_seconds = 0;
+$week_counted_seconds  = 0;
+
+foreach ( Billability::sum_seconds( $wpdb->get_results( $query ), 'duration' ) as $billability_total ) {
+	if ( Billability::Excluded === $billability_total->billability ) {
+		continue;
+	}
+
+	$week_counted_seconds += $billability_total->seconds;
+
+	if ( Billability::Billable === $billability_total->billability ) {
+		$week_billable_seconds += $billability_total->seconds;
+	}
+}
+
+$week_billable_percentage = $week_counted_seconds > 0 ? (int) round( $week_billable_seconds / $week_counted_seconds * 100 ) : null;
+
 $week_total              = 0;
 $week_schedule           = 0;
 $days                    = [];
@@ -201,6 +241,15 @@ $url = add_query_arg( 'message', false );
 			<strong class="d-block"><?php esc_html_e( 'Week total', 'orbis-timesheets' ); ?></strong>
 			<span><?php echo esc_html( orbis_time( $week_total ) ); ?> / <?php echo esc_html( orbis_time( $week_schedule ) ); ?></span>
 		</div>
+
+		<?php if ( null !== $week_billable_percentage ) : ?>
+
+			<div class="border rounded ms-3 px-3 py-2 text-center text-nowrap d-flex flex-column justify-content-center" title="<?php echo esc_attr( sprintf( '%s / %s', orbis_time( $week_billable_seconds ), orbis_time( $week_counted_seconds ) ) ); ?>">
+				<strong class="d-block"><?php echo esc_html_x( 'Billable', 'billability', 'orbis-timesheets' ); ?></strong>
+				<span><?php echo esc_html( $week_billable_percentage ); ?>%</span>
+			</div>
+
+		<?php endif; ?>
 	</div>
 
 	<a class="btn btn-secondary align-self-start ms-auto" href="<?php echo esc_url( add_query_arg( 'date', false, $url ) ); ?>"><?php esc_html_e( 'Today', 'orbis-timesheets' ); ?></a>
