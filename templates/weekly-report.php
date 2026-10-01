@@ -8,6 +8,8 @@
  * @package   Pronamic\Orbis\Timesheets
  */
 
+use Pronamic\Orbis\Timesheets\Declarability;
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
@@ -118,7 +120,8 @@ $query_hours = "
 		user.display_name AS user_name,
 		hr.date AS date,
 		hr.description AS description,
-		hr.number_seconds AS number_seconds
+		hr.number_seconds AS number_seconds,
+		hr.declarability AS declarability
 	FROM
 		$wpdb->orbis_timesheets AS hr
 			LEFT JOIN
@@ -327,6 +330,7 @@ $url_next      = add_query_arg( orbis_format_timestamps( $next, 'd-m-Y' ) );
 			<th><?php _e( 'Project', 'orbis-timesheets' ); ?></th>
 			<th><?php _e( 'Description', 'orbis-timesheets' ); ?></th>
 			<th><?php _e( 'Time', 'orbis-timesheets' ); ?></th>
+			<th><?php esc_html_e( 'Declarability', 'orbis-timesheets' ); ?></th>
 			<th><?php _e( 'Total', 'orbis-timesheets' ); ?></th>
 		</tr>
 	</thead>
@@ -340,7 +344,7 @@ $url_next      = add_query_arg( orbis_format_timestamps( $next, 'd-m-Y' ) );
 				?>
 
 				<tr>
-					<td colspan="6">
+					<td colspan="7">
 						<h2><?php echo $row->date; ?></h2>
 					</td>
 				</tr>
@@ -378,6 +382,7 @@ $url_next      = add_query_arg( orbis_format_timestamps( $next, 'd-m-Y' ) );
 						<?php echo orbis_time( $row->number_seconds ); ?>
 					</a>
 				</td>
+				<td><?php echo wp_kses_post( Declarability::from_value( $row->declarability )->badge() ); ?></td>
 				<td><?php echo orbis_time( $total ); ?></td>
 			</tr>
 

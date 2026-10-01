@@ -1,5 +1,7 @@
 <?php
 
+use Pronamic\Orbis\Timesheets\Declarability;
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
@@ -17,7 +19,8 @@ $query = $wpdb->prepare(
 		activity.name AS activity_name,
 		registration.description,
 		registration.date,
-		registration.number_seconds
+		registration.number_seconds,
+		registration.declarability
 	FROM
 		$wpdb->orbis_timesheets AS registration
 			LEFT JOIN
@@ -58,6 +61,7 @@ if ( $registrations ) : ?>
 				<th class="border-top-0" scope="col"><?php _e( 'Activity', 'orbis-timesheets' ); ?></th>
 				<th class="border-top-0" scope="col"><?php _e( 'Description', 'orbis-timesheets' ); ?></th>
 				<th class="border-top-0" scope="col"><?php _e( 'Time', 'orbis-timesheets' ); ?></th>
+				<th class="border-top-0" scope="col"><?php esc_html_e( 'Declarability', 'orbis-timesheets' ); ?></th>
 			</tr>
 		</thead>
 
@@ -80,6 +84,9 @@ if ( $registrations ) : ?>
 					</td>
 					<td>
 						<?php echo orbis_time( $registration->number_seconds ); ?>
+					</td>
+					<td>
+						<?php echo wp_kses_post( Declarability::from_value( $registration->declarability )->badge() ); ?>
 					</td>
 				</tr>
 

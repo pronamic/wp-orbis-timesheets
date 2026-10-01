@@ -8,6 +8,8 @@
  * @package   Pronamic\Orbis\Timesheets
  */
 
+use Pronamic\Orbis\Timesheets\Declarability;
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
@@ -62,7 +64,8 @@ $query_hours = "
 		user.display_name AS user_name,
 		timesheet.date AS date,
 		timesheet.description AS description,
-		timesheet.number_seconds AS number_seconds
+		timesheet.number_seconds AS number_seconds,
+		timesheet.declarability AS declarability
 	FROM
 		$wpdb->orbis_timesheets AS timesheet
 			LEFT JOIN
@@ -170,6 +173,7 @@ get_header();
 						<th scope="col"><?php \esc_html_e( 'Project', 'orbis-timesheets' ); ?></th>
 						<th scope="col"><?php \esc_html_e( 'Description', 'orbis-timesheets' ); ?></th>
 						<th scope="col"><?php \esc_html_e( 'Time', 'orbis-timesheets' ); ?></th>
+						<th scope="col"><?php \esc_html_e( 'Declarability', 'orbis-timesheets' ); ?></th>
 					</tr>
 				</thead>
 
@@ -178,7 +182,7 @@ get_header();
 					<?php foreach ( $weeks as $week ) : ?>
 
 						<tr class="fw-bold">
-							<td colspan="5">
+							<td colspan="6">
 								<?php
 
 								\printf(
@@ -210,6 +214,9 @@ get_header();
 								<td>
 									<?php echo \esc_html( \orbis_time( $item->number_seconds ) ); ?>
 								</td>
+								<td>
+									<?php echo \wp_kses_post( Declarability::from_value( $item->declarability )->badge() ); ?>
+								</td>
 							</tr>
 
 						<?php endforeach; ?>
@@ -234,9 +241,19 @@ get_header();
 
 								?>
 							</td>
+							<td class="fw-normal">
+								<?php foreach ( Declarability::sum_seconds( $week->data, 'number_seconds' ) as $declarability_total ) : ?>
+
+									<div class="text-nowrap">
+										<?php echo \wp_kses_post( $declarability_total->declarability->badge() ); ?>
+										<?php echo \esc_html( \orbis_time( $declarability_total->seconds ) ); ?>
+									</div>
+
+								<?php endforeach; ?>
+							</td>
 						</tr>
 						<tr>
-							<td colspan="5">
+							<td colspan="6">
 								<hr>
 							</td>
 						</tr>
@@ -258,6 +275,16 @@ get_header();
 							echo \esc_html( \orbis_time( $total ) );
 
 							?>
+						</td>
+						<td class="fw-normal">
+							<?php foreach ( Declarability::sum_seconds( $data, 'number_seconds' ) as $declarability_total ) : ?>
+
+								<div class="text-nowrap">
+									<?php echo \wp_kses_post( $declarability_total->declarability->badge() ); ?>
+									<?php echo \esc_html( \orbis_time( $declarability_total->seconds ) ); ?>
+								</div>
+
+							<?php endforeach; ?>
 						</td>
 					</tr>
 				</tfoot>
