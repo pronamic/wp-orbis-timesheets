@@ -52,7 +52,7 @@ class Plugin {
 		$wpdb->orbis_timesheets = $wpdb->prefix . 'orbis_timesheets';
 		$wpdb->orbis_activities = $wpdb->prefix . 'orbis_activities';
 
-		$version = '1.2.4';
+		$version = '1.4.0';
 
 		if ( \get_option( 'orbis_timesheets_db_version' ) !== $version ) {
 			$this->install();

@@ -4,7 +4,7 @@ Donate link: http://www.orbiswp.com/
 Tags: orbis, subscription, licence
 Requires at least: 3.5
 Tested up to: 3.9.1
-Stable tag: 1.3.3
+Stable tag: 1.4.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
