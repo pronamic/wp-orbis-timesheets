@@ -103,7 +103,7 @@ msgstr "Tijd"
 #: templates/timesheets_overview.php:260
 #: templates/weekly-report.php:333
 msgid "Declarability"
-msgstr "Factureerbaarheid"
+msgstr "Declarabiliteit"
 
 #: classes/AdminController.php:78
 msgid "General Settings"
@@ -131,13 +131,13 @@ msgstr "Instellingen"
 #: templates/weekly-report.php:306
 msgctxt "declarability"
 msgid "Chargeable"
-msgstr "Factureerbaar"
+msgstr "Declarabel"
 
 #: classes/Declarability.php:45
 #: templates/weekly-report.php:311
 msgctxt "declarability"
 msgid "Non-chargeable"
-msgstr "Niet factureerbaar"
+msgstr "Niet-declarabel"
 
 #: classes/Declarability.php:46
 msgctxt "declarability"
@@ -379,7 +379,7 @@ msgstr "Alle gebruikers"
 #: templates/weekly-report.php:282
 #, php-format
 msgid "%s of the hours are billable"
-msgstr "%s van de uren zijn factureerbaar"
+msgstr "%s van de uren zijn declarabel"
 
 #: templates/weekly-report.php:289
 #: templates/weekly-report.php:291
@@ -399,7 +399,7 @@ msgstr "Klant"
 #: templates/weekly-report.php:375
 #, php-format
 msgid "%1$s billable, %2$s unbillable"
-msgstr "%1$s factureerbaar, %2$s niet factureerbaar"
+msgstr "%1$s declarabel, %2$s niet-declarabel"
 
 #: templates/work_registration_fields.php:99
 msgid "Select company…"
