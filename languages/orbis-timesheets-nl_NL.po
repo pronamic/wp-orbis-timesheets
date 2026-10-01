@@ -133,8 +133,8 @@ msgstr "Onbekend"
 
 #: classes/Billability.php:48
 msgctxt "billability"
-msgid "Not set"
-msgstr "Niet ingesteld"
+msgid "Undefined"
+msgstr "Ongedefinieerd"
 
 #: classes/Plugin.php:69
 msgctxt "taxonomy general name"

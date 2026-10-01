@@ -150,7 +150,7 @@ msgstr ""
 
 #: classes/Billability.php:48
 msgctxt "billability"
-msgid "Not set"
+msgid "Undefined"
 msgstr ""
 
 #: classes/Plugin.php:69

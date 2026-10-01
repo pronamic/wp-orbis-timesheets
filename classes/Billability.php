@@ -20,12 +20,12 @@ enum Billability: string {
 	case NonBillable = 'non_billable';
 	case Excluded    = 'excluded';
 	case Unknown     = 'unknown';
-	case NotSet      = '';
+	case Undefined   = '';
 
 	/**
 	 * Get billability from a database value.
 	 *
-	 * Empty values are mapped to `NotSet`, unrecognized values to `Unknown`.
+	 * Empty values are mapped to `Undefined`, unrecognized values to `Unknown`.
 	 *
 	 * @param string|null $value Value.
 	 * @return self
@@ -45,7 +45,7 @@ enum Billability: string {
 			self::NonBillable => \_x( 'Non-billable', 'billability', 'orbis-timesheets' ),
 			self::Excluded      => \_x( 'Excluded', 'billability', 'orbis-timesheets' ),
 			self::Unknown       => \_x( 'Unknown', 'billability', 'orbis-timesheets' ),
-			self::NotSet        => \_x( 'Not set', 'billability', 'orbis-timesheets' ),
+			self::Undefined     => \_x( 'Undefined', 'billability', 'orbis-timesheets' ),
 		};
 	}
 
@@ -60,7 +60,7 @@ enum Billability: string {
 			self::NonBillable => 'text-bg-secondary',
 			self::Excluded      => 'text-bg-dark',
 			self::Unknown       => 'text-bg-warning',
-			self::NotSet        => 'text-bg-light border',
+			self::Undefined     => 'text-bg-light border',
 		};
 	}
 
