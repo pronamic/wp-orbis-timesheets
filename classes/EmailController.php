@@ -31,7 +31,7 @@ class EmailController {
 	public function __construct( $plugin ) {
 		$this->plugin = $plugin;
 
-		add_action( 'orbis_email_top', [ $this, 'email_top' ] );
+		add_action( 'orbis_email_top', $this->email_top( ... ) );
 	}
 
 	/**

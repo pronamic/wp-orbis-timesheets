@@ -153,7 +153,7 @@ foreach ( $week as $day ) {
 		'label'    => wp_date( 'D j M', $day->getTimestamp() ),
 	];
 
-	$week_total += $duration;
+	$week_total    += $duration;
 	$week_schedule += $schedule;
 }
 

@@ -12,19 +12,16 @@ namespace Pronamic\Orbis\Timesheets;
  */
 class RewriteController {
 	/**
-	 * Plugin.
-	 *
-	 * @var Plugin
-	 */
-	private $plugin;
-
-	/**
 	 * Construct rewrite controller.
 	 * 
 	 * @param Plugin $plugin Plugin.
 	 */
-	public function __construct( $plugin ) {
-		$this->plugin = $plugin;
+	public function __construct(
+		/**
+		 * Plugin.
+		 */
+		private $plugin
+	) {
 	}
 
 	/**
@@ -33,9 +30,9 @@ class RewriteController {
 	 * @return void
 	 */
 	public function setup() {
-		\add_filter( 'query_vars', [ $this, 'query_vars' ] );
+		\add_filter( 'query_vars', $this->query_vars( ... ) );
 
-		\add_action( 'init', [ $this, 'init' ] );
+		\add_action( 'init', $this->init( ... ) );
 	}
 
 	/**

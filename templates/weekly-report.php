@@ -271,7 +271,7 @@ $url_next      = add_query_arg( orbis_format_timestamps( $next, 'd-m-Y' ) );
 		<p>
 			<?php
 
-			if ( $declarability_report && $declarability_report->declarability_seconds  > 0 ) {
+			if ( $declarability_report && $declarability_report->declarability_seconds > 0 ) {
 				$total = ( $declarability_report->chargeable_seconds / $declarability_report->declarability_seconds ) * 100;
 			}
 

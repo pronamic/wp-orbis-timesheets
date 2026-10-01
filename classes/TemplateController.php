@@ -12,19 +12,16 @@ namespace Pronamic\Orbis\Timesheets;
  */
 class TemplateController {
 	/**
-	 * Plugin.
-	 *
-	 * @var Plugin
-	 */
-	private $plugin;
-
-	/**
 	 * Construct template controller.
 	 * 
 	 * @param Plugin $plugin Plugin.
 	 */
-	public function __construct( $plugin ) {
-		$this->plugin = $plugin;
+	public function __construct(
+		/**
+		 * Plugin.
+		 */
+		private $plugin
+	) {
 	}
 
 	/**
@@ -33,11 +30,11 @@ class TemplateController {
 	 * @return void
 	 */
 	public function setup() {
-		\add_filter( 'template_include', [ $this, 'template_include' ] );
+		\add_filter( 'template_include', $this->template_include( ... ) );
 
-		\add_filter( 'get_the_archive_title', [ $this, 'get_the_archive_title' ] );
+		\add_filter( 'get_the_archive_title', $this->get_the_archive_title( ... ) );
 
-		\add_filter( 'orbis_project_sections', [ $this, 'orbis_project_sections' ] );
+		\add_filter( 'orbis_project_sections', $this->orbis_project_sections( ... ) );
 	}
 
 	/**
@@ -53,20 +50,14 @@ class TemplateController {
 			return $template;
 		}
 
-		switch ( $route ) {
-			case 'register':
-				return $this->template_include_register( $template );
-			case 'annual_overview':
-				return $this->template_include_annual_overview( $template );
-			case 'weekly_overview':
-				return $this->template_include_weekly_overview( $template );
-			case 'weekly_report':
-				return $this->template_include_weekly_report( $template );
-			case 'monthly_report':
-				return $this->template_include_monthly_report( $template );
-			default:
-				return $template;
-		}
+		return match ( $route ) {
+			'register' => $this->template_include_register( $template ),
+			'annual_overview' => $this->template_include_annual_overview( $template ),
+			'weekly_overview' => $this->template_include_weekly_overview( $template ),
+			'weekly_report' => $this->template_include_weekly_report( $template ),
+			'monthly_report' => $this->template_include_monthly_report( $template ),
+			default => $template,
+		};
 	}
 
 	/**

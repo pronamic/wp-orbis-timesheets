@@ -38,7 +38,7 @@ class Plugin {
 			}
 		}
 
-		add_action( 'init', [ $this, 'init' ] );
+		add_action( 'init', $this->init( ... ) );
 	}
 
 	/**

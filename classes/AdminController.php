@@ -15,25 +15,24 @@ namespace Pronamic\Orbis\Timesheets;
  */
 class AdminController {
 	/**
-	 * Plugin.
-	 *
-	 * @var Plugin
+	 * @param \Pronamic\Orbis\Timesheets\Plugin $plugin
 	 */
-	private $plugin;
-
-	public function __construct( $plugin ) {
-		$this->plugin = $plugin;
-
-		add_action( 'admin_init', [ $this, 'admin_init' ] );
-		add_action( 'admin_menu', [ $this, 'admin_menu' ] );
+	public function __construct(
+		/**
+		 * Plugin.
+		 */
+		private $plugin
+	) {
+		add_action( 'admin_init', $this->admin_init( ... ) );
+		add_action( 'admin_menu', $this->admin_menu( ... ) );
 
 		// Taxonomy actions
 		// @see https://github.com/WordPress/WordPress/blob/3.9.1/wp-includes/taxonomy.php#L2529
-		add_action( 'created_orbis_timesheets_activity', [ $this, 'sync_activity' ], 10 );
+		add_action( 'created_orbis_timesheets_activity', $this->sync_activity( ... ), 10 );
 		// @see https://github.com/WordPress/WordPress/blob/3.9.1/wp-includes/taxonomy.php#L3024
-		add_action( 'edited_orbis_timesheets_activity', [ $this, 'sync_activity' ], 10 );
+		add_action( 'edited_orbis_timesheets_activity', $this->sync_activity( ... ), 10 );
 
-		add_filter( 'parent_file', [ $this, 'parent_file' ] );
+		add_filter( 'parent_file', $this->parent_file( ... ) );
 	}
 
 	/**
@@ -84,7 +83,7 @@ class AdminController {
 		add_settings_field(
 			'orbis_timesheets_note', // id
 			__( 'Note', 'orbis-timesheets' ), // title
-			[ $this, 'input_text' ], // callback
+			$this->input_text( ... ), // callback
 			'orbis_timesheets_settings', // page
 			'orbis_timesheets_settings_general', // section
 			[
@@ -212,7 +211,7 @@ class AdminController {
 			__( 'Timesheets', 'orbis-timesheets' ),
 			'manage_options',
 			'orbis_timesheets',
-			[ $this, 'page_admin' ],
+			$this->page_admin( ... ),
 			'dashicons-clock',
 			40
 		);
@@ -223,7 +222,7 @@ class AdminController {
 			__( 'Settings', 'orbis-timesheets' ), // menu_title
 			'manage_options', // capability
 			'orbis_timesheets_settings', // menu_slug
-			[ $this, 'page_settings' ] // function
+			$this->page_settings( ... ) // function
 		);
 
 		global $submenu;
