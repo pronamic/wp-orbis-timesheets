@@ -8,7 +8,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2024-02-07T09:08:53+00:00\n"
-"PO-Revision-Date: 2026-10-08T07:21:40+00:00\n"
+"PO-Revision-Date: 2026-10-08T11:33:13+00:00\n"
 "Language: nl_NL\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Poedit-KeywordsList: __;_e;_x:2c,1\n"
@@ -90,7 +90,9 @@ msgstr "Datum"
 
 #: admin/page-timesheets.php:104
 #: templates/monthly-report.php:175
+#: templates/project-months.php:54
 #: templates/project-timesheet.php:63
+#: templates/projects-top.php:109
 #: templates/timesheets_overview.php:308
 #: templates/weekly-report.php:332
 #: templates/work_registration_fields.php:172
@@ -114,7 +116,7 @@ msgid "Note"
 msgstr "Opmerking"
 
 #: classes/AdminController.php:211
-#: classes/TemplateController.php:77
+#: classes/TemplateController.php:78
 #: templates/emails/user-timesheet.php:16
 msgid "Timesheets"
 msgstr "Werkregistraties"
@@ -198,27 +200,35 @@ msgid "New Activity Name"
 msgstr "Nieuwe activiteit naam"
 
 #: classes/Plugin.php:81
-#: classes/TemplateController.php:162
+#: classes/TemplateController.php:184
 msgid "Activities"
 msgstr "Activiteiten"
 
-#: classes/TemplateController.php:153
+#: classes/TemplateController.php:166
 msgid "timesheet"
 msgstr "werkregistratie"
 
-#: classes/TemplateController.php:154
+#: classes/TemplateController.php:167
 msgid "Timesheet"
 msgstr "Timesheet"
 
-#: classes/TemplateController.php:161
+#: classes/TemplateController.php:174
+msgid "months"
+msgstr "maanden"
+
+#: classes/TemplateController.php:175
+msgid "Months"
+msgstr "Maanden"
+
+#: classes/TemplateController.php:183
 msgid "activities"
 msgstr "activiteiten"
 
-#: classes/TemplateController.php:170
+#: classes/TemplateController.php:192
 msgid "persons"
 msgstr "personen"
 
-#: classes/TemplateController.php:171
+#: classes/TemplateController.php:193
 msgid "Persons"
 msgstr "Personen"
 
@@ -248,6 +258,7 @@ msgid "— Current user —"
 msgstr "— Huidige gebruiker —"
 
 #: templates/monthly-report.php:144
+#: templates/projects-top.php:99
 #: templates/time-tracking-annual-overview.php:41
 #: templates/weekly-report.php:266
 msgid "Filter"
@@ -269,6 +280,7 @@ msgid "Company"
 msgstr "Bedrijf"
 
 #: templates/monthly-report.php:173
+#: templates/projects-top.php:108
 #: templates/weekly-report.php:330
 #: templates/work_registration_fields.php:109
 msgid "Project"
@@ -285,6 +297,7 @@ msgid "Subtotal week %s"
 msgstr "Subtotaal week %s"
 
 #: templates/monthly-report.php:268
+#: templates/project-months.php:60
 #: templates/weekly-overview.php:113
 #: templates/weekly-report.php:301
 #: templates/weekly-report.php:334
@@ -299,9 +312,49 @@ msgstr "Registratie toevoegen"
 msgid "Register"
 msgstr "Registreer"
 
+#: templates/project-months.php:53
+msgid "Month"
+msgstr "Maand"
+
+#: templates/project-months.php:104
+msgid "Copy HTML table"
+msgstr "HTML-tabel kopiëren"
+
 #: templates/project-timesheet.php:102
 msgid "There are no time registrations for this project."
 msgstr "Er zijn geen tijd registraties voor dit project."
+
+#: templates/projects-top.php:20
+msgid "Last week"
+msgstr "Afgelopen week"
+
+#: templates/projects-top.php:21
+msgid "Last month"
+msgstr "Afgelopen maand"
+
+#: templates/projects-top.php:22
+msgid "Last 3 months"
+msgstr "Afgelopen 3 maanden"
+
+#: templates/projects-top.php:23
+msgid "Last 6 months"
+msgstr "Afgelopen 6 maanden"
+
+#: templates/projects-top.php:24
+msgid "Last year"
+msgstr "Afgelopen jaar"
+
+#: templates/projects-top.php:25
+msgid "All time"
+msgstr "Altijd"
+
+#: templates/projects-top.php:82
+msgid "Period"
+msgstr "Periode"
+
+#: templates/projects-top.php:107
+msgid "Customer"
+msgstr "Klant"
 
 #: templates/timesheets_edit.php:21
 msgid "Edit registration"

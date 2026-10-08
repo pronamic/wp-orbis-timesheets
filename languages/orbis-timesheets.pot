@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-08T07:21:39+00:00\n"
+"POT-Creation-Date: 2026-10-08T11:33:13+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: orbis-timesheets\n"
@@ -89,7 +89,9 @@ msgstr ""
 
 #: admin/page-timesheets.php:104
 #: templates/monthly-report.php:175
+#: templates/project-months.php:54
 #: templates/project-timesheet.php:63
+#: templates/projects-top.php:109
 #: templates/timesheets_overview.php:308
 #: templates/weekly-report.php:332
 #: templates/work_registration_fields.php:172
@@ -113,7 +115,7 @@ msgid "Note"
 msgstr ""
 
 #: classes/AdminController.php:211
-#: classes/TemplateController.php:77
+#: classes/TemplateController.php:78
 #: templates/emails/user-timesheet.php:16
 msgid "Timesheets"
 msgstr ""
@@ -197,27 +199,35 @@ msgid "New Activity Name"
 msgstr ""
 
 #: classes/Plugin.php:81
-#: classes/TemplateController.php:162
+#: classes/TemplateController.php:184
 msgid "Activities"
 msgstr ""
 
-#: classes/TemplateController.php:153
+#: classes/TemplateController.php:166
 msgid "timesheet"
 msgstr ""
 
-#: classes/TemplateController.php:154
+#: classes/TemplateController.php:167
 msgid "Timesheet"
 msgstr ""
 
-#: classes/TemplateController.php:161
+#: classes/TemplateController.php:174
+msgid "months"
+msgstr ""
+
+#: classes/TemplateController.php:175
+msgid "Months"
+msgstr ""
+
+#: classes/TemplateController.php:183
 msgid "activities"
 msgstr ""
 
-#: classes/TemplateController.php:170
+#: classes/TemplateController.php:192
 msgid "persons"
 msgstr ""
 
-#: classes/TemplateController.php:171
+#: classes/TemplateController.php:193
 msgid "Persons"
 msgstr ""
 
@@ -247,6 +257,7 @@ msgid "— Current user —"
 msgstr ""
 
 #: templates/monthly-report.php:144
+#: templates/projects-top.php:99
 #: templates/time-tracking-annual-overview.php:41
 #: templates/weekly-report.php:266
 msgid "Filter"
@@ -268,6 +279,7 @@ msgid "Company"
 msgstr ""
 
 #: templates/monthly-report.php:173
+#: templates/projects-top.php:108
 #: templates/weekly-report.php:330
 #: templates/work_registration_fields.php:109
 msgid "Project"
@@ -284,6 +296,7 @@ msgid "Subtotal week %s"
 msgstr ""
 
 #: templates/monthly-report.php:268
+#: templates/project-months.php:60
 #: templates/weekly-overview.php:113
 #: templates/weekly-report.php:301
 #: templates/weekly-report.php:334
@@ -298,8 +311,48 @@ msgstr ""
 msgid "Register"
 msgstr ""
 
+#: templates/project-months.php:53
+msgid "Month"
+msgstr ""
+
+#: templates/project-months.php:104
+msgid "Copy HTML table"
+msgstr ""
+
 #: templates/project-timesheet.php:102
 msgid "There are no time registrations for this project."
+msgstr ""
+
+#: templates/projects-top.php:20
+msgid "Last week"
+msgstr ""
+
+#: templates/projects-top.php:21
+msgid "Last month"
+msgstr ""
+
+#: templates/projects-top.php:22
+msgid "Last 3 months"
+msgstr ""
+
+#: templates/projects-top.php:23
+msgid "Last 6 months"
+msgstr ""
+
+#: templates/projects-top.php:24
+msgid "Last year"
+msgstr ""
+
+#: templates/projects-top.php:25
+msgid "All time"
+msgstr ""
+
+#: templates/projects-top.php:82
+msgid "Period"
+msgstr ""
+
+#: templates/projects-top.php:107
+msgid "Customer"
 msgstr ""
 
 #: templates/timesheets_edit.php:21
