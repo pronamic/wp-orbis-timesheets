@@ -60,6 +60,7 @@ class TemplateController {
 			'monthly_report' => $this->template_include_monthly_report( $template ),
 			'projects_top' => $this->template_include_projects_top( $template ),
 			'subscriptions_top' => $this->template_include_subscriptions_top( $template ),
+			'contacts_top' => $this->template_include_contacts_top( $template ),
 			default => $template,
 		};
 	}
@@ -163,6 +164,22 @@ class TemplateController {
 	 */
 	private function template_include_subscriptions_top( $template ) {
 		$template = __DIR__ . '/../templates/subscriptions-top.php';
+
+		return $template;
+	}
+
+	/**
+	 * Template include contacts top.
+	 * 
+	 * @param string $template Template.
+	 * @return string
+	 */
+	private function template_include_contacts_top( $template ) {
+		if ( ! \class_exists( \Pronamic\Orbis\Contacts\ContactsTable::class ) ) {
+			return $template;
+		}
+
+		$template = __DIR__ . '/../templates/contacts-top.php';
 
 		return $template;
 	}

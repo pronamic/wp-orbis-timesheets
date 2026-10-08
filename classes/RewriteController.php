@@ -110,5 +110,13 @@ class RewriteController {
 			],
 			'top'
 		);
+
+		\add_rewrite_rule(
+			'tijdregistraties/contacten/?$',
+			[
+				'orbis_timesheets_route' => 'contacts_top',
+			],
+			'top'
+		);
 	}
 }
