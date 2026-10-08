@@ -39,6 +39,10 @@
 			"vendor/bin/wp i18n make-mo ./build/orbis-timesheets/languages/",
 			"vendor/bin/wp dist-archive ./build/orbis-timesheets/ --plugin-dirname=orbis-timesheets --force"
 		],
+		"deploy": [
+			"Composer\\Config::disableProcessTimeout",
+			"DEPLOYER_IMPORT=${DEPLOYER_IMPORT:-$HOME/deployer-orbis.php} vendor/bin/dep deploy"
+		],
 		"dist-archive": "wp dist-archive . --plugin-dirname=orbis-timesheets",
 		"make-pot": [
 			"@build",
