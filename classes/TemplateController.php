@@ -156,6 +156,24 @@ class TemplateController {
 			] 
 		);
 
+		$sections[] = [
+			'id'       => 'activities',
+			'slug'     => \__( 'activities', 'orbis-timesheets' ),
+			'name'     => \__( 'Activities', 'orbis-timesheets' ),
+			'callback' => function (): void {
+				include __DIR__ . '/../templates/project-activities-chart.php';
+			},
+		];
+
+		$sections[] = [
+			'id'       => 'persons',
+			'slug'     => \__( 'persons', 'orbis-timesheets' ),
+			'name'     => \__( 'Persons', 'orbis-timesheets' ),
+			'callback' => function (): void {
+				include __DIR__ . '/../templates/project-persons-chart.php';
+			},
+		];
+
 		return $sections;
 	}
 

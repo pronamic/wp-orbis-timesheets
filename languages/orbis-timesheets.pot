@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-01T18:40:13+00:00\n"
+"POT-Creation-Date: 2026-10-08T07:21:39+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: orbis-timesheets\n"
@@ -58,13 +58,13 @@ msgid "User"
 msgstr ""
 
 #: admin/page-timesheets.php:92
-#: templates/timesheets_overview.php:255
+#: templates/timesheets_overview.php:304
 msgid "Company/Project"
 msgstr ""
 
 #: admin/page-timesheets.php:95
 #: templates/project-timesheet.php:61
-#: templates/timesheets_overview.php:256
+#: templates/timesheets_overview.php:305
 #: templates/work_registration_fields.php:140
 msgid "Activity"
 msgstr ""
@@ -72,7 +72,7 @@ msgstr ""
 #: admin/page-timesheets.php:98
 #: templates/monthly-report.php:174
 #: templates/project-timesheet.php:62
-#: templates/timesheets_overview.php:257
+#: templates/timesheets_overview.php:306
 #: templates/weekly-report.php:331
 #: templates/work_registration_fields.php:164
 msgid "Description"
@@ -83,14 +83,14 @@ msgstr ""
 #: templates/monthly-report.php:171
 #: templates/project-timesheet.php:59
 #: templates/time-tracking-annual-overview.php:36
-#: templates/timesheets_overview.php:258
+#: templates/timesheets_overview.php:307
 msgid "Date"
 msgstr ""
 
 #: admin/page-timesheets.php:104
 #: templates/monthly-report.php:175
 #: templates/project-timesheet.php:63
-#: templates/timesheets_overview.php:259
+#: templates/timesheets_overview.php:308
 #: templates/weekly-report.php:332
 #: templates/work_registration_fields.php:172
 msgid "Time"
@@ -99,7 +99,7 @@ msgstr ""
 #: admin/page-timesheets.php:107
 #: templates/monthly-report.php:176
 #: templates/project-timesheet.php:64
-#: templates/timesheets_overview.php:260
+#: templates/timesheets_overview.php:309
 #: templates/weekly-report.php:333
 msgid "Billability"
 msgstr ""
@@ -127,6 +127,7 @@ msgid "Settings"
 msgstr ""
 
 #: classes/Billability.php:44
+#: templates/timesheets_overview.php:248
 #: templates/weekly-report.php:306
 msgctxt "billability"
 msgid "Billable"
@@ -153,49 +154,50 @@ msgctxt "billability"
 msgid "Undefined"
 msgstr ""
 
-#: classes/Plugin.php:69
+#: classes/Plugin.php:71
 msgctxt "taxonomy general name"
 msgid "Timesheets Activities"
 msgstr ""
 
-#: classes/Plugin.php:70
+#: classes/Plugin.php:72
 msgctxt "taxonomy singular name"
 msgid "Timesheets Activity"
 msgstr ""
 
-#: classes/Plugin.php:71
+#: classes/Plugin.php:73
 msgid "Search Timesheets Activities"
 msgstr ""
 
-#: classes/Plugin.php:72
+#: classes/Plugin.php:74
 msgid "All Timesheets Activities"
 msgstr ""
 
-#: classes/Plugin.php:73
+#: classes/Plugin.php:75
 msgid "Parent Timesheets Activity"
 msgstr ""
 
-#: classes/Plugin.php:74
+#: classes/Plugin.php:76
 msgid "Parent Activity:"
 msgstr ""
 
-#: classes/Plugin.php:75
+#: classes/Plugin.php:77
 msgid "Edit Activity"
 msgstr ""
 
-#: classes/Plugin.php:76
+#: classes/Plugin.php:78
 msgid "Update Activity"
 msgstr ""
 
-#: classes/Plugin.php:77
+#: classes/Plugin.php:79
 msgid "Add New Activity"
 msgstr ""
 
-#: classes/Plugin.php:78
+#: classes/Plugin.php:80
 msgid "New Activity Name"
 msgstr ""
 
-#: classes/Plugin.php:79
+#: classes/Plugin.php:81
+#: classes/TemplateController.php:162
 msgid "Activities"
 msgstr ""
 
@@ -207,24 +209,36 @@ msgstr ""
 msgid "Timesheet"
 msgstr ""
 
-#: includes/functions.php:425
+#: classes/TemplateController.php:161
+msgid "activities"
+msgstr ""
+
+#: classes/TemplateController.php:170
+msgid "persons"
+msgstr ""
+
+#: classes/TemplateController.php:171
+msgid "Persons"
+msgstr ""
+
+#: includes/functions.php:435
 msgid "You have to specify an company or project."
 msgstr ""
 
-#: includes/functions.php:431
+#: includes/functions.php:441
 msgid "You have to specify an project."
 msgstr ""
 
-#: includes/functions.php:436
+#: includes/functions.php:446
 #, php-format
 msgid "You have to specify an description (%d words)."
 msgstr ""
 
-#: includes/functions.php:440
+#: includes/functions.php:450
 msgid "You have to specify an activity."
 msgstr ""
 
-#: includes/functions.php:462
+#: includes/functions.php:472
 msgid "Could not add timesheet entry."
 msgstr ""
 
@@ -293,7 +307,7 @@ msgid "Edit registration"
 msgstr ""
 
 #: templates/timesheets_edit.php:26
-#: templates/timesheets_overview.php:342
+#: templates/timesheets_overview.php:391
 msgid "Edit"
 msgstr ""
 
@@ -301,35 +315,35 @@ msgstr ""
 msgid "Cancel"
 msgstr ""
 
-#: templates/timesheets_overview.php:169
+#: templates/timesheets_overview.php:209
 msgid "Week navigation"
 msgstr ""
 
-#: templates/timesheets_overview.php:174
+#: templates/timesheets_overview.php:214
 msgid "Previous week"
 msgstr ""
 
-#: templates/timesheets_overview.php:194
+#: templates/timesheets_overview.php:234
 msgid "Next week"
 msgstr ""
 
-#: templates/timesheets_overview.php:201
+#: templates/timesheets_overview.php:241
 msgid "Week total"
 msgstr ""
 
-#: templates/timesheets_overview.php:206
+#: templates/timesheets_overview.php:255
 msgid "Today"
 msgstr ""
 
-#: templates/timesheets_overview.php:222
+#: templates/timesheets_overview.php:271
 msgid "Your work registration was succesfully added."
 msgstr ""
 
-#: templates/timesheets_overview.php:226
+#: templates/timesheets_overview.php:275
 msgid "Your work registration was succesfully updated."
 msgstr ""
 
-#: templates/timesheets_overview.php:261
+#: templates/timesheets_overview.php:310
 msgid "Actions"
 msgstr ""
 
