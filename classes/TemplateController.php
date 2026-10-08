@@ -35,6 +35,8 @@ class TemplateController {
 		\add_filter( 'get_the_archive_title', $this->get_the_archive_title( ... ) );
 
 		\add_filter( 'orbis_project_sections', $this->orbis_project_sections( ... ) );
+
+		\add_action( 'orbis_after_main_content', $this->maybe_include_subscription_timesheet( ... ) );
 	}
 
 	/**
@@ -57,6 +59,7 @@ class TemplateController {
 			'weekly_report' => $this->template_include_weekly_report( $template ),
 			'monthly_report' => $this->template_include_monthly_report( $template ),
 			'projects_top' => $this->template_include_projects_top( $template ),
+			'subscriptions_top' => $this->template_include_subscriptions_top( $template ),
 			default => $template,
 		};
 	}
@@ -153,6 +156,18 @@ class TemplateController {
 	}
 
 	/**
+	 * Template include subscriptions top.
+	 * 
+	 * @param string $template Template.
+	 * @return string
+	 */
+	private function template_include_subscriptions_top( $template ) {
+		$template = __DIR__ . '/../templates/subscriptions-top.php';
+
+		return $template;
+	}
+
+	/**
 	 * Orbis project sections.
 	 * 
 	 * @param array $sections Sections.
@@ -206,5 +221,24 @@ class TemplateController {
 	 */
 	public function render_project_timesheet() {
 		include __DIR__ . '/../templates/project-timesheet.php';
+	}
+
+	/**
+	 * Maybe include subscription timesheet.
+	 * 
+	 * @return void
+	 */
+	public function maybe_include_subscription_timesheet() {
+		global $wpdb;
+
+		if ( ! \is_singular( 'orbis_subscription' ) ) {
+			return;
+		}
+
+		if ( ! isset( $wpdb->orbis_subscriptions ) ) {
+			return;
+		}
+
+		include __DIR__ . '/../templates/subscription-timesheet.php';
 	}
 }

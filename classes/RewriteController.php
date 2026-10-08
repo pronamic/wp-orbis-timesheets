@@ -102,5 +102,13 @@ class RewriteController {
 			],
 			'top'
 		);
+
+		\add_rewrite_rule(
+			'tijdregistraties/abonnementen/?$',
+			[
+				'orbis_timesheets_route' => 'subscriptions_top',
+			],
+			'top'
+		);
 	}
 }

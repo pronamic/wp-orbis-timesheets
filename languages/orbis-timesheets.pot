@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-08T12:40:54+00:00\n"
+"POT-Creation-Date: 2026-10-08T15:45:26+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: orbis-timesheets\n"
@@ -52,6 +52,7 @@ msgstr ""
 #: admin/page-timesheets.php:87
 #: templates/emails/user-timesheet.php:22
 #: templates/project-timesheet.php:60
+#: templates/subscription-timesheet.php:242
 #: templates/weekly-overview.php:105
 #: templates/weekly-report.php:334
 msgid "User"
@@ -72,6 +73,7 @@ msgstr ""
 #: admin/page-timesheets.php:96
 #: templates/monthly-report.php:180
 #: templates/project-timesheet.php:62
+#: templates/subscription-timesheet.php:243
 #: templates/timesheets_overview.php:304
 #: templates/weekly-report.php:337
 #: templates/work_registration_fields.php:166
@@ -82,6 +84,7 @@ msgstr ""
 #: templates/monthly-report.php:121
 #: templates/monthly-report.php:177
 #: templates/project-timesheet.php:59
+#: templates/subscription-timesheet.php:241
 #: templates/time-tracking-annual-overview.php:36
 #: templates/timesheets_overview.php:305
 msgid "Date"
@@ -92,6 +95,9 @@ msgstr ""
 #: templates/project-months.php:54
 #: templates/project-timesheet.php:63
 #: templates/projects-top.php:109
+#: templates/subscription-timesheet.php:128
+#: templates/subscription-timesheet.php:244
+#: templates/subscriptions-top.php:116
 #: templates/timesheets_overview.php:306
 #: templates/weekly-report.php:338
 #: templates/work_registration_fields.php:174
@@ -115,7 +121,7 @@ msgid "Note"
 msgstr ""
 
 #: classes/AdminController.php:211
-#: classes/TemplateController.php:78
+#: classes/TemplateController.php:81
 #: templates/emails/user-timesheet.php:16
 msgid "Timesheets"
 msgstr ""
@@ -199,35 +205,36 @@ msgid "New Activity Name"
 msgstr ""
 
 #: classes/Plugin.php:81
-#: classes/TemplateController.php:184
+#: classes/TemplateController.php:199
 msgid "Activities"
 msgstr ""
 
-#: classes/TemplateController.php:166
+#: classes/TemplateController.php:181
 msgid "timesheet"
 msgstr ""
 
-#: classes/TemplateController.php:167
+#: classes/TemplateController.php:182
+#: templates/subscription-timesheet.php:215
 msgid "Timesheet"
 msgstr ""
 
-#: classes/TemplateController.php:174
+#: classes/TemplateController.php:189
 msgid "months"
 msgstr ""
 
-#: classes/TemplateController.php:175
+#: classes/TemplateController.php:190
 msgid "Months"
 msgstr ""
 
-#: classes/TemplateController.php:183
+#: classes/TemplateController.php:198
 msgid "activities"
 msgstr ""
 
-#: classes/TemplateController.php:192
+#: classes/TemplateController.php:207
 msgid "persons"
 msgstr ""
 
-#: classes/TemplateController.php:193
+#: classes/TemplateController.php:208
 msgid "Persons"
 msgstr ""
 
@@ -258,6 +265,7 @@ msgstr ""
 
 #: templates/monthly-report.php:150
 #: templates/projects-top.php:99
+#: templates/subscriptions-top.php:105
 #: templates/time-tracking-annual-overview.php:41
 #: templates/weekly-report.php:272
 msgid "Filter"
@@ -298,6 +306,8 @@ msgstr ""
 
 #: templates/monthly-report.php:274
 #: templates/project-months.php:60
+#: templates/subscription-timesheet.php:134
+#: templates/subscription-timesheet.php:250
 #: templates/weekly-overview.php:113
 #: templates/weekly-report.php:307
 #: templates/weekly-report.php:340
@@ -313,10 +323,12 @@ msgid "Register"
 msgstr ""
 
 #: templates/project-months.php:53
+#: templates/subscription-timesheet.php:127
 msgid "Month"
 msgstr ""
 
 #: templates/project-months.php:104
+#: templates/subscription-timesheet.php:170
 msgid "Copy HTML table"
 msgstr ""
 
@@ -325,35 +337,62 @@ msgid "There are no time registrations for this project."
 msgstr ""
 
 #: templates/projects-top.php:20
+#: templates/subscriptions-top.php:20
 msgid "Last week"
 msgstr ""
 
 #: templates/projects-top.php:21
+#: templates/subscriptions-top.php:21
 msgid "Last month"
 msgstr ""
 
 #: templates/projects-top.php:22
+#: templates/subscriptions-top.php:22
 msgid "Last 3 months"
 msgstr ""
 
 #: templates/projects-top.php:23
+#: templates/subscriptions-top.php:23
 msgid "Last 6 months"
 msgstr ""
 
 #: templates/projects-top.php:24
+#: templates/subscriptions-top.php:24
 msgid "Last year"
 msgstr ""
 
 #: templates/projects-top.php:25
+#: templates/subscriptions-top.php:25
 msgid "All time"
 msgstr ""
 
 #: templates/projects-top.php:82
+#: templates/subscriptions-top.php:88
 msgid "Period"
 msgstr ""
 
 #: templates/projects-top.php:107
+#: templates/subscriptions-top.php:113
 msgid "Customer"
+msgstr ""
+
+#. translators: 1: period start date, 2: period end date.
+#: templates/subscription-timesheet.php:115
+#, php-format
+msgid "Timesheet period %1$s - %2$s"
+msgstr ""
+
+#: templates/subscription-timesheet.php:221
+msgid "There are no time registrations for this subscription."
+msgstr ""
+
+#: templates/subscriptions-top.php:114
+msgid "Product"
+msgstr ""
+
+#: templates/subscriptions-top.php:115
+#: templates/work_registration_fields.php:128
+msgid "Subscription"
 msgstr ""
 
 #: templates/timesheets_edit.php:21
@@ -470,10 +509,6 @@ msgstr ""
 
 #: templates/work_registration_fields.php:113
 msgid "Select project…"
-msgstr ""
-
-#: templates/work_registration_fields.php:128
-msgid "Subscription"
 msgstr ""
 
 #: templates/work_registration_fields.php:130
