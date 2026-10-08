@@ -9,12 +9,14 @@ global $wpdb;
 $project_value      = '';
 $subscription_value = '';
 
-$extra_select = '';
+$extra_select = ', NULL AS customer_name';
 $extra_join   = '';
 
-if ( property_exists( $wpdb, 'orbis_companies' ) ) {
-	$extra_select .= ', principal.name AS principal_name';
-	$extra_join   .= " LEFT JOIN $wpdb->orbis_companies AS principal ON project.principal_id = principal.id";
+if ( class_exists( \Pronamic\Orbis\Contacts\ContactsTable::class ) ) {
+	$contacts_table = \Pronamic\Orbis\Contacts\ContactsTable::get_table_name();
+
+	$extra_select = ', customer.name AS customer_name';
+	$extra_join  .= " LEFT JOIN $contacts_table AS customer ON project.customer_id = customer.id";
 }
 
 $project_query = "
@@ -39,7 +41,7 @@ if ( $project ) {
 	$project_value = sprintf(
 		'%s. %s - %s ( %s )',
 		$entry->project_id,
-		$project->principal_name,
+		$project->customer_name,
 		$project->project_name,
 		orbis_time( $project->project_time )
 	);
@@ -93,10 +95,10 @@ if ( property_exists( $wpdb, 'orbis_subscriptions' ) ) {
 	<?php if ( false ) : ?>
 
 		<div class="col-md-6">
-			<div <?php orbis_field_class( [ 'mb-3' ], 'orbis_registration_company_id' ); ?>>
-				<label class="form-label"><?php _e( 'Company', 'orbis-timesheets' ); ?></label>
+			<div <?php orbis_field_class( [ 'mb-3' ], 'orbis_registration_contact_id' ); ?>>
+				<label class="form-label"><?php _e( 'Contact', 'orbis-timesheets' ); ?></label>
 
-				<input class="form-control" placeholder="<?php esc_attr_e( 'Select company…', 'orbis-timesheets' ); ?>" type="text" name="orbis_registration_company_id" value="<?php echo esc_attr( $entry->company_id ); ?>" class="orbis-id-control orbis-company-id-control select-form-control" data-text="<?php echo esc_attr( $entry->company_name ); ?>" tabindex="<?php echo esc_attr( $tabindex++ ); ?>" />
+				<input class="form-control" placeholder="<?php esc_attr_e( 'Select contact…', 'orbis-timesheets' ); ?>" type="text" name="orbis_registration_contact_id" value="<?php echo esc_attr( $entry->contact_id ); ?>" class="orbis-id-control orbis-contact-id-control select-form-control" data-text="<?php echo esc_attr( $entry->contact_name ); ?>" tabindex="<?php echo esc_attr( $tabindex++ ); ?>" />
 			</div>
 		</div>
 

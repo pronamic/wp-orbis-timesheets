@@ -108,15 +108,23 @@ $query_budgets = $wpdb->prepare(
 
 $budgets = $wpdb->get_results( $query_budgets, OBJECT_K );
 
+$contact_select = 'NULL AS contact_id, NULL AS contact_name, NULL AS contact_post_id';
+$contact_join   = '';
+
+if ( class_exists( \Pronamic\Orbis\Contacts\ContactsTable::class ) ) {
+	$contacts_table = \Pronamic\Orbis\Contacts\ContactsTable::get_table_name();
+
+	$contact_select = 'contact.id AS contact_id, contact.name AS contact_name, contact.post_id AS contact_post_id';
+	$contact_join   = "LEFT JOIN $contacts_table AS contact ON hr.contact_id = contact.id";
+}
+
 $query_hours = "
 	SELECT
 		hr.id AS registration_id,
 		project.id AS project_id,
 		project.name AS project_name,
 		project.post_id AS project_post_id,
-		client.id AS client_id,
-		client.name AS client_name,
-		client.post_id AS client_post_id,
+		$contact_select,
 		user.display_name AS user_name,
 		hr.date AS date,
 		hr.description AS description,
@@ -124,9 +132,7 @@ $query_hours = "
 		hr.billability AS billability
 	FROM
 		$wpdb->orbis_timesheets AS hr
-			LEFT JOIN
-		$wpdb->orbis_companies AS client
-				ON hr.company_id = client.id
+		$contact_join
 			LEFT JOIN
 		$wpdb->orbis_projects AS project
 				ON hr.project_id = project.id
@@ -326,7 +332,7 @@ $url_next      = add_query_arg( orbis_format_timestamps( $next, 'd-m-Y' ) );
 	<thead>
 		<tr>
 			<th><?php _e( 'User', 'orbis-timesheets' ); ?></th>
-			<th><?php _e( 'Client', 'orbis-timesheets' ); ?></th>
+			<th><?php _e( 'Contact', 'orbis-timesheets' ); ?></th>
 			<th><?php _e( 'Project', 'orbis-timesheets' ); ?></th>
 			<th><?php _e( 'Description', 'orbis-timesheets' ); ?></th>
 			<th><?php _e( 'Time', 'orbis-timesheets' ); ?></th>
@@ -358,8 +364,8 @@ $url_next      = add_query_arg( orbis_format_timestamps( $next, 'd-m-Y' ) );
 					<?php echo $row->user_name; ?>
 				</td>
 				<td>
-					<a href="<?php echo get_permalink( $row->client_post_id ); ?>" target="_blank">
-						<?php echo $row->client_name; ?>
+					<a href="<?php echo get_permalink( $row->contact_post_id ); ?>" target="_blank">
+						<?php echo $row->contact_name; ?>
 					</a>
 				</td>
 				<td>

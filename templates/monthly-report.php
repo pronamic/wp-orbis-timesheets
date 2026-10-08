@@ -52,15 +52,23 @@ $where = '1 = 1';
 $where .= $wpdb->prepare( ' AND timesheet.date BETWEEN %s AND %s', $start_date->format( 'Y-m-d' ), $end_date->format( 'Y-m-d' ) );
 $where .= $wpdb->prepare( ' AND timesheet.user_id = %d', $user_id );
 
+$contact_select = 'NULL AS contact_id, NULL AS contact_name, NULL AS contact_post_id';
+$contact_join   = '';
+
+if ( class_exists( \Pronamic\Orbis\Contacts\ContactsTable::class ) ) {
+	$contacts_table = \Pronamic\Orbis\Contacts\ContactsTable::get_table_name();
+
+	$contact_select = 'contact.id AS contact_id, contact.name AS contact_name, contact.post_id AS contact_post_id';
+	$contact_join   = "LEFT JOIN $contacts_table AS contact ON timesheet.contact_id = contact.id";
+}
+
 $query_hours = "
 	SELECT
 		timesheet.id AS timesheet_id,
 		project.id AS project_id,
 		project.name AS project_name,
 		project.post_id AS project_post_id,
-		company.id AS company_id,
-		company.name AS company_name,
-		company.post_id AS company_post_id,
+		$contact_select,
 		user.display_name AS user_name,
 		timesheet.date AS date,
 		timesheet.description AS description,
@@ -68,9 +76,7 @@ $query_hours = "
 		timesheet.billability AS billability
 	FROM
 		$wpdb->orbis_timesheets AS timesheet
-			LEFT JOIN
-		$wpdb->orbis_companies AS company
-				ON timesheet.company_id = company.id
+		$contact_join
 			LEFT JOIN
 		$wpdb->orbis_projects AS project
 				ON timesheet.project_id = project.id
@@ -169,7 +175,7 @@ get_header();
 				<thead>
 					<tr>
 						<th scope="col"><?php \esc_html_e( 'Date', 'orbis-timesheets' ); ?></th>
-						<th scope="col"><?php \esc_html_e( 'Company', 'orbis-timesheets' ); ?></th>
+						<th scope="col"><?php \esc_html_e( 'Contact', 'orbis-timesheets' ); ?></th>
 						<th scope="col"><?php \esc_html_e( 'Project', 'orbis-timesheets' ); ?></th>
 						<th scope="col"><?php \esc_html_e( 'Description', 'orbis-timesheets' ); ?></th>
 						<th scope="col"><?php \esc_html_e( 'Time', 'orbis-timesheets' ); ?></th>
@@ -203,7 +209,7 @@ get_header();
 									<?php echo \esc_html( \wp_date( 'l j F Y', $item->date->getTimestamp() ) ); ?>
 								</td>
 								<td>
-									<?php echo \esc_html( $item->company_name ); ?>
+									<?php echo \esc_html( $item->contact_name ); ?>
 								</td>
 								<td>
 									<?php echo \esc_html( $item->project_name ); ?>

@@ -17,21 +17,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 	$extra_select = '';
 	$extra_join   = '';
 
-	if ( property_exists( $wpdb, 'orbis_companies' ) ) {
+	if ( class_exists( \Pronamic\Orbis\Contacts\ContactsTable::class ) ) {
+		$contacts_table = \Pronamic\Orbis\Contacts\ContactsTable::get_table_name();
+
 		$extra_select .= '
-		, company.id AS company_id,
-		company.post_id AS company_post_id,
-		company.name AS company_name,
-		principal.name AS principal_name
+		, contact.id AS contact_id,
+		contact.post_id AS contact_post_id,
+		contact.name AS contact_name
 		';
 
 		$extra_join .= "
 		LEFT JOIN
-			$wpdb->orbis_companies AS principal
-				ON project.principal_id = principal.id
-		LEFT JOIN
-			$wpdb->orbis_companies AS company
-				ON work.company_id = company.id
+			$contacts_table AS contact
+				ON work.contact_id = contact.id
 		";
 	}
 
@@ -89,7 +87,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 					<?php _e( 'User', 'orbis-timesheets' ); ?>
 				</th>
 				<th scope="col">
-					<?php _e( 'Company/Project', 'orbis-timesheets' ); ?>
+					<?php _e( 'Contact/Project', 'orbis-timesheets' ); ?>
 				</th>
 				<th scope="col">
 					<?php _e( 'Activity', 'orbis-timesheets' ); ?>
@@ -125,8 +123,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 						$links = [];
 
-						if ( ! empty( $registration->company_post_id ) ) {
-							$links[] = sprintf( '<a href="%s">%s</a>', esc_attr( orbis_post_link( $registration->company_post_id ) ), esc_html( $registration->company_name ) );
+						if ( ! empty( $registration->contact_post_id ) ) {
+							$links[] = sprintf( '<a href="%s">%s</a>', esc_attr( orbis_post_link( $registration->contact_post_id ) ), esc_html( $registration->contact_name ) );
 						}
 
 						if ( ! empty( $registration->project_post_id ) ) {

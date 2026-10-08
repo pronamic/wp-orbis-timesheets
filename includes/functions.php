@@ -56,15 +56,31 @@ function orbis_timesheets_get_entry( $entry_id ) {
 	$entry = false;
 
 	// Query
-	$select = '';
+	$select = ',
+		NULL AS contact_name
+	';
 	$from   = '';
 
+	if ( class_exists( \Pronamic\Orbis\Contacts\ContactsTable::class ) ) {
+		$contacts_table = \Pronamic\Orbis\Contacts\ContactsTable::get_table_name();
+
+		$select = ',
+			contact.name AS contact_name
+		';
+
+		$from = "
+				LEFT JOIN
+			$contacts_table AS contact
+					ON timesheet.contact_id = contact.id
+		";
+	}
+
 	if ( property_exists( $wpdb, 'orbis_subscriptions' ) && property_exists( $wpdb, 'orbis_products' ) ) {
-		$select = ",
+		$select .= ",
 			CONCAT( subscription_product.name, ' - ', subscription.name ) AS subscription_name
 		";
 
-		$from = "
+		$from .= "
 				LEFT JOIN
 			$wpdb->orbis_subscriptions AS subscription
 					ON timesheet.subscription_id = subscription.id
@@ -77,21 +93,17 @@ function orbis_timesheets_get_entry( $entry_id ) {
 	$query = "
 		SELECT
 			timesheet.id,
-			timesheet.company_id,
+			timesheet.contact_id,
 			timesheet.project_id,
 			timesheet.subscription_id,
 			timesheet.activity_id,
 			timesheet.description,
 			timesheet.date,
 			timesheet.number_seconds,
-			company.name AS company_name,
 			project.name AS project_name
 			$select
 		FROM
 			$wpdb->orbis_timesheets AS timesheet
-				LEFT JOIN
-			$wpdb->orbis_companies AS company
-					ON timesheet.company_id = company.id
 				LEFT JOIN
 			$wpdb->orbis_projects AS project
 					ON timesheet.project_id = project.id
@@ -111,8 +123,8 @@ function orbis_timesheets_get_entry( $entry_id ) {
 
 		$entry->id = $row->id;
 
-		$entry->company_id   = $row->company_id;
-		$entry->company_name = $row->company_name;
+		$entry->contact_id   = $row->contact_id;
+		$entry->contact_name = $row->contact_name;
 
 		$entry->project_id   = $row->project_id;
 		$entry->project_name = $row->project_name;
@@ -136,17 +148,21 @@ function orbis_insert_timesheet_entry( $entry ) {
 
 	$result = false;
 
-	// Auto complete company ID
+	// Auto complete contact ID, the subscription customer takes precedence over the project customer.
 	if ( ! empty( $entry->project_id ) ) {
-		$query = $wpdb->prepare( "SELECT principal_id FROM $wpdb->orbis_projects WHERE id = %d;", $entry->project_id );
+		$query = $wpdb->prepare( "SELECT customer_id FROM $wpdb->orbis_projects WHERE id = %d;", $entry->project_id );
 
-		$entry->company_id = $wpdb->get_var( $query );
+		$entry->contact_id = $wpdb->get_var( $query );
 	}
 
 	if ( ! empty( $entry->subscription_id ) ) {
-		$query = $wpdb->prepare( "SELECT company_id FROM $wpdb->orbis_subscriptions WHERE id = %d;", $entry->subscription_id );
+		$query = $wpdb->prepare( "SELECT customer_id FROM $wpdb->orbis_subscriptions WHERE id = %d;", $entry->subscription_id );
 
-		$entry->company_id = $wpdb->get_var( $query );
+		$customer_id = $wpdb->get_var( $query );
+
+		if ( ! empty( $customer_id ) ) {
+			$entry->contact_id = $customer_id;
+		}
 	}
 
 	// Data
@@ -159,8 +175,8 @@ function orbis_insert_timesheet_entry( $entry ) {
 	$data['user_id']   = $entry->user_id;
 	$format['user_id'] = '%d';
 
-	$data['company_id']   = $entry->company_id;
-	$format['company_id'] = '%d';
+	$data['contact_id']   = empty( $entry->contact_id ) ? null : $entry->contact_id;
+	$format['contact_id'] = '%d';
 
 	if ( ! empty( $entry->project_id ) ) {
 		$data['project_id']   = $entry->project_id;
@@ -225,20 +241,26 @@ function orbis_insert_timesheet_entry( $entry ) {
 	return $result;
 }
 
-function orbis_timesheets_get_company_name( $orbis_id ) {
+function orbis_timesheets_get_contact_name( $contact_id ) {
 	global $wpdb;
+
+	if ( ! class_exists( \Pronamic\Orbis\Contacts\ContactsTable::class ) ) {
+		return null;
+	}
+
+	$contacts_table = \Pronamic\Orbis\Contacts\ContactsTable::get_table_name();
 
 	$query = $wpdb->prepare(
 		"
 		SELECT
-			CONCAT( company.id, '. ', company.name )
+			CONCAT( contact.id, '. ', contact.name )
 		FROM
-			$wpdb->orbis_companies AS company
+			$contacts_table AS contact
 		WHERE
-			company.id = %d
+			contact.id = %d
 		;
 	",
-		$orbis_id
+		$contact_id
 	);
 
 	$result = $wpdb->get_var( $query );
@@ -254,15 +276,17 @@ function orbis_timesheets_get_project_name( $orbis_id ) {
 	$extra_select = '';
 	$extra_join   = '';
 
-	if ( property_exists( $wpdb, 'orbis_companies' ) ) {
+	if ( class_exists( \Pronamic\Orbis\Contacts\ContactsTable::class ) ) {
+		$contacts_table = \Pronamic\Orbis\Contacts\ContactsTable::get_table_name();
+
 		$extra_select .= '
-		, principal.name AS principal_name
+		, customer.name AS customer_name
 		';
 
 		$extra_join .= "
 		LEFT JOIN
-			$wpdb->orbis_companies AS principal
-				ON project.principal_id = principal.id
+			$contacts_table AS customer
+				ON project.customer_id = customer.id
 		";
 	}
 
@@ -291,13 +315,13 @@ function orbis_timesheets_get_project_name( $orbis_id ) {
 	// Project
 	$result = $wpdb->get_row( $query );
 
-	$principal_name = ( isset( $result->principal_name ) ) ? '- ' . $result->principal_name : '';
+	$customer_name = ( isset( $result->customer_name ) ) ? '- ' . $result->customer_name : '';
 
 	if ( $result ) {
 		$name = sprintf(
 			'%s. %s %s ( %s / %s )',
 			$result->project_id,
-			$principal_name,
+			$customer_name,
 			$result->project_name,
 			orbis_time( $result->project_logged_time ),
 			orbis_time( $result->project_time )
@@ -377,9 +401,9 @@ function orbis_timesheets_get_entry_from_input( $type = INPUT_POST ) {
 
 	$entry->id = orbis_timesheets_filter_int_input( $type, 'orbis_registration_id' );
 
-	if ( property_exists( $wpdb, 'orbis_companies' ) ) {
-		$entry->company_id   = orbis_timesheets_filter_int_input( $type, 'orbis_registration_company_id' );
-		$entry->company_name = orbis_timesheets_get_company_name( $entry->company_id );
+	if ( class_exists( \Pronamic\Orbis\Contacts\ContactsTable::class ) ) {
+		$entry->contact_id   = orbis_timesheets_filter_int_input( $type, 'orbis_registration_contact_id' );
+		$entry->contact_name = orbis_timesheets_get_contact_name( $entry->contact_id );
 	}
 
 	$entry->project_id   = orbis_timesheets_filter_int_input( $type, 'orbis_registration_project_id' );
@@ -427,12 +451,12 @@ function orbis_timesheets_maybe_add_entry() {
 		// Verify nonce
 		$nonce = orbis_timesheets_filter_text_input( INPUT_POST, 'orbis_timesheets_new_registration_nonce' );
 		if ( wp_verify_nonce( $nonce, 'orbis_timesheets_add_new_registration' ) ) {
-			if ( empty( $entry->company_id ) && empty( $entry->project_id ) && empty( $entry->subscription_id ) ) {
-				orbis_timesheets_register_error( 'orbis_registration_company_id', '' ); // __( 'You have to specify an company.', 'orbis_timesheets' ) );
+			if ( empty( $entry->contact_id ) && empty( $entry->project_id ) && empty( $entry->subscription_id ) ) {
+				orbis_timesheets_register_error( 'orbis_registration_contact_id', '' ); // __( 'You have to specify a contact.', 'orbis_timesheets' ) );
 				orbis_timesheets_register_error( 'orbis_registration_project_id', '' ); // __( 'You have to specify an project.', 'orbis_timesheets' ) );
 				orbis_timesheets_register_error( 'orbis_registration_subscription_id', '' ); // __( 'You have to specify an subscription.', 'orbis_timesheets' ) );
 
-				orbis_timesheets_register_error( 'orbis_registration_on', __( 'You have to specify an company or project.', 'orbis-timesheets' ) );
+				orbis_timesheets_register_error( 'orbis_registration_on', __( 'You have to specify a contact or project.', 'orbis-timesheets' ) );
 			}
 
 			if ( empty( $entry->project_id ) ) {

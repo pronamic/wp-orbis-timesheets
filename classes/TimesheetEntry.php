@@ -24,18 +24,18 @@ class TimesheetEntry {
 	public $id;
 
 	/**
-	 * Company ID.
+	 * Contact ID.
 	 *
 	 * @var int|string|null
 	 */
-	public $company_id;
+	public $contact_id;
 
 	/**
-	 * Company name.
+	 * Contact name.
 	 *
 	 * @var string|null
 	 */
-	public $company_name;
+	public $contact_name;
 
 	/**
 	 * Project ID.
