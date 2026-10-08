@@ -56,6 +56,7 @@ class TemplateController {
 			'weekly_overview' => $this->template_include_weekly_overview( $template ),
 			'weekly_report' => $this->template_include_weekly_report( $template ),
 			'monthly_report' => $this->template_include_monthly_report( $template ),
+			'projects_top' => $this->template_include_projects_top( $template ),
 			default => $template,
 		};
 	}
@@ -140,6 +141,18 @@ class TemplateController {
 	}
 
 	/**
+	 * Template include projects top.
+	 * 
+	 * @param string $template Template.
+	 * @return string
+	 */
+	private function template_include_projects_top( $template ) {
+		$template = __DIR__ . '/../templates/projects-top.php';
+
+		return $template;
+	}
+
+	/**
 	 * Orbis project sections.
 	 * 
 	 * @param array $sections Sections.
@@ -155,6 +168,15 @@ class TemplateController {
 				'callback' => [ $this, 'render_project_timesheet' ],
 			] 
 		);
+
+		$sections[] = [
+			'id'       => 'months',
+			'slug'     => \__( 'months', 'orbis-timesheets' ),
+			'name'     => \__( 'Months', 'orbis-timesheets' ),
+			'callback' => function (): void {
+				include __DIR__ . '/../templates/project-months.php';
+			},
+		];
 
 		$sections[] = [
 			'id'       => 'activities',

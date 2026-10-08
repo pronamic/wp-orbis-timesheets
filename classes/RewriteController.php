@@ -94,5 +94,13 @@ class RewriteController {
 			],
 			'top'
 		);
+
+		\add_rewrite_rule(
+			'tijdregistraties/projecten/?$',
+			[
+				'orbis_timesheets_route' => 'projects_top',
+			],
+			'top'
+		);
 	}
 }
