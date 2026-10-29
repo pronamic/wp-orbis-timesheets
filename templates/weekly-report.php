@@ -192,33 +192,35 @@ if ( $total_seconds > 0 ) {
 
 $amount = $billable_hours * 75;
 
-$billability_report = $wpdb->get_row(
-	$wpdb->prepare(
-		"
-		SELECT
-			time_registration.user_id,
-			SUM( time_registration.number_seconds ) AS total_seconds,
-			SUM( IF ( time_registration.billability IN ( 'billable', 'non_billable' ), time_registration.number_seconds, 0 ) ) AS billability_seconds,
-			SUM( IF ( 'billable' = time_registration.billability, time_registration.number_seconds, 0 ) ) AS billable_seconds,
-			SUM( IF ( 'non_billable' = time_registration.billability, time_registration.number_seconds, 0 ) ) AS non_billable_seconds,
-			SUM( IF ( time_registration.billability IN ( 'billable', 'non_billable' ), 0, time_registration.number_seconds ) ) AS other_seconds
-		FROM
-			wp_orbis_timesheets AS time_registration
-		WHERE
-			time_registration.date >= %s
-				AND
-			time_registration.date <= %s
-				AND
-			time_registration.user_id = %d
-		GROUP BY
-			time_registration.user_id
-		;
-		",
-		date( 'Y-m-d', $start_date ),
-		date( 'Y-m-d', $end_date ),
-		$user
-	)
+$billability_where = $wpdb->prepare(
+	'time_registration.date >= %s AND time_registration.date <= %s',
+	date( 'Y-m-d', $start_date ),
+	date( 'Y-m-d', $end_date )
 );
+
+if ( $user ) {
+	$billability_where .= $wpdb->prepare( ' AND time_registration.user_id = %d', $user );
+}
+
+$billability_report = $wpdb->get_row(
+	<<<SQL
+	SELECT
+		SUM( time_registration.number_seconds ) AS total_seconds,
+		SUM( IF ( time_registration.billability IN ( 'billable', 'non_billable' ), time_registration.number_seconds, 0 ) ) AS billability_seconds,
+		SUM( IF ( 'billable' = time_registration.billability, time_registration.number_seconds, 0 ) ) AS billable_seconds,
+		SUM( IF ( 'non_billable' = time_registration.billability, time_registration.number_seconds, 0 ) ) AS non_billable_seconds,
+		SUM( IF ( time_registration.billability IN ( 'billable', 'non_billable' ), 0, time_registration.number_seconds ) ) AS other_seconds
+	FROM
+		$wpdb->orbis_timesheets AS time_registration
+	WHERE
+		$billability_where
+	;
+	SQL
+);
+
+if ( null === $billability_report || null === $billability_report->total_seconds ) {
+	$billability_report = null;
+}
 
 // URL's
 $url_week_this = add_query_arg( orbis_format_timestamps( $week_this, 'd-m-Y' ) );
